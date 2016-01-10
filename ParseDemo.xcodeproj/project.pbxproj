@@ -221,6 +221,7 @@
 		E02347011B677CD3004F2DBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = abearablecode;
 				TargetAttributes = {
