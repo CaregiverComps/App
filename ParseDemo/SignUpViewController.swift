@@ -50,11 +50,7 @@ class SignUpViewController: UIViewController {
             var spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             
-            var newUser = PFUser()
-            
-            newUser.username = username
-            newUser.password = password
-            newUser.email = finalEmail
+            var newUser = AppUser(username: username, password: password, email: finalEmail, teamname: "random",accessLevel:nil);
             
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
