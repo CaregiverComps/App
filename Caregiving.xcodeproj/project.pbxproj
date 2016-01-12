@@ -102,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				E023472E1B679009004F2DBE /* Frameworks */,
-				E023470B1B677CD3004F2DBE /* ParseDemo */,
-				E02347211B677CD3004F2DBE /* ParseDemoTests */,
+				E023470B1B677CD3004F2DBE /* Caregiving */,
+				E02347211B677CD3004F2DBE /* CaregivingTests */,
 				E023470A1B677CD3004F2DBE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E023470B1B677CD3004F2DBE /* ParseDemo */ = {
+		E023470B1B677CD3004F2DBE /* Caregiving */ = {
 			isa = PBXGroup;
 			children = (
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
@@ -130,6 +130,7 @@
 				E02347171B677CD3004F2DBE /* LaunchScreen.xib */,
 				E023470C1B677CD3004F2DBE /* Supporting Files */,
 			);
+			name = Caregiving;
 			path = ParseDemo;
 			sourceTree = "<group>";
 		};
@@ -141,12 +142,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E02347211B677CD3004F2DBE /* ParseDemoTests */ = {
+		E02347211B677CD3004F2DBE /* CaregivingTests */ = {
 			isa = PBXGroup;
 			children = (
 				E02347241B677CD3004F2DBE /* ParseDemoTests.swift */,
 				E02347221B677CD3004F2DBE /* Supporting Files */,
 			);
+			name = CaregivingTests;
 			path = ParseDemoTests;
 			sourceTree = "<group>";
 		};
@@ -234,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E02347041B677CD3004F2DBE /* Build configuration list for PBXProject "ParseDemo" */;
+			buildConfigurationList = E02347041B677CD3004F2DBE /* Build configuration list for PBXProject "Caregiving" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -472,7 +474,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E02347041B677CD3004F2DBE /* Build configuration list for PBXProject "ParseDemo" */ = {
+		E02347041B677CD3004F2DBE /* Build configuration list for PBXProject "Caregiving" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E02347261B677CD3004F2DBE /* Debug */,
