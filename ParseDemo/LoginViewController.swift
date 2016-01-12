@@ -41,11 +41,11 @@ class LoginViewController: UIViewController {
         var password = self.passwordField.text
         
         // Validate the text fields
-        if count(username) < 5 {
+        if username!.characters.count < 5 {
             var alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             
-        } else if count(password) < 8 {
+        } else if password!.characters.count < 8 {
             var alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
             spinner.startAnimating()
             
             // Send a request to login
-            PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
+            PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()

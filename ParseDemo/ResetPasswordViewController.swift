@@ -24,7 +24,7 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func passwordReset(sender: AnyObject) {
         var email = self.emailField.text
-        var finalEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        var finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         // Send a request to reset a password
         PFUser.requestPasswordResetForEmailInBackground(finalEmail)
