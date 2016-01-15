@@ -12,9 +12,14 @@ import Parse
 
 class AppUser : PFUser {
     //weak or strong?
-    //how do we do team names? set by user? 
+    //how do we do team names? set by user? User can select team to display in options?
+    //maybe map team name to int to prevent collisions
+    //also how should we do actually permit access
+    //make access level from booleans
+    static let ACCESSLEVEL_ADMIN=0;
+    //static let ACCESSLEVEL_
     var teamName:String;
-    var accessLevel:Int;
+    var accessLevel:AccessLevel;
     
     //we needed this to register the subclass for some reason
     override class func initialize() {
@@ -26,13 +31,13 @@ class AppUser : PFUser {
         }
     }
     
-    init(username:String, password:String,email:String, teamname:String, accessLevel:Int?) {
+    init(username:String, password:String,email:String, teamname:String, accessLevel:AccessLevel?) {
         self.teamName=teamname;
         if let a = accessLevel {
             self.accessLevel=a;
         }
         else {
-            self.accessLevel=0;
+            self.accessLevel=AccessLevel(financial: false,legal: false,medical: false,personal: false);
         }
 
         super.init();
@@ -41,14 +46,14 @@ class AppUser : PFUser {
         self.email=email;
     }
     
-    func setCaregiverAccessLevel(newLevel:Int) {
-        self.accessLevel=newLevel;
-    }
-    func getCaregiverAccessLevel() -> Int {
+    func getCaregiverAccessLevel() -> AccessLevel {
         return self.accessLevel;
     }
     func getTeamName() ->String {
         return self.teamName;
+    }
+    static func login(username:String, password:String, teamname:String, block:PFUserResultBlock) {
+    PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
     
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B91D345D1C448A1800EB4EF1 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D345C1C448A1800EB4EF1 /* AppUser.swift */; };
+		B9F8AD161C486D1B009CCF42 /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8AD151C486D1B009CCF42 /* AccessLevel.swift */; };
+		B9F8AD181C49AFBF009CCF42 /* NFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8AD171C49AFBF009CCF42 /* NFObject.swift */; };
 		E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023470E1B677CD3004F2DBE /* AppDelegate.swift */; };
 		E02347141B677CD3004F2DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02347121B677CD3004F2DBE /* Main.storyboard */; };
 		E02347161B677CD3004F2DBE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E02347151B677CD3004F2DBE /* Images.xcassets */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		B91D345C1C448A1800EB4EF1 /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		B9F8AD151C486D1B009CCF42 /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
+		B9F8AD171C49AFBF009CCF42 /* NFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFObject.swift; sourceTree = "<group>"; };
 		E02347091B677CD3004F2DBE /* ParseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E023470D1B677CD3004F2DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E023470E1B677CD3004F2DBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				E02347171B677CD3004F2DBE /* LaunchScreen.xib */,
 				E023470C1B677CD3004F2DBE /* Supporting Files */,
 				B91D345C1C448A1800EB4EF1 /* AppUser.swift */,
+				B9F8AD151C486D1B009CCF42 /* AccessLevel.swift */,
+				B9F8AD171C49AFBF009CCF42 /* NFObject.swift */,
 			);
 			path = ParseDemo;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
+				B9F8AD181C49AFBF009CCF42 /* NFObject.swift in Sources */,
 				B91D345D1C448A1800EB4EF1 /* AppUser.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
+				B9F8AD161C486D1B009CCF42 /* AccessLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
