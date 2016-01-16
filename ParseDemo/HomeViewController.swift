@@ -15,9 +15,42 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Show the current visitor's username
-        if let pUserName = PFUser.currentUser()?["username"] as? String {
-            self.userNameLabel.text = "@" + pUserName
+        if let user = AppUser.currentUser() as AppUser? {
+            self.userNameLabel.text = "@" + user.username!;
+            var level=AccessLevel(financial: false, legal: false, medical: true, personal: false);
+            level.update();
+            print(user.valueForKey("TEAMNAME"));
+            //let level: PFObject=user.objectForKey("ACCESSLEVEL") as! PFObject;
+            var object=NFObject(starterText: "Hello world!", teamName: "random", level: level);
+            object.update();
+
+            /*
+            var query:PFQuery=PFQuery(className: "NFObject");
+            query.whereKey(object.KEY_NAME, equalTo: AppUser.currentUser()!.getTeamName());
+            for key in level.getAllowedAccess() {
+                query.whereKey(key, equalTo: true);
+            }
+            query.findObjectsInBackgroundWithBlock {
+                (objects, error) -> Void in
+                
+                if error == nil {
+                    // The find succeeded.
+                    print("Successfully retrieved \(objects!.count).")
+                    // Do something with the found objects
+                    if let objects = objects {
+                        for object in objects {
+                            print(object.objectId)
+                        }
+                    }
+                } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+            */
         }
+
+
     }
 
     override func didReceiveMemoryWarning() {

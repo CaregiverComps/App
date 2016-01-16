@@ -17,7 +17,8 @@ class AppUser : PFUser {
     //also how should we do actually permit access
     //make access level from booleans
     static let ACCESSLEVEL_ADMIN=0;
-    //static let ACCESSLEVEL_
+    let KEY_ACCESSLEVEL:String = "ACCESSLEVEL";
+    let KEY_TEAMNAME:String = "TEAMNAME";
     var teamName:String;
     var accessLevel:AccessLevel;
     
@@ -45,6 +46,22 @@ class AppUser : PFUser {
         self.password=password;
         self.email=email;
     }
+    
+    func update() {
+        self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
+        self.setValue(self.teamName, forKey: KEY_TEAMNAME);
+
+        self.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+                println("OBJECT SUCCESSFULLY SAVED");
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+    }
+    
     
     func getCaregiverAccessLevel() -> AccessLevel {
         return self.accessLevel;
