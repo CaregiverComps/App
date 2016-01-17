@@ -55,7 +55,7 @@ class AppUser : PFUser {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
-                println("OBJECT SUCCESSFULLY SAVED");
+                print("OBJECT SUCCESSFULLY SAVED");
             } else {
                 // There was a problem, check error.description
             }
