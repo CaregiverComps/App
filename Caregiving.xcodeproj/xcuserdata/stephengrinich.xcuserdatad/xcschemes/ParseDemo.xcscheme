@@ -45,7 +45,7 @@
             BlueprintIdentifier = "E02347081B677CD3004F2DBE"
             BuildableName = "ParseDemo.app"
             BlueprintName = "ParseDemo"
-            ReferencedContainer = "container:ParseDemo.xcodeproj">
+            ReferencedContainer = "container:Caregiving.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -68,7 +68,7 @@
             BlueprintIdentifier = "E02347081B677CD3004F2DBE"
             BuildableName = "ParseDemo.app"
             BlueprintName = "ParseDemo"
-            ReferencedContainer = "container:ParseDemo.xcodeproj">
+            ReferencedContainer = "container:Caregiving.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

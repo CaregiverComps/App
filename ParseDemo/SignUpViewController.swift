@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -18,6 +18,13 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.emailField.delegate = self;
+        self.usernameField.delegate = self;
+        self.passwordField.delegate = self;
+        self.teamCodeField.delegate = self;
+        self.teamNameField.delegate = self;
+        
         // Do any additional setup after loading the view.
     }
 
@@ -80,12 +87,22 @@ class SignUpViewController: UIViewController {
                     var alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeamSignUp") as! UIViewController
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") as! UIViewController
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                 }
             })
         }
+    }
+    
+    // hide keyboard when you hit return or touch outside of the text field
+    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        teamCodeField.resignFirstResponder()
+        teamNameField.resignFirstResponder()
+        return true;
     }
     
     /*
