@@ -13,7 +13,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
+    @IBOutlet weak var teamCodeField: UITextField!
+    @IBOutlet weak var teamNameField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +32,8 @@ class SignUpViewController: UIViewController {
         var username = self.usernameField.text
         var password = self.passwordField.text
         var email = self.emailField.text
+        var teamCode = self.teamCodeField.text
+        var teamName = self.teamNameField.text
         var finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         // Validate the text fields
@@ -44,6 +48,13 @@ class SignUpViewController: UIViewController {
         } else if email!.characters.count < 8 {
             var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
             alert.show()
+            //TODO: We should check that the team code actually corresponds to an existing 
+            // team, otherwise throw an error. Also, we need a standard for how long these
+            // are going to be.
+        } else if teamCode!.characters.count < 1 && teamName!.characters.count < 1{
+            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        
             
         } else {
             // Run a spinner to show a task in progress
@@ -69,7 +80,7 @@ class SignUpViewController: UIViewController {
                     var alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") as! UIViewController
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TeamSignUp") as! UIViewController
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                 }
