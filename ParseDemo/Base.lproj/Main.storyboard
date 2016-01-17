@@ -344,8 +344,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To join an existing team, ask the patient's primary caregiver for your team code: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3m-fO-ESl">
-                                        <rect key="frame" x="16" y="216" width="238" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To join an existing team, ask the patient's primary caregiver for your team code: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3m-fO-ESl">
+                                        <rect key="frame" x="16" y="228" width="238" height="43"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.23310700261780104" green="0.23310700261780104" blue="0.23310700261780104" alpha="1" colorSpace="calibratedRGB"/>
@@ -370,8 +370,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Existing Team Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="im9-VI-cZI">
-                                        <rect key="frame" x="13" y="263" width="245" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Existing Team Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="im9-VI-cZI">
+                                        <rect key="frame" x="13" y="274" width="245" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="245" id="2Ld-f7-J9S"/>
@@ -380,8 +380,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OR create a new team:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-Xl-nI6">
+                                        <rect key="frame" x="20" y="301" width="238" height="40"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="z33-Fx-kpj" userLabel="height = 30"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.2331070026" green="0.2331070026" blue="0.2331070026" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVT-DP-MPG">
-                                        <rect key="frame" x="80" y="412" width="100" height="45"/>
+                                        <rect key="frame" x="85" y="398" width="100" height="45"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="KRk-cS-xgU"/>
@@ -395,15 +405,8 @@
                                             <action selector="signUpAction:" destination="rMA-Qa-Dfn" eventType="touchUpInside" id="F0v-yB-I1l"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OR create a new team:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-Xl-nI6">
-                                        <rect key="frame" x="20" y="301" width="238" height="43"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.2331070026" green="0.2331070026" blue="0.2331070026" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Team Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GD2-uI-zdU">
-                                        <rect key="frame" x="11" y="340" width="245" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Team Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GD2-uI-zdU">
+                                        <rect key="frame" x="13" y="331" width="245" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="245" id="UdS-uA-rtY"/>
@@ -417,17 +420,30 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="4IT-7M-gza" firstAttribute="top" secondItem="UOz-tS-XVp" secondAttribute="bottom" constant="23" id="1ej-Pr-CNa"/>
-                                    <constraint firstItem="Jcj-sR-Vlo" firstAttribute="centerX" secondItem="XVT-DP-MPG" secondAttribute="centerX" constant="0.5" id="49v-Pa-xXf"/>
+                                    <constraint firstItem="GD2-uI-zdU" firstAttribute="top" secondItem="9Pt-Xl-nI6" secondAttribute="bottom" constant="-10" id="2B8-1W-REZ"/>
                                     <constraint firstItem="UOz-tS-XVp" firstAttribute="centerX" secondItem="uXa-uY-QdX" secondAttribute="centerX" constant="-0.5" id="5wk-jM-P8q"/>
+                                    <constraint firstItem="XVT-DP-MPG" firstAttribute="top" secondItem="GD2-uI-zdU" secondAttribute="bottom" constant="28" id="BYl-Qb-g9q"/>
+                                    <constraint firstItem="GD2-uI-zdU" firstAttribute="centerX" secondItem="UOz-tS-XVp" secondAttribute="centerX" id="J9N-4b-wdK"/>
                                     <constraint firstItem="UOz-tS-XVp" firstAttribute="centerX" secondItem="4IT-7M-gza" secondAttribute="centerX" id="Jmc-8o-m2c"/>
                                     <constraint firstItem="Jcj-sR-Vlo" firstAttribute="top" secondItem="4IT-7M-gza" secondAttribute="bottom" constant="20" id="KY4-g9-KXg"/>
                                     <constraint firstAttribute="height" constant="475" id="L0w-Mg-QGK"/>
+                                    <constraint firstItem="A3m-fO-ESl" firstAttribute="top" secondItem="Jcj-sR-Vlo" secondAttribute="bottom" constant="21" id="LrK-kN-78X"/>
+                                    <constraint firstItem="GD2-uI-zdU" firstAttribute="centerX" secondItem="9Pt-Xl-nI6" secondAttribute="centerX" id="N6a-vY-iTw"/>
                                     <constraint firstAttribute="width" constant="270" id="NmS-r0-ksL"/>
                                     <constraint firstItem="uXa-uY-QdX" firstAttribute="top" secondItem="QiR-tl-yjV" secondAttribute="top" constant="20" id="RY8-ZZ-kZS"/>
+                                    <constraint firstItem="im9-VI-cZI" firstAttribute="centerX" secondItem="UOz-tS-XVp" secondAttribute="centerX" id="Rhg-Fd-Sps"/>
+                                    <constraint firstItem="im9-VI-cZI" firstAttribute="top" secondItem="A3m-fO-ESl" secondAttribute="bottom" constant="4" id="RpO-I6-0NJ"/>
                                     <constraint firstItem="UOz-tS-XVp" firstAttribute="top" secondItem="uXa-uY-QdX" secondAttribute="bottom" constant="3" id="SnQ-86-wGt"/>
+                                    <constraint firstItem="9Pt-Xl-nI6" firstAttribute="centerX" secondItem="im9-VI-cZI" secondAttribute="centerX" id="VEV-JA-X7k"/>
                                     <constraint firstAttribute="centerX" secondItem="uXa-uY-QdX" secondAttribute="centerX" constant="-1" id="WGC-kM-NVl"/>
+                                    <constraint firstItem="A3m-fO-ESl" firstAttribute="leading" secondItem="Jcj-sR-Vlo" secondAttribute="leading" id="cEf-Uj-n0K"/>
+                                    <constraint firstItem="XVT-DP-MPG" firstAttribute="centerX" secondItem="GD2-uI-zdU" secondAttribute="centerX" id="irS-4A-ixz"/>
+                                    <constraint firstItem="9Pt-Xl-nI6" firstAttribute="top" secondItem="im9-VI-cZI" secondAttribute="bottom" constant="-3" id="j1U-5T-jVn"/>
                                     <constraint firstItem="Jcj-sR-Vlo" firstAttribute="centerX" secondItem="4IT-7M-gza" secondAttribute="centerX" id="kfg-cF-ETa"/>
-                                    <constraint firstItem="XVT-DP-MPG" firstAttribute="top" secondItem="Jcj-sR-Vlo" secondAttribute="bottom" constant="32" id="pEj-Ud-UxX"/>
+                                    <constraint firstItem="A3m-fO-ESl" firstAttribute="centerX" secondItem="Jcj-sR-Vlo" secondAttribute="centerX" id="smg-tg-ir8"/>
+                                    <constraint firstItem="9Pt-Xl-nI6" firstAttribute="leading" secondItem="im9-VI-cZI" secondAttribute="leading" id="tIl-EI-g6g"/>
+                                    <constraint firstItem="A3m-fO-ESl" firstAttribute="trailing" secondItem="Jcj-sR-Vlo" secondAttribute="trailing" id="wCf-fK-rLH"/>
+                                    <constraint firstItem="9Pt-Xl-nI6" firstAttribute="trailing" secondItem="im9-VI-cZI" secondAttribute="trailing" id="wHC-fd-6Eq"/>
                                 </constraints>
                             </view>
                         </subviews>
