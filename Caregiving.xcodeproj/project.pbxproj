@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		91C393971C473C6900C48E82 /* TeamSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C393961C473C6900C48E82 /* TeamSignUpViewController.swift */; };
+		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
+		B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */; };
+		B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCC1C4C26C100F455EE /* NFObject.swift */; };
 		E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023470E1B677CD3004F2DBE /* AppDelegate.swift */; };
 		E02347141B677CD3004F2DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02347121B677CD3004F2DBE /* Main.storyboard */; };
 		E02347161B677CD3004F2DBE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E02347151B677CD3004F2DBE /* Images.xcassets */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		91C393961C473C6900C48E82 /* TeamSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSignUpViewController.swift; sourceTree = "<group>"; };
+		B9489BC81C4C269600F455EE /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
+		B9489BCC1C4C26C100F455EE /* NFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFObject.swift; sourceTree = "<group>"; };
 		E02347091B677CD3004F2DBE /* ParseDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E023470D1B677CD3004F2DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E023470E1B677CD3004F2DBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				E02347151B677CD3004F2DBE /* Images.xcassets */,
 				E02347171B677CD3004F2DBE /* LaunchScreen.xib */,
 				E023470C1B677CD3004F2DBE /* Supporting Files */,
+				B9489BC81C4C269600F455EE /* AppUser.swift */,
+				B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */,
+				B9489BCC1C4C26C100F455EE /* NFObject.swift */,
 			);
 			name = Caregiving;
 			path = ParseDemo;
@@ -283,12 +292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9489BC91C4C269600F455EE /* AppUser.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				91C393971C473C6900C48E82 /* TeamSignUpViewController.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
+				B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
+				B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
