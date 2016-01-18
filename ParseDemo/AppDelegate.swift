@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.enableLocalDatastore()
         
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
         // Initialize Parse.
         Parse.setApplicationId("vSfFMOf1zACuT3bTD0anRgM3JGVoGZ0p2MQ0KwWg", clientKey: "h1XSnv5RTzVHHp3jOA15VE22IHZvobhrn0Evt9Ei")
         
