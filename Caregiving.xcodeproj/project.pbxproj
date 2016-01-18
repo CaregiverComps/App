@@ -20,6 +20,13 @@
 		E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */; };
 		E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023475D1B6BE32A004F2DBE /* HomeViewController.swift */; };
 		E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023475F1B6BE423004F2DBE /* LoginViewController.swift */; };
+		E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE801C4C981B009BC4C6 /* LocalResourcesTabIcon.png */; };
+		E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE821C4C981B009BC4C6 /* NewsFeedTabIcon.png */; };
+		E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */; };
+		E203BE901C4C9A7B009BC4C6 /* EssentialsTabIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */; };
+		E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */; };
+		E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */; };
+		E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */; };
 		F48894AD1B99396B003627DB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AB1B99396B003627DB /* Bolts.framework */; };
 		F48894AE1B99396B003627DB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AC1B99396B003627DB /* Parse.framework */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
@@ -62,6 +69,13 @@
 		E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E023475D1B6BE32A004F2DBE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E023475F1B6BE423004F2DBE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E203BE801C4C981B009BC4C6 /* LocalResourcesTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocalResourcesTabIcon.png; sourceTree = "<group>"; };
+		E203BE821C4C981B009BC4C6 /* NewsFeedTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsFeedTabIcon.png; sourceTree = "<group>"; };
+		E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoreTabIcon.png; sourceTree = "<group>"; };
+		E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EssentialsTabIcon.png; sourceTree = "<group>"; };
+		E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocalResourcesTabIconSmall.png; sourceTree = "<group>"; };
+		E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsFeedTabIconSmall.png; sourceTree = "<group>"; };
+		E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands.png; sourceTree = "<group>"; };
 		F48894AB1B99396B003627DB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F48894AC1B99396B003627DB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -141,6 +155,7 @@
 				B9489BC81C4C269600F455EE /* AppUser.swift */,
 				B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */,
 				B9489BCC1C4C26C100F455EE /* NFObject.swift */,
+				E203BE7E1C4C980B009BC4C6 /* Images */,
 			);
 			name = Caregiving;
 			path = ParseDemo;
@@ -189,6 +204,21 @@
 				F48894AC1B99396B003627DB /* Parse.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E203BE7E1C4C980B009BC4C6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */,
+				E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */,
+				E203BE801C4C981B009BC4C6 /* LocalResourcesTabIcon.png */,
+				E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */,
+				E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */,
+				E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */,
+				E203BE821C4C981B009BC4C6 /* NewsFeedTabIcon.png */,
+			);
+			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +302,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
+				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
+				E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */,
+				E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
+				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
+				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
+				E203BE901C4C9A7B009BC4C6 /* EssentialsTabIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
