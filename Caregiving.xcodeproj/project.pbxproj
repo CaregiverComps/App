@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		91C393971C473C6900C48E82 /* TeamSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C393961C473C6900C48E82 /* TeamSignUpViewController.swift */; };
 		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
 		B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */; };
 		B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCC1C4C26C100F455EE /* NFObject.swift */; };
@@ -27,6 +26,7 @@
 		E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */; };
 		E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */; };
 		E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */; };
+		E2D41F081C5562B000D9C0F0 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D41F071C5562B000D9C0F0 /* NewsFeedViewController.swift */; };
 		F48894AD1B99396B003627DB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AB1B99396B003627DB /* Bolts.framework */; };
 		F48894AE1B99396B003627DB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AC1B99396B003627DB /* Parse.framework */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
@@ -52,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		91C393961C473C6900C48E82 /* TeamSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSignUpViewController.swift; sourceTree = "<group>"; };
 		B9489BC81C4C269600F455EE /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
 		B9489BCC1C4C26C100F455EE /* NFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFObject.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocalResourcesTabIconSmall.png; sourceTree = "<group>"; };
 		E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsFeedTabIconSmall.png; sourceTree = "<group>"; };
 		E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands.png; sourceTree = "<group>"; };
+		E2D41F071C5562B000D9C0F0 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		F48894AB1B99396B003627DB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F48894AC1B99396B003627DB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -145,9 +145,9 @@
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
+				E2D41F071C5562B000D9C0F0 /* NewsFeedViewController.swift */,
 				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
 				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
-				91C393961C473C6900C48E82 /* TeamSignUpViewController.swift */,
 				E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */,
 				E02347151B677CD3004F2DBE /* Images.xcassets */,
 				E02347171B677CD3004F2DBE /* LaunchScreen.xib */,
@@ -333,11 +333,11 @@
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
-				91C393971C473C6900C48E82 /* TeamSignUpViewController.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
 				B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */,
+				E2D41F081C5562B000D9C0F0 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +471,7 @@
 				);
 				INFOPLIST_FILE = ParseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.caregivernet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -486,6 +487,7 @@
 				);
 				INFOPLIST_FILE = ParseDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.caregivernet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

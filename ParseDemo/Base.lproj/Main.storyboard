@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Reset Password View Controller-->
@@ -539,10 +539,10 @@
             </objects>
             <point key="canvasLocation" x="735" y="545"/>
         </scene>
-        <!--News Feed-->
+        <!--News Feed View Controller-->
         <scene sceneID="Mfn-wC-EO9">
             <objects>
-                <viewController id="yPx-JB-psM" sceneMemberID="viewController">
+                <viewController id="yPx-JB-psM" customClass="NewsFeedViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6ba-Na-toY"/>
                         <viewControllerLayoutGuide type="bottom" id="Alg-bc-ESS"/>
@@ -552,11 +552,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="News Feed" image="NewsFeedTabIconSmall.png" selectedImage="NewsFeedTabIconSmall.png" id="91B-5E-PZl"/>
+                    <navigationItem key="navigationItem" id="Mfz-cq-ZPc">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="dPX-eZ-Kng">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A6O-iP-wfx">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="onFiltertouch:" destination="yPx-JB-psM" eventType="touchUpInside" id="8Rz-4E-JkS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rEO-J2-34w">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ovk-LC-xAa" userLabel="Add Button">
+                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Entry"/>
+                                <connections>
+                                    <action selector="onAddEntryTouch:" destination="yPx-JB-psM" eventType="touchUpInside" id="IsC-ff-7F5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Se-qc-E4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531" y="1340"/>
+            <point key="canvasLocation" x="281" y="1340"/>
         </scene>
         <!--Essentials-->
         <scene sceneID="j5H-rY-xCe">
@@ -575,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cut-ZA-Vyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="1322"/>
+            <point key="canvasLocation" x="941" y="1322"/>
         </scene>
         <!--Resources-->
         <scene sceneID="8I0-Du-0ux">
@@ -594,7 +615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxG-QZ-7cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="1391"/>
+            <point key="canvasLocation" x="1662" y="1391"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="P70-sU-vQu">
@@ -606,7 +627,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yPx-JB-psM" kind="relationship" relationship="viewControllers" id="rrl-LG-VKv"/>
+                        <segue destination="s6l-TM-jzm" kind="relationship" relationship="viewControllers" id="rrl-LG-VKv"/>
                         <segue destination="AUy-Jb-Xbp" kind="relationship" relationship="viewControllers" id="LtV-hP-dHu"/>
                         <segue destination="JXo-r9-3wL" kind="relationship" relationship="viewControllers" id="vxb-zf-IK3"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="hOz-Dz-gR2"/>
@@ -615,6 +636,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0b-kW-WsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15" y="552"/>
+        </scene>
+        <!--News Feed-->
+        <scene sceneID="LMj-He-fgx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s6l-TM-jzm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News Feed" image="NewsFeedTabIconSmall.png" selectedImage="NewsFeedTabIconSmall.png" id="91B-5E-PZl"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4UG-a1-G2a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yPx-JB-psM" kind="relationship" relationship="rootViewController" id="gnX-4L-sKK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBX-uL-HtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-531" y="1340"/>
         </scene>
     </scenes>
     <resources>
