@@ -26,6 +26,7 @@
 		E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */; };
 		E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */; };
 		E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */ = {isa = PBXBuildFile; fileRef = E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */; };
+		E2235BF21C5576A3009320A1 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2235BF11C5576A3009320A1 /* CNPPopupController.m */; };
 		E2D41F081C5562B000D9C0F0 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D41F071C5562B000D9C0F0 /* NewsFeedViewController.swift */; };
 		F48894AD1B99396B003627DB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AB1B99396B003627DB /* Bolts.framework */; };
 		F48894AE1B99396B003627DB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AC1B99396B003627DB /* Parse.framework */; };
@@ -75,6 +76,9 @@
 		E203BE911C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocalResourcesTabIconSmall.png; sourceTree = "<group>"; };
 		E203BE951C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsFeedTabIconSmall.png; sourceTree = "<group>"; };
 		E203BE991C4C9D3E009BC4C6 /* ThreeHands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands.png; sourceTree = "<group>"; };
+		E2235BEF1C5576A2009320A1 /* ParseDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParseDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2235BF01C5576A3009320A1 /* CNPPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNPPopupController.h; sourceTree = "<group>"; };
+		E2235BF11C5576A3009320A1 /* CNPPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNPPopupController.m; sourceTree = "<group>"; };
 		E2D41F071C5562B000D9C0F0 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		F48894AB1B99396B003627DB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F48894AC1B99396B003627DB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		E023470B1B677CD3004F2DBE /* Caregiving */ = {
 			isa = PBXGroup;
 			children = (
+				E2235BF31C5576A8009320A1 /* CNPPopupController */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
@@ -156,6 +161,7 @@
 				B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */,
 				B9489BCC1C4C26C100F455EE /* NFObject.swift */,
 				E203BE7E1C4C980B009BC4C6 /* Images */,
+				E2235BEF1C5576A2009320A1 /* ParseDemo-Bridging-Header.h */,
 			);
 			name = Caregiving;
 			path = ParseDemo;
@@ -219,6 +225,15 @@
 			);
 			name = Images;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		E2235BF31C5576A8009320A1 /* CNPPopupController */ = {
+			isa = PBXGroup;
+			children = (
+				E2235BF01C5576A3009320A1 /* CNPPopupController.h */,
+				E2235BF11C5576A3009320A1 /* CNPPopupController.m */,
+			);
+			name = CNPPopupController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +350,7 @@
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */,
+				E2235BF21C5576A3009320A1 /* CNPPopupController.m in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
 				B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */,
 				E2D41F081C5562B000D9C0F0 /* NewsFeedViewController.swift in Sources */,
@@ -464,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,6 +490,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.caregivernet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseDemo/ParseDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -480,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -489,6 +510,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.caregivernet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseDemo/ParseDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};
