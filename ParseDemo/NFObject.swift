@@ -6,8 +6,6 @@
 //  Copyright (c) 2016 abearablecode. All rights reserved.
 //
 
-import Foundation
-import Parse
 class NFObject : PFObject,PFSubclassing {
     let KEY_TEXT:String = "TEXT";
     let KEY_NAME:String = "TEAMNAME";

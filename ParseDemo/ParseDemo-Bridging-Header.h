@@ -3,3 +3,7 @@
 //
 
 #import "CNPPopupController.h"
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import <Bolts/Bolts.h>
+#import "UIScrollView+InfiniteScroll.h"

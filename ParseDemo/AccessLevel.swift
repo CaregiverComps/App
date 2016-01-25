@@ -6,8 +6,6 @@
 //  Copyright (c) 2016 abearablecode. All rights reserved.
 //
 
-import Foundation
-import Parse
 class AccessLevel : PFObject,PFSubclassing {
     //these should probably be static
     let KEY_MEDICAL:String="medical";

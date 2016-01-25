@@ -7,9 +7,6 @@
 // http://stackoverflow.com/questions/24036393/fatal-error-use-of-unimplemented-initializer-initcoder-for-class
 //
 
-import Foundation
-
-import Parse
 
 class AppUser : PFUser{
     //weak or strong?
