@@ -36,58 +36,57 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func signUpAction(sender: AnyObject) {
         
-        var username = self.usernameField.text
-        var password = self.passwordField.text
-        var email = self.emailField.text
-        var teamCode = self.teamCodeField.text
-        var teamName = self.teamNameField.text
-        var finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let username = self.usernameField.text
+        let password = self.passwordField.text
+        let email = self.emailField.text
+        let teamCode = self.teamCodeField.text
+        let teamName = self.teamNameField.text
+        let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         // Validate the text fields
         if username!.characters.count < 5 {
-            var alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             
         } else if password!.characters.count < 8 {
-            var alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             
         } else if email!.characters.count < 8 {
-            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
             alert.show()
             //TODO: We should check that the team code actually corresponds to an existing 
             // team, otherwise throw an error. Also, we need a standard for how long these
             // are going to be.
         } else if teamCode!.characters.count < 1 && teamName!.characters.count < 1{
-            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         
             
         } else {
             // Run a spinner to show a task in progress
-            var spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
+            let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             
-            var newUser = PFUser()
-            
-            newUser.username = username
-            newUser.password = password
-            newUser.email = finalEmail
-            
+            let level = AccessLevel();
+            level.setInitialValues(false, legal: false, medical: true, personal: false);
+            level.update();
+            let newUser = AppUser();
+            newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {
-                    var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     
                 } else {
-                    var alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home") as! UIViewController
+                        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                 }
@@ -96,7 +95,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     // hide keyboard when you hit return or touch outside of the text field
-    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+    func textFieldShouldReturn(userText: UITextField) -> Bool {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
         emailField.resignFirstResponder()

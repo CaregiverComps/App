@@ -4,13 +4,14 @@
 //
 //  Created by Jonathan Brodie on 1/11/16.
 //  Copyright (c) 2016 abearablecode. All rights reserved.
+// http://stackoverflow.com/questions/24036393/fatal-error-use-of-unimplemented-initializer-initcoder-for-class
 //
 
 import Foundation
 
 import Parse
 
-class AppUser : PFUser {
+class AppUser : PFUser{
     //weak or strong?
     //how do we do team names? set by user? User can select team to display in options?
     //maybe map team name to int to prevent collisions
@@ -19,8 +20,8 @@ class AppUser : PFUser {
     static let ACCESSLEVEL_ADMIN=0;
     let KEY_ACCESSLEVEL:String = "ACCESSLEVEL";
     let KEY_TEAMNAME:String = "TEAMNAME";
-    var teamName:String;
-    var accessLevel:AccessLevel;
+    var teamName:String = "";
+    var accessLevel:AccessLevel = AccessLevel();
     
     //we needed this to register the subclass for some reason
     override class func initialize() {
@@ -32,16 +33,19 @@ class AppUser : PFUser {
         }
     }
     
-    init(username:String, password:String,email:String, teamname:String, accessLevel:AccessLevel?) {
+    override init()
+    {
+        super.init()
+    }
+    
+    func setInitialValues(username:String, password:String,email:String, teamname:String, accessLevel:AccessLevel?) {
         self.teamName=teamname;
         if let a = accessLevel {
             self.accessLevel=a;
         }
         else {
-            self.accessLevel=AccessLevel(financial: false,legal: false,medical: false,personal: false);
+            self.accessLevel=AccessLevel();
         }
-        
-        super.init();
         self.username=username;
         self.password=password;
         self.email=email;
@@ -50,7 +54,6 @@ class AppUser : PFUser {
     func update() {
         self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
         self.setValue(self.teamName, forKey: KEY_TEAMNAME);
-        
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -69,8 +72,9 @@ class AppUser : PFUser {
     func getTeamName() ->String {
         return self.teamName;
     }
-    static func login(username:String, password:String, teamname:String, block:PFUserResultBlock) {
+    static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
+    
     
 }

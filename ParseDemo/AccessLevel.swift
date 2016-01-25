@@ -16,10 +16,10 @@ class AccessLevel : PFObject,PFSubclassing {
     let KEY_PERSONAL:String="personal";
     static let KEY_ARRAY=["medical","legal","financial","personal"];
     
-    var bFinancial:Bool;
-    var bLegal:Bool;
-    var bMedical:Bool;
-    var bPersonal:Bool;
+    var bFinancial:Bool = false;
+    var bLegal:Bool = false;
+    var bMedical:Bool = false;
+    var bPersonal:Bool = false;
     //we needed this to register the subclass for some reason
     override class func initialize() {
         struct Static {
@@ -30,14 +30,18 @@ class AccessLevel : PFObject,PFSubclassing {
         }
     }
     
-    init(financial:Bool, legal:Bool, medical:Bool, personal:Bool) {
+    override init() {
+        super.init();
+    }
+    
+    func setInitialValues(financial:Bool, legal:Bool, medical:Bool, personal:Bool) {
         self.bFinancial=financial;
         self.bLegal=legal;
         self.bMedical=medical;
         self.bPersonal=personal;
-        super.init();
-        
+        //super.init();
     }
+    
     func update() {
         self.setValue(self.bFinancial, forKey: KEY_FINANCIAL);
         self.setValue(self.bLegal, forKey: KEY_LEGAL);
