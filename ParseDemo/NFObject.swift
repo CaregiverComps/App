@@ -14,9 +14,9 @@ class NFObject : PFObject,PFSubclassing {
     let KEY_IMAGE:String = "IMAGE"
     
     let KEY_LEVEL:String = "ACCESSLEVEL";
-    let LEVEL:AccessLevel;
-    var text:String;
-    var name:String;
+    var LEVEL:AccessLevel = AccessLevel();
+    var text:String = "";
+    var name:String = "";
     var imageData:NSData?;
     
     //we needed this to register the subclass for some reason
@@ -28,25 +28,36 @@ class NFObject : PFObject,PFSubclassing {
             self.registerSubclass()
         }
     }
-    init(starterText:String, teamName:String, level:AccessLevel, imageData: NSData?) {
-        self.text=starterText;
-        self.name=teamName;
-        self.imageData = imageData;
-        LEVEL=level;
+    
+    override init() {
         super.init();
     }
+    
+    func setInitialValues(starterText:String, teamName:String, level:AccessLevel, imageData: NSData?) {
+        self.text=starterText;
+        self.name=teamName;
+        if let image = imageData {
+            self.imageData = image;
+        }
+        self.LEVEL=level;
+    }
+    
     func update() {
         
-        if let image = imageData{
+        if let image = imageData {
+            print("Got here");
             self.setObject(image, forKey: KEY_IMAGE);
         }
-        
+        print("After if statement");
         //might need to update accesslevel
         self.setValue(self.text, forKey: KEY_TEXT);
+        print("Set text");
         self.setValue(self.name, forKey: KEY_NAME);
+        print("Set name");
         for str in AccessLevel.KEY_ARRAY {
             self.setValue(LEVEL.valueForKey(str), forKey: str);
         }
+        print("Before saving in background");
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {

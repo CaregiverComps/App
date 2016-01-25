@@ -67,6 +67,7 @@ class AppUser : PFUser{
     
     
     func getCaregiverAccessLevel() -> AccessLevel {
+        self.accessLevel.update();
         return self.accessLevel;
     }
     func getTeamName() ->String {
@@ -74,6 +75,34 @@ class AppUser : PFUser{
     }
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
+    }
+    //TO-DO: FIX THIS
+    override static func currentUser() -> AppUser {
+        //use name, password to query database and return the user object associated with it
+        let current=super.currentUser();
+        let query:PFQuery=PFQuery(className: "PFUser");
+        print(current!.username!);
+        query.whereKey("username", equalTo: current!.username!);
+
+        var currentObject:AppUser=AppUser();
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count).")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        currentObject=object as! AppUser;
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        return currentObject;
     }
     
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 class NewsFeedViewController: UIViewController {
     
     var popupController:CNPPopupController = CNPPopupController()
@@ -84,8 +84,8 @@ class NewsFeedViewController: UIViewController {
             
             // YO BACKEND: TEXT TO POST IS IN HERE. YOU GET IT FROM textField.text
             // HANDLE GETTING THAT STRING FROM HERE. ONCE THIS BUTTON IS CLICKED THE VIEW WILL CLOSE
-            
-            
+            print("About to create NF Object");
+            self.createNFObject(textField.text!, currentUser: AppUser.currentUser(), imageData: nil);
             self.popupController.dismissPopupControllerAnimated(true)
         }
         
@@ -107,9 +107,21 @@ class NewsFeedViewController: UIViewController {
         self.popupController.presentPopupControllerAnimated(true)
     }
     
-
-
+    func createNFObject(starterText: String, currentUser: AppUser?, imageData: NSData?) {
+        print("Creating NFObject");
+        let newNF = NFObject();
+        let currentUser = AppUser.currentUser();
+        print(Mirror(reflecting: currentUser).subjectType);
+        let level=AccessLevel();
+        level.update();
+        newNF.setInitialValues(starterText, teamName: "TESTING",level: level, imageData: imageData);
+        //newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: currentUser.getCaregiverAccessLevel(), imageData: imageData);
+        print("Initialized values");
+        newNF.update();
+    }
 }
+
+
 
 
 extension NewsFeedViewController : CNPPopupControllerDelegate {
