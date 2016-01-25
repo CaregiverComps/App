@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Parse
+
+
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
