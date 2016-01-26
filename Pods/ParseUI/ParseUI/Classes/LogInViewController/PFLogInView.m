@@ -35,15 +35,29 @@ static NSString *const PFLogInViewDefaultLogoImageName = @"parse_logo.png";
 static NSString *const PFLogInViewDefaultFacebookButtonImageName = @"facebook_icon.png";
 static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon.png";
 
+///--------------------------------------
+#pragma mark - Accessibility Identifiers
+///--------------------------------------
+
+NSString *const PFLogInViewUsernameFieldAccessibilityIdentifier = @"PFLogInViewUsernameFieldAccessibilityIdentifier";
+NSString *const PFLogInViewPasswordFieldAccessibilityIdentifier = @"PFLogInViewPasswordFieldAccessibilityIdentifier";
+NSString *const PFLogInViewLogInButtonAccessibilityIdentifier = @"PFLogInViewLogInButtonAccessibilityIdentifier";
+NSString *const PFLogInViewSignUpButtonAccessibilityIdentifier = @"PFLogInViewSignUpButtonAccessibilityIdentifier";
+NSString *const PFLogInViewPasswordForgottenButtonAccessibilityIdentifier = @"PFLogInViewPasswordForgottenButtonAccessibilityIdentifier";
+NSString *const PFLogInViewTwitterButtonAccessibilityIdentifier = @"PFLogInViewTwitterButtonAccessibilityIdentifier";
+NSString *const PFLogInViewFacebookButtonAccessibilityIdentifier = @"PFLogInViewFacebookButtonAccessibilityIdentifier";
+NSString *const PFLogInViewDismissButtonAccessibilityIdentifier = @"PFLogInViewDismissButtonAccessibilityIdentifier";
+
 @implementation PFLogInView
 
-#pragma mark -
-#pragma mark Class
+///--------------------------------------
+#pragma mark - Class
+///--------------------------------------
 
 + (PFActionButtonConfiguration *)_defaultSignUpButtonConfiguration {
     PFActionButtonConfiguration *configuration = [[PFActionButtonConfiguration alloc] initWithBackgroundImageColor:[PFColor signupButtonBackgroundColor]
                                                                                                              image:nil];
-    NSString *title = NSLocalizedString(@"Sign Up", @"Sign Up");
+    NSString *title = PFLocalizedString(@"Sign Up", @"Sign Up");
     [configuration setTitle:title forButtonStyle:PFActionButtonStyleNormal];
     [configuration setTitle:title forButtonStyle:PFActionButtonStyleWide];
 
@@ -54,9 +68,9 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     PFActionButtonConfiguration *configuration = [[PFActionButtonConfiguration alloc] initWithBackgroundImageColor:[PFColor facebookButtonBackgroundColor]
                                                                                                              image:[PFImage imageNamed:PFLogInViewDefaultFacebookButtonImageName]];
 
-    [configuration setTitle:NSLocalizedString(@"Facebook", @"Facebook")
+    [configuration setTitle:PFLocalizedString(@"Facebook", @"Facebook")
              forButtonStyle:PFActionButtonStyleNormal];
-    [configuration setTitle:NSLocalizedString(@"Log In with Facebook", @"Log In with Facebook")
+    [configuration setTitle:PFLocalizedString(@"Log In with Facebook", @"Log In with Facebook")
 
              forButtonStyle:PFActionButtonStyleWide];
 
@@ -67,17 +81,18 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     PFActionButtonConfiguration *configuration = [[PFActionButtonConfiguration alloc] initWithBackgroundImageColor:[PFColor twitterButtonBackgroundColor]
                                                                                                              image:[PFImage imageNamed:PFLogInViewDefaultTwitterButtonImageName]];
 
-    [configuration setTitle:NSLocalizedString(@"Twitter", @"Twitter")
+    [configuration setTitle:PFLocalizedString(@"Twitter", @"Twitter")
              forButtonStyle:PFActionButtonStyleNormal];
-    [configuration setTitle:NSLocalizedString(@"Log In with Twitter", @"Log In with Twitter")
+    [configuration setTitle:PFLocalizedString(@"Log In with Twitter", @"Log In with Twitter")
 
              forButtonStyle:PFActionButtonStyleWide];
 
     return configuration;
 }
 
-#pragma mark -
-#pragma mark Init
+///--------------------------------------
+#pragma mark - Init
+///--------------------------------------
 
 - (instancetype)initWithFields:(PFLogInFields)otherFields {
     self = [super initWithFrame:CGRectZero];
@@ -94,67 +109,124 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     _logo.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:_logo];
 
-    if (_fields & PFLogInFieldsDismissButton) {
-        _dismissButton = [[PFDismissButton alloc] initWithFrame:CGRectZero];
-        [self addSubview:_dismissButton];
-    }
-
-    if (_fields & PFLogInFieldsUsernameAndPassword) {
-        _usernameField = [[PFTextField alloc] initWithFrame:CGRectZero
-                                             separatorStyle:(PFTextFieldSeparatorStyleTop |
-                                                             PFTextFieldSeparatorStyleBottom)];
-        _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        _usernameField.returnKeyType = UIReturnKeyNext;
-        [self addSubview:_usernameField];
-        [self _updateUsernameFieldStyle];
-
-        _passwordField = [[PFTextField alloc] initWithFrame:CGRectZero
-                                             separatorStyle:PFTextFieldSeparatorStyleBottom];
-        _passwordField.placeholder = NSLocalizedString(@"Password", @"Password");
-        _passwordField.secureTextEntry = YES;
-        _passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        _passwordField.returnKeyType = UIReturnKeyDone;
-        [self addSubview:_passwordField];
-    }
-
-    if (_fields & PFLogInFieldsSignUpButton) {
-        _signUpButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultSignUpButtonConfiguration]
-                                                          buttonStyle:PFActionButtonStyleNormal];
-        [self addSubview:_signUpButton];
-    }
-
-    if (_fields & PFLogInFieldsPasswordForgotten) {
-        _passwordForgottenButton = [[PFTextButton alloc] initWithFrame:CGRectZero];
-        [_passwordForgottenButton setTitle:NSLocalizedString(@"Forgot Password?", "Forgot Password?")
-                                  forState:UIControlStateNormal];
-        [self addSubview:_passwordForgottenButton];
-    }
-
-    if (_fields & PFLogInFieldsLogInButton) {
-        _logInButton = [[PFPrimaryButton alloc] initWithBackgroundImageColor:[PFColor loginButtonBackgroundColor]];
-        [_logInButton setTitle:NSLocalizedString(@"Log In", @"Log In") forState:UIControlStateNormal];
-        [self addSubview:_logInButton];
-    }
-
-    if (_fields & PFLogInFieldsFacebook) {
-        _facebookButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultFacebookButtonConfiguration]
-                                                            buttonStyle:PFActionButtonStyleNormal];
-        [self addSubview:_facebookButton];
-    }
-
-    if (_fields & PFLogInFieldsTwitter) {
-        _twitterButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultTwitterButtonConfiguration]
-                                                           buttonStyle:PFActionButtonStyleNormal];
-        [self addSubview:_twitterButton];
-    }
+    [self _updateAllFields];
 
     return self;
 }
 
-#pragma mark -
-#pragma mark UIView
+///--------------------------------------
+#pragma mark - Fields
+///--------------------------------------
+
+- (void)_updateAllFields {
+    if (_fields & PFLogInFieldsDismissButton) {
+        if (!_dismissButton) {
+            _dismissButton = [[PFDismissButton alloc] initWithFrame:CGRectZero];
+            _dismissButton.accessibilityIdentifier = PFLogInViewDismissButtonAccessibilityIdentifier;
+            [self addSubview:_dismissButton];
+        }
+    } else {
+        [_dismissButton removeFromSuperview];
+        _dismissButton = nil;
+    }
+
+    if (_fields & PFLogInFieldsUsernameAndPassword) {
+        if (!_usernameField) {
+            _usernameField = [[PFTextField alloc] initWithFrame:CGRectZero
+                                                 separatorStyle:(PFTextFieldSeparatorStyleTop |
+                                                                 PFTextFieldSeparatorStyleBottom)];
+            _usernameField.accessibilityIdentifier = PFLogInViewUsernameFieldAccessibilityIdentifier;
+            _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
+            _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            _usernameField.returnKeyType = UIReturnKeyNext;
+            [self addSubview:_usernameField];
+            [self _updateUsernameFieldStyle];
+        }
+
+        if (!_passwordField) {
+            _passwordField = [[PFTextField alloc] initWithFrame:CGRectZero
+                                                 separatorStyle:PFTextFieldSeparatorStyleBottom];
+            _passwordField.accessibilityIdentifier = PFLogInViewPasswordFieldAccessibilityIdentifier;
+            _passwordField.placeholder = PFLocalizedString(@"Password", @"Password");
+            _passwordField.secureTextEntry = YES;
+            _passwordField.autocorrectionType = UITextAutocorrectionTypeNo;
+            _passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            _passwordField.returnKeyType = UIReturnKeyDone;
+            [self addSubview:_passwordField];
+        }
+    } else {
+        [_usernameField removeFromSuperview];
+        _usernameField = nil;
+
+        [_passwordField removeFromSuperview];
+        _passwordField = nil;
+    }
+
+    if (_fields & PFLogInFieldsSignUpButton) {
+        if (!_signUpButton) {
+            _signUpButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultSignUpButtonConfiguration]
+                                                              buttonStyle:PFActionButtonStyleNormal];
+            _signUpButton.accessibilityIdentifier = PFLogInViewSignUpButtonAccessibilityIdentifier;
+            [self addSubview:_signUpButton];
+        }
+    } else {
+        [_signUpButton removeFromSuperview];
+        _signUpButton = nil;
+    }
+
+    if (_fields & PFLogInFieldsPasswordForgotten) {
+        if (!_passwordForgottenButton) {
+            _passwordForgottenButton = [[PFTextButton alloc] initWithFrame:CGRectZero];
+            _passwordForgottenButton.accessibilityIdentifier = PFLogInViewPasswordForgottenButtonAccessibilityIdentifier;
+            [_passwordForgottenButton setTitle:PFLocalizedString(@"Forgot Password?", "Forgot Password?")
+                                      forState:UIControlStateNormal];
+            [self addSubview:_passwordForgottenButton];
+        }
+    } else {
+        [_passwordForgottenButton removeFromSuperview];
+        _passwordForgottenButton = nil;
+    }
+
+    if (_fields & PFLogInFieldsLogInButton) {
+        if (!_logInButton) {
+            _logInButton = [[PFPrimaryButton alloc] initWithBackgroundImageColor:[PFColor loginButtonBackgroundColor]];
+            _logInButton.accessibilityIdentifier = PFLogInViewLogInButtonAccessibilityIdentifier;
+            [_logInButton setTitle:PFLocalizedString(@"Log In", @"Log In") forState:UIControlStateNormal];
+            [self addSubview:_logInButton];
+        }
+    } else {
+        [_logInButton removeFromSuperview];
+        _logInButton = nil;
+    }
+
+    if (_fields & PFLogInFieldsFacebook) {
+        if (!_facebookButton) {
+            _facebookButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultFacebookButtonConfiguration]
+                                                                buttonStyle:PFActionButtonStyleNormal];
+            _facebookButton.accessibilityIdentifier = PFLogInViewFacebookButtonAccessibilityIdentifier;
+            [self addSubview:_facebookButton];
+        }
+    } else {
+        [_facebookButton removeFromSuperview];
+        _facebookButton = nil;
+    }
+
+    if (_fields & PFLogInFieldsTwitter) {
+        if (!_twitterButton) {
+            _twitterButton = [[PFActionButton alloc] initWithConfiguration:[[self class] _defaultTwitterButtonConfiguration]
+                                                               buttonStyle:PFActionButtonStyleNormal];
+            _twitterButton.accessibilityIdentifier = PFLogInViewTwitterButtonAccessibilityIdentifier;
+            [self addSubview:_twitterButton];
+        }
+    } else {
+        [_twitterButton removeFromSuperview];
+        _twitterButton = nil;
+    }
+}
+
+///--------------------------------------
+#pragma mark - UIView
+///--------------------------------------
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -285,8 +357,7 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     if (_logInButton) {
         CGFloat loginButtonTopInset = floorf(24.0f * contentSizeScale.height);
 
-        CGRect frame = PFRectMakeWithSizeCenteredInRect([_logInButton sizeThatFits:loginContentSize],
-                                                        loginContentRect);;
+        CGRect frame = PFRectMakeWithSizeCenteredInRect([_logInButton sizeThatFits:loginContentSize], loginContentRect);
         frame.origin.y = currentY + loginButtonTopInset;
         _logInButton.frame = frame;
 
@@ -350,9 +421,7 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
 }
 
 - (CGSize)_maxContentSize {
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ?
-            CGSizeMake(420.0f, 550.0f) :
-            CGSizeMake(500.0f, 800.0f));
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? CGSizeMake(420.0f, 550.0f) : CGSizeMake(500.0f, 800.0f));
 }
 
 - (CGSize)_contentSizeScaleForContentSize:(CGSize)contentSize {
@@ -367,8 +436,17 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     return contentSizeScale;
 }
 
-#pragma mark -
-#pragma mark Accessors
+///--------------------------------------
+#pragma mark - Accessors
+///--------------------------------------
+
+- (void)setFields:(PFLogInFields)fields {
+    if (_fields != fields) {
+        _fields = fields;
+        [self _updateAllFields];
+        [self setNeedsLayout];
+    }
+}
 
 - (void)setLogo:(UIView *)logo {
     if (self.logo != logo) {
@@ -388,8 +466,9 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     }
 }
 
-#pragma mark -
-#pragma mark Private
+///--------------------------------------
+#pragma mark - Private
+///--------------------------------------
 
 + (void)_validateFields:(PFLogInFields)fields {
     if (fields == PFLogInFieldsNone) {
@@ -417,12 +496,12 @@ static NSString *const PFLogInViewDefaultTwitterButtonImageName = @"twitter_icon
     NSString *usernamePlaceholder = nil;
     if (!_emailAsUsername) {
         keyboardType = UIKeyboardTypeDefault;
-        usernamePlaceholder = NSLocalizedString(@"Username", @"Username");
+        usernamePlaceholder = PFLocalizedString(@"Username", @"Username");
     } else {
         keyboardType = UIKeyboardTypeEmailAddress;
-        usernamePlaceholder = NSLocalizedString(@"Email", @"Email");
+        usernamePlaceholder = PFLocalizedString(@"Email", @"Email");
     }
-
+    
     _usernameField.placeholder = usernamePlaceholder;
     _usernameField.keyboardType = keyboardType;
 }
