@@ -15,6 +15,10 @@ class NewsFeedViewController: UIViewController {
 
 
     override func viewDidLoad() {
+        let query=PFQuery(className: "NFObject");
+        let curuser=AppUser.currentUser()
+        query.whereKey("TEAMNAME", matchesRegex: curuser.getTeamName());
+        query.whereKey("ACCESSLEVEL", equalTo: curuser.getCaregiverAccessLevel());
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -111,10 +115,7 @@ class NewsFeedViewController: UIViewController {
         print("Creating NFObject");
         let newNF = NFObject();
         let currentUser = AppUser.currentUser();
-        print(Mirror(reflecting: currentUser).subjectType);
-        let level=AccessLevel();
-        level.update();
-        newNF.setInitialValues(starterText, teamName: "TESTING",level: level, imageData: imageData);
+        newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: currentUser.getCaregiverAccessLevel(), imageData: imageData);
         //newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: currentUser.getCaregiverAccessLevel(), imageData: imageData);
         print("Initialized values");
         newNF.update();

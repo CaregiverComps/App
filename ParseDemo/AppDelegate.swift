@@ -16,9 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        AccessLevel.registerSubclass();
+        AppUser.registerSubclass();
+        NFObject.registerSubclass();
         Parse.enableLocalDatastore()
-        
+
+        print("Registered subclasses");
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         // Initialize Parse.
