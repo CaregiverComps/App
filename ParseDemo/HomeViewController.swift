@@ -17,13 +17,13 @@ class HomeViewController: UIViewController {
         // Show the current visitor's username
         if let user = AppUser.currentUser() as AppUser? {
             self.userNameLabel.text = "@" + user.username!;
-            let level=AccessLevel();
-            level.setInitialValues(false, legal: false, medical: true, personal: false);
-            level.update();
-            print(user.valueForKey("TEAMNAME"));
-            //let level: PFObject=user.objectForKey("ACCESSLEVEL") as! PFObject;
-            let object=NFObject(starterText: "Hello world!", teamName: "random", level: level,imageData: nil);
-            object.update();
+//            let level=AccessLevel();
+//            level.setInitialValues(false, legal: false, medical: true, personal: false);
+//            level.update();
+//            print(user.valueForKey("TEAMNAME"));
+//            //let level: PFObject=user.objectForKey("ACCESSLEVEL") as! PFObject;
+//            let object=NFObject(starterText: "Hello world!", teamName: "random", level: level,imageData: nil);
+//            object.update();
             
             /*
             var query:PFQuery=PFQuery(className: "NFObject");

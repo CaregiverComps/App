@@ -8,13 +8,17 @@
 //
 
 
-class AppUser : PFUser{
+
+
+class AppUser : PFUser {
     //weak or strong?
     //how do we do team names? set by user? User can select team to display in options?
     //maybe map team name to int to prevent collisions
     //also how should we do actually permit access
     //make access level from booleans
     static let ACCESSLEVEL_ADMIN=0;
+    static let KEY_ACCESSLEVEL:String = "ACCESSLEVEL";
+    static let KEY_TEAMNAME:String = "TEAMNAME";
     let KEY_ACCESSLEVEL:String = "ACCESSLEVEL";
     let KEY_TEAMNAME:String = "TEAMNAME";
     var teamName:String = "";
@@ -64,6 +68,7 @@ class AppUser : PFUser{
     
     
     func getCaregiverAccessLevel() -> AccessLevel {
+        self.accessLevel.update();
         return self.accessLevel;
     }
     func getTeamName() ->String {
@@ -72,6 +77,40 @@ class AppUser : PFUser{
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
+    //TO-DO: FIX THIS
+//    override static func currentUser() -> AppUser {
+//        //use name, password to query database and return the user object associated with it
+//        let currentuser:PFUser=super.currentUser()!;
+//        let keys=currentuser.allKeys;
+//        for key in keys {
+//            print(currentuser.valueForKey(key as! String));
+//        }
+//        let usr=currentuser.username;
+//        let accessID=currentuser.valueForKey("ACCESSLEVEL") as! PFObject;
+//        let id=accessID.objectId;
+//        let query=PFQuery(className: "AccessLevel");
+//        query.whereKey("objectId", equalTo: id!);
+//        let results=query.findObjects();
+//        print(results!);
+//        for result in results! {
+//            print(result);
+//        }
+//        let result=results![0] as! AccessLevel;
+//        print(result);
+//        print(id);
+//        let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
+//        print(teamname);
+//        let pass=currentuser.password;
+//        let email=currentuser.email;
+//        print(email);
+//        let realCurrentuser=AppUser();
+//        print("here");
+//        print("attempting");
+//        realCurrentuser.setInitialValues(usr!, password: "", email: email!, teamname: teamname, accessLevel: result);
+//        print("here?");
+//        
+//        return realCurrentuser;
+//    }
     
     
 }

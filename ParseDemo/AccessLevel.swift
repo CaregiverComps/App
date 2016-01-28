@@ -6,7 +6,8 @@
 //  Copyright (c) 2016 abearablecode. All rights reserved.
 //
 
-class AccessLevel : PFObject,PFSubclassing {
+
+class AccessLevel : PFObject,PFSubclassing{
     //these should probably be static
     let KEY_MEDICAL:String="medical";
     let KEY_LEGAL:String="legal";
@@ -92,4 +93,11 @@ class AccessLevel : PFObject,PFSubclassing {
         return "AccessLevel";
     }
     
+    func hasAccessTo(other: AccessLevel) -> Bool {
+        let financial:Bool = ((self.bFinancial == other.bFinancial) || (self.bFinancial == true));
+        let legal:Bool = ((self.bLegal == other.bLegal) || (self.bLegal == true));
+        let medical:Bool = ((self.bMedical == other.bMedical) || (self.bMedical == true));
+        let personal:Bool = ((self.bPersonal == other.bPersonal) || (self.bPersonal == true));
+        return (financial && legal && medical && personal);
+    }
 }

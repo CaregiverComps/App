@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Reset Password View Controller-->
@@ -539,7 +539,7 @@
             </objects>
             <point key="canvasLocation" x="735" y="545"/>
         </scene>
-        <!--Item-->
+        <!--News Feed View Controller-->
         <scene sceneID="1kO-9T-Dyk">
             <objects>
                 <tableViewController id="eUm-ev-l2i" customClass="NewsFeedViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -549,7 +549,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="jTm-2u-La4" customClass="NewsFeedTableViewCell" customModule="ParseDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jTm-2u-La4" id="tNa-QM-JKg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -562,11 +562,30 @@
                             <outlet property="delegate" destination="eUm-ev-l2i" id="bTT-wa-zzV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="zH1-Ws-OXg"/>
+                    <navigationItem key="navigationItem" id="OTB-1p-taX">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="92N-vh-WWU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VMV-24-EZd">
+                                <rect key="frame" x="20" y="5" width="47" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Filter_Icon.png"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="XfO-yw-zgN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XmT-Fj-hQe">
+                                <rect key="frame" x="546" y="6" width="34" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Post_Icon.png"/>
+                                <connections>
+                                    <action selector="addEntryTouch:" destination="eUm-ev-l2i" eventType="touchUpInside" id="zFQ-sp-1TE"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wn-PW-B5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="1447"/>
+            <point key="canvasLocation" x="348" y="1459"/>
         </scene>
         <!--Essentials-->
         <scene sceneID="j5H-rY-xCe">
@@ -585,7 +604,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cut-ZA-Vyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="1322"/>
+            <point key="canvasLocation" x="1753" y="1322"/>
         </scene>
         <!--Resources-->
         <scene sceneID="8I0-Du-0ux">
@@ -604,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxG-QZ-7cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="1391"/>
+            <point key="canvasLocation" x="2474" y="1391"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="P70-sU-vQu">
@@ -616,21 +635,43 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="Bdo-6i-0aW" kind="relationship" relationship="viewControllers" id="Ima-5k-vRZ"/>
                         <segue destination="AUy-Jb-Xbp" kind="relationship" relationship="viewControllers" id="LtV-hP-dHu"/>
                         <segue destination="JXo-r9-3wL" kind="relationship" relationship="viewControllers" id="vxb-zf-IK3"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="hOz-Dz-gR2"/>
-                        <segue destination="eUm-ev-l2i" kind="relationship" relationship="viewControllers" id="Ima-5k-vRZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0b-kW-WsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-38" y="405"/>
         </scene>
+        <!--News Feed-->
+        <scene sceneID="Fe7-H6-v3P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bdo-6i-0aW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News Feed" image="NewsFeedTabIconSmall.png" selectedImage="NewsFeedTabIconSmall.png" id="zH1-Ws-OXg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H8i-lP-2jF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eUm-ev-l2i" kind="relationship" relationship="rootViewController" id="QXA-ce-mwy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtX-dH-zqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-396" y="1447"/>
+        </scene>
     </scenes>
     <resources>
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
+        <image name="Filter_Icon.png" width="99" height="66"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
         <image name="MoreTabIcon.png" width="60" height="60"/>
+        <image name="NewsFeedTabIconSmall.png" width="35" height="35"/>
+        <image name="Post_Icon.png" width="66" height="66"/>
         <image name="ThreeHands.png" width="874" height="718"/>
         <image name="bar" width="300" height="20"/>
         <image name="close" width="64" height="64"/>

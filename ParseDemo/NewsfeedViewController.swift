@@ -43,7 +43,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         let query:PFQuery = PFQuery(className:self.parseClassName!)
         query.limit = self.limit
-        //query.orderByAscending("objectId")
+        query.orderByDescending("createdAt")
         return query
     }
     
@@ -63,10 +63,11 @@ class NewsFeedViewController: PFQueryTableViewController {
         print("filter test")
     }
 
-    @IBAction func onAddEntryTouch(sender: AnyObject) {
+    @IBAction func addEntryTouch(sender: AnyObject) {
         print("entry test")
         self.showPopupWithStyle(CNPPopupStyle.Centered)
     }
+ 
     
     func showPopupWithStyle(popupStyle: CNPPopupStyle) {
         
@@ -101,10 +102,13 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let customView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         customView.backgroundColor = UIColor.whiteColor()
-        let textField = UITextField.init(frame: CGRectMake(0, 0, 280, 100))
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.placeholder = "Add Text here"
-        customView.addSubview(textField)
+        let textView = UITextView.init(frame: CGRectMake(0, 0, 280, 100))
+        textView.backgroundColor = UIColor.lightGrayColor()
+        textView.font = UIFont(name: "Helvetica", size: 18)
+//        textView.borderStyle = UITextBorderStyle.RoundedRect
+//        textView.placeholder = "Add Text here"
+        
+        customView.addSubview(textView)
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
@@ -119,7 +123,8 @@ class NewsFeedViewController: PFQueryTableViewController {
             let user = AppUser.currentUser() as AppUser?
             var level=AccessLevel();
             level.update();
-            let object=NFObject(starterText: textField.text!, teamName: "random", level: level,imageData: nil);
+            let object=NFObject();
+            object.setInitialValues(textView.text!, teamName: "random", level: level,imageData: nil)
             object.update();
             
             
@@ -137,7 +142,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let imageView = UIImageView.init(image: UIImage.init(named: "icon"))
        
-        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textField, buttonView])
+        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textView, buttonView])
         self.popupController.theme = CNPPopupTheme.defaultTheme()
         self.popupController.theme.popupStyle = popupStyle
         self.popupController.delegate = self
