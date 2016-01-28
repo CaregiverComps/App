@@ -542,13 +542,13 @@
         <!--Item-->
         <scene sceneID="1kO-9T-Dyk">
             <objects>
-                <tableViewController id="eUm-ev-l2i" customClass="NewsfeedViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="eUm-ev-l2i" customClass="NewsFeedViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5g-kv-5pq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCell" id="jTm-2u-La4" customClass="CellViewController" customModule="ParseDemo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="jTm-2u-La4" customClass="NewsFeedTableViewCell" customModule="ParseDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jTm-2u-La4" id="tNa-QM-JKg">
@@ -624,7 +624,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0b-kW-WsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="552"/>
+            <point key="canvasLocation" x="-38" y="405"/>
         </scene>
     </scenes>
     <resources>

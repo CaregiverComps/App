@@ -1,5 +1,5 @@
 //
-//  CellViewController.swift
+//  NewsFeedTableViewCell.swift
 //  Caregiving
 //
 //  Created by Julia Bindler on 1/24/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CellViewController: PFTableViewCell {
+class NewsFeedTableViewCell: PFTableViewCell {
     
     
     @IBOutlet weak var picView: UIImageView!

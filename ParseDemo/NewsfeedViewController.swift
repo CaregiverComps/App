@@ -24,54 +24,39 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.parseClassName = "NFObject"
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
+        
+        // Add infinite scroll handler
+        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
+            let tableView = scrollView as! UITableView
+            self.limit += 10
+            self.loadObjects()
+            
+            // finish infinite scroll animation
+            tableView.finishInfiniteScroll()
+        }
     }
     
     override func queryForTable() -> PFQuery {
         let query:PFQuery = PFQuery(className:self.parseClassName!)
         query.limit = self.limit
         //query.orderByAscending("objectId")
-        
-        // Add infinite scroll handler
-        tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
-            let tableView = scrollView as! UITableView
-            self.limit += 10
-            query.limit = self.limit
-            
-            
-            //self.items = [Int](count: self.items.count+20, repeatedValue: 0)
-            //
-            // fetch your data here, can be async operation,
-            // just make sure to call finishInfiniteScroll in the end
-            //
-            
-            // make sure you reload tableView before calling -finishInfiniteScroll
-            //tableView.reloadData()
-            self.loadObjects()
-            
-            // finish infinite scroll animation
-            tableView.finishInfiniteScroll()
-        }
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell:CellViewController? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? CellViewController
+        let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
         
         if let pfObject = object {
+            
             cell?.textLabel?.text = pfObject["TEXT"] as? String
             cell?.textLabel?.numberOfLines = 0
         }
+        
         return cell;
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onFiltertouch(sender: AnyObject) {
@@ -81,10 +66,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     @IBAction func onAddEntryTouch(sender: AnyObject) {
         print("entry test")
         self.showPopupWithStyle(CNPPopupStyle.Centered)
-
-        
     }
-    
     
     func showPopupWithStyle(popupStyle: CNPPopupStyle) {
         
