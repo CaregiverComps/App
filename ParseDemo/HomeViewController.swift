@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+/*
         // Show the current visitor's username
         if let user = PFUser.currentUser() as PFUser? {
             self.userNameLabel.text = "@" + user.username!;
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
             }
             }
             */
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {

@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             let level = AccessLevel();
-            level.setInitialValues(false, legal: false, medical: true, personal: false);
+            level.setInitialValues(false, legal: false, medical: false, personal: false);
             level.update();
             let newUser = AppUser();
             newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);

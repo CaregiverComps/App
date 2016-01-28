@@ -15,6 +15,8 @@ class NewsFeedViewController: UIViewController {
 
 
     override func viewDidLoad() {
+        
+        // IF YOU HAVE TROUBLE LOGGING OUT, COMMENT OUT THIS CODE
         let query=PFQuery(className: "NFObject");
         let curuser=AppUser.currentUser()
         query.whereKey("TEAMNAME", matchesRegex: curuser.getTeamName());
@@ -134,7 +136,10 @@ class NewsFeedViewController: UIViewController {
         print("Creating NFObject");
         let newNF = NFObject();
         let currentUser = AppUser.currentUser();
-        newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: currentUser.getCaregiverAccessLevel(), imageData: imageData);
+        //need to figure out additional shit
+        let level=AccessLevel();
+        level.update();
+        newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: level, imageData: imageData);
         //newNF.setInitialValues(starterText, teamName: currentUser.getTeamName(),level: currentUser.getCaregiverAccessLevel(), imageData: imageData);
         print("Initialized values");
         newNF.update();

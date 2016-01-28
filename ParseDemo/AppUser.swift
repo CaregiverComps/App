@@ -81,16 +81,18 @@ class AppUser : PFUser {
     //TO-DO: FIX THIS
     override static func currentUser() -> AppUser {
         //use name, password to query database and return the user object associated with it
+        if (PFUser.currentUser() != nil) {
         let currentuser:PFUser=super.currentUser()!;
+        
         let keys=currentuser.allKeys();
         for key in keys {
             print(currentuser.valueForKey(key as! String));
         }
         let usr=currentuser.username;
-        let accessID=currentuser.valueForKey("ACCESSLEVEL") as! PFObject;
-        let id=accessID.objectId;
+        //let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
+        //let id=accessID.objectId;
         let query=PFQuery(className: "AccessLevel");
-        query.whereKey("objectId", equalTo: id!);
+        //query.whereKey("objectId", equalTo: id!);
         let results=query.findObjects();
         print(results!);
         for result in results! {
@@ -98,7 +100,7 @@ class AppUser : PFUser {
         }
         let result=results![0] as! AccessLevel;
         print(result);
-        print(id);
+        //print(id);
         let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
         print(teamname);
         let pass=currentuser.password;
@@ -111,6 +113,14 @@ class AppUser : PFUser {
         print("here?");
         
         return realCurrentuser;
+        }
+        //PFUser.logOut();
+        let temp = AppUser();
+        let level=AccessLevel();
+        level.update();
+        temp.setInitialValues("temp", password: "temp", email: "temp@gmail.com", teamname: "temp", accessLevel: level)
+        temp.update();
+        return temp;
     }
     
     
