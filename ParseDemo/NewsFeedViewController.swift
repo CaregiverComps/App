@@ -18,9 +18,28 @@ class NewsFeedViewController: UIViewController {
         let query=PFQuery(className: "NFObject");
         let curuser=AppUser.currentUser()
         query.whereKey("TEAMNAME", matchesRegex: curuser.getTeamName());
-        query.whereKey("ACCESSLEVEL", equalTo: curuser.getCaregiverAccessLevel());
-        super.viewDidLoad()
+        //obtain the access level of each NFObject as well, need to uncomment
+        query.includeKey("ACCESSLEVEL");
+        //following lines won't work if current user's access level has changed
+        var newsfeed:[NFObject]=[];
+        query.findObjectsInBackgroundWithBlock {
+            (results,error) -> Void in
+            if (error == nil) {
+                for result in results! {
+                    let nfobj:NFObject = result as! NFObject;
+                    let level=nfobj.objectForKey("ACCESSLEVEL") as! AccessLevel;
+                    if (curuser.getCaregiverAccessLevel().hasAccessTo(level)) {
+                        newsfeed+=[nfobj];
+                    }
+                }
+            }
+        }
+       
 
+        super.viewDidLoad()
+        while (true) {
+            print(newsfeed);
+        }
         // Do any additional setup after loading the view.
     }
 

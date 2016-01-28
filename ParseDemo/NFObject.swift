@@ -45,19 +45,17 @@ class NFObject : PFObject,PFSubclassing {
     func update() {
         
         if let image = imageData {
-            print("Got here");
             self.setObject(image, forKey: KEY_IMAGE);
         }
-        print("After if statement");
         //might need to update accesslevel
         self.setValue(self.text, forKey: KEY_TEXT);
-        print("Set text");
         self.setValue(self.name, forKey: KEY_NAME);
-        print("Set name");
-        for str in AccessLevel.KEY_ARRAY {
-            self.setValue(LEVEL.valueForKey(str), forKey: str);
-        }
-        print("Before saving in background");
+        
+        //need to alter this if we need to update access level dynamically, alter to:
+        self.setObject(self.LEVEL,forKey: KEY_LEVEL);
+        //for str in AccessLevel.KEY_ARRAY {
+        //    self.setValue(LEVEL.valueForKey(str), forKey: str);
+        //}
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
