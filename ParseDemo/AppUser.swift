@@ -7,7 +7,7 @@
 // http://stackoverflow.com/questions/24036393/fatal-error-use-of-unimplemented-initializer-initcoder-for-class
 //
 
-
+import Foundation
 
 
 class AppUser : PFUser {
@@ -77,40 +77,37 @@ class AppUser : PFUser {
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
-    //TO-DO: FIX THIS
-//    override static func currentUser() -> AppUser {
-//        //use name, password to query database and return the user object associated with it
-//        let currentuser:PFUser=super.currentUser()!;
-//        let keys=currentuser.allKeys;
-//        for key in keys {
-//            print(currentuser.valueForKey(key as! String));
-//        }
-//        let usr=currentuser.username;
-//        let accessID=currentuser.valueForKey("ACCESSLEVEL") as! PFObject;
-//        let id=accessID.objectId;
-//        let query=PFQuery(className: "AccessLevel");
-//        query.whereKey("objectId", equalTo: id!);
-//        let results=query.findObjects();
-//        print(results!);
-//        for result in results! {
-//            print(result);
-//        }
-//        let result=results![0] as! AccessLevel;
-//        print(result);
-//        print(id);
-//        let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
-//        print(teamname);
-//        let pass=currentuser.password;
-//        let email=currentuser.email;
-//        print(email);
-//        let realCurrentuser=AppUser();
-//        print("here");
-//        print("attempting");
-//        realCurrentuser.setInitialValues(usr!, password: "", email: email!, teamname: teamname, accessLevel: result);
-//        print("here?");
-//        
-//        return realCurrentuser;
-//    }
     
+    //TO-DO: FIX THIS
+    override static func currentUser() -> AppUser? {
+        //use name, password to query database and return the user object associated with it
+        if let currentuser = super.currentUser() as PFUser? {
+            let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
+            let id=accessID.objectId;
+            let query=PFQuery(className: "AccessLevel");
+            do {
+                let result=try query.getObjectWithId(id!);
+                let usrname=currentuser.username;
+                let level:AccessLevel=result as! AccessLevel;
+                let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
+                print(teamname);
+                let pass=currentuser.password;
+                print(usrname);
+                print(pass);
+                let email=currentuser.email;
+                print(email);
+                let realCurrentuser=AppUser();
+                realCurrentuser.setInitialValues(currentuser.username!, password: "", email: email!, teamname: teamname, accessLevel: level);
+                
+                return realCurrentuser;
+            }
+            catch {
+                print("ERROR");
+            }
+        }
+        return nil;
+    }
+    
+
     
 }

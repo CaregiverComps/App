@@ -41,7 +41,17 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        let query:PFQuery = PFQuery(className:self.parseClassName!)
+        let query:PFQuery
+        if let user=AppUser.currentUser() as AppUser? {
+            query=NFObject.getNewsfeedFor(user);
+
+            }
+        else {
+            let nouser=AppUser();
+            let noaccess=AccessLevel();
+            nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
+            query=NFObject.getNewsfeedFor(nouser)
+        }
         query.limit = self.limit
         query.orderByDescending("createdAt")
         return query
@@ -120,12 +130,12 @@ class NewsFeedViewController: PFQueryTableViewController {
             // YO BACKEND: TEXT TO POST IS IN HERE. YOU GET IT FROM textField.text
             // HANDLE GETTING THAT STRING FROM HERE. ONCE THIS BUTTON IS CLICKED THE VIEW WILL CLOSE
             
-            let user = AppUser.currentUser() as AppUser?
-            var level=AccessLevel();
-            level.update();
-            let object=NFObject();
-            object.setInitialValues(textView.text!, teamName: "random", level: level,imageData: nil)
-            object.update();
+            if let user=AppUser.currentUser() as AppUser? {
+                let object=NFObject();
+                //right now object inherits user access level, front end needs to add accesslevel configurations
+                object.setInitialValues(textView.text!, teamName: user.getTeamName(),level:user.getCaregiverAccessLevel(),imageData: nil)
+                object.update();
+            }
             
             
             self.popupController.dismissPopupControllerAnimated(true)

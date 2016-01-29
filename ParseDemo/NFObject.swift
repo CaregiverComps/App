@@ -1,4 +1,4 @@
-
+//
 //  NFObject.swift
 //  ParseDemo
 //
@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 abearablecode. All rights reserved.
 //
 
-
+import Foundation
 class NFObject : PFObject,PFSubclassing {
     let KEY_TEXT:String = "TEXT";
     let KEY_NAME:String = "TEAMNAME";
@@ -69,5 +69,36 @@ class NFObject : PFObject,PFSubclassing {
     }
     static func parseClassName() -> String {
         return "NFObject";
+    }
+    
+    static func getNewsfeedFor(user:AppUser) -> PFQuery {
+        let query=PFQuery(className: parseClassName());
+        
+        let teamName:String=user.getTeamName();
+        let access:AccessLevel=user.getCaregiverAccessLevel();
+        
+        let query2=PFQuery(className: "AccessLevel");
+        let medicalBool:Bool=access.getMedicalAccess();
+        let legalBool:Bool=access.getLegalAccess();
+        let persBool:Bool=access.getPersonalAccess();
+        let finanBool:Bool=access.getFinancialAccess();
+        
+        if (!medicalBool) {
+            query2.whereKey("medical", equalTo: false);
+        }
+        if (!legalBool) {
+            query2.whereKey("legal", equalTo: false);
+        }
+        if (!finanBool) {
+            query2.whereKey("financial", equalTo: false);
+        }
+        if (!persBool) {
+            query2.whereKey("personal", equalTo: false);
+        }
+        
+        query.whereKey("TEAMNAME",matchesRegex: teamName);
+        query.whereKey("ACCESSLEVEL", matchesQuery: query2);
+        
+        return query;
     }
 }

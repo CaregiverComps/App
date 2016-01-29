@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                
+                newUser.update();
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {
