@@ -13,12 +13,16 @@ class AccessLevel : PFObject,PFSubclassing{
     let KEY_LEGAL:String="legal";
     let KEY_FINANCIAL:String="financial";
     let KEY_PERSONAL:String="personal";
+    let KEY_ADMIN:String="admin";
+
     static let KEY_ARRAY=["medical","legal","financial","personal"];
     
     var bFinancial:Bool = false;
     var bLegal:Bool = false;
     var bMedical:Bool = false;
     var bPersonal:Bool = false;
+    var bAdmin:Bool = false;
+
     //we needed this to register the subclass for some reason
     override class func initialize() {
         struct Static {
@@ -33,11 +37,12 @@ class AccessLevel : PFObject,PFSubclassing{
         super.init();
     }
     
-    func setInitialValues(financial:Bool, legal:Bool, medical:Bool, personal:Bool) {
+    func setInitialValues(financial:Bool, legal:Bool, medical:Bool, personal:Bool, admin:Bool) {
         self.bFinancial=financial;
         self.bLegal=legal;
         self.bMedical=medical;
         self.bPersonal=personal;
+        self.bAdmin=admin;
         //super.init();
     }
     
@@ -46,6 +51,7 @@ class AccessLevel : PFObject,PFSubclassing{
         self.setValue(self.bLegal, forKey: KEY_LEGAL);
         self.setValue(self.bMedical, forKey: KEY_MEDICAL);
         self.setValue(self.bPersonal, forKey: KEY_PERSONAL);
+        self.setValue(self.bAdmin, forKey: KEY_ADMIN)
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -81,6 +87,9 @@ class AccessLevel : PFObject,PFSubclassing{
         if (self.getPersonalAccess()) {
             array.append(KEY_PERSONAL);
         }
+        if (self.getAdminAccess()) {
+            array.append(KEY_ADMIN);
+        }
         return array;
     }
     func getMedicalAccess() ->Bool {return self.bMedical;}
@@ -89,15 +98,18 @@ class AccessLevel : PFObject,PFSubclassing{
     func getPersonalAccess() ->Bool {
         return self.bPersonal;
     }
+    func getAdminAccess() ->Bool {
+        return self.bAdmin;
+    }
     static func parseClassName() -> String {
         return "AccessLevel";
     }
     
-    func hasAccessTo(other: AccessLevel) -> Bool {
+    /*func hasAccessTo(other: AccessLevel) -> Bool {
         let financial:Bool = ((self.bFinancial == other.bFinancial) || (self.bFinancial == true));
         let legal:Bool = ((self.bLegal == other.bLegal) || (self.bLegal == true));
         let medical:Bool = ((self.bMedical == other.bMedical) || (self.bMedical == true));
         let personal:Bool = ((self.bPersonal == other.bPersonal) || (self.bPersonal == true));
         return (financial && legal && medical && personal);
-    }
+    }*/
 }
