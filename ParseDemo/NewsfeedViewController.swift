@@ -43,10 +43,12 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
+            print("Querying2... "+user.getTeamName());
             query=NFObject.getNewsfeedFor(user);
 
             }
         else {
+            print("App User was nil?")
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
@@ -54,6 +56,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
+        print("Querying...");
         return query
     }
     
