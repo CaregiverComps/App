@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Reset Password View Controller-->
@@ -539,22 +540,53 @@
             </objects>
             <point key="canvasLocation" x="735" y="545"/>
         </scene>
-        <!--News Feed View Controller-->
+        <!--Caregiver Feed-->
         <scene sceneID="1kO-9T-Dyk">
             <objects>
                 <tableViewController id="eUm-ev-l2i" customClass="NewsFeedViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5g-kv-5pq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5g-kv-5pq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="jTm-2u-La4" customClass="NewsFeedTableViewCell" customModule="ParseDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="88" id="jTm-2u-La4" customClass="NewsFeedTableViewCell" customModule="ParseDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jTm-2u-La4" id="tNa-QM-JKg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUF-PC-5NY">
+                                            <rect key="frame" x="14" y="7" width="573" height="74"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Text here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSo-Ij-wF5">
+                                                    <rect key="frame" x="8" y="8" width="556" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="xSo-Ij-wF5" secondAttribute="bottom" constant="8" id="64X-n7-G6T"/>
+                                                <constraint firstItem="xSo-Ij-wF5" firstAttribute="leading" secondItem="sUF-PC-5NY" secondAttribute="leading" constant="14" id="PU7-Et-iW4"/>
+                                                <constraint firstItem="xSo-Ij-wF5" firstAttribute="top" secondItem="sUF-PC-5NY" secondAttribute="top" constant="8" id="XEV-qZ-HYl"/>
+                                                <constraint firstAttribute="trailing" secondItem="xSo-Ij-wF5" secondAttribute="trailing" constant="14" id="omW-wX-POd"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sUF-PC-5NY" secondAttribute="bottom" constant="-2" id="8Uc-NA-gPy"/>
+                                        <constraint firstItem="sUF-PC-5NY" firstAttribute="leading" secondItem="tNa-QM-JKg" secondAttribute="leadingMargin" id="CJS-dP-Yj8"/>
+                                        <constraint firstItem="sUF-PC-5NY" firstAttribute="trailing" secondItem="tNa-QM-JKg" secondAttribute="trailingMargin" id="ihz-xa-CQ0"/>
+                                        <constraint firstItem="sUF-PC-5NY" firstAttribute="top" secondItem="tNa-QM-JKg" secondAttribute="topMargin" constant="-1" id="tLu-HR-OLJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.83000000000000007" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="cardView" destination="sUF-PC-5NY" id="bYG-CN-J7m"/>
+                                    <outlet property="cellText" destination="xSo-Ij-wF5" id="HkV-Sb-8lb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -562,12 +594,15 @@
                             <outlet property="delegate" destination="eUm-ev-l2i" id="bTT-wa-zzV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="OTB-1p-taX">
+                    <navigationItem key="navigationItem" title="Caregiver Feed" id="OTB-1p-taX">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="92N-vh-WWU">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VMV-24-EZd">
                                 <rect key="frame" x="20" y="5" width="47" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Filter_Icon.png"/>
+                                <connections>
+                                    <action selector="onFiltertouch:" destination="eUm-ev-l2i" eventType="touchUpInside" id="hYx-9c-p1K"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="XfO-yw-zgN">

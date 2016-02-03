@@ -38,6 +38,7 @@ class AccessLevel : PFObject,PFSubclassing{
         self.bLegal=legal;
         self.bMedical=medical;
         self.bPersonal=personal;
+        print("initialized vals");
         //super.init();
     }
     

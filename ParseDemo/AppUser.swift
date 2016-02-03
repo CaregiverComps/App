@@ -43,6 +43,8 @@ class AppUser : PFUser {
         self.teamName=teamname;
         if let a = accessLevel {
             self.accessLevel=a;
+//            print(self.accessLevel.getFinancialAccess())
+//            print(self.accessLevel)
         }
         else {
             self.accessLevel=AccessLevel();

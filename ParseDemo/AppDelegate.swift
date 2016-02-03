@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 51.0/255, green: 153.0/255, blue: 204.0/255, alpha: 1.0)
-
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        
 //        UINavigationBar.appearance().backgroundColor = UIColor(red: 51.0/255, green: 153.0/255, blue: 204.0/255, alpha: 1.0)
         return true
     }

@@ -68,12 +68,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             let level = AccessLevel();
-            level.setInitialValues(false, legal: false, medical: true, personal: false);
-            level.update();
+            level.setInitialValues(true, legal: true, medical: true, personal: true);
             let newUser = AppUser();
             newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+                level.update();
                 newUser.update();
                 // Stop the spinner
                 spinner.stopAnimating()
