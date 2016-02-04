@@ -103,7 +103,8 @@ class NFObject : PFObject,PFSubclassing {
             query2.whereKey("personal", equalTo: false);
         }
         query2.whereKey("admin", equalTo: access.getAdminAccess());
-        query.whereKey("TEAMNAME",matchesRegex: teamName);
+        query.whereKey("TEAMNAME", equalTo: teamName);
+        print("team name", teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
 
         return query;

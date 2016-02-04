@@ -73,26 +73,51 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             // Set admin level here
             do {
                 let query = PFUser.query()
-                query!.whereKey("TEAMNAME", equalTo:teamCode!)
+                if (teamName == "" && teamCode != "") {
+                    print("we are in block 1")
+                    query!.whereKey("TEAMNAME", equalTo:teamCode!)
+                    let result = try query!.findObjects()
+                    if (result.count > 0) {
+                        level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
+                        newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamCode!, accessLevel: level);
+                    } else {
+                        print("That team doesn't exist!")
+                    }
+                    
+                } else if (teamName != "" && teamCode == "") {
+                    query!.whereKey("TEAMNAME", equalTo:teamName!)
+                    let result = try query!.findObjects()
+                    if (result.count == 0) {
+                        level.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+                        newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
+                    } else {
+                        print("That team already exists!")
+                    }
+                } else {
+                    print("Enter either a teamName or teamCode.");
+                }
+                
+                
+               /* query!.whereKey("TEAMNAME", equalTo:teamCode!)
                 let result = try query!.findObjects()
                 
                 if (result.count > 0) {
-                    level.setInitialValues(true, legal: true, medical: true, personal: true, admin: false);
+                    level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                     newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamCode!, accessLevel: level);
                 } else {
                     print("Admin created")
                     level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                     newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
-                }
+                }*/
                 
             } catch {}
             
-            
+            level.update();
+            newUser.update();
  
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                level.update();
-                newUser.update();
+
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {
