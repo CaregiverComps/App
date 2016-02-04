@@ -55,7 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
-            
+            print("about to login")
             // Send a request to login
             AppUser.login(username!, password: password!, block: { (user, error) -> Void in
                 
@@ -65,13 +65,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if ((user) != nil) {
                     let alert = UIAlertView(title: "Success", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
-                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
                         self.presentViewController(viewController, animated: true, completion: nil)
                     })
                     
                 } else {
+                    print("error")
                     let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                 }

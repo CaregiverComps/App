@@ -76,10 +76,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let result = try query!.findObjects()
                 
                 if (result.count > 0) {
-                    level.setInitialValues(false, legal: false, medical: true, personal: false, admin: false);
+                    level.setInitialValues(true, legal: true, medical: true, personal: true, admin: false);
                 } else {
                     print("Admin created")
-                    level.setInitialValues(false, legal: false, medical: true, personal: false, admin: true);
+                    level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                 }
                 
             } catch {}
@@ -88,9 +88,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             level.update();
             let newUser = AppUser();
             newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
+            newUser.update();
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                newUser.update();
+                //newUser.update();
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {

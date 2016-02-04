@@ -92,14 +92,14 @@ class AccessLevel : PFObject,PFSubclassing{
         }
         return array;
     }
-    func getMedicalAccess() ->Bool {return self.bMedical;}
-    func getFinancialAccess() ->Bool {return self.bFinancial;}
-    func getLegalAccess() -> Bool {return self.bLegal;}
+    func getMedicalAccess() ->Bool {return valueForKey(KEY_MEDICAL) as! Bool;}
+    func getFinancialAccess() ->Bool {return valueForKey(KEY_FINANCIAL) as! Bool;}
+    func getLegalAccess() -> Bool {return valueForKey(KEY_LEGAL) as! Bool;}
     func getPersonalAccess() ->Bool {
-        return self.bPersonal;
+        return valueForKey(KEY_PERSONAL) as! Bool;
     }
     func getAdminAccess() ->Bool {
-        return self.bAdmin;
+        return valueForKey(KEY_ADMIN) as! Bool;
     }
     static func parseClassName() -> String {
         return "AccessLevel";
