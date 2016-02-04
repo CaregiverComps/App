@@ -70,6 +70,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
         
+        
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         if let pfObject = object {
             
@@ -249,18 +250,19 @@ class NewsFeedViewController: PFQueryTableViewController {
         let lineOne = NSAttributedString(string: "You can add text ", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
 //        let lineTwo = NSAttributedString(string: "With style, using NSAttributedString", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 0.46, green: 0.8, blue: 1.0, alpha: 1.0), NSParagraphStyleAttributeName: paragraphStyle])
 //        
-        let postButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
+        let postButton = CNPPopupButton.init(frame: CGRectMake(35, 0, 80, 80))
         postButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         postButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        postButton.setTitle("Post Entry", forState: UIControlState.Normal)
+        postButton.setTitle("Post", forState: UIControlState.Normal)
         postButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-        postButton.layer.cornerRadius = 4;
+        postButton.layer.cornerRadius = 5
+    
         
-        let doneButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
+        let doneButton = CNPPopupButton.init(frame: CGRectMake(135, 0, 80, 80))
         doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         doneButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
         doneButton.setTitle("Cancel", forState: UIControlState.Normal)
-        doneButton.layer.cornerRadius = 4;
+        doneButton.layer.cornerRadius = 5
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
 
         
@@ -268,7 +270,31 @@ class NewsFeedViewController: PFQueryTableViewController {
         buttonView.backgroundColor = UIColor.whiteColor()
         buttonView.addSubview(postButton)
         buttonView.addSubview(doneButton)
-    
+        
+        let filterView = UIView.init(frame: CGRectMake(0, 0, 250, 80))
+        filterView.backgroundColor = UIColor.whiteColor()
+        
+        let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
+        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        
+        let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
+        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        
+        let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
+        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        
+        let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
+        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        
+        
+        filterView.addSubview(medicalFilterButton)
+        filterView.addSubview(financialFilterButton)
+        filterView.addSubview(legalFilterButton)
+        filterView.addSubview(personalFilterButton)
         
         let customView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         customView.backgroundColor = UIColor.whiteColor()
@@ -315,7 +341,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let imageView = UIImageView.init(image: UIImage.init(named: "icon"))
        
-        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textView, buttonView])
+        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textView, filterView, buttonView])
         self.popupController.theme = CNPPopupTheme.defaultTheme()
         self.popupController.theme.popupStyle = popupStyle
         self.popupController.delegate = self
