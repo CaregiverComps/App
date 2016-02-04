@@ -9,13 +9,15 @@
 import Foundation
 class NFObject : PFObject,PFSubclassing {
     let KEY_TEXT:String = "TEXT";
-    let KEY_NAME:String = "TEAMNAME";
-    let KEY_IMAGE:String = "IMAGE"
+    let KEY_TEAMNAME:String = "TEAMNAME";
+    let KEY_IMAGE:String = "IMAGE";
+    let KEY_USERNAME: String = "USERNAME";
     
     let KEY_LEVEL:String = "ACCESSLEVEL";
     var LEVEL:AccessLevel = AccessLevel();
     var text:String = "";
-    var name:String = "";
+    var username:String = "";
+    var teamName:String = "";
     var imageData:NSData?;
     
     //we needed this to register the subclass for some reason
@@ -32,9 +34,10 @@ class NFObject : PFObject,PFSubclassing {
         super.init();
     }
     
-    func setInitialValues(starterText:String, teamName:String, level:AccessLevel, imageData: NSData?) {
+    func setInitialValues(starterText:String, username:String, teamName:String, level:AccessLevel, imageData: NSData?) {
         self.text=starterText;
-        self.name=teamName;
+        self.username=username;
+        self.teamName=teamName;
         if let image = imageData {
             self.imageData = image;
         }
@@ -48,7 +51,8 @@ class NFObject : PFObject,PFSubclassing {
         }
         //might need to update accesslevel
         self.setValue(self.text, forKey: KEY_TEXT);
-        self.setValue(self.name, forKey: KEY_NAME);
+        self.setValue(self.username, forKey: KEY_USERNAME);
+        self.setValue(self.teamName, forKey: KEY_TEAMNAME);
         
         //need to alter this if we need to update access level dynamically, alter to:
         self.setObject(self.LEVEL,forKey: KEY_LEVEL);
@@ -71,7 +75,7 @@ class NFObject : PFObject,PFSubclassing {
         return "NFObject";
     }
     
-    static func getNewsfeedFor(user:AppUser) -> PFQuery {
+    static func getNewsfeedFor(user:AppUser, category:String) -> PFQuery {
         let query=PFQuery(className: parseClassName());
         
         let teamName:String=user.getTeamName();
@@ -82,10 +86,13 @@ class NFObject : PFObject,PFSubclassing {
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
-        
+        if (category != "all") {
+            query2.whereKey(category, equalTo: true);
+        }
         if (!medicalBool) {
             query2.whereKey("medical", equalTo: false);
         }
+        
         if (!legalBool) {
             query2.whereKey("legal", equalTo: false);
         }
@@ -95,10 +102,10 @@ class NFObject : PFObject,PFSubclassing {
         if (!persBool) {
             query2.whereKey("personal", equalTo: false);
         }
-        
+        query2.whereKey("admin", equalTo: access.getAdminAccess());
         query.whereKey("TEAMNAME",matchesRegex: teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
-        
+
         return query;
     }
 }

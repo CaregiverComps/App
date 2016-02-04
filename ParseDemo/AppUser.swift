@@ -22,7 +22,7 @@ class AppUser : PFUser {
     let KEY_ACCESSLEVEL:String = "ACCESSLEVEL";
     let KEY_TEAMNAME:String = "TEAMNAME";
     var teamName:String = "";
-    var accessLevel:AccessLevel = AccessLevel();
+    var accessLevel:AccessLevel;
     
     //we needed this to register the subclass for some reason
     override class func initialize() {
@@ -36,6 +36,7 @@ class AppUser : PFUser {
     
     override init()
     {
+        accessLevel=AccessLevel();
         super.init()
     }
     
@@ -48,6 +49,8 @@ class AppUser : PFUser {
         }
         else {
             self.accessLevel=AccessLevel();
+            self.accessLevel.setInitialValues(true, legal: false, medical: false, personal: true, admin: true)
+
         }
         self.username=username;
         self.password=password;
@@ -55,6 +58,7 @@ class AppUser : PFUser {
     }
     
     func update() {
+        print("UPDATING ACCESS LEVEL ", self.accessLevel);
         self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
         self.setValue(self.teamName, forKey: KEY_TEAMNAME);
         self.saveInBackgroundWithBlock {
@@ -70,7 +74,7 @@ class AppUser : PFUser {
     
     
     func getCaregiverAccessLevel() -> AccessLevel {
-        self.accessLevel.update();
+        //self.accessLevel.update();
         return self.accessLevel;
     }
     func getTeamName() ->String {
@@ -85,9 +89,9 @@ class AppUser : PFUser {
         //use name, password to query database and return the user object associated with it
         if let currentuser = super.currentUser() as PFUser? {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
+            print(accessID)
             let id=accessID.objectId;
             let query=PFQuery(className: "AccessLevel");
-            print("almost ready to query");
 
             /*
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -120,6 +124,7 @@ class AppUser : PFUser {
                 let result=try query.getObjectWithId(id!);
                 let usrname=currentuser.username;
                 let level:AccessLevel=result as! AccessLevel;
+                print(level)
                 let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
                 print(teamname);
                 let pass=currentuser.password;
@@ -139,6 +144,55 @@ class AppUser : PFUser {
         return nil;
     }
     
-
+    /*
+    ** If current user is admin and is of the same team,
+    ** change specified user's teamName to "" and set access level to all false.
+    */
+    static func deleteUserFromTeam(username:String) {
+        let currentUser = AppUser.currentUser()!;
+        if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
+            let query=PFQuery(className: parseClassName());
+            query.whereKey("username", equalTo: username);
+            query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    let userToDelete = objects![0] as! AppUser;
+                    if (userToDelete.getTeamName() == currentUser.getTeamName()) {
+                        // Teamcode required to have length of at least one
+                        userToDelete.setValue("", forKey: KEY_TEAMNAME);
+                        userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
+                        userToDelete.update();
+                    }
+                    else {
+                        print("Could not find user with that name.");
+                    }
+                }
+            }
+        } else {
+            print("Current user is not authorized to remove members.");
+        }
+    }
+    
+    static func addUserToTeam(username:String) {
+        let currentUser = AppUser.currentUser()!;
+        if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
+            let query=PFQuery(className: parseClassName());
+            query.whereKey("username", equalTo: username);
+            query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    let userToAdd = objects![0] as! AppUser;
+                    
+                    // In V2, see if we can have some kind of confirmation system
+                    if (userToAdd.getTeamName() == "") {
+                        // Teamcode required to have length of at least one
+                        userToAdd.setValue(currentUser.getTeamName(), forKey: KEY_TEAMNAME);
+                        userToAdd.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
+                        userToAdd.update();
+                    }
+                }
+            }
+        } else {
+            print("Current user is not authorized to add members.");
+        }
+    }
     
 }
