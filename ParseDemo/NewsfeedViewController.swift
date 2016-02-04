@@ -50,29 +50,28 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
-            print("Querying2... "+user.getTeamName());
-            query=NFObject.getNewsfeedFor(user);
-
-            }
+            query=NFObject.getNewsfeedFor(user, category: "all");
+        }
         else {
-            print("App User was nil?")
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            query=NFObject.getNewsfeedFor(nouser)
+            query=NFObject.getNewsfeedFor(nouser, category: "all")
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
-        print("Querying...");
+
+
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
+
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         if let pfObject = object {
-            
+            //use the KEY_USERNAME field to access the username of the user
             cell?.cellText?.text = pfObject["TEXT"] as? String
             cell?.textLabel?.numberOfLines = 0
             
@@ -118,6 +117,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     
     @IBAction func onFiltertouch(sender: AnyObject) {
+        //query=NFObject.getNewsfeedFor(user, category: "INSERT CATEGORY NAME HERE IN LOWERCASE");
         print("filter test")
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
@@ -296,7 +296,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             if let user=AppUser.currentUser() as AppUser? {
                 let object=NFObject();
                 //right now object inherits user access level, front end needs to add accesslevel configurations
-                object.setInitialValues(textView.text!, teamName: user.getTeamName(),level:user.getCaregiverAccessLevel(),imageData: nil)
+                object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level:user.getCaregiverAccessLevel(),imageData: nil)
                 object.update();
             }
             

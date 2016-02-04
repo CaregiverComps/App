@@ -68,7 +68,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             let level = AccessLevel();
-            level.setInitialValues(true, legal: true, medical: true, personal: true);
+
+            // Set admin level here
+            do {
+                let query = PFUser.query()
+                query!.whereKey("TEAMNAME", equalTo:teamName!)
+                let result = try query!.findObjects()
+                
+                if (result.count > 0) {
+                    level.setInitialValues(true, legal: true, medical: true, personal: true, admin: false);
+                } else {
+                    print("Admin created")
+                    level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
+                }
+                
+            } catch {}
+            
+            
             let newUser = AppUser();
             newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
             // Sign up the user asynchronously
