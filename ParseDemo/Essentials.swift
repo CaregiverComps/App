@@ -61,9 +61,9 @@ class Essentials : PFObject,PFSubclassing {
     }
     
     func changeStatus(){
+        //call update after this method
         self.marked = !self.marked;
     }
-    
     
     
     func getStatus() -> Bool{
