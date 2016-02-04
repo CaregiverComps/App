@@ -91,6 +91,7 @@ class AppUser : PFUser {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
             print(accessID)
             let id=accessID.objectId;
+            print("ID?",id)
             let query=PFQuery(className: "AccessLevel");
 
             /*
