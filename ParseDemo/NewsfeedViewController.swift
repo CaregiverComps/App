@@ -54,9 +54,30 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
+
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
-            query=NFObject.getNewsfeedFor(user, category: "all");
+            let level = user.getCaregiverAccessLevel()
+            
+            if (level.getMedicalAccess()){
+                query=NFObject.getNewsfeedFor(user, category: "medical")
+            }
+            
+            
+            else if level.getFinancialAccess() {
+                query=NFObject.getNewsfeedFor(user, category: "financial")
+            }
+            
+            else if level.getLegalAccess() {
+                query=NFObject.getNewsfeedFor(user, category: "legal")
+            }
+            
+            else if level.getPersonalAccess() {
+                query=NFObject.getNewsfeedFor(user, category: "personal")
+            }
+            else {
+                query=NFObject.getNewsfeedFor(user, category: "all");
+            }
         }
         else {
             let nouser=AppUser();
@@ -233,6 +254,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             self.popupController.dismissPopupControllerAnimated(true)
             
             // TODO: reset filter here
+            self.queryForTable()
             
             print("Block for button: \(button.titleLabel?.text)")
             

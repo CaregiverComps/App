@@ -29,8 +29,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "init(coder:)"
-            landmarkType = "5">
+            landmarkName = "NewsFeedViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "queryForTable()"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -77,7 +77,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,12 +88,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/NewsfeedViewController.swift"
-            timestampString = "475657139.064988"
+            timestampString = "476655695.406121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "queryForTable()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,8 +202,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
-            landmarkType = "5">
+            landmarkName = "NewsFeedViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,7 +218,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,7 +234,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -245,12 +245,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/NewsfeedViewController.swift"
-            timestampString = "475657139.064988"
+            timestampString = "476655695.406121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "queryForTable()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
