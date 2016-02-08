@@ -14,6 +14,10 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     let cellIdentifier:String = "NewsCell"
     var limit = 10;
+    var entryFilterSet = false
+    
+    var postAccessLevel = AccessLevel();
+    var filterAccessLevel = AccessLevel();
 
     
     required init(coder aDecoder:NSCoder)
@@ -26,6 +30,8 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
         
         
         tableView.separatorColor = UIColor.clearColor()
@@ -68,6 +74,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
 
+        
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         if let pfObject = object {
@@ -125,6 +132,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     @IBAction func addEntryTouch(sender: AnyObject) {
         print("entry test")
         self.showEntryPopupWithStyle(CNPPopupStyle.Centered)
+        entryFilterSet = false
     }
     
     func showFilterPopupWithStyle(popupStyle: CNPPopupStyle) {
@@ -146,35 +154,50 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
         
         
+//        let medicalFilterButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
+//        medicalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+//        medicalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+//        medicalFilterButton.setTitle("Medical", forState: UIControlState.Normal)
+//        medicalFilterButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
+//        medicalFilterButton.layer.cornerRadius = 4;
+//        
+//        let financialFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
+//        financialFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+//        financialFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+//        financialFilterButton.setTitle("Financial", forState: UIControlState.Normal)
+//        financialFilterButton.layer.cornerRadius = 4;
+//        financialFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
+//        
+//        let legalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
+//        legalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+//        legalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+//        legalFilterButton.setTitle("Legal", forState: UIControlState.Normal)
+//        legalFilterButton.layer.cornerRadius = 4;
+//        legalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
+//        
+//        let personalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
+//        personalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+//        personalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
+//        personalFilterButton.setTitle("Personal", forState: UIControlState.Normal)
+//        personalFilterButton.layer.cornerRadius = 4;
+//        personalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
+
         
-        let medicalFilterButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
-        medicalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        medicalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        medicalFilterButton.setTitle("Medical", forState: UIControlState.Normal)
-        medicalFilterButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-        medicalFilterButton.layer.cornerRadius = 4;
+        let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
+        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
         
-        let financialFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-        financialFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        financialFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        financialFilterButton.setTitle("Financial", forState: UIControlState.Normal)
-        financialFilterButton.layer.cornerRadius = 4;
-        financialFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
+        let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
+        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
         
-        let legalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-        legalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        legalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        legalFilterButton.setTitle("Legal", forState: UIControlState.Normal)
-        legalFilterButton.layer.cornerRadius = 4;
-        legalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
+        let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
+        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
         
-        let personalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-        personalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        personalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        personalFilterButton.setTitle("Personal", forState: UIControlState.Normal)
-        personalFilterButton.layer.cornerRadius = 4;
-        personalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-        
+        let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
+        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         
         let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         buttonView.backgroundColor = UIColor.whiteColor()
@@ -184,41 +207,37 @@ class NewsFeedViewController: PFQueryTableViewController {
         customView.backgroundColor = UIColor.whiteColor()
         
         
+        if let user=AppUser.currentUser() as AppUser? {
+            let level = user.getCaregiverAccessLevel()
+            
+                            if (level.getMedicalAccess()){
+                                buttonView.addSubview(medicalFilterButton)
+                            }
+            
+            
+                            if level.getFinancialAccess() {
+                                buttonView.addSubview(financialFilterButton)
+                            }
+            
+                            if level.getLegalAccess() {
+                                buttonView.addSubview(legalFilterButton)
+                            }
+            
+                            if level.getPersonalAccess() {
+                                buttonView.addSubview(personalFilterButton)
+                            }
+            
+        }
+        
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
+            
+            // TODO: reset filter here
+            
             print("Block for button: \(button.titleLabel?.text)")
             
             
-            if let user=AppUser.currentUser() as AppUser? {
-                let level = user.getCaregiverAccessLevel()
-                print("medical level: ")
-                print(level.getMedicalAccess())
-                
-                
-                
-                if (level.getMedicalAccess()){
-                    buttonView.addSubview(medicalFilterButton)
-                    print("medical test")
-                }
-                
-                else{
-                    print("its false")
-                }
-                
-                if level.getFinancialAccess() {
-                    buttonView.addSubview(financialFilterButton)
-                }
-                
-                if level.getLegalAccess() {
-                    buttonView.addSubview(legalFilterButton)
-                }
-                
-                if level.getPersonalAccess() {
-                    buttonView.addSubview(personalFilterButton)
-                }
-                
-            }
-        }
+                    }
         
         
         
@@ -245,22 +264,22 @@ class NewsFeedViewController: PFQueryTableViewController {
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
         paragraphStyle.alignment = NSTextAlignment.Center
         
-        let title = NSAttributedString(string: "New Entry", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
+        let title = NSAttributedString(string: "New Post", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
         let lineOne = NSAttributedString(string: "You can add text ", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
-//        let lineTwo = NSAttributedString(string: "With style, using NSAttributedString", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 0.46, green: 0.8, blue: 1.0, alpha: 1.0), NSParagraphStyleAttributeName: paragraphStyle])
-//        
-        let postButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
+
+        let postButton = CNPPopupButton.init(frame: CGRectMake(35, 0, 80, 80))
         postButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         postButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        postButton.setTitle("Post Entry", forState: UIControlState.Normal)
+        postButton.setTitle("Post", forState: UIControlState.Normal)
         postButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-        postButton.layer.cornerRadius = 4;
+        postButton.layer.cornerRadius = 5
+    
         
-        let doneButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
+        let doneButton = CNPPopupButton.init(frame: CGRectMake(135, 0, 80, 80))
         doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         doneButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
         doneButton.setTitle("Cancel", forState: UIControlState.Normal)
-        doneButton.layer.cornerRadius = 4;
+        doneButton.layer.cornerRadius = 5
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
 
         
@@ -268,7 +287,40 @@ class NewsFeedViewController: PFQueryTableViewController {
         buttonView.backgroundColor = UIColor.whiteColor()
         buttonView.addSubview(postButton)
         buttonView.addSubview(doneButton)
-    
+        
+        let filterView = UIView.init(frame: CGRectMake(0, 0, 250, 80))
+        filterView.backgroundColor = UIColor.whiteColor()
+        
+        
+        
+        // ##POST BUTTON AREA //
+        let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
+        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        medicalFilterButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
+        
+        let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
+        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        financialFilterButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
+
+        
+        let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
+        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        legalFilterButton.addTarget(self, action: "legalButtonPostTouched:", forControlEvents: .TouchUpInside)
+
+        
+        let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
+        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        personalFilterButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
+
+        
+        filterView.addSubview(medicalFilterButton)
+        filterView.addSubview(financialFilterButton)
+        filterView.addSubview(legalFilterButton)
+        filterView.addSubview(personalFilterButton)
         
         let customView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         customView.backgroundColor = UIColor.whiteColor()
@@ -279,30 +331,43 @@ class NewsFeedViewController: PFQueryTableViewController {
         textView.layer.cornerRadius = 5
         textView.clipsToBounds = true
         textView.font = UIFont(name: "Helvetica", size: 18)
-
         
         customView.addSubview(textView)
+        
+        
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
             print("Block for button: \(button.titleLabel?.text)")
         }
+    
+        
         
         postButton.selectionHandler = { (CNPPopupButton button) -> Void in
             
-            // YO BACKEND: TEXT TO POST IS IN HERE. YOU GET IT FROM textField.text
-            // HANDLE GETTING THAT STRING FROM HERE. ONCE THIS BUTTON IS CLICKED THE VIEW WILL CLOSE
             
-            if let user=AppUser.currentUser() as AppUser? {
-                let object=NFObject();
-                //right now object inherits user access level, front end needs to add accesslevel configurations
-                object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level:user.getCaregiverAccessLevel(),imageData: nil)
-                object.update();
+            if textView.text.isEmpty == false{
+                
+                if let user=AppUser.currentUser() as AppUser? {
+                    let object=NFObject();
+                    
+                    let newAccessLevel = AccessLevel()
+                    newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)
+                    
+                    newAccessLevel.update()
+                    
+                    //right now object inherits user access level, front end needs to add accesslevel configurations
+                    object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level: newAccessLevel,imageData: nil)
+                    object.update();
+                }
+                
+                
+                self.popupController.dismissPopupControllerAnimated(true)
+
+                
             }
             
-            
-            self.popupController.dismissPopupControllerAnimated(true)
-        }
+                    }
         
         
         let titleLabel = UILabel()
@@ -315,12 +380,99 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let imageView = UIImageView.init(image: UIImage.init(named: "icon"))
        
-        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textView, buttonView])
+        self.popupController = CNPPopupController(contents:[titleLabel, imageView, textView, filterView, buttonView])
         self.popupController.theme = CNPPopupTheme.defaultTheme()
         self.popupController.theme.popupStyle = popupStyle
         self.popupController.delegate = self
         self.popupController.presentPopupControllerAnimated(true)
     }
+    
+    func medicalButtonPostTouched(sender: UIButton!){
+        self.postAccessLevel.setMedicalAccess(true)
+        self.postAccessLevel.setFinancialAccess(false)
+        self.postAccessLevel.setLegalAccess(false)
+        self.postAccessLevel.setPersonalAccess(false)
+        
+        entryFilterSet = true
+    }
+    
+    func financialButtonPostTouched(sender: UIButton!){
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(true)
+        postAccessLevel.setLegalAccess(false)
+        postAccessLevel.setPersonalAccess(false)
+        
+        entryFilterSet = true
+    }
+    
+    func legalButtonPostTouched(sender: UIButton!){
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(false)
+        postAccessLevel.setLegalAccess(true)
+        postAccessLevel.setPersonalAccess(false)
+        
+        entryFilterSet = true
+    }
+    
+    func personalButtonPostTouched(sender: UIButton!){
+
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(false)
+        postAccessLevel.setLegalAccess(false)
+        postAccessLevel.setPersonalAccess(true)
+        
+        entryFilterSet = true
+    }
+
+    
+    
+    
+    
+    func medicalButtonFilterTouched(sender: UIButton!){
+        
+        if(filterAccessLevel.getMedicalAccess() == false){
+            filterAccessLevel.setMedicalAccess(true)
+            print("medical a")
+        }
+        
+        else{
+            filterAccessLevel.setMedicalAccess(false)
+            print("medical b")
+        }
+        
+    }
+    
+    func financialButtonFilterTouched(sender: UIButton!){
+        if(filterAccessLevel.getFinancialAccess() == false){
+            filterAccessLevel.setFinancialAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setFinancialAccess(false)
+        }
+    }
+    
+    func legalButtonFilterTouched(sender: UIButton!){
+        if(filterAccessLevel.getLegalAccess() == false){
+            filterAccessLevel.setLegalAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setLegalAccess(false)
+        }
+    }
+    
+    func personalButtonFilterTouched(sender: UIButton!){
+        
+        if(filterAccessLevel.getPersonalAccess() == false){
+            filterAccessLevel.setPersonalAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setLegalAccess(false)
+        }
+    }
+    
     
 
 
