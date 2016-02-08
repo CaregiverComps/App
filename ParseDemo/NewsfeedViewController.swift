@@ -34,6 +34,12 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
         
         
+        if let user=AppUser.currentUser() as AppUser? {
+            var userLevel = user.getCaregiverAccessLevel()
+            filterAccessLevel = userLevel.createCopy()
+        }
+        
+        
         tableView.separatorColor = UIColor.clearColor()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
@@ -428,22 +434,28 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     func medicalButtonFilterTouched(sender: UIButton!){
         
-        print("GETTING HERE THO")
         
-        if(filterAccessLevel.getMedicalAccess() == false){
+        // Turn on Medical Filter
+        if(filterAccessLevel.bMedical == false){
             filterAccessLevel.setMedicalAccess(true)
-            print("medical a")
+//            
+//            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+
         }
         
+        // Turn off Medical Filter
         else{
             filterAccessLevel.setMedicalAccess(false)
-            print("medical b")
+            
+//            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
         
     }
     
     func financialButtonFilterTouched(sender: UIButton!){
-        if(filterAccessLevel.getFinancialAccess() == false){
+        if(filterAccessLevel.bFinancial == false){
             filterAccessLevel.setFinancialAccess(true)
         }
             
@@ -453,7 +465,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func legalButtonFilterTouched(sender: UIButton!){
-        if(filterAccessLevel.getLegalAccess() == false){
+        if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
         }
             
@@ -464,7 +476,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     func personalButtonFilterTouched(sender: UIButton!){
         
-        if(filterAccessLevel.getPersonalAccess() == false){
+        if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)
         }
             
