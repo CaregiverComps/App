@@ -2,8 +2,8 @@
 //  SignUpViewController.swift
 //  ParseDemo
 //
-//  Created by Rumiya Murtazina on 7/30/15.
-//  Copyright (c) 2015 abearablecode. All rights reserved.
+//  Created by Caregivernet on 7/30/15.
+//  Copyright (c) 2015 Caregivernet. All rights reserved.
 //
 
 import UIKit

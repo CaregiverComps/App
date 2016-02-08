@@ -3,7 +3,7 @@
 //  Caregiving
 //
 //  Created by Julia Bindler on 1/24/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Copyright © 2016 Caregivernet. All rights reserved.
 //
 
 import UIKit

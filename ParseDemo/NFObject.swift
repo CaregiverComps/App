@@ -102,7 +102,7 @@ class NFObject : PFObject,PFSubclassing {
         if (!persBool) {
             query2.whereKey("personal", equalTo: false);
         }
-        query2.whereKey("admin", equalTo: access.getAdminAccess());
+        //query2.whereKey("admin", equalTo: access.getAdminAccess());
         query.whereKey("TEAMNAME", equalTo: teamName);
         print("team name", teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);

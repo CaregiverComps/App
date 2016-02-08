@@ -92,6 +92,14 @@ class AccessLevel : PFObject,PFSubclassing{
         }
         return array;
     }
+    
+    func createCopy() -> AccessLevel{
+        let copyAccessLevel = AccessLevel();
+        copyAccessLevel.setInitialValues(self.bFinancial, legal: self.bLegal, medical: self.bMedical, personal: self.bPersonal, admin: self.bAdmin);
+        copyAccessLevel.update();
+        return copyAccessLevel;
+    }
+    
     func getMedicalAccess() ->Bool {return valueForKey(KEY_MEDICAL) as! Bool;}
     func getFinancialAccess() ->Bool {return valueForKey(KEY_FINANCIAL) as! Bool;}
     func getLegalAccess() -> Bool {return valueForKey(KEY_LEGAL) as! Bool;}
