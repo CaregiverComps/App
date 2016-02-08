@@ -97,6 +97,7 @@
 		E25F0FC31C56E47400F99DB5 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		E27A85CA1C5A889F00427200 /* Post_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Post_Icon.png; sourceTree = "<group>"; };
 		E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter_Icon.png; sourceTree = "<group>"; };
+		E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medical_Button_Icon.pxm; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48894B11B9939A3003627DB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F48894B31B9939AB003627DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -241,6 +242,7 @@
 		E203BE7E1C4C980B009BC4C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */,
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,

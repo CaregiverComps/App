@@ -15,6 +15,9 @@ class NewsFeedViewController: PFQueryTableViewController {
     let cellIdentifier:String = "NewsCell"
     var limit = 10;
     var entryFilterSet = false
+    
+    var postAccessLevel = AccessLevel();
+    var filterAccessLevel = AccessLevel();
 
     
     required init(coder aDecoder:NSCoder)
@@ -27,6 +30,8 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
         
         
         tableView.separatorColor = UIColor.clearColor()
@@ -149,7 +154,6 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
         
         
-        
 //        let medicalFilterButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
 //        medicalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 //        medicalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
@@ -195,8 +199,6 @@ class NewsFeedViewController: PFQueryTableViewController {
         let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
         personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         
-        
-        
         let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         buttonView.backgroundColor = UIColor.whiteColor()
         
@@ -207,7 +209,6 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         if let user=AppUser.currentUser() as AppUser? {
             let level = user.getCaregiverAccessLevel()
-            print(level.getMedicalAccess())
             
                             if (level.getMedicalAccess()){
                                 buttonView.addSubview(medicalFilterButton)
@@ -230,6 +231,9 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
+            
+            // TODO: reset filter here
+            
             print("Block for button: \(button.titleLabel?.text)")
             
             
@@ -260,7 +264,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
         paragraphStyle.alignment = NSTextAlignment.Center
         
-        let title = NSAttributedString(string: "New Entry", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
+        let title = NSAttributedString(string: "New Post", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
         let lineOne = NSAttributedString(string: "You can add text ", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
 
         let postButton = CNPPopupButton.init(frame: CGRectMake(35, 0, 80, 80))
@@ -295,7 +299,6 @@ class NewsFeedViewController: PFQueryTableViewController {
         medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
         medicalFilterButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
         
-        
         let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
         let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
         financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
@@ -313,7 +316,6 @@ class NewsFeedViewController: PFQueryTableViewController {
         personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         personalFilterButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
 
-        
         
         filterView.addSubview(medicalFilterButton)
         filterView.addSubview(financialFilterButton)
@@ -338,22 +340,34 @@ class NewsFeedViewController: PFQueryTableViewController {
             self.popupController.dismissPopupControllerAnimated(true)
             print("Block for button: \(button.titleLabel?.text)")
         }
-        
+    
         
         
         postButton.selectionHandler = { (CNPPopupButton button) -> Void in
             
             
-            if let user=AppUser.currentUser() as AppUser? {
-                let object=NFObject();
-                //right now object inherits user access level, front end needs to add accesslevel configurations
-                object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level:user.getCaregiverAccessLevel(),imageData: nil)
-                object.update();
+            if textView.text.isEmpty == false{
+                
+                if let user=AppUser.currentUser() as AppUser? {
+                    let object=NFObject();
+                    
+                    let newAccessLevel = AccessLevel()
+                    newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)
+                    
+                    newAccessLevel.update()
+                    
+                    //right now object inherits user access level, front end needs to add accesslevel configurations
+                    object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level: newAccessLevel,imageData: nil)
+                    object.update();
+                }
+                
+                
+                self.popupController.dismissPopupControllerAnimated(true)
+
+                
             }
             
-            
-            self.popupController.dismissPopupControllerAnimated(true)
-        }
+                    }
         
         
         let titleLabel = UILabel()
@@ -366,31 +380,99 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let imageView = UIImageView.init(image: UIImage.init(named: "icon"))
        
-        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, imageView, textView, filterView, buttonView])
+        self.popupController = CNPPopupController(contents:[titleLabel, imageView, textView, filterView, buttonView])
         self.popupController.theme = CNPPopupTheme.defaultTheme()
         self.popupController.theme.popupStyle = popupStyle
         self.popupController.delegate = self
         self.popupController.presentPopupControllerAnimated(true)
     }
     
-    
-    
     func medicalButtonPostTouched(sender: UIButton!){
+        self.postAccessLevel.setMedicalAccess(true)
+        self.postAccessLevel.setFinancialAccess(false)
+        self.postAccessLevel.setLegalAccess(false)
+        self.postAccessLevel.setPersonalAccess(false)
         
         entryFilterSet = true
     }
     
     func financialButtonPostTouched(sender: UIButton!){
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(true)
+        postAccessLevel.setLegalAccess(false)
+        postAccessLevel.setPersonalAccess(false)
+        
         entryFilterSet = true
     }
     
     func legalButtonPostTouched(sender: UIButton!){
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(false)
+        postAccessLevel.setLegalAccess(true)
+        postAccessLevel.setPersonalAccess(false)
+        
         entryFilterSet = true
     }
     
     func personalButtonPostTouched(sender: UIButton!){
+
+        postAccessLevel.setMedicalAccess(false)
+        postAccessLevel.setFinancialAccess(false)
+        postAccessLevel.setLegalAccess(false)
+        postAccessLevel.setPersonalAccess(true)
+        
         entryFilterSet = true
     }
+
+    
+    
+    
+    
+    func medicalButtonFilterTouched(sender: UIButton!){
+        
+        if(filterAccessLevel.getMedicalAccess() == false){
+            filterAccessLevel.setMedicalAccess(true)
+            print("medical a")
+        }
+        
+        else{
+            filterAccessLevel.setMedicalAccess(false)
+            print("medical b")
+        }
+        
+    }
+    
+    func financialButtonFilterTouched(sender: UIButton!){
+        if(filterAccessLevel.getFinancialAccess() == false){
+            filterAccessLevel.setFinancialAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setFinancialAccess(false)
+        }
+    }
+    
+    func legalButtonFilterTouched(sender: UIButton!){
+        if(filterAccessLevel.getLegalAccess() == false){
+            filterAccessLevel.setLegalAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setLegalAccess(false)
+        }
+    }
+    
+    func personalButtonFilterTouched(sender: UIButton!){
+        
+        if(filterAccessLevel.getPersonalAccess() == false){
+            filterAccessLevel.setPersonalAccess(true)
+        }
+            
+        else{
+            filterAccessLevel.setLegalAccess(false)
+        }
+    }
+    
     
 
 
