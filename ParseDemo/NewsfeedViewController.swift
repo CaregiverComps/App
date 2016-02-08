@@ -186,6 +186,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
         let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
         medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        medicalFilterButton.addTarget(self, action: "medicalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
         let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
@@ -425,10 +426,9 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
 
     
-    
-    
-    
     func medicalButtonFilterTouched(sender: UIButton!){
+        
+        print("GETTING HERE THO")
         
         if(filterAccessLevel.getMedicalAccess() == false){
             filterAccessLevel.setMedicalAccess(true)
