@@ -356,6 +356,16 @@ class NewsFeedViewController: PFQueryTableViewController {
                     
                     newAccessLevel.update()
                     
+                    
+                    //TEST CODE
+                    let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?;
+                    //let data:NSData?=UIImagePNGRepresentation(personalImage!)
+                    //let testObject = NFObject();
+                    //testObject.setInitialValues("TESTING", username: user.username!, teamName: user.getTeamName(), level: user.getCaregiverAccessLevel().createCopy(), imageData: data)
+                    //testObject.update()
+
+                    
+                    
                     //right now object inherits user access level, front end needs to add accesslevel configurations
                     object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level: newAccessLevel,imageData: nil)
                     object.update();
