@@ -88,7 +88,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     query!.whereKey("TEAMNAME", equalTo:teamName!)
                     let result = try query!.findObjects()
                     if (result.count == 0) {
-                        level.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+                        level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                         newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
                     } else {
                         print("That team already exists!")
