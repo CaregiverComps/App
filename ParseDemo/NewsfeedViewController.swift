@@ -60,15 +60,17 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
+        let allTrue = AccessLevel();
+        allTrue.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
-            query=NFObject.getNewsfeedFor(user, category: "all");
+            query=NFObject.getNewsfeedFor(user, categories: allTrue);
         }
         else {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            query=NFObject.getNewsfeedFor(nouser, category: "all")
+            query=NFObject.getNewsfeedFor(nouser, categories: allTrue)
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
@@ -82,13 +84,17 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         let cell : NewsFeedTableViewCell?
         
-//        if let pfObject = object {
+        //if let pfObject = object {
+            
+        //}
         
             var image:NSData?=object!["IMAGE"] as? NSData;
             // there is an image
             if let imgData=image as NSData?{
                 cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
-                
+                let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+
+                cell?.imageView
             }
                 
             // there is no image
