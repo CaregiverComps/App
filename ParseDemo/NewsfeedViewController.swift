@@ -126,6 +126,16 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             
             cell?.cellText?.text = object!["TEXT"] as? String
+            cell?.userName?.text = object!["USERNAME"] as? String
+                
+            var date = object?.createdAt
+            //                var date = object!["createdAt"] as? NSDate
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
+            let str = dateFormatter.stringFromDate(date!)
+                            
+            cell?.timeStamp?.text = str
             
             cell?.textLabel?.numberOfLines = 0
             return cell;
