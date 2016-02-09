@@ -11,7 +11,6 @@ import UIKit
 class NewsFeedTableViewCell: PFTableViewCell {
     
     
-    @IBOutlet weak var picView: UIImageView!
     @IBOutlet weak var cellText: UILabel!
     @IBOutlet weak var cardView: UIView!
     

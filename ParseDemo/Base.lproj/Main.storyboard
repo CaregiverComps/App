@@ -588,6 +588,35 @@
                                     <outlet property="cellText" destination="xSo-Ij-wF5" id="HkV-Sb-8lb"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsImageCell" rowHeight="147" id="mMX-f2-I0f" customClass="NewsFeedTableViewImageCell" customModule="ParseDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="180" width="600" height="147"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mMX-f2-I0f" id="g7m-5V-UYQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="146"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-mk-9Mh">
+                                            <rect key="frame" x="14" y="7" width="573" height="131"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fat-bC-5IN">
+                                                    <rect key="frame" x="8" y="8" width="557" height="115"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="leading" secondItem="g7m-5V-UYQ" secondAttribute="leadingMargin" id="62V-rC-8g8"/>
+                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="trailing" secondItem="g7m-5V-UYQ" secondAttribute="trailingMargin" id="Vwx-AM-bpz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Bd7-mk-9Mh" secondAttribute="bottom" constant="-2" id="aH9-Ia-Mzh"/>
+                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="top" secondItem="g7m-5V-UYQ" secondAttribute="topMargin" constant="-1" id="kyS-Ek-hQB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="cardView" destination="Bd7-mk-9Mh" id="keG-dv-ycj"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="eUm-ev-l2i" id="5I0-me-cXH"/>

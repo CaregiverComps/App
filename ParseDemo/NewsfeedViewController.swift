@@ -78,19 +78,42 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
+       
+        
+        let cell : NewsFeedTableViewCell?
+        
+//        if let pfObject = object {
+        
+            var image:NSData?=object!["IMAGE"] as? NSData;
+            // there is an image
+            if let imgData=image as NSData?{
+                cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
+                
+            }
+                
+            // there is no image
+            else{
+                
+                cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
+                
+                cell?.selectionStyle = UITableViewCellSelectionStyle.None
+                
+                //use the KEY_USERNAME field to access the username of the user
+                
+                
+                cell?.cellText?.text = object!["TEXT"] as? String
+                cell?.textLabel?.numberOfLines = 0
+            }
+            
+        
+            
 
-        
-        
-        cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        if let pfObject = object {
-            //use the KEY_USERNAME field to access the username of the user
-            cell?.cellText?.text = pfObject["TEXT"] as? String
-            cell?.textLabel?.numberOfLines = 0
             
             
+            
+
 //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-        }
+//        }
         
         return cell;
     }
