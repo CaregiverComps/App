@@ -263,21 +263,27 @@ class NewsFeedViewController: PFQueryTableViewController {
 
         
         let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
-        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+        let medicalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
         medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
         medicalFilterButton.addTarget(self, action: "medicalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
-        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+        let financialImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
         financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        financialFilterButton.addTarget(self, action: "financialButtonFilterTouched:", forControlEvents: .TouchUpInside)
+
         
         let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
-        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+        let legalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
         legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        legalFilterButton.addTarget(self, action: "legalButtonFilterTouched:", forControlEvents: .TouchUpInside)
+
         
         let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
-        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+        let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
         personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        personalFilterButton.addTarget(self, action: "personalButtonFilterTouched:", forControlEvents: .TouchUpInside)
+
         
         let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         buttonView.backgroundColor = UIColor.whiteColor()
@@ -525,10 +531,11 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         // Turn on Medical Filter
         if(filterAccessLevel.bMedical == false){
+            
             filterAccessLevel.setMedicalAccess(true)
 //            
-//            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
 
         }
         
@@ -536,29 +543,42 @@ class NewsFeedViewController: PFQueryTableViewController {
         else{
             filterAccessLevel.setMedicalAccess(false)
             
-//            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            let personalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
         
     }
     
     func financialButtonFilterTouched(sender: UIButton!){
         if(filterAccessLevel.bFinancial == false){
+            
             filterAccessLevel.setFinancialAccess(true)
+            
+            let personalImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
             filterAccessLevel.setFinancialAccess(false)
+            
+            let personalImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     
     func legalButtonFilterTouched(sender: UIButton!){
         if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
+            
+            let personalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
             filterAccessLevel.setLegalAccess(false)
+            
+            let personalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     
@@ -566,10 +586,16 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)
+            
+            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
-            filterAccessLevel.setLegalAccess(false)
+            filterAccessLevel.setPersonalAccess(false)
+            
+            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     
