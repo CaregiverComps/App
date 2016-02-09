@@ -82,6 +82,11 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
+        
+        // stephen: here I think we want to change 'all' to the different categories depending on filter. 
+        
+        
+        
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
             query=NFObject.getNewsfeedFor(user, category: "all");
