@@ -126,6 +126,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             
             cell?.cellText?.text = object!["TEXT"] as? String
+            
             cell?.textLabel?.numberOfLines = 0
             return cell;
 

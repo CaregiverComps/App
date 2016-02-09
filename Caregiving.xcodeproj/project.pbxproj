@@ -200,10 +200,10 @@
 				B9489BC81C4C269600F455EE /* AppUser.swift */,
 				B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */,
 				B9489BCC1C4C26C100F455EE /* NFObject.swift */,
+				854438361C691F690018E60B /* LocalResources.swift */,
 				858AC7A21C610EEB00579261 /* Essentials.swift */,
 				E203BE7E1C4C980B009BC4C6 /* Images */,
 				E2235BEF1C5576A2009320A1 /* ParseDemo-Bridging-Header.h */,
-				854438361C691F690018E60B /* LocalResources.swift */,
 			);
 			name = Caregiving;
 			path = ParseDemo;

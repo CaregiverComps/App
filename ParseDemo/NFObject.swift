@@ -87,6 +87,11 @@ class NFObject : PFObject,PFSubclassing {
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
         
+        print("PRINT FILTER INFO");
+        print(categories.getLocalMedicalAccess());
+        print(categories.getLocalLegalAccess());
+        print(categories.getLocalFinancialAccess());
+        print(categories.getLocalPersonalAccess());
         // Checking filter category
         /*
         if (categories.getLocalMedicalAccess()) {
