@@ -82,20 +82,17 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        
-        // stephen: here I think we want to change 'all' to the different categories depending on filter. 
-        
-        
-        
+        let allTrue = AccessLevel();
+        allTrue.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
-            query=NFObject.getNewsfeedFor(user, category: "all");
+            query=NFObject.getNewsfeedFor(user, categories: allTrue);
         }
         else {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            query=NFObject.getNewsfeedFor(nouser, category: "all")
+            query=NFObject.getNewsfeedFor(nouser, categories: allTrue)
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
@@ -105,71 +102,57 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-       
         
         
-        var displayimage: UIImage!
+        let cell : NewsFeedTableViewCell?
         
-        if let image = object!["IMAGE"] as? PFFile {
-            image.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    displayimage = UIImage(data:imageData!)
-                }
-            }
-            
-            
-            
-            let cell : NewsFeedTableViewImageCell?
-            cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
-//            var displayImage = UIImage(data: imageData!)
-            cell?.picView.image = displayimage
-            print("Inside image cell area")
-            return cell;
+        //        if let pfObject = object {
+        
+        var image:NSData?=object!["IMAGE"] as? NSData;
+        // there is an image
+        if let imgData=image as NSData?{
+           // cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
             
         }
-        
-        
-        
-//            // there is an image
-//            if let imgData=image as PFFile?{
-//                
-//                
-//                
-//            }
             
             // there is no image
-            else{
-                let cell : NewsFeedTableViewCell?
-                cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
-                
-                cell?.selectionStyle = UITableViewCellSelectionStyle.None
-                
-                //use the KEY_USERNAME field to access the username of the user
-                
-                
-                cell?.cellText?.text = object!["TEXT"] as? String
-                cell?.userName?.text = object!["USERNAME"] as? String
+        else{
             
-                var date = object?.createdAt
-//                var date = object!["createdAt"] as? NSDate
+            cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
             
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
-                let str = dateFormatter.stringFromDate(date!)
+            cell?.selectionStyle = UITableViewCellSelectionStyle.None
             
-                cell?.timeStamp?.text = str
-                cell?.textLabel?.numberOfLines = 0
+            //use the KEY_USERNAME field to access the username of the user
+            
+            
+            cell?.cellText?.text = object!["TEXT"] as? String
+            
+            cell?.userName?.text = object!["USERNAME"] as? String
                 
-                return cell;
-            }
+            var date = object?.createdAt
+            //                var date = object!["createdAt"] as? NSDate
             
-        
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
+            let str = dateFormatter.stringFromDate(date!)
+                            
+            cell?.timeStamp?.text = str
             
+            
+            cell?.textLabel?.numberOfLines = 0
+            return cell;
 
-            
-            
+        }
+            return nil
         
         
+        
+        
+        
+        
+        
+        //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
+        //        }
         
     }
     

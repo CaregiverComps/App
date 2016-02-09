@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -635,22 +634,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="146"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-mk-9Mh">
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vqE-zt-BPo">
                                             <rect key="frame" x="14" y="7" width="573" height="131"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fat-bC-5IN">
-                                                    <rect key="frame" x="8" y="8" width="557" height="115"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-mk-9Mh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="573" height="131"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9kA-xY-nWZ">
+                                                            <rect key="frame" x="8" y="8" width="557" height="115"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-ym-gEF">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="557" height="115"/>
+                                                                    <subviews>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fat-bC-5IN">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="557" height="115"/>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </stackView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="leading" secondItem="g7m-5V-UYQ" secondAttribute="leadingMargin" id="62V-rC-8g8"/>
-                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="trailing" secondItem="g7m-5V-UYQ" secondAttribute="trailingMargin" id="Vwx-AM-bpz"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Bd7-mk-9Mh" secondAttribute="bottom" constant="-2" id="aH9-Ia-Mzh"/>
-                                        <constraint firstItem="Bd7-mk-9Mh" firstAttribute="top" secondItem="g7m-5V-UYQ" secondAttribute="topMargin" constant="-1" id="kyS-Ek-hQB"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
                                 <connections>
