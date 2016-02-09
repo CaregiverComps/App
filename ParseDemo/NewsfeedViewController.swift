@@ -15,6 +15,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     let cellIdentifier:String = "NewsCell"
     var limit = 10;
     var entryFilterSet = false
+    var updateAfterPosting = false
     
     var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
@@ -30,6 +31,11 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so 
+        // I suppose we don't need pulling to refresh
+        // Fires every 5 seconds.
+        var timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkForUpdates", userInfo: nil, repeats: true)
         
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
         
@@ -59,6 +65,22 @@ class NewsFeedViewController: PFQueryTableViewController {
         }
     }
     
+    func checkForUpdates() {
+        
+        
+        
+        if(updateAfterPosting == true){
+            self.loadObjects()
+            updateAfterPosting = false
+            print("Updating for the post you just did")
+
+        }
+        
+        else{
+//            print("not checking because you didn't just post")
+        }
+    }
+    
     override func queryForTable() -> PFQuery {
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
@@ -80,20 +102,39 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
        
         
-        let cell : NewsFeedTableViewCell?
         
-//        if let pfObject = object {
+        var displayimage: UIImage!
         
-            var image:NSData?=object!["IMAGE"] as? NSData;
-            // there is an image
-            if let imgData=image as NSData?{
-                cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
-                
+        if let image = object!["IMAGE"] as? PFFile {
+            image.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    displayimage = UIImage(data:imageData!)
+                }
             }
-                
+            
+            
+            
+            let cell : NewsFeedTableViewImageCell?
+            cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
+//            var displayImage = UIImage(data: imageData!)
+            cell?.picView.image = displayimage
+            print("Inside image cell area")
+            return cell;
+            
+        }
+        
+        
+        
+//            // there is an image
+//            if let imgData=image as PFFile?{
+//                
+//                
+//                
+//            }
+            
             // there is no image
             else{
-                
+                let cell : NewsFeedTableViewCell?
                 cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
                 
                 cell?.selectionStyle = UITableViewCellSelectionStyle.None
@@ -102,7 +143,19 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
                 
                 cell?.cellText?.text = object!["TEXT"] as? String
+                cell?.userName?.text = object!["USERNAME"] as? String
+            
+                var date = object?.createdAt
+//                var date = object!["createdAt"] as? NSDate
+            
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
+                let str = dateFormatter.stringFromDate(date!)
+            
+                cell?.timeStamp?.text = str
                 cell?.textLabel?.numberOfLines = 0
+                
+                return cell;
             }
             
         
@@ -110,12 +163,9 @@ class NewsFeedViewController: PFQueryTableViewController {
 
             
             
-            
-
-//             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-//        }
         
-        return cell;
+        
+        
     }
     
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -290,6 +340,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     func showEntryPopupWithStyle(popupStyle: CNPPopupStyle) {
         
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
         paragraphStyle.alignment = NSTextAlignment.Center
@@ -378,6 +429,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             if textView.text.isEmpty == false{
                 
+                
                 if let user=AppUser.currentUser() as AppUser? {
                     let object=NFObject();
                     
@@ -403,7 +455,10 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
                 
                 self.popupController.dismissPopupControllerAnimated(true)
-
+                
+                // DO IT HERE STEPHEN
+                self.updateAfterPosting = true
+                
                 
             }
             
