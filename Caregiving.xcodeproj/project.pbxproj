@@ -39,6 +39,10 @@
 		E25F0FC41C56E47400F99DB5 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25F0FC31C56E47400F99DB5 /* NewsfeedViewController.swift */; };
 		E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E27A85CA1C5A889F00427200 /* Post_Icon.png */; };
 		E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */; };
+		E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */; };
+		E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */; };
+		E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */; };
+		E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
 		F48894B21B9939A3003627DB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B11B9939A3003627DB /* CFNetwork.framework */; };
 		F48894B41B9939AB003627DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B31B9939AB003627DB /* CoreGraphics.framework */; };
@@ -101,6 +105,10 @@
 		E25F0FC31C56E47400F99DB5 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		E27A85CA1C5A889F00427200 /* Post_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Post_Icon.png; sourceTree = "<group>"; };
 		E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter_Icon.png; sourceTree = "<group>"; };
+		E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Financial_Button_Icon_Weak.png; sourceTree = "<group>"; };
+		E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Legal_Button_Icon_Weak.png; sourceTree = "<group>"; };
+		E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medical_Button_Icon_Weak.png; sourceTree = "<group>"; };
+		E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Personal_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medical_Button_Icon.pxm; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48894B11B9939A3003627DB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -248,6 +256,10 @@
 		E203BE7E1C4C980B009BC4C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
+				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
+				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
+				E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */,
 				E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */,
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
@@ -363,6 +375,7 @@
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
 				E20C732E1C627F56005CB7BC /* Personal_Button_Icon.png in Resources */,
+				E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */,
 				E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */,
 				E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */,
 				E20C732A1C627F3C005CB7BC /* Financial_Button_Icon.png in Resources */,
@@ -371,10 +384,13 @@
 				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
+				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
+				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
+				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
 				E203BE901C4C9A7B009BC4C6 /* EssentialsTabIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
