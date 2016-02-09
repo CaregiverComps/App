@@ -88,6 +88,7 @@ class NFObject : PFObject,PFSubclassing {
         let finanBool:Bool=access.getFinancialAccess();
         
         // Checking filter category
+        /*
         if (categories.getLocalMedicalAccess()) {
             query2.whereKey("medical", equalTo: true);
         }
@@ -100,7 +101,7 @@ class NFObject : PFObject,PFSubclassing {
         if (categories.getLocalPersonalAccess()) {
             query2.whereKey("personal", equalTo: true);
         }
-        
+        */
         // User's access level
         if (!medicalBool) {
             query2.whereKey("medical", equalTo: false);
