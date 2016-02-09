@@ -73,31 +73,26 @@ class AccessLevel : PFObject,PFSubclassing{
     func setPersonalAccess(new:Bool) {
         self.bPersonal=new;
     }
-    func getAllowedAccess() -> [String]{
-        var array:[String]=[];
-        if (self.getMedicalAccess()) {
-            array.append(KEY_MEDICAL);
-        }
-        if (self.getLegalAccess()) {
-            array.append(KEY_LEGAL);
-        }
-        if (self.getFinancialAccess()) {
-            array.append(KEY_FINANCIAL);
-        }
-        if (self.getPersonalAccess()) {
-            array.append(KEY_PERSONAL);
-        }
-        if (self.getAdminAccess()) {
-            array.append(KEY_ADMIN);
-        }
-        return array;
+    
+    func createCopy() -> AccessLevel{
+        let copyAccessLevel = AccessLevel();
+        copyAccessLevel.setInitialValues(self.bFinancial, legal: self.bLegal, medical: self.bMedical, personal: self.bPersonal, admin: self.bAdmin);
+        copyAccessLevel.update();
+        return copyAccessLevel;
     }
+    
+    // Retrieve from database
     func getMedicalAccess() ->Bool {return valueForKey(KEY_MEDICAL) as! Bool;}
     func getFinancialAccess() ->Bool {return valueForKey(KEY_FINANCIAL) as! Bool;}
     func getLegalAccess() -> Bool {return valueForKey(KEY_LEGAL) as! Bool;}
-    func getPersonalAccess() ->Bool {
-        return valueForKey(KEY_PERSONAL) as! Bool;
-    }
+    func getPersonalAccess() ->Bool {return valueForKey(KEY_PERSONAL) as! Bool;}
+    
+    // Retrieve locally
+    func getLocalMedicalAccess() ->Bool {return self.bMedical;}
+    func getLocalFinancialAccess() ->Bool {return self.bFinancial;}
+    func getLocalLegalAccess() -> Bool {return self.bLegal;}
+    func getLocalPersonalAccess() ->Bool {return self.bPersonal;}
+    
     func getAdminAccess() ->Bool {
         return valueForKey(KEY_ADMIN) as! Bool;
     }
@@ -105,11 +100,4 @@ class AccessLevel : PFObject,PFSubclassing{
         return "AccessLevel";
     }
     
-    /*func hasAccessTo(other: AccessLevel) -> Bool {
-        let financial:Bool = ((self.bFinancial == other.bFinancial) || (self.bFinancial == true));
-        let legal:Bool = ((self.bLegal == other.bLegal) || (self.bLegal == true));
-        let medical:Bool = ((self.bMedical == other.bMedical) || (self.bMedical == true));
-        let personal:Bool = ((self.bPersonal == other.bPersonal) || (self.bPersonal == true));
-        return (financial && legal && medical && personal);
-    }*/
 }

@@ -3,7 +3,7 @@
 //  Caregiving
 //
 //  Created by Julia Bindler on 1/24/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Copyright © 2016 Caregivernet. All rights reserved.
 //
 
 import UIKit
@@ -11,9 +11,12 @@ import UIKit
 class NewsFeedTableViewCell: PFTableViewCell {
     
     
-    @IBOutlet weak var picView: UIImageView!
     @IBOutlet weak var cellText: UILabel!
     @IBOutlet weak var cardView: UIView!
+    
+    @IBOutlet weak var timeStamp: UILabel!
+    @IBOutlet weak var userName: UILabel!
+
     
     override func layoutSubviews() {
         self.cardSetup()

@@ -75,7 +75,7 @@ class NFObject : PFObject,PFSubclassing {
         return "NFObject";
     }
     
-    static func getNewsfeedFor(user:AppUser, category:String) -> PFQuery {
+    static func getNewsfeedFor(user:AppUser, categories:AccessLevel) -> PFQuery {
         let query=PFQuery(className: parseClassName());
         
         let teamName:String=user.getTeamName();
@@ -86,9 +86,23 @@ class NFObject : PFObject,PFSubclassing {
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
-        if (category != "all") {
-            query2.whereKey(category, equalTo: true);
+        
+        // Checking filter category
+        /*
+        if (categories.getLocalMedicalAccess()) {
+            query2.whereKey("medical", equalTo: true);
         }
+        if (categories.getLocalLegalAccess()) {
+            query2.whereKey("legal", equalTo: true);
+        }
+        if (categories.getLocalFinancialAccess()) {
+            query2.whereKey("financial", equalTo: true);
+        }
+        if (categories.getLocalPersonalAccess()) {
+            query2.whereKey("personal", equalTo: true);
+        }
+        */
+        // User's access level
         if (!medicalBool) {
             query2.whereKey("medical", equalTo: false);
         }
@@ -102,7 +116,7 @@ class NFObject : PFObject,PFSubclassing {
         if (!persBool) {
             query2.whereKey("personal", equalTo: false);
         }
-        query2.whereKey("admin", equalTo: access.getAdminAccess());
+        //query2.whereKey("admin", equalTo: access.getAdminAccess());
         query.whereKey("TEAMNAME", equalTo: teamName);
         print("team name", teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
