@@ -83,7 +83,6 @@ class AppUser : PFUser {
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
-    
     //TO-DO: FIX THIS
     override static func currentUser() -> AppUser? {
         //use name, password to query database and return the user object associated with it
@@ -195,5 +194,38 @@ class AppUser : PFUser {
             print("Current user is not authorized to add members.");
         }
     }
-    
+    func getTeamMembers() -> [AppUser?] {
+        
+        var array:[AppUser?] = [AppUser?]()
+        let currentUser = AppUser.currentUser()!;
+        if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
+            let query:PFQuery = PFUser.query()!;
+            query.whereKey("TEAMNAME", equalTo: self.getTeamName());
+            do {
+                var objects:[PFObject]?=try query.findObjects()
+                for object in objects! {
+                    let appObject:AppUser?=object as? AppUser;
+                    array.append(appObject)
+                }
+            }
+            catch {
+                print("error")
+            }
+            /*
+            query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    for object in objects! {
+                        let appObject:AppUser?=object as? AppUser;
+                        array.append(appObject)
+                    }
+                }
+
+            }*/
+            
+        } else {
+            print("Current user is not authorized to add members.");
+        }
+        return array
+    }
+
 }

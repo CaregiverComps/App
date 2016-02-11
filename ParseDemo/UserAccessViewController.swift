@@ -13,13 +13,13 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var accessTableView: UITableView!
     @IBOutlet weak var navTitle: UINavigationItem!
     let categories = ["Personal","Legal","Financial","Medical"]
-    var passedValue = ""
+    var passedValue:AppUser = AppUser();
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.userNameLabel.text = self.passedValue
-        self.navTitle.title = self.passedValue
+        self.navTitle.title = self.passedValue.username!
         // Show the current visitor's username
         //        if let user = PFUser.currentUser() as PFUser? {
         //            self.userNameLabel.text = "@" + user.username!;
@@ -33,7 +33,7 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    func passedValue(passed: String) {
+    func passedValue(passed: AppUser) {
         self.passedValue = passed
     }
     
@@ -43,6 +43,8 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         if (categories.count > 0) {
             cell.textLabel?.text = self.categories[indexPath.row] as String
+            
+            
         }
 
         let enabledSwitch = UISwitch() as UISwitch
