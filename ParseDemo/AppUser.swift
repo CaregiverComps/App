@@ -77,6 +77,12 @@ class AppUser : PFUser {
         //self.accessLevel.update();
         return self.accessLevel;
     }
+    
+    func setCaregiverAccessLevel(newLevel:AccessLevel) {
+        self.accessLevel = newLevel;
+        update();
+    }
+    
     func getTeamName() ->String {
         return self.teamName;
     }
@@ -200,11 +206,22 @@ class AppUser : PFUser {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
             let query:PFQuery = PFUser.query()!;
+            var query2=PFQuery(className: "AccessLevel");
+            query.whereKey("ACCESSLEVEL", matchesQuery: query2);
             query.whereKey("TEAMNAME", equalTo: self.getTeamName());
             do {
                 var objects:[PFObject]?=try query.findObjects()
                 for object in objects! {
                     let appObject:AppUser?=object as? AppUser;
+                    let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
+                    let id=appAccess?.objectId;
+                    appObject?.accessLevel=try query2.getObjectWithId(id!) as! AccessLevel;
+                    print("Result:",appObject?.accessLevel)
+                    //appObject?.setCaregiverAccessLevel(result)
+                    //appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
+                    
+                    print(appObject?.username)
+                    print(appObject?.accessLevel)
                     array.append(appObject)
                 }
             }
