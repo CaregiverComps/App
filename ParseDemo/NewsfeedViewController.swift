@@ -95,14 +95,14 @@ class NewsFeedViewController: PFQueryTableViewController {
             if let user=AppUser.currentUser() as AppUser? {
                 
                 // Why are these all false?
-                var userLevel = user.getCaregiverAccessLevel()
-                print(userLevel.getLocalMedicalAccess())
-                print(userLevel.getLocalFinancialAccess())
-                print(userLevel.getLocalLegalAccess())
-                print(userLevel.getLocalPersonalAccess())
+                let userLevel = user.getCaregiverAccessLevel()
+//                print(userLevel.getLocalMedicalAccess())
+//                print(userLevel.getLocalFinancialAccess())
+//                print(userLevel.getLocalLegalAccess())
+//                print(userLevel.getLocalPersonalAccess())
 
 
-                displayAccessLevel = userLevel
+                displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
             }
             
             else{
