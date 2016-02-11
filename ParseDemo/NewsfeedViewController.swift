@@ -63,7 +63,8 @@ class NewsFeedViewController: PFQueryTableViewController {
 
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
-            let level = user.getCaregiverAccessLevel()
+            let level = self.filterAccessLevel
+            NSLog(String(filterAccessLevel))
             
             if (level.getMedicalAccess()){
                 query=NFObject.getNewsfeedFor(user, category: "medical")
@@ -470,6 +471,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         // Turn on Medical Filter
         if(filterAccessLevel.bMedical == false){
             filterAccessLevel.setMedicalAccess(true)
+            NSLog(String(filterAccessLevel.getMedicalAccess()))
+            NSLog(String(filterAccessLevel.getFinancialAccess()))
 //            
 //            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
 //            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
@@ -479,6 +482,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         // Turn off Medical Filter
         else{
             filterAccessLevel.setMedicalAccess(false)
+            
+            
             
 //            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
 //            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)

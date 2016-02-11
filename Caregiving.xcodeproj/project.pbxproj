@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1E9D3F0D8CADE00D77A2A22F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53323EFBD36C653380A77 /* libPods.a */; };
+		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
+		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
+		3122C6751C6CF8EA008FE477 /* blankbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3122C6741C6CF8EA008FE477 /* blankbox.png */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
+		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
+		3122C6741C6CF8EA008FE477 /* blankbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blankbox.png; path = ../blankbox.png; sourceTree = "<group>"; };
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
@@ -177,7 +183,9 @@
 				E2235BF31C5576A8009320A1 /* CNPPopupController */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
+				3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
+				3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */,
 				E25F0FC31C56E47400F99DB5 /* NewsfeedViewController.swift */,
 				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
 				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
@@ -250,6 +258,7 @@
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
 				E20C73271C627D3D005CB7BC /* Medical_Button_Icon.png */,
+				3122C6741C6CF8EA008FE477 /* blankbox.png */,
 				E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */,
 				E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */,
 				E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */,
@@ -369,6 +378,7 @@
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
+				3122C6751C6CF8EA008FE477 /* blankbox.png in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
@@ -439,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9489BC91C4C269600F455EE /* AppUser.swift in Sources */,
+				3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
@@ -449,6 +460,7 @@
 				E2235BF21C5576A3009320A1 /* CNPPopupController.m in Sources */,
 				E25F0FC21C56E24900F99DB5 /* NewsFeedTableViewCell.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
+				3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */,
 				B9489BCD1C4C26C100F455EE /* NFObject.swift in Sources */,
 				E25F0FC41C56E47400F99DB5 /* NewsfeedViewController.swift in Sources */,
 			);
