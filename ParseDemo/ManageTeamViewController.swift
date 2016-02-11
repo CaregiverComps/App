@@ -11,8 +11,9 @@ import UIKit
 class ManageTeamViewController: UITableViewController {
     @IBOutlet weak var noTeamMemberLabel: UILabel!
 //    @IBOutlet weak var teamMemberCell: UITableViewCell!
-    var userSelected = ""
-    let teamList = ["Amy","DLN","Jadrian"]
+    var userSelected:AppUser=AppUser()
+    var team:[AppUser?]=[AppUser?]()
+    var teamList = ["Amy","DLN","Jadrian"]
 //    let teamList = []
     
     override func viewDidLoad() {
@@ -20,6 +21,17 @@ class ManageTeamViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         if (teamList.count>0) {
             noTeamMemberLabel.hidden = true
+        }
+        //pseudocode
+        if let user=AppUser.currentUser() as AppUser? {
+            teamList.removeAll()
+            team = user.getTeamMembers();
+            print("here in vc")
+
+            for member in team {
+                var unwrappedUser:AppUser=member!
+                teamList.append(unwrappedUser.username!)
+            }
         }
         
         
@@ -49,7 +61,13 @@ class ManageTeamViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
         print(currentCell.textLabel!.text)
-        self.userSelected = currentCell.textLabel!.text!
+        let name = currentCell.textLabel!.text!
+        
+        for user in team {
+            if (user?.username! == name) {
+                self.userSelected=user!
+            }
+        }
         performSegueWithIdentifier("ShowUserSegue", sender: self)
 
     }
