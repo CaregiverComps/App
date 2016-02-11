@@ -83,7 +83,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func queryForTable() -> PFQuery {
         let allTrue = AccessLevel();
-        allTrue.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
+        allTrue.setInitialValues(true, legal: true, medical: false, personal: true, admin: true);
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
             query=NFObject.getNewsfeedFor(user, categories: allTrue);
@@ -220,56 +220,65 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.layer.cornerRadius = 4;
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
         
-        
-//        let medicalFilterButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
-//        medicalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        medicalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        medicalFilterButton.setTitle("Medical", forState: UIControlState.Normal)
-//        medicalFilterButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-//        medicalFilterButton.layer.cornerRadius = 4;
-//        
-//        let financialFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        financialFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        financialFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        financialFilterButton.setTitle("Financial", forState: UIControlState.Normal)
-//        financialFilterButton.layer.cornerRadius = 4;
-//        financialFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-//        
-//        let legalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        legalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        legalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        legalFilterButton.setTitle("Legal", forState: UIControlState.Normal)
-//        legalFilterButton.layer.cornerRadius = 4;
-//        legalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-//        
-//        let personalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        personalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        personalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        personalFilterButton.setTitle("Personal", forState: UIControlState.Normal)
-//        personalFilterButton.layer.cornerRadius = 4;
-//        personalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-
-        
         let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
-        let medicalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
-        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bMedical == false){
+            let medicalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
+            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        }
+        
         medicalFilterButton.addTarget(self, action: "medicalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
-        let financialImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
-        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bFinancial == false){
+            let financialImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
+            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        }
+        
         financialFilterButton.addTarget(self, action: "financialButtonFilterTouched:", forControlEvents: .TouchUpInside)
-
+        
         
         let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
-        let legalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
-        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bLegal == false){
+            let legalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
+            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+            
+        }
+        
         legalFilterButton.addTarget(self, action: "legalButtonFilterTouched:", forControlEvents: .TouchUpInside)
-
+        
         
         let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
-        let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
-        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        
+        
+        if(filterAccessLevel.bPersonal == false){
+            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
+            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            
+        }
+        
         personalFilterButton.addTarget(self, action: "personalButtonFilterTouched:", forControlEvents: .TouchUpInside)
 
         
