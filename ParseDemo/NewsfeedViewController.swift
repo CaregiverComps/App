@@ -16,7 +16,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     var limit = 10;
     var entryFilterSet = false
     var updateAfterPosting = false
-    
+    var isFilteredView = false
     var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
 
@@ -85,8 +85,17 @@ class NewsFeedViewController: PFQueryTableViewController {
         let allTrue = AccessLevel();
         allTrue.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
         let query:PFQuery
+        
+        
         if let user=AppUser.currentUser() as AppUser? {
-            query=NFObject.getNewsfeedFor(user, categories: allTrue);
+            if (isFilteredView) {
+                query=NFObject.getNewsfeedFor(user, categories: self.filterAccessLevel);
+                isFilteredView = !isFilteredView
+            }
+            else {
+                query=NFObject.getNewsfeedFor(user, categories: allTrue);
+                
+            }
         }
         else {
             let nouser=AppUser();
@@ -305,6 +314,8 @@ class NewsFeedViewController: PFQueryTableViewController {
             self.popupController.dismissPopupControllerAnimated(true)
             
             // TODO: reset filter here
+            let filteredSet:AccessLevel=self.filterAccessLevel;
+            
             
             print("Block for button: \(button.titleLabel?.text)")
             
@@ -513,7 +524,7 @@ class NewsFeedViewController: PFQueryTableViewController {
 
     
     func medicalButtonFilterTouched(sender: UIButton!){
-        
+        isFilteredView=true
         
         // Turn on Medical Filter
         if(filterAccessLevel.bMedical == false){
@@ -522,8 +533,7 @@ class NewsFeedViewController: PFQueryTableViewController {
 //            
             let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
             sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
-
-        }
+                }
         
         // Turn off Medical Filter
         else{
@@ -536,6 +546,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func financialButtonFilterTouched(sender: UIButton!){
+        isFilteredView=true
         if(filterAccessLevel.bFinancial == false){
             
             filterAccessLevel.setFinancialAccess(true)
@@ -553,6 +564,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func legalButtonFilterTouched(sender: UIButton!){
+                isFilteredView=true
         if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
             
@@ -569,6 +581,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func personalButtonFilterTouched(sender: UIButton!){
+                isFilteredView=true
         
         if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)
