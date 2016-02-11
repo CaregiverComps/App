@@ -15,9 +15,11 @@ class NewsFeedViewController: PFQueryTableViewController {
     let cellIdentifier:String = "NewsCell"
     var limit = 10;
     var entryFilterSet = false
-    
+    var updateAfterPosting = false
+    var isFilteredView = false
     var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
+    
 
     
     required init(coder aDecoder:NSCoder)
@@ -30,6 +32,11 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so 
+        // I suppose we don't need pulling to refresh
+        // Fires every 5 seconds.
+        var timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkForUpdates", userInfo: nil, repeats: true)
         
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
         
@@ -59,38 +66,74 @@ class NewsFeedViewController: PFQueryTableViewController {
         }
     }
     
+    func checkForUpdates() {
+        
+        
+        
+        if(updateAfterPosting == true){
+            self.loadObjects()
+            updateAfterPosting = false
+            print("Updating for the post you just did")
+
+        }
+        
+        else{
+//            print("not checking because you didn't just post")
+        }
+    }
+    
     override func queryForTable() -> PFQuery {
 
-        let query:PFQuery
+        var displayAccessLevel = AccessLevel();
+        
+        
+            var query:PFQuery
+
+        if (isFilteredView == false){
+            
+            print("isFilteredView is false")
+            
+            if let user=AppUser.currentUser() as AppUser? {
+                
+                // Why are these all false?
+                var userLevel = user.getCaregiverAccessLevel()
+               // print(userLevel.getMedicalAccess())
+                //print(userLevel.getFinancialAccess())
+                //print(userLevel.getLegalAccess())
+                //print(userLevel.getPersonalAccess())
+
+
+                displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
+            }
+            
+            else{
+                displayAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+
+            }
+        }
+        
+        else{
+            displayAccessLevel = self.filterAccessLevel
+        }
+        
+        
+        
         if let user=AppUser.currentUser() as AppUser? {
-            let level = self.filterAccessLevel
-            NSLog(String(filterAccessLevel))
-            
-            if (level.getMedicalAccess()){
-                query=NFObject.getNewsfeedFor(user, category: "medical")
-            }
-            
-            
-            else if level.getFinancialAccess() {
-                query=NFObject.getNewsfeedFor(user, category: "financial")
-            }
-            
-            else if level.getLegalAccess() {
-                query=NFObject.getNewsfeedFor(user, category: "legal")
-            }
-            
-            else if level.getPersonalAccess() {
-                query=NFObject.getNewsfeedFor(user, category: "personal")
+            if (isFilteredView) {
+                query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
+//                isFilteredView = !isFilteredView
             }
             else {
-                query=NFObject.getNewsfeedFor(user, category: "all");
+                query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
+                
+
             }
         }
         else {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            query=NFObject.getNewsfeedFor(nouser, category: "all")
+            query=NFObject.getNewsfeedFor(nouser, categories: displayAccessLevel)
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
@@ -98,23 +141,58 @@ class NewsFeedViewController: PFQueryTableViewController {
 
         return query
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
         
-        cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        if let pfObject = object {
+        let cell : NewsFeedTableViewCell?
+        
+        //        if let pfObject = object {
+        
+        //var image:NSData?=object!["IMAGE"] as? NSData;
+        // there is an image
+        //if let imgData=image as NSData?{
+           // cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
+            
+        //}
+            
+            // there is no image
+        //else{
+            
+            cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
+            
+            cell?.selectionStyle = UITableViewCellSelectionStyle.None
+            
             //use the KEY_USERNAME field to access the username of the user
-            cell?.cellText?.text = pfObject["TEXT"] as? String
+            
+            
+            cell?.cellText?.text = object!["TEXT"] as? String
+            cell?.userName?.text = object!["USERNAME"] as? String
+                
+            var date = object?.createdAt
+            //                var date = object!["createdAt"] as? NSDate
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
+            let str = dateFormatter.stringFromDate(date!)
+                            
+            cell?.timeStamp?.text = str
+            
             cell?.textLabel?.numberOfLines = 0
-            
-            
-//             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-        }
+            return cell;
+
+       // }
+            return nil
         
-        return cell;
+        
+        
+        
+        
+        
+        
+        //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
+        //        }
+        
     }
     
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -181,52 +259,67 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.layer.cornerRadius = 4;
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
         
-        
-//        let medicalFilterButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
-//        medicalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        medicalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        medicalFilterButton.setTitle("Medical", forState: UIControlState.Normal)
-//        medicalFilterButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-//        medicalFilterButton.layer.cornerRadius = 4;
-//        
-//        let financialFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        financialFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        financialFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        financialFilterButton.setTitle("Financial", forState: UIControlState.Normal)
-//        financialFilterButton.layer.cornerRadius = 4;
-//        financialFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-//        
-//        let legalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        legalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        legalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        legalFilterButton.setTitle("Legal", forState: UIControlState.Normal)
-//        legalFilterButton.layer.cornerRadius = 4;
-//        legalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-//        
-//        let personalFilterButton = CNPPopupButton.init(frame: CGRectMake(150, 0, 100, 60))
-//        personalFilterButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-//        personalFilterButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-//        personalFilterButton.setTitle("Personal", forState: UIControlState.Normal)
-//        personalFilterButton.layer.cornerRadius = 4;
-//        personalFilterButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-
-        
         let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
-        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bMedical == false){
+            let medicalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
+            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        }
+        
         medicalFilterButton.addTarget(self, action: "medicalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
-        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
-        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bFinancial == false){
+            let financialImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
+            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        }
+        
+        financialFilterButton.addTarget(self, action: "financialButtonFilterTouched:", forControlEvents: .TouchUpInside)
+        
         
         let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
-        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
-        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        
+        if(filterAccessLevel.bLegal == false){
+            let legalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
+            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+            
+        }
+        
+        legalFilterButton.addTarget(self, action: "legalButtonFilterTouched:", forControlEvents: .TouchUpInside)
+        
         
         let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
-        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        
+        
+        if(filterAccessLevel.bPersonal == false){
+            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
+            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        }
+            
+        else{
+            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            
+        }
+        
+        personalFilterButton.addTarget(self, action: "personalButtonFilterTouched:", forControlEvents: .TouchUpInside)
+
         
         let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
         buttonView.backgroundColor = UIColor.whiteColor()
@@ -261,8 +354,9 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
             
-            // TODO: reset filter here
-            self.queryForTable()
+
+           self.loadObjects()
+            
             
             print("Block for button: \(button.titleLabel?.text)")
             
@@ -289,6 +383,7 @@ class NewsFeedViewController: PFQueryTableViewController {
  
     
     func showEntryPopupWithStyle(popupStyle: CNPPopupStyle) {
+        
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -378,6 +473,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             if textView.text.isEmpty == false{
                 
+                
                 if let user=AppUser.currentUser() as AppUser? {
                     let object=NFObject();
                     
@@ -403,7 +499,9 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
                 
                 self.popupController.dismissPopupControllerAnimated(true)
-
+                
+                self.updateAfterPosting = true
+                
                 
             }
             
@@ -466,59 +564,84 @@ class NewsFeedViewController: PFQueryTableViewController {
 
     
     func medicalButtonFilterTouched(sender: UIButton!){
-        
+        isFilteredView=true
         
         // Turn on Medical Filter
         if(filterAccessLevel.bMedical == false){
+            
             filterAccessLevel.setMedicalAccess(true)
             NSLog(String(filterAccessLevel.getMedicalAccess()))
             NSLog(String(filterAccessLevel.getFinancialAccess()))
 //            
-//            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
-
-        }
+            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+                }
         
         // Turn off Medical Filter
         else{
             filterAccessLevel.setMedicalAccess(false)
             
+
             
             
-//            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-//            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+
+            let personalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+
         }
         
     }
     
     func financialButtonFilterTouched(sender: UIButton!){
+        isFilteredView=true
         if(filterAccessLevel.bFinancial == false){
+            
             filterAccessLevel.setFinancialAccess(true)
+            
+            let personalImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
             filterAccessLevel.setFinancialAccess(false)
+            
+            let personalImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     
     func legalButtonFilterTouched(sender: UIButton!){
+                isFilteredView=true
         if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
+            
+            let personalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
             filterAccessLevel.setLegalAccess(false)
+            
+            let personalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     
     func personalButtonFilterTouched(sender: UIButton!){
+                isFilteredView=true
         
         if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)
+            
+            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
             
         else{
-            filterAccessLevel.setLegalAccess(false)
+            filterAccessLevel.setPersonalAccess(false)
+            
+            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
+            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
         }
     }
     

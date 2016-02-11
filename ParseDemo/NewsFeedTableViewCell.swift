@@ -11,9 +11,12 @@ import UIKit
 class NewsFeedTableViewCell: PFTableViewCell {
     
     
-    @IBOutlet weak var picView: UIImageView!
     @IBOutlet weak var cellText: UILabel!
     @IBOutlet weak var cardView: UIView!
+    
+    @IBOutlet weak var timeStamp: UILabel!
+    @IBOutlet weak var userName: UILabel!
+
     
     override func layoutSubviews() {
         self.cardSetup()

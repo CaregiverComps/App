@@ -58,14 +58,14 @@ class AppUser : PFUser {
     }
     
     func update() {
-        print("UPDATING ACCESS LEVEL ", self.accessLevel);
+       //print("UPDATING ACCESS LEVEL ", self.accessLevel);
         self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
         self.setValue(self.teamName, forKey: KEY_TEAMNAME);
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
-                print("OBJECT SUCCESSFULLY SAVED");
+               // print("OBJECT SUCCESSFULLY SAVED");
             } else {
                 // There was a problem, check error.description
             }
@@ -77,21 +77,26 @@ class AppUser : PFUser {
         //self.accessLevel.update();
         return self.accessLevel;
     }
+    
+    func setCaregiverAccessLevel(newLevel:AccessLevel) {
+        self.accessLevel = newLevel;
+        update();
+    }
+    
     func getTeamName() ->String {
         return self.teamName;
     }
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
-    
     //TO-DO: FIX THIS
     override static func currentUser() -> AppUser? {
         //use name, password to query database and return the user object associated with it
         if let currentuser = super.currentUser() as PFUser? {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
-            print(accessID)
+          //  print(accessID)
             let id=accessID.objectId;
-            print("ID?",id)
+           // print("ID?",id)
             let query=PFQuery(className: "AccessLevel");
 
             /*
@@ -125,14 +130,14 @@ class AppUser : PFUser {
                 let result=try query.getObjectWithId(id!);
                 let usrname=currentuser.username;
                 let level:AccessLevel=result as! AccessLevel;
-                print(level)
+            //    print(level)
                 let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
-                print(teamname);
+               // print(teamname);
                 let pass=currentuser.password;
-                print(usrname);
-                print(pass);
+               // print(usrname);
+              //  print(pass);
                 let email=currentuser.email;
-                print(email);
+               // print(email);
                 let realCurrentuser=AppUser();
                 realCurrentuser.setInitialValues(currentuser.username!, password: "", email: email!, teamname: teamname, accessLevel: level);
                 
@@ -195,5 +200,49 @@ class AppUser : PFUser {
             print("Current user is not authorized to add members.");
         }
     }
-    
+    func getTeamMembers() -> [AppUser?] {
+        
+        var array:[AppUser?] = [AppUser?]()
+        let currentUser = AppUser.currentUser()!;
+        if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
+            let query:PFQuery = PFUser.query()!;
+            var query2=PFQuery(className: "AccessLevel");
+            query.whereKey("ACCESSLEVEL", matchesQuery: query2);
+            query.whereKey("TEAMNAME", equalTo: self.getTeamName());
+            do {
+                var objects:[PFObject]?=try query.findObjects()
+                for object in objects! {
+                    let appObject:AppUser?=object as? AppUser;
+                    let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
+                    let id=appAccess?.objectId;
+                    appObject?.accessLevel=try query2.getObjectWithId(id!) as! AccessLevel;
+                   // print("Result:",appObject?.accessLevel)
+                    //appObject?.setCaregiverAccessLevel(result)
+                    //appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
+                    
+                    //print(appObject?.username)
+                   // print(appObject?.accessLevel)
+                    array.append(appObject)
+                }
+            }
+            catch {
+                print("error")
+            }
+            /*
+            query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    for object in objects! {
+                        let appObject:AppUser?=object as? AppUser;
+                        array.append(appObject)
+                    }
+                }
+
+            }*/
+            
+        } else {
+            print("Current user is not authorized to add members.");
+        }
+        return array
+    }
+
 }

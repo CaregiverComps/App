@@ -12,12 +12,15 @@ class Essentials : PFObject,PFSubclassing {
     let KEY_TEXT:String = "TEXT";
     let KEY_NAME:String = "TEAMNAME";
     let KEY_MARKED: String = "MARKED";
+    let KEY_DELETABLE: String = "DELETABLE";
     let KEY_LEVEL:String = "ACCESSLEVEL";
     var LEVEL:AccessLevel = AccessLevel();
     
     var text:String = "";
     var name:String = "";
     var marked:Bool = false;
+    var deletable:Bool = false;
+    
     
     
     
