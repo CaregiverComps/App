@@ -19,6 +19,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     var isFilteredView = false
     var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
+    
 
     
     required init(coder aDecoder:NSCoder)
@@ -82,18 +83,45 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        let allTrue = AccessLevel();
-        allTrue.setInitialValues(true, legal: true, medical: false, personal: true, admin: true);
-        let query:PFQuery
+        var displayAccessLevel = AccessLevel();
+        
+        
+            var query:PFQuery
+
+        if (isFilteredView == false){
+            
+            if let user=AppUser.currentUser() as AppUser? {
+                
+                // Why are these all false?
+                var userLevel = user.getCaregiverAccessLevel()
+                print(userLevel.getLocalMedicalAccess())
+                print(userLevel.getLocalFinancialAccess())
+                print(userLevel.getLocalLegalAccess())
+                print(userLevel.getLocalPersonalAccess())
+
+
+                displayAccessLevel = userLevel
+            }
+            
+            else{
+                displayAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+
+            }
+        }
+        
+        else{
+            displayAccessLevel = self.filterAccessLevel
+        }
+        
         
         
         if let user=AppUser.currentUser() as AppUser? {
             if (isFilteredView) {
-                query=NFObject.getNewsfeedFor(user, categories: self.filterAccessLevel);
+                query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
                 isFilteredView = !isFilteredView
             }
             else {
-                query=NFObject.getNewsfeedFor(user, categories: allTrue);
+                query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
                 
             }
         }
@@ -101,7 +129,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            query=NFObject.getNewsfeedFor(nouser, categories: allTrue)
+            query=NFObject.getNewsfeedFor(nouser, categories: displayAccessLevel)
         }
         query.limit = self.limit
         query.orderByDescending("createdAt")
@@ -109,7 +137,7 @@ class NewsFeedViewController: PFQueryTableViewController {
 
         return query
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
         
@@ -322,8 +350,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
             
-            // TODO: reset filter here
-            let filteredSet:AccessLevel=self.filterAccessLevel;
+           self.loadObjects()
+            
             
             
             print("Block for button: \(button.titleLabel?.text)")
@@ -468,7 +496,6 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
                 self.popupController.dismissPopupControllerAnimated(true)
                 
-                // DO IT HERE STEPHEN
                 self.updateAfterPosting = true
                 
                 
