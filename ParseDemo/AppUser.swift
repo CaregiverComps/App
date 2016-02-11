@@ -216,12 +216,12 @@ class AppUser : PFUser {
                     let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
                     let id=appAccess?.objectId;
                     appObject?.accessLevel=try query2.getObjectWithId(id!) as! AccessLevel;
-                    print("Result:",appObject?.accessLevel)
+                   // print("Result:",appObject?.accessLevel)
                     //appObject?.setCaregiverAccessLevel(result)
                     //appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
                     
-                    print(appObject?.username)
-                    print(appObject?.accessLevel)
+                    //print(appObject?.username)
+                   // print(appObject?.accessLevel)
                     array.append(appObject)
                 }
             }

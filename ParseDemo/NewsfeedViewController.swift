@@ -96,10 +96,10 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
                 // Why are these all false?
                 var userLevel = user.getCaregiverAccessLevel()
-                print(userLevel.getMedicalAccess())
-                print(userLevel.getFinancialAccess())
-                print(userLevel.getLegalAccess())
-                print(userLevel.getPersonalAccess())
+               // print(userLevel.getMedicalAccess())
+                //print(userLevel.getFinancialAccess())
+                //print(userLevel.getLegalAccess())
+                //print(userLevel.getPersonalAccess())
 
 
                 displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
