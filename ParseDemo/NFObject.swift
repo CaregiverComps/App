@@ -77,48 +77,61 @@ class NFObject : PFObject,PFSubclassing {
     
     static func getNewsfeedFor(user:AppUser, categories:AccessLevel) -> PFQuery {
         let query=PFQuery(className: parseClassName());
-        
         let teamName:String=user.getTeamName();
         let access:AccessLevel=user.getCaregiverAccessLevel();
         
-        let query2=PFQuery(className: "AccessLevel");
+        var query2=PFQuery(className: "AccessLevel");
         let medicalBool:Bool=access.getMedicalAccess();
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
         
-        // Checking filter category
-        /*
-        if (categories.getLocalMedicalAccess()) {
-            query2.whereKey("medical", equalTo: true);
-        }
-        if (categories.getLocalLegalAccess()) {
-            query2.whereKey("legal", equalTo: true);
-        }
-        if (categories.getLocalFinancialAccess()) {
-            query2.whereKey("financial", equalTo: true);
-        }
-        if (categories.getLocalPersonalAccess()) {
-            query2.whereKey("personal", equalTo: true);
-        }
-        */
         // User's access level
-        if (!medicalBool) {
+        if (!medicalBool || !categories.getLocalMedicalAccess()) {
             query2.whereKey("medical", equalTo: false);
         }
         
-        if (!legalBool) {
+        if (!legalBool || !categories.getLocalLegalAccess()) {
             query2.whereKey("legal", equalTo: false);
         }
-        if (!finanBool) {
+        if (!finanBool || !categories.getLocalFinancialAccess()) {
             query2.whereKey("financial", equalTo: false);
         }
-        if (!persBool) {
+        if (!persBool || !categories.getLocalPersonalAccess()) {
             query2.whereKey("personal", equalTo: false);
         }
+/*
+
+        // Checking filter category
+        if (categories.getLocalMedicalAccess() && medicalBool) {
+            let medicalFilter=PFQuery(className: "AccessLevel");
+            medicalFilter.whereKey("medical", equalTo: true);
+            query2 = PFQuery.orQueryWithSubqueries([query2, medicalFilter]);
+            print("got medical stuff");
+        }
+        if (categories.getLocalLegalAccess() && legalBool) {
+            let legalFilter=PFQuery(className: "AccessLevel");
+            legalFilter.whereKey("legal", equalTo: true);
+            query2 = PFQuery.orQueryWithSubqueries([query2, legalFilter]);
+            print("got legal stuff");
+        }
+        if (categories.getLocalFinancialAccess() && finanBool) {
+            let financialFilter=PFQuery(className: "AccessLevel");
+            financialFilter.whereKey("financial", equalTo: true);
+            query2 = PFQuery.orQueryWithSubqueries([query2, financialFilter]);
+            print("got financial stuff");
+        }
+        if (categories.getLocalPersonalAccess() && persBool) {
+            let personalFilter=PFQuery(className: "AccessLevel");
+            personalFilter.whereKey("personal", equalTo: true);
+            query2 = PFQuery.orQueryWithSubqueries([query2, personalFilter]);
+            print("got personal stuff");
+        }
+*/
+
         //query2.whereKey("admin", equalTo: access.getAdminAccess());
         query.whereKey("TEAMNAME", equalTo: teamName);
-        print("team name", teamName);
+        //print("team name", teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
 
         return query;
