@@ -108,15 +108,15 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         //        if let pfObject = object {
         
-        var image:NSData?=object!["IMAGE"] as? NSData;
+        //var image:NSData?=object!["IMAGE"] as? NSData;
         // there is an image
-        if let imgData=image as NSData?{
+        //if let imgData=image as NSData?{
            // cell = tableView.dequeueReusableCellWithIdentifier("newsImageCell") as? NewsFeedTableViewImageCell
             
-        }
+        //}
             
             // there is no image
-        else{
+        //else{
             
             cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
             
@@ -140,7 +140,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             cell?.textLabel?.numberOfLines = 0
             return cell;
 
-        }
+       // }
             return nil
         
         

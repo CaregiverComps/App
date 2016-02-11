@@ -55,7 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Run a spinner to show a task in progress
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
-            print("about to login")
+           // print("about to login")
             // Send a request to login
             AppUser.login(username!, password: password!, block: { (user, error) -> Void in
                 

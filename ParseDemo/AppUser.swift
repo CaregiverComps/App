@@ -58,14 +58,14 @@ class AppUser : PFUser {
     }
     
     func update() {
-        print("UPDATING ACCESS LEVEL ", self.accessLevel);
+       //print("UPDATING ACCESS LEVEL ", self.accessLevel);
         self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
         self.setValue(self.teamName, forKey: KEY_TEAMNAME);
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
-                print("OBJECT SUCCESSFULLY SAVED");
+               // print("OBJECT SUCCESSFULLY SAVED");
             } else {
                 // There was a problem, check error.description
             }
@@ -89,9 +89,9 @@ class AppUser : PFUser {
         //use name, password to query database and return the user object associated with it
         if let currentuser = super.currentUser() as PFUser? {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
-            print(accessID)
+          //  print(accessID)
             let id=accessID.objectId;
-            print("ID?",id)
+           // print("ID?",id)
             let query=PFQuery(className: "AccessLevel");
 
             /*
@@ -125,14 +125,14 @@ class AppUser : PFUser {
                 let result=try query.getObjectWithId(id!);
                 let usrname=currentuser.username;
                 let level:AccessLevel=result as! AccessLevel;
-                print(level)
+            //    print(level)
                 let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
-                print(teamname);
+               // print(teamname);
                 let pass=currentuser.password;
-                print(usrname);
-                print(pass);
+               // print(usrname);
+              //  print(pass);
                 let email=currentuser.email;
-                print(email);
+               // print(email);
                 let realCurrentuser=AppUser();
                 realCurrentuser.setInitialValues(currentuser.username!, password: "", email: email!, teamname: teamname, accessLevel: level);
                 
