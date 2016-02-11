@@ -41,14 +41,35 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
-        if (categories.count > 0) {
-            cell.textLabel?.text = self.categories[indexPath.row] as String
+        let thisCategory:String = self.categories[indexPath.row]
+        cell.textLabel?.text = thisCategory
+        var access:Bool=false
+
+        
+            let userAccessLevel = passedValue.getCaregiverAccessLevel();
+            print(passedValue.username)
+            print(userAccessLevel.getPersonalAccess())
+        print(userAccessLevel.getLegalAccess())
+
+            if (thisCategory == "Personal") {
+                access = userAccessLevel.getPersonalAccess();
+                print("getting personal")
+            }
+            if (thisCategory == "Legal") {
+                access = userAccessLevel.getLegalAccess();
+                print("getting legal")
+            }
+            if (thisCategory == "Financial") {
+                access = userAccessLevel.getFinancialAccess();
+            }
+            if (thisCategory == "Medical") {
+                access = userAccessLevel.getMedicalAccess();
+            }
             
-            
-        }
+        //print("Access for "+thisCategory+" is "+access)
 
         let enabledSwitch = UISwitch() as UISwitch
-//        enabledSwitch.on = false
+      enabledSwitch.on = access
         cell.accessoryView = enabledSwitch
         return cell
     }

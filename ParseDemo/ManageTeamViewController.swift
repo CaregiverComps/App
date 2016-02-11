@@ -66,6 +66,8 @@ class ManageTeamViewController: UITableViewController {
         for user in team {
             if (user?.username! == name) {
                 self.userSelected=user!
+                print(self.userSelected.username!)
+                print("*:", self.userSelected.getCaregiverAccessLevel())
             }
         }
         performSegueWithIdentifier("ShowUserSegue", sender: self)
