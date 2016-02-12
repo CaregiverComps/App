@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HTPressableButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>46B29C49A6622C2D9A2EBA018D8FFCCC</key>
+		<key>17D25E202F7806A8C488DD9254B2C946</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4533C462D117C79319BDE87BD432F5A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,27 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54F7935FCDBD3E29AA5E934273D1DC6A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7571FC0DC3B5C81D584F01F31A51DF6D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8D5127E98DA500721D42EF4C07BEE9C</key>
+		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
+		<key>CEB7AE49B829349DE72DDDE1F6A0F31A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

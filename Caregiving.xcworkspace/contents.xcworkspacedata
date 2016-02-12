@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:KMPlaceholderTextView.swift">
+   </FileRef>
+   <FileRef
       location = "group:Caregiving.xcodeproj">
    </FileRef>
    <FileRef

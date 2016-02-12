@@ -1022,7 +1022,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Post_Icon.png"/>
                                 <connections>
-                                    <action selector="addEntryTouch:" destination="eUm-ev-l2i" eventType="touchUpInside" id="zFQ-sp-1TE"/>
+                                    <segue destination="cQH-kp-GhZ" kind="presentation" id="P82-0Q-yJS"/>
                                 </connections>
                             </button>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1032,6 +1032,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wn-PW-B5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="348" y="1459"/>
+        </scene>
+        <!--New Entry-->
+        <scene sceneID="0ME-A8-rgE">
+            <objects>
+                <viewController id="O5g-Y1-q0a" customClass="TextEntryViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pdz-Ke-aww"/>
+                        <viewControllerLayoutGuide type="bottom" id="rny-9Q-nCO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F0F-sC-XeV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-fK-c4k">
+                                <rect key="frame" x="10" y="182" width="579" height="281"/>
+                                <color key="backgroundColor" red="0.50980392159999999" green="0.52549019610000003" blue="0.53333333329999999" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What would you like to share with other caregivers?"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGv-w3-nyP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="89"/>
+                                <color key="backgroundColor" red="0.50980392159999999" green="0.52549019610000003" blue="0.53333333329999999" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eGv-w3-nyP" firstAttribute="top" secondItem="Pdz-Ke-aww" secondAttribute="bottom" id="F0o-MY-Rn7"/>
+                            <constraint firstItem="rny-9Q-nCO" firstAttribute="top" secondItem="2wR-fK-c4k" secondAttribute="bottom" constant="137" id="GEA-wf-3Le"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2wR-fK-c4k" secondAttribute="trailing" constant="-8" id="Maq-Ce-HwP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eGv-w3-nyP" secondAttribute="trailing" constant="-20" id="TmV-Or-YVK"/>
+                            <constraint firstItem="2wR-fK-c4k" firstAttribute="top" secondItem="Pdz-Ke-aww" secondAttribute="bottom" constant="118" id="bGm-Qj-6Oa"/>
+                            <constraint firstItem="2wR-fK-c4k" firstAttribute="leading" secondItem="F0F-sC-XeV" secondAttribute="leadingMargin" constant="-8" id="gth-W8-jwq"/>
+                            <constraint firstItem="2wR-fK-c4k" firstAttribute="top" secondItem="eGv-w3-nyP" secondAttribute="bottom" constant="29" id="hgC-yc-aiL"/>
+                            <constraint firstItem="eGv-w3-nyP" firstAttribute="leading" secondItem="F0F-sC-XeV" secondAttribute="leadingMargin" constant="-20" id="rfY-P5-5tb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Entry" id="bG3-nx-TSO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vel-gU-dA9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelButton:" destination="O5g-Y1-q0a" id="12M-II-5It"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="mia-sI-dDf">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="postButton:" destination="O5g-Y1-q0a" id="dzz-P0-H7e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="butttonView" destination="eGv-w3-nyP" id="AVf-23-NlP"/>
+                        <outlet property="textView" destination="2wR-fK-c4k" id="Lzc-ey-P6Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9lv-zU-Dau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1328" y="2240"/>
         </scene>
         <!--Essentials-->
         <scene sceneID="j5H-rY-xCe">
@@ -1109,6 +1170,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtX-dH-zqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-396" y="1447"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MZb-vD-lcR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cQH-kp-GhZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iU7-wF-bBr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O5g-Y1-q0a" kind="relationship" relationship="rootViewController" id="HYF-Yp-QXa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a06-ei-gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="2240"/>
         </scene>
     </scenes>
     <resources>
