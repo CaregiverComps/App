@@ -86,18 +86,18 @@ class NFObject : PFObject,PFSubclassing {
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
         
-        // User's access level
-        if (!medicalBool || !categories.getLocalMedicalAccess()) {
+        // Check user's access level and teamname
+        if (teamName == "" || !medicalBool || !categories.getLocalMedicalAccess()) {
             query2.whereKey("medical", equalTo: false);
         }
         
-        if (!legalBool || !categories.getLocalLegalAccess()) {
+        if (teamName == "" || !legalBool || !categories.getLocalLegalAccess()) {
             query2.whereKey("legal", equalTo: false);
         }
-        if (!finanBool || !categories.getLocalFinancialAccess()) {
+        if (teamName == "" || !finanBool || !categories.getLocalFinancialAccess()) {
             query2.whereKey("financial", equalTo: false);
         }
-        if (!persBool || !categories.getLocalPersonalAccess()) {
+        if (teamName == "" || !persBool || !categories.getLocalPersonalAccess()) {
             query2.whereKey("personal", equalTo: false);
         }
 /*
