@@ -157,20 +157,33 @@ class AppUser : PFUser {
     static func deleteUserFromTeam(username:String) {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
-            let query=PFQuery(className: parseClassName());
+            let query = PFUser.query()!;
             query.whereKey("username", equalTo: username);
+            //query.whereKey("TEAMNAME", equalTo: currentUser.getTeamName());
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     let userToDelete = objects![0] as! AppUser;
-                    if (userToDelete.getTeamName() == currentUser.getTeamName()) {
+                    PFCloud.callFunctionInBackground("deleteUserFromTeam", withParameters: ["username":username]) { results, error in
+                        if error != nil {
+                            // Your error handling here
+                            print("error :(")
+                        } else {
+                            // Deal with your results (votes in your case) here.
+                            print("successfully deleted")
+                        }
+                    }
+                    print(userToDelete)
+                    //print("Deleted user's team:",userToDelete.getTeamName())
+                    //print("Admin's user team",currentUser.getTeamName())
+                    //if (userToDelete.getTeamName() == currentUser.getTeamName()) {
                         // Teamcode required to have length of at least one
                         userToDelete.setValue("", forKey: KEY_TEAMNAME);
                         userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
                         userToDelete.update();
-                    }
-                    else {
-                        print("Could not find user with that name.");
-                    }
+                    //}
+                    //else {
+                    //    print("Could not find user with that name.");
+                    //}
                 }
             }
         } else {
@@ -181,7 +194,7 @@ class AppUser : PFUser {
     static func addUserToTeam(username:String) {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
-            let query=PFQuery(className: parseClassName());
+            let query = PFUser.query()!;
             query.whereKey("username", equalTo: username);
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
