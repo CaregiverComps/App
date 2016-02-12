@@ -83,6 +83,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
+
         var displayAccessLevel = AccessLevel();
         
         
@@ -121,6 +122,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             else {
                 query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
                 
+
             }
         }
         else {
@@ -348,8 +350,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
             
+
            self.loadObjects()
-            
             
             
             print("Block for button: \(button.titleLabel?.text)")
@@ -499,7 +501,7 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
             }
             
-                    }
+        }
         
         
         let titleLabel = UILabel()
@@ -564,6 +566,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         if(filterAccessLevel.bMedical == false){
             
             filterAccessLevel.setMedicalAccess(true)
+            NSLog(String(filterAccessLevel.getMedicalAccess()))
+            NSLog(String(filterAccessLevel.getFinancialAccess()))
 //            
             let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
             sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
@@ -573,8 +577,13 @@ class NewsFeedViewController: PFQueryTableViewController {
         else{
             filterAccessLevel.setMedicalAccess(false)
             
+
+            
+            
+
             let personalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
             sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+
         }
         
     }
