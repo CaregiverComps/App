@@ -90,11 +90,9 @@ class NewsFeedViewController: PFQueryTableViewController {
             var query:PFQuery
 
         if (isFilteredView == false){
-            
-            print("isFilteredView is false")
-            
+        
             if let user=AppUser.currentUser() as AppUser? {
-                
+        
                 // Why are these all false?
                 let userLevel = user.getCaregiverAccessLevel()
 

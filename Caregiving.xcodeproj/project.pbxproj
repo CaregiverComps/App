@@ -10,7 +10,6 @@
 		1E9D3F0D8CADE00D77A2A22F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53323EFBD36C653380A77 /* libPods.a */; };
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
-		3122C6751C6CF8EA008FE477 /* blankbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3122C6741C6CF8EA008FE477 /* blankbox.png */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		91863D391C691179005C6C58 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D381C691179005C6C58 /* MoreViewController.swift */; };
@@ -74,7 +73,6 @@
 /* Begin PBXFileReference section */
 		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
 		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
-		3122C6741C6CF8EA008FE477 /* blankbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blankbox.png; path = ../blankbox.png; sourceTree = "<group>"; };
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
 				E20C73271C627D3D005CB7BC /* Medical_Button_Icon.png */,
-				3122C6741C6CF8EA008FE477 /* blankbox.png */,
 				E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */,
 				E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */,
 				E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */,
@@ -404,7 +401,6 @@
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
-				3122C6751C6CF8EA008FE477 /* blankbox.png in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
@@ -477,12 +473,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9489BC91C4C269600F455EE /* AppUser.swift in Sources */,
-
 				3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */,
-
 				91863D391C691179005C6C58 /* MoreViewController.swift in Sources */,
 				91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */,
-
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,

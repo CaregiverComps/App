@@ -38,7 +38,26 @@ class EssentialsViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        var query : PFQuery = PFQuery(className: self.parseClassName!)
+        let displayAccessLevel=AccessLevel()
+        let query:PFQuery
+        if let user=AppUser.currentUser() as AppUser? {
+            
+            // Why are these all false?
+            let userLevel = user.getCaregiverAccessLevel()
+            
+            
+            displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
+             query = Essentials.getEssentialsFor(user, categories: displayAccessLevel)
+
+        }
+            
+        else{
+            let noUser=AppUser()
+            displayAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+            query = Essentials.getEssentialsFor(noUser, categories: displayAccessLevel)
+
+            
+        }
         return query
     }
     
@@ -46,7 +65,7 @@ class EssentialsViewController: PFQueryTableViewController {
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        var image : UIImage = UIImage(named: "blankbox")!
+        var image : UIImage = UIImage(named: "Personal_Button_Icon")!
         cell!.checkbox.image = image
         cell!.cellText.text = object!["TEXT"] as? String
         
@@ -166,7 +185,7 @@ class EssentialsViewController: PFQueryTableViewController {
                     
                     
                     //right now object inherits user access level, front end needs to add accesslevel configurations
-                    object.setInitialValues(textView.text!, teamName: user.getTeamName(),level: newAccessLevel)
+                    object.setInitialValues(textView.text!, teamName: user.getTeamName(),level: newAccessLevel, Deletable: false)
                     object.update();
                 }
                 

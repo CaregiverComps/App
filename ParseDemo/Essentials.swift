@@ -38,11 +38,12 @@ class Essentials : PFObject,PFSubclassing {
         super.init();
     }
     
-    func setInitialValues(starterText:String, teamName:String, level:AccessLevel) {
+    func setInitialValues(starterText:String, teamName:String, level:AccessLevel, Deletable:Bool) {
         self.text=starterText;
         self.name=teamName;
         self.marked = false;
         self.LEVEL=level;
+        self.deletable=Deletable
     }
     
     func update() {
@@ -50,7 +51,8 @@ class Essentials : PFObject,PFSubclassing {
         self.setValue(self.text, forKey: KEY_TEXT);
         self.setValue(self.name, forKey: KEY_NAME);
         self.setValue(self.marked, forKey: KEY_MARKED);
-        
+        self.setValue(self.deletable, forKey:  "HARDCODED");
+        print("updated deletable")
         self.setObject(self.LEVEL,forKey: KEY_LEVEL);
         
         self.saveInBackgroundWithBlock {
@@ -79,6 +81,43 @@ class Essentials : PFObject,PFSubclassing {
     static func parseClassName() -> String {
         return "Essentials";
     }
+    
+    static func getEssentialsFor(user:AppUser, categories:AccessLevel) -> PFQuery {
+        var query=PFQuery(className: parseClassName());
+        let teamName:String=user.getTeamName();
+        let access:AccessLevel=user.getCaregiverAccessLevel();
+        
+        var query2=PFQuery(className: "AccessLevel");
+        let medicalBool:Bool=access.getMedicalAccess();
+        let legalBool:Bool=access.getLegalAccess();
+        let persBool:Bool=access.getPersonalAccess();
+        let finanBool:Bool=access.getFinancialAccess();
+        
+        // Check user's access level and teamname
+        if (teamName == "" || !medicalBool || !categories.getLocalMedicalAccess()) {
+            query2.whereKey("medical", equalTo: false);
+        }
+        
+        if (teamName == "" || !legalBool || !categories.getLocalLegalAccess()) {
+            query2.whereKey("legal", equalTo: false);
+        }
+        if (teamName == "" || !finanBool || !categories.getLocalFinancialAccess()) {
+            query2.whereKey("financial", equalTo: false);
+        }
+        if (teamName == "" || !persBool || !categories.getLocalPersonalAccess()) {
+            query2.whereKey("personal", equalTo: false);
+        }
+        
+        // Get hardcoded essentials
+        let hardcoded=PFQuery(className: parseClassName());
+        hardcoded.whereKey("deletable", equalTo: false);
+        query = PFQuery.orQueryWithSubqueries([query, hardcoded]);
+        query.whereKey("TEAMNAME", equalTo: teamName);
+        query.whereKey("ACCESSLEVEL", matchesQuery: query2);
+        
+        return query;
+    }
+
     
     
     
