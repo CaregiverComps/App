@@ -12,6 +12,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     var popupController:CNPPopupController = CNPPopupController()
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
     let cellIdentifier:String = "NewsCell"
     var limit = 10;
     var entryFilterSet = false
@@ -44,6 +45,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         if let user=AppUser.currentUser() as AppUser? {
             var userLevel = user.getCaregiverAccessLevel()
             filterAccessLevel = userLevel.createCopy()
+            navigationBar.title = user.getTeamName() + " Feed";
         }
         
         
