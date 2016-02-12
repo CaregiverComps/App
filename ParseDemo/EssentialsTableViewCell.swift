@@ -11,6 +11,8 @@ import UIKit
 class EssentialsTableViewCell: PFTableViewCell {
     @IBOutlet weak var checkbox: UIImageView!
 
+    @IBOutlet weak var cellText: UILabel!
+    @IBOutlet weak var cardView: UIView!
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

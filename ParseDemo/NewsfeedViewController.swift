@@ -505,7 +505,7 @@ class NewsFeedViewController: PFQueryTableViewController {
                 
             }
             
-                    }
+        }
         
         
         let titleLabel = UILabel()
