@@ -15,7 +15,10 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     let categories = ["Personal","Legal","Financial","Medical"]
     var passedValue:AppUser = AppUser();
     
-    
+    @IBOutlet weak var deleteUser: UIButton!
+    @IBAction func deleteUser(sender: UIButton) {
+        AppUser.deleteUserFromTeam(passedValue.username!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.userNameLabel.text = self.passedValue
@@ -46,30 +49,24 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
         var access:Bool=false
 
         
-            let userAccessLevel = passedValue.getCaregiverAccessLevel();
-            print(passedValue.username)
-            print(userAccessLevel.getPersonalAccess())
-        print(userAccessLevel.getLegalAccess())
+        let userAccessLevel = passedValue.getCaregiverAccessLevel();
 
-            if (thisCategory == "Personal") {
-                access = userAccessLevel.getPersonalAccess();
-                print("getting personal")
-            }
-            if (thisCategory == "Legal") {
-                access = userAccessLevel.getLegalAccess();
-                print("getting legal")
-            }
-            if (thisCategory == "Financial") {
-                access = userAccessLevel.getFinancialAccess();
-            }
-            if (thisCategory == "Medical") {
-                access = userAccessLevel.getMedicalAccess();
-            }
-            
-        //print("Access for "+thisCategory+" is "+access)
+        if (thisCategory == "Personal") {
+            access = userAccessLevel.getPersonalAccess();
+        }
+        if (thisCategory == "Legal") {
+            access = userAccessLevel.getLegalAccess();
+        }
+        if (thisCategory == "Financial") {
+            access = userAccessLevel.getFinancialAccess();
+        }
+        if (thisCategory == "Medical") {
+            access = userAccessLevel.getMedicalAccess();
+        }
+
 
         let enabledSwitch = UISwitch() as UISwitch
-      enabledSwitch.on = access
+        enabledSwitch.on = access
         cell.accessoryView = enabledSwitch
         return cell
     }

@@ -157,31 +157,36 @@ class AppUser : PFUser {
     static func deleteUserFromTeam(username:String) {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
-            let query=PFQuery(className: parseClassName());
+            let query = PFUser.query()!;
             query.whereKey("username", equalTo: username);
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     let userToDelete = objects![0] as! AppUser;
-                    if (userToDelete.getTeamName() == currentUser.getTeamName()) {
-                        // Teamcode required to have length of at least one
-                        userToDelete.setValue("", forKey: KEY_TEAMNAME);
-                        userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
-                        userToDelete.update();
+                    // Use cloud to modify team member's teamname to "" (Since all valid teamnames have length >= 1)
+                    PFCloud.callFunctionInBackground("deleteUserFromTeam", withParameters: ["username":username]) { results, error in
+                        if error != nil {
+                            // Your error handling here
+                            print("error :(")
+                        } else {
+                            // Deal with your results (votes in your case) here.
+                            print("successfully deleted")
+                        }
                     }
-                    else {
-                        print("Could not find user with that name.");
-                    }
+                    // Update deleted user's access level to all false
+                    userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
+                    userToDelete.getCaregiverAccessLevel().update();
                 }
             }
         } else {
             print("Current user is not authorized to remove members.");
         }
     }
-    
+    /*
+    /////This needs to be pushed to cloud in version two
     static func addUserToTeam(username:String) {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
-            let query=PFQuery(className: parseClassName());
+            let query = PFUser.query()!;
             query.whereKey("username", equalTo: username);
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
@@ -199,7 +204,8 @@ class AppUser : PFUser {
         } else {
             print("Current user is not authorized to add members.");
         }
-    }
+    }*/
+    
     func getTeamMembers() -> [AppUser?] {
         
         var array:[AppUser?] = [AppUser?]()
