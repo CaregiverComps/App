@@ -26,6 +26,7 @@ class TextEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.textView.becomeFirstResponder()
         
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
 
