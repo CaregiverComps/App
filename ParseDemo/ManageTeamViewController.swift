@@ -19,7 +19,8 @@ class ManageTeamViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        if (teamList.count>0) {
+        
+        if (team.count>0) {
             noTeamMemberLabel.hidden = true
         }
         //pseudocode
