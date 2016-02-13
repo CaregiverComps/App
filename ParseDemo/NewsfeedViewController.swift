@@ -231,11 +231,11 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
 
-    @IBAction func addEntryTouch(sender: AnyObject) {
-        print("entry test")
-        self.showEntryPopupWithStyle(CNPPopupStyle.Centered)
-        entryFilterSet = false
-    }
+//    @IBAction func addEntryTouch(sender: AnyObject) {
+//        print("entry test")
+////        self.showEntryPopupWithStyle(CNPPopupStyle.Centered)
+////        entryFilterSet = false
+//    }
     
     func showFilterPopupWithStyle(popupStyle: CNPPopupStyle) {
         
