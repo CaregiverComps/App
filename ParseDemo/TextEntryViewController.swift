@@ -94,10 +94,14 @@ class TextEntryViewController: UIViewController {
             self.postAccessLevel.setFinancialAccess(false)
             self.postAccessLevel.setLegalAccess(false)
             self.postAccessLevel.setPersonalAccess(false)
-            sender.buttonColor  = UIColor.ht_grapeFruitDarkColor()
+            sender.buttonColor  = UIColor.ht_pomegranateColor()
+            sender.shadowColor = UIColor.ht_pomegranateColor()
             financialButton.buttonColor = UIColor.ht_mintColor()
+            financialButton.shadowColor = UIColor.ht_mintDarkColor()
             legalButton.buttonColor = UIColor.ht_aquaColor()
+            legalButton.shadowColor = UIColor.ht_aquaDarkColor()
             personalButton.buttonColor = UIColor.ht_lemonColor()
+            personalButton.shadowColor = UIColor.ht_lemonDarkColor()
             
             
         }
@@ -105,6 +109,7 @@ class TextEntryViewController: UIViewController {
         else{
             self.postAccessLevel.setMedicalAccess(false)
             sender.buttonColor  = UIColor.ht_grapeFruitColor()
+            sender.shadowColor = UIColor.ht_grapeFruitDarkColor()
         }
         
         postFilterSet = true
@@ -118,15 +123,20 @@ class TextEntryViewController: UIViewController {
             postAccessLevel.setLegalAccess(false)
             postAccessLevel.setPersonalAccess(false)
             
-            sender.buttonColor = UIColor.ht_mintDarkColor()
+            sender.buttonColor = UIColor.ht_nephritisColor()
+            sender.shadowColor = UIColor.ht_nephritisColor()
             medicalButton.buttonColor = UIColor.ht_grapeFruitColor()
+            medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
             legalButton.buttonColor = UIColor.ht_aquaColor()
+            legalButton.shadowColor = UIColor.ht_aquaDarkColor()
             personalButton.buttonColor = UIColor.ht_lemonColor()
+            personalButton.shadowColor = UIColor.ht_lemonDarkColor()
         }
         
         else{
             self.postAccessLevel.setFinancialAccess(false)
             sender.buttonColor = UIColor.ht_mintColor()
+            sender.shadowColor = UIColor.ht_mintDarkColor()
         }
         
         
@@ -141,16 +151,22 @@ class TextEntryViewController: UIViewController {
             postAccessLevel.setLegalAccess(true)
             postAccessLevel.setPersonalAccess(false)
             
-            sender.buttonColor = UIColor.ht_aquaDarkColor()
+            sender.buttonColor = UIColor.ht_belizeHoleColor()
+            sender.shadowColor = UIColor.ht_belizeHoleColor()
             medicalButton.buttonColor = UIColor.ht_grapeFruitColor()
+            medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
             financialButton.buttonColor = UIColor.ht_mintColor()
+            financialButton.shadowColor = UIColor.ht_mintDarkColor()
             personalButton.buttonColor = UIColor.ht_lemonColor()
+            personalButton.shadowColor = UIColor.ht_lemonDarkColor()
+            
             
         }
         
         else{
             self.postAccessLevel.setLegalAccess(false)
             sender.buttonColor = UIColor.ht_aquaColor()
+            sender.shadowColor = UIColor.ht_aquaDarkColor()
         }
         
         
@@ -165,16 +181,21 @@ class TextEntryViewController: UIViewController {
             postAccessLevel.setLegalAccess(false)
             postAccessLevel.setPersonalAccess(true)
             
-            sender.buttonColor = UIColor.ht_lemonDarkColor()
+            sender.buttonColor = UIColor.ht_citrusColor()
+            sender.shadowColor = UIColor.ht_citrusColor()
             medicalButton.buttonColor = UIColor.ht_grapeFruitColor()
+            medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
             financialButton.buttonColor = UIColor.ht_mintColor()
+            financialButton.shadowColor = UIColor.ht_mintDarkColor()
             legalButton.buttonColor = UIColor.ht_aquaColor()
+            legalButton.shadowColor = UIColor.ht_aquaDarkColor()
             
         }
         
         else{
             self.postAccessLevel.setPersonalAccess(false)
             sender.buttonColor = UIColor.ht_lemonColor()
+            sender.shadowColor = UIColor.ht_lemonDarkColor()
         }
         
         
@@ -186,7 +207,9 @@ class TextEntryViewController: UIViewController {
     
     @IBAction func postButton(sender: AnyObject) {
         
-        if postFilterSet == true{
+        let filterSet = self.postAccessLevel.getLocalMedicalAccess() || self.postAccessLevel.getLocalLegalAccess() || self.postAccessLevel.getLocalFinancialAccess() || self.postAccessLevel.getLocalPersonalAccess()
+        
+        if postFilterSet == true && filterSet == true{
             
             if textView.text.isEmpty{
                 let alert = UIAlertController(title: "Wait", message: "Be sure to add text before posting", preferredStyle: UIAlertControllerStyle.Alert)
@@ -222,7 +245,7 @@ class TextEntryViewController: UIViewController {
             
         else{
             
-            let alert = UIAlertController(title: "Wait", message: "Be sure to add a filter before posting", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Wait", message: "Be sure to add a category before posting", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
