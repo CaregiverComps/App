@@ -82,10 +82,30 @@ class AccessLevel : PFObject,PFSubclassing{
     }
     
     // Retrieve from database
-    func getMedicalAccess() ->Bool {return valueForKey(KEY_MEDICAL) as! Bool;}
-    func getFinancialAccess() ->Bool {return valueForKey(KEY_FINANCIAL) as! Bool;}
-    func getLegalAccess() -> Bool {return valueForKey(KEY_LEGAL) as! Bool;}
-    func getPersonalAccess() ->Bool {return valueForKey(KEY_PERSONAL) as! Bool;}
+    func getMedicalAccess() ->Bool {
+        if let val=valueForKey(KEY_MEDICAL) as! Bool? {
+            return val;
+        }
+        return false;
+    }
+    func getFinancialAccess() ->Bool {
+        if let val=valueForKey(KEY_FINANCIAL) as! Bool? {
+            return val;
+        }
+        return false;
+    }
+    func getLegalAccess() -> Bool {
+        if let val=valueForKey(KEY_LEGAL) as! Bool? {
+            return val;
+        }
+        return false;
+    }
+    func getPersonalAccess() ->Bool {
+        if let val=valueForKey(KEY_PERSONAL) as! Bool? {
+            return val;
+        }
+        return false;
+    }
     
     // Retrieve locally
     func getLocalMedicalAccess() ->Bool {return self.bMedical;}

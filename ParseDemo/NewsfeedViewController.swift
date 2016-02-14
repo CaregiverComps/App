@@ -32,7 +32,23 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func viewDidLoad() {
+        print("View did load")
+        /*
+        if let user=AppUser.currentUser() {
+            print(user)
+            print(user.username)
+        }
+        else {
+            print("current user is nil")
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+
+            //let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+            //self.presentViewController(viewController, animated: true, completion: nil)
+            print("current user is nil2")
+        }
+*/
         super.viewDidLoad()
+        
         
         // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so 
         // I suppose we don't need pulling to refresh
@@ -48,15 +64,13 @@ class NewsFeedViewController: PFQueryTableViewController {
             navigationBar.title = user.getTeamName() + " Feed";
         }
         
-        
         tableView.separatorColor = UIColor.clearColor()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
         tableView.setNeedsLayout()
         tableView.layoutIfNeeded()
-        
-        
+
         // Add infinite scroll handler
         tableView.addInfiniteScrollWithHandler { (scrollView) -> Void in
             let tableView = scrollView as! UITableView
@@ -69,36 +83,28 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func checkForUpdates() {
-        
-        
-        
         if(updateAfterPosting == true){
             self.loadObjects()
             updateAfterPosting = false
             print("Updating for the post you just did")
-
         }
-        
         else{
 //            print("not checking because you didn't just post")
         }
     }
     
     override func queryForTable() -> PFQuery {
-
+        print("Query")
+        if AppUser.currentUser() == nil {
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
         var displayAccessLevel = AccessLevel();
-        print(AppUser.currentUser()?.username)
-        
-            var query:PFQuery
-
+        var query:PFQuery
         if (isFilteredView == false){
-        
             if let user=AppUser.currentUser() as AppUser? {
-        
                 // Why are these all false?
                 let userLevel = user.getCaregiverAccessLevel()
-
-
                 displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
             }
             
@@ -181,46 +187,34 @@ class NewsFeedViewController: PFQueryTableViewController {
        // }
             return nil
         
-        
-        
-        
-        
-        
-        
-        //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-        //        }
-        
-    }
-    
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//       
-//        let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
-//        
-//        
-//        
-////        if let pfObject = object {
-////            
-////            var numOfLines = cell?.textLabel?.numberOfLines
-//////            var test = cell?.textLabel?.text
-////            
-////            
-////            //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-////        }
-//        
-//        //TODO: Make this depend on what's in the cell.
-//        
-//        return 250
-//    }
 
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    }
-//    
-//    override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//
-//    }
-    
+    }
+    /*
+    override func viewWillAppear(animated: Bool) {
+        if let user=AppUser.currentUser() {
+            print("Checking keys")
+            let key1=user.getCaregiverAccessLevel().valueForKey("medical")
+            let key2=user.getCaregiverAccessLevel().valueForKey("legal")
+            let key3=user.getCaregiverAccessLevel().valueForKey("personal")
+            let key4=user.getCaregiverAccessLevel().valueForKey("financial")
+            if (key1 == nil) || (key2==nil) || (key3==nil) || (key4==nil) {
+                /*dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                    self.presentViewController(viewController, animated: true, completion: nil)
+                })*/
+            }
+
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                self.presentViewController(viewController, animated: true, completion: nil)
+            })
+        }
+    }
+*/
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

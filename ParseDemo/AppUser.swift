@@ -94,57 +94,21 @@ class AppUser : PFUser {
         //use name, password to query database and return the user object associated with it
         if let currentuser = super.currentUser() as PFUser? {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
-          //  print(accessID)
             let id=accessID.objectId;
-           // print("ID?",id)
+            print(id)
             let query=PFQuery(className: "AccessLevel");
-
-            /*
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                query.getObjectInBackgroundWithId(id!, block: {
-                    (result,error) -> Void in
-                    print("here???")
-                    ready=true;
-                    if (error == nil) {
-                        let usrname=currentuser.username;
-                        let level:AccessLevel=result as! AccessLevel;
-                        let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
-                        print("Teamname: "+teamname);
-                        let pass=currentuser.password;
-                        print(usrname);
-                        let email=currentuser.email;
-                        print(email);
-                        realCurrentuser.setInitialValues(currentuser.username!, password: "", email: email!, teamname: teamname, accessLevel: level);
-                        ready=true;
-                    }
-                });
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                          return realCurrentuser;
-                }
-            }
-        }
-*/
-        
             do {
                 let result=try query.getObjectWithId(id!);
-                let usrname=currentuser.username;
                 let level:AccessLevel=result as! AccessLevel;
-            //    print(level)
                 let teamname=currentuser.valueForKey(KEY_TEAMNAME) as! String;
-               // print(teamname);
-                let pass=currentuser.password;
-               // print(usrname);
-              //  print(pass);
                 let email=currentuser.email;
-               // print(email);
                 let realCurrentuser=AppUser();
                 realCurrentuser.setInitialValues(currentuser.username!, password: "", email: email!, teamname: teamname, accessLevel: level);
                 
                 return realCurrentuser;
             }
             catch {
-                print("ERROR");
+                print("Error in currentUser()");
             }
         }
         return nil;
@@ -212,14 +176,14 @@ class AppUser : PFUser {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
             let query:PFQuery = PFUser.query()!;
-            var query2=PFQuery(className: "AccessLevel");
+            let query2=PFQuery(className: "AccessLevel");
             query.whereKey("ACCESSLEVEL", matchesQuery: query2);
             query.whereKey("TEAMNAME", equalTo: self.getTeamName());
             do {
-                var objects:[PFObject]?=try query.findObjects()
+                let objects:[PFObject]?=try query.findObjects()
                 for object in objects! {
                     let appObject:AppUser?=object as? AppUser;
-                    let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
+                    let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as? AccessLevel
                     let id=appAccess?.objectId;
                     appObject?.accessLevel=try query2.getObjectWithId(id!) as! AccessLevel;
                    // print("Result:",appObject?.accessLevel)
@@ -232,7 +196,7 @@ class AppUser : PFUser {
                 }
             }
             catch {
-                print("error")
+                print("Error in getTeamMembers()")
             }
             /*
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in

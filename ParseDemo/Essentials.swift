@@ -87,7 +87,7 @@ class Essentials : PFObject,PFSubclassing {
         let teamName:String=user.getTeamName();
         let access:AccessLevel=user.getCaregiverAccessLevel();
         
-        var query2=PFQuery(className: "AccessLevel");
+        let query2=PFQuery(className: "AccessLevel");
         let medicalBool:Bool=access.getMedicalAccess();
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
@@ -117,8 +117,14 @@ class Essentials : PFObject,PFSubclassing {
         
         return query;
     }
-
     
+    // Helps copy hardcoded essentials into team's essentials list
+    func createCopy(teamname:String) -> Essentials{
+        let copyEssentials = Essentials();
+        copyEssentials.setInitialValues(self.valueForKey(KEY_TEXT) as! String,teamName: teamname, level: self.LEVEL, Deletable: false)
+        copyEssentials.update();
+        return copyEssentials;
+    }
     
     
     

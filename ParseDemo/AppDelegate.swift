@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Essentials.registerSubclass();
         NFObject.registerSubclass();
         LocalResources.registerSubclass();
-        Parse.enableLocalDatastore()
+        //Parse.enableLocalDatastore()
         
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
