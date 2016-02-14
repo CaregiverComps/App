@@ -21,8 +21,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
     
-
-    
     required init(coder aDecoder:NSCoder)
     {
         super.init(coder: aDecoder)!
@@ -31,8 +29,21 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.parseClassName = "NFObject"
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        if (AppUser.currentUser() == nil) {
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                
+//                print("IN here")
+//                
+//                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+//                self.presentViewController(viewController, animated: true, completion: nil)
+//            })
+//        }
         
         // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so 
         // I suppose we don't need pulling to refresh
@@ -192,34 +203,7 @@ class NewsFeedViewController: PFQueryTableViewController {
         
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//       
-//        let cell:NewsFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
-//        
-//        
-//        
-////        if let pfObject = object {
-////            
-////            var numOfLines = cell?.textLabel?.numberOfLines
-//////            var test = cell?.textLabel?.text
-////            
-////            
-////            //             cell?.cardView.frame = CGRectMake(10, 5, 300, [((NSNumber*)[cardSizeArray objectAtIndex:indexPath.row])intValue]-10);
-////        }
-//        
-//        //TODO: Make this depend on what's in the cell.
-//        
-//        return 250
-//    }
 
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    }
-//    
-//    override func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//
-//    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -232,22 +216,13 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
 
-//    @IBAction func addEntryTouch(sender: AnyObject) {
-//        print("entry test")
-////        self.showEntryPopupWithStyle(CNPPopupStyle.Centered)
-////        entryFilterSet = false
-//    }
-    
     func showFilterPopupWithStyle(popupStyle: CNPPopupStyle) {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
         paragraphStyle.alignment = NSTextAlignment.Center
         
-        let title = NSAttributedString(string: "Filter News Feed", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
-        let lineOne = NSAttributedString(string: "Select a filter below", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
-        //        let lineTwo = NSAttributedString(string: "With style, using NSAttributedString", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSForegroundColorAttributeName: UIColor.init(colorLiteralRed: 0.46, green: 0.8, blue: 1.0, alpha: 1.0), NSParagraphStyleAttributeName: paragraphStyle])
-        //
+        let title = NSAttributedString(string: "Filter Team Feed", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
         
         let doneButton = CNPPopupButton.init(frame: CGRectMake(0, 0, 100, 60))
         doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -256,69 +231,86 @@ class NewsFeedViewController: PFQueryTableViewController {
         doneButton.layer.cornerRadius = 4;
         doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
         
-        let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
         
-        if(filterAccessLevel.bMedical == false){
-            let medicalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
-            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+        
+        let medicalFilterButton = HTPressableButton.init(frame: CGRectMake(20, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
+        medicalFilterButton.setTitle("Medical", forState: UIControlState.Normal)
+
+        if(filterAccessLevel.getLocalMedicalAccess() == false){
+            medicalFilterButton.buttonColor = UIColor.ht_grapeFruitColor()
+            medicalFilterButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
         }
             
         else{
-            let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-            medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
+            medicalFilterButton.buttonColor  = UIColor.ht_pomegranateColor()
+            medicalFilterButton.shadowColor = UIColor.ht_pomegranateColor()
         }
         
         medicalFilterButton.addTarget(self, action: "medicalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
-        let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
         
-        if(filterAccessLevel.bFinancial == false){
-            let financialImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
-            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+        
+        let financialFilterButton = HTPressableButton.init(frame: CGRectMake(110, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
+        financialFilterButton.setTitle("Financial", forState: UIControlState.Normal)
+
+        
+        if(filterAccessLevel.getLocalFinancialAccess() == false){
+            financialFilterButton.buttonColor = UIColor.ht_mintColor()
+            financialFilterButton.shadowColor = UIColor.ht_mintDarkColor()
+            
         }
             
         else{
-            let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
-            financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
+            financialFilterButton.buttonColor = UIColor.ht_nephritisColor()
+            financialFilterButton.shadowColor = UIColor.ht_nephritisColor()
         }
         
         financialFilterButton.addTarget(self, action: "financialButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         
-        let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
         
-        if(filterAccessLevel.bLegal == false){
-            let legalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
-            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+        
+        let legalFilterButton = HTPressableButton.init(frame: CGRectMake(200, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
+        legalFilterButton.setTitle("Legal", forState: UIControlState.Normal)
+
+      
+        
+        
+        if(filterAccessLevel.getLocalLegalAccess() == false){
+            legalFilterButton.buttonColor = UIColor.ht_aquaColor()
+            legalFilterButton.shadowColor = UIColor.ht_aquaDarkColor()
         }
             
         else{
-            let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
-            legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
+            legalFilterButton.buttonColor = UIColor.ht_belizeHoleColor()
+            legalFilterButton.shadowColor = UIColor.ht_belizeHoleColor()
             
         }
         
         legalFilterButton.addTarget(self, action: "legalButtonFilterTouched:", forControlEvents: .TouchUpInside)
         
         
-        let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
+        
+        let personalFilterButton = HTPressableButton.init(frame: CGRectMake(290, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
+        personalFilterButton.setTitle("Personal", forState: UIControlState.Normal)
+
         
         
-        if(filterAccessLevel.bPersonal == false){
-            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
-            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+        if(filterAccessLevel.getLocalPersonalAccess() == false){
+            personalFilterButton.buttonColor = UIColor.ht_lemonColor()
+            personalFilterButton.shadowColor = UIColor.ht_lemonDarkColor()
         }
             
         else{
-            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-            personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            personalFilterButton.buttonColor = UIColor.ht_citrusColor()
+            personalFilterButton.shadowColor = UIColor.ht_citrusColor()
             
         }
         
         personalFilterButton.addTarget(self, action: "personalButtonFilterTouched:", forControlEvents: .TouchUpInside)
 
         
-        let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
+        let buttonView = UIView.init(frame: CGRectMake(0, 0, 365, 100))
         buttonView.backgroundColor = UIColor.whiteColor()
         
         
@@ -360,18 +352,12 @@ class NewsFeedViewController: PFQueryTableViewController {
             
                     }
         
-        
-        
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0;
         titleLabel.attributedText = title
         
-        let lineOneLabel = UILabel()
-        lineOneLabel.numberOfLines = 0;
-        lineOneLabel.attributedText = lineOne;
         
-        
-        self.popupController = CNPPopupController(contents:[titleLabel, lineOneLabel, buttonView, doneButton])
+        self.popupController = CNPPopupController(contents:[titleLabel, buttonView, doneButton])
         self.popupController.theme = CNPPopupTheme.defaultTheme()
         self.popupController.theme.popupStyle = popupStyle
         self.popupController.delegate = self
@@ -379,266 +365,79 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
  
     
-    func showEntryPopupWithStyle(popupStyle: CNPPopupStyle) {
-        
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        paragraphStyle.alignment = NSTextAlignment.Center
-        
-        let title = NSAttributedString(string: "New Post", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(24), NSParagraphStyleAttributeName: paragraphStyle])
-        let lineOne = NSAttributedString(string: "You can add text ", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18), NSParagraphStyleAttributeName: paragraphStyle])
-
-        let postButton = CNPPopupButton.init(frame: CGRectMake(35, 0, 80, 80))
-        postButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        postButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        postButton.setTitle("Post", forState: UIControlState.Normal)
-        postButton.backgroundColor = UIColor( red: CGFloat(39/255.0), green: CGFloat(174/255.0), blue: CGFloat(96/255.0), alpha: CGFloat(1.0) )
-        postButton.layer.cornerRadius = 5
-    
-        
-        let doneButton = CNPPopupButton.init(frame: CGRectMake(135, 0, 80, 80))
-        doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        doneButton.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
-        doneButton.setTitle("Cancel", forState: UIControlState.Normal)
-        doneButton.layer.cornerRadius = 5
-        doneButton.backgroundColor = UIColor( red: CGFloat(231/255.0), green: CGFloat(76/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0) )
-
-        
-        let buttonView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
-        buttonView.backgroundColor = UIColor.whiteColor()
-        buttonView.addSubview(postButton)
-        buttonView.addSubview(doneButton)
-        
-        let filterView = UIView.init(frame: CGRectMake(0, 0, 250, 80))
-        filterView.backgroundColor = UIColor.whiteColor()
-        
-        
-        
-        // ##POST BUTTON AREA //
-        let medicalFilterButton = UIButton.init(frame: CGRectMake(0, 0, 60, 60))
-        let medicalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-        medicalFilterButton.setBackgroundImage(medicalImage, forState: UIControlState.Normal)
-        medicalFilterButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
-        
-        let financialFilterButton = UIButton.init(frame: CGRectMake(70, 0, 60, 60))
-        let financialImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
-        financialFilterButton.setBackgroundImage(financialImage, forState: UIControlState.Normal)
-        financialFilterButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        
-        let legalFilterButton = UIButton.init(frame: CGRectMake(140, 0, 60, 60))
-        let legalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
-        legalFilterButton.setBackgroundImage(legalImage, forState: UIControlState.Normal)
-        legalFilterButton.addTarget(self, action: "legalButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        
-        let personalFilterButton = UIButton.init(frame: CGRectMake(210, 0, 60, 60))
-        let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-        personalFilterButton.setBackgroundImage(personalImage, forState: UIControlState.Normal)
-        personalFilterButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        
-        filterView.addSubview(medicalFilterButton)
-        filterView.addSubview(financialFilterButton)
-        filterView.addSubview(legalFilterButton)
-        filterView.addSubview(personalFilterButton)
-        
-        let customView = UIView.init(frame: CGRectMake(0, 0, 250, 100))
-        customView.backgroundColor = UIColor.whiteColor()
-        let textView = UITextView.init(frame: CGRectMake(0, 0, 280, 100))
-        textView.backgroundColor = UIColor.whiteColor()
-        textView.layer.borderColor = UIColor.grayColor().CGColor
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 5
-        textView.clipsToBounds = true
-        textView.font = UIFont(name: "Helvetica", size: 18)
-        
-        customView.addSubview(textView)
-        
-        
-        
-        doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
-            self.popupController.dismissPopupControllerAnimated(true)
-            print("Block for button: \(button.titleLabel?.text)")
-        }
-    
-        
-        
-        postButton.selectionHandler = { (CNPPopupButton button) -> Void in
-            
-            
-            if textView.text.isEmpty == false{
-                
-                
-                if let user=AppUser.currentUser() as AppUser? {
-                    let object=NFObject();
-                    
-                    let newAccessLevel = AccessLevel()
-                    newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)
-                    
-                    newAccessLevel.update()
-                    
-                    
-                    //TEST CODE
-                    let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?;
-                    //let data:NSData?=UIImagePNGRepresentation(personalImage!)
-                    //let testObject = NFObject();
-                    //testObject.setInitialValues("TESTING", username: user.username!, teamName: user.getTeamName(), level: user.getCaregiverAccessLevel().createCopy(), imageData: data)
-                    //testObject.update()
-
-                    
-                    
-                    //right now object inherits user access level, front end needs to add accesslevel configurations
-                    object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level: newAccessLevel,imageData: nil)
-                    object.update();
-                }
-                
-                
-                self.popupController.dismissPopupControllerAnimated(true)
-                
-                self.updateAfterPosting = true
-                
-                
-            }
-            
-        }
-        
-        
-        let titleLabel = UILabel()
-        titleLabel.numberOfLines = 0;
-        titleLabel.attributedText = title
-        
-        let lineOneLabel = UILabel()
-        lineOneLabel.numberOfLines = 0;
-        lineOneLabel.attributedText = lineOne;
-        
-        let imageView = UIImageView.init(image: UIImage.init(named: "icon"))
-       
-        self.popupController = CNPPopupController(contents:[titleLabel, imageView, textView, filterView, buttonView])
-        self.popupController.theme = CNPPopupTheme.defaultTheme()
-        self.popupController.theme.popupStyle = popupStyle
-        self.popupController.delegate = self
-        self.popupController.presentPopupControllerAnimated(true)
-    }
-    
-    func medicalButtonPostTouched(sender: UIButton!){
-        self.postAccessLevel.setMedicalAccess(true)
-        self.postAccessLevel.setFinancialAccess(false)
-        self.postAccessLevel.setLegalAccess(false)
-        self.postAccessLevel.setPersonalAccess(false)
-        
-        entryFilterSet = true
-    }
-    
-    func financialButtonPostTouched(sender: UIButton!){
-        postAccessLevel.setMedicalAccess(false)
-        postAccessLevel.setFinancialAccess(true)
-        postAccessLevel.setLegalAccess(false)
-        postAccessLevel.setPersonalAccess(false)
-        
-        entryFilterSet = true
-    }
-    
-    func legalButtonPostTouched(sender: UIButton!){
-        postAccessLevel.setMedicalAccess(false)
-        postAccessLevel.setFinancialAccess(false)
-        postAccessLevel.setLegalAccess(true)
-        postAccessLevel.setPersonalAccess(false)
-        
-        entryFilterSet = true
-    }
-    
-    func personalButtonPostTouched(sender: UIButton!){
-
-        postAccessLevel.setMedicalAccess(false)
-        postAccessLevel.setFinancialAccess(false)
-        postAccessLevel.setLegalAccess(false)
-        postAccessLevel.setPersonalAccess(true)
-        
-        entryFilterSet = true
-    }
-
-    
-    func medicalButtonFilterTouched(sender: UIButton!){
+    func medicalButtonFilterTouched(sender: HTPressableButton!){
         isFilteredView=true
         
         // Turn on Medical Filter
-        if(filterAccessLevel.bMedical == false){
-            
+        if(filterAccessLevel.getLocalMedicalAccess() == false){
             filterAccessLevel.setMedicalAccess(true)
-            NSLog(String(filterAccessLevel.getMedicalAccess()))
-            NSLog(String(filterAccessLevel.getFinancialAccess()))
-//            
-            let personalImage = UIImage(named: "Medical_Button_Icon.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
-                }
+            sender.buttonColor = UIColor.ht_pomegranateColor()
+            sender.shadowColor = UIColor.ht_pomegranateColor()
+            
+
+        }
         
         // Turn off Medical Filter
         else{
             filterAccessLevel.setMedicalAccess(false)
-            
-
-            
-            
-
-            let personalImage = UIImage(named: "Medical_Button_Icon_Weak.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_grapeFruitColor()
+            sender.shadowColor = UIColor.ht_grapeFruitDarkColor()
 
         }
         
     }
     
-    func financialButtonFilterTouched(sender: UIButton!){
+    func financialButtonFilterTouched(sender: HTPressableButton!){
         isFilteredView=true
+        
+        // Turn on Financial filter
         if(filterAccessLevel.bFinancial == false){
-            
             filterAccessLevel.setFinancialAccess(true)
-            
-            let personalImage = UIImage(named: "Financial_Button_Icon.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_nephritisColor()
+            sender.shadowColor = UIColor.ht_nephritisColor()
         }
             
+        // Turn off financial filter
         else{
             filterAccessLevel.setFinancialAccess(false)
-            
-            let personalImage = UIImage(named: "Financial_Button_Icon_Weak.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_mintColor()
+            sender.shadowColor = UIColor.ht_mintDarkColor()
         }
     }
     
-    func legalButtonFilterTouched(sender: UIButton!){
-                isFilteredView=true
+    func legalButtonFilterTouched(sender: HTPressableButton!){
+        isFilteredView=true
+        
+        // Turn on legal filter
         if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
-            
-            let personalImage = UIImage(named: "Legal_Button_Icon.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_belizeHoleColor()
+            sender.shadowColor = UIColor.ht_belizeHoleColor()
         }
             
+        // turn off legal filter
         else{
             filterAccessLevel.setLegalAccess(false)
-            
-            let personalImage = UIImage(named: "Legal_Button_Icon_Weak.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_aquaColor()
+            sender.shadowColor = UIColor.ht_aquaDarkColor()
         }
     }
     
-    func personalButtonFilterTouched(sender: UIButton!){
-                isFilteredView=true
+    func personalButtonFilterTouched(sender: HTPressableButton!){
+        isFilteredView=true
         
+        // Turn on personal filter
         if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)
-            
-            let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_citrusColor()
+            sender.shadowColor = UIColor.ht_citrusColor()
         }
-            
+        
+        // turn off peronal filter
         else{
             filterAccessLevel.setPersonalAccess(false)
-            
-            let personalImage = UIImage(named: "Personal_Button_Icon_Weak.png") as UIImage?
-            sender.setBackgroundImage(personalImage, forState: UIControlState.Normal)
+            sender.buttonColor = UIColor.ht_lemonColor()
+            sender.shadowColor = UIColor.ht_lemonDarkColor()
         }
     }
     

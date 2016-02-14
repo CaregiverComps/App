@@ -1188,6 +1188,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <state key="normal" image="Post_Icon.png"/>
+
                                 <connections>
                                     <segue destination="g6u-SF-PoQ" kind="presentation" id="2a5-rj-qAR"/>
                                 </connections>
@@ -1472,7 +1473,6 @@
     </scenes>
     <resources>
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
-        <image name="Filter_Icon.png" width="99" height="66"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
         <image name="MoreTabIcon.png" width="60" height="60"/>
         <image name="NewsFeedTabIconSmall.png" width="35" height="35"/>
