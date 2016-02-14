@@ -53,8 +53,13 @@ class ManageTeamViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         if (teamList.count > 0) {
-            cell.textLabel?.text = self.teamList[indexPath.row] 
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            if let user=AppUser.currentUser() {
+                if (user.username! != self.teamList[indexPath.row]) {
+                    cell.textLabel?.text = self.teamList[indexPath.row]
+                    cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                }
+            }
+
         }
         return cell
     }

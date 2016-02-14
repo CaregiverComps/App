@@ -87,7 +87,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
 
         var displayAccessLevel = AccessLevel();
-        
+        print(AppUser.currentUser()?.username)
         
             var query:PFQuery
 
@@ -129,6 +129,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
+            print("here")
             query=NFObject.getNewsfeedFor(nouser, categories: displayAccessLevel)
         }
         query.limit = self.limit
