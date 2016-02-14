@@ -20,14 +20,15 @@ class ManageTeamViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        if (team.count>0) {
-            noTeamMemberLabel.hidden = true
-        }
+        
         //pseudocode
         if let user=AppUser.currentUser() as AppUser? {
             teamList.removeAll()
             team = user.getTeamMembers();
             print("here in vc")
+            if (team.count>0) {
+                noTeamMemberLabel.hidden = true
+            }
 
             for member in team {
                 var unwrappedUser:AppUser=member!

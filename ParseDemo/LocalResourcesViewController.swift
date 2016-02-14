@@ -50,33 +50,34 @@ class LocalResourcesViewController: UITableViewController {
 
     
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-//        print(currentCell.textLabel!.text)
-//        self.resourceName = currentCell.textLabel!.text!
-//        
-//        //        for user in team {
-//        //            if (user?.username! == name) {
-//        //                self.userSelected=user!
-//        //                print(self.userSelected.username!)
-//        //                print("*:", self.userSelected.getCaregiverAccessLevel())
-//        //            }
-//        //        }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        print(currentCell.textLabel!.text)
+        self.resourceName = currentCell.textLabel!.text!
+        
+        
+        //        for user in team {
+        //            if (user?.username! == name) {
+        //                self.userSelected=user!
+        //                print(self.userSelected.username!)
+        //                print("*:", self.userSelected.getCaregiverAccessLevel())
+        //            }
+        //        }
 //        performSegueWithIdentifier("ShowDetailResourceSegue", sender: self)
-//        
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-//        
-//        if (segue.identifier == "ShowDetailResourceSegue") {
-//            
-//            // initialize new view controller and cast it as your view controller
-//            var viewController = segue.destinationViewController as! DetailLocalResourcesViewController
-//            // your new view controller should have property that will store passed value
-//            viewController.passedValue(self.resourceName)
-//        }
-//        
-//    }
+        
+    }
+//
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "ShowDetailResourceSegue") {
+            
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as! DetailLocalResourcesViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue(self.resourceName)
+        }
+        
+    }
     
     
     //    override func viewWillAppear(animated: Bool) {

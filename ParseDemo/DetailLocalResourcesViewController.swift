@@ -10,7 +10,6 @@ import UIKit
 
 class DetailLocalResourcesViewController: UIViewController {
     @IBOutlet weak var detailTitle: UINavigationItem!
-    
     var passedValue = "";
     
     
