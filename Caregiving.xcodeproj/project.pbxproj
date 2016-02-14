@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E9D3F0D8CADE00D77A2A22F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B53323EFBD36C653380A77 /* libPods.a */; };
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
@@ -59,6 +58,7 @@
 		F48894BE1B9939CC003627DB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894BD1B9939CC003627DB /* SystemConfiguration.framework */; };
 		F48894C01B9939D6003627DB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894BF1B9939D6003627DB /* libz.dylib */; };
 		F48894C21B9939DF003627DB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894C11B9939DF003627DB /* libsqlite3.dylib */; };
+		FDECF67A66A4F8459E3F23AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF4CAB564325C4D43B42B5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,7 +150,7 @@
 				F48894B41B9939AB003627DB /* CoreGraphics.framework in Frameworks */,
 				F48894B21B9939A3003627DB /* CFNetwork.framework in Frameworks */,
 				F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */,
-				795BAD64F04D20E11D6BC1FA /* libPods.a in Frameworks */,
+				FDECF67A66A4F8459E3F23AC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
