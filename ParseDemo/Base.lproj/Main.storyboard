@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Reset Password View Controller-->
@@ -800,7 +801,7 @@
                         <sections>
                             <tableViewSection headerTitle="Manage" id="aqo-vY-7AK">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="krd-j1-VEC" style="IBUITableViewCellStyleDefault" id="MUz-Fs-6Q2">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="krd-j1-VEC" style="IBUITableViewCellStyleDefault" id="MUz-Fs-6Q2">
                                         <rect key="frame" x="0.0" y="190.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUz-Fs-6Q2" id="hww-u4-84R">
@@ -827,7 +828,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="About" id="yKd-pZ-vfe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="tpB-cQ-lUO" style="IBUITableViewCellStyleDefault" id="lEA-mV-if5">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="tpB-cQ-lUO" style="IBUITableViewCellStyleDefault" id="lEA-mV-if5">
                                         <rect key="frame" x="0.0" y="284.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lEA-mV-if5" id="sh2-lh-I2h">
@@ -847,7 +848,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PbR-oi-LeK" style="IBUITableViewCellStyleDefault" id="Llj-Ew-7Sk">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PbR-oi-LeK" style="IBUITableViewCellStyleDefault" id="Llj-Ew-7Sk">
                                         <rect key="frame" x="0.0" y="328.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Llj-Ew-7Sk" id="amW-rw-DmR">
@@ -930,7 +931,10 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="wA2-mM-2Ja" kind="show" identifier="ShowUserSegue" id="V94-ng-hds"/>
+                                    <segue destination="wA2-mM-2Ja" kind="show" identifier="ShowUserSegue" id="V94-ng-hds">
+                                        <segue key="commit" inheritsFrom="parent" id="scj-UG-zzH"/>
+                                        <segue key="preview" inheritsFrom="commit" id="cWV-8W-RYS"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1482,4 +1486,7 @@
         <image name="close" width="64" height="64"/>
         <image name="user" width="126" height="126"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="scj-UG-zzH"/>
+    </inferredMetricsTieBreakers>
 </document>

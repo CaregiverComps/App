@@ -78,8 +78,12 @@ class ManageTeamViewController: UITableViewController {
             }
         }
         performSegueWithIdentifier("ShowUserSegue", sender: self)
+        
 
     }
+    
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
