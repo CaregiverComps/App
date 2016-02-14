@@ -137,6 +137,15 @@ class NewsFeedViewController: PFQueryTableViewController {
             }
         }
         else {
+            
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+            
+            self.view.window?.rootViewController!.presentViewController(viewController, animated: true, completion: nil)
+        
+            
+
+            print("should have presented")
+            
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
