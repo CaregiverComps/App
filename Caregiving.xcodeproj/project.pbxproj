@@ -11,6 +11,8 @@
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
+		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
+		912D6D7C1C71084200FBD51A /* DetailLocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */; };
 		91863D391C691179005C6C58 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D381C691179005C6C58 /* MoreViewController.swift */; };
 		91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */; };
 		91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */; };
@@ -78,6 +80,8 @@
 		76EF4CAB564325C4D43B42B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
+		912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResourcesViewController.swift; sourceTree = "<group>"; };
+		912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLocalResourcesViewController.swift; sourceTree = "<group>"; };
 		91863D381C691179005C6C58 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTeamViewController.swift; sourceTree = "<group>"; };
 		91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				91863D381C691179005C6C58 /* MoreViewController.swift */,
 				91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */,
 				91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */,
+				912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */,
+				912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */,
 				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
 				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
 				E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */,
@@ -481,12 +487,14 @@
 				91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
+				912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */,
 				854438371C691F690018E60B /* LocalResources.swift in Sources */,
 				858AC7A31C610EEB00579261 /* Essentials.swift in Sources */,
 				E2235BF21C5576A3009320A1 /* CNPPopupController.m in Sources */,
+				912D6D7C1C71084200FBD51A /* DetailLocalResourcesViewController.swift in Sources */,
 				E25F0FC21C56E24900F99DB5 /* NewsFeedTableViewCell.swift in Sources */,
 				E25AF06A1C69334D003654B3 /* NewsFeedTableViewImageCell.swift in Sources */,
 				91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */,
