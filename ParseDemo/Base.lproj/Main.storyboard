@@ -1014,7 +1014,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VMV-24-EZd">
                                 <rect key="frame" x="20" y="5" width="47" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Filter_Icon.png"/>
+                                <state key="normal" title="Filter"/>
                                 <connections>
                                     <action selector="onFiltertouch:" destination="eUm-ev-l2i" eventType="touchUpInside" id="hYx-9c-p1K"/>
                                 </connections>
@@ -1024,7 +1024,8 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XmT-Fj-hQe">
                                 <rect key="frame" x="546" y="6" width="34" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Post_Icon.png"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="+"/>
                                 <connections>
                                     <segue destination="g6u-SF-PoQ" kind="presentation" id="2a5-rj-qAR"/>
                                 </connections>
@@ -1294,7 +1295,6 @@
     </scenes>
     <resources>
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
-        <image name="Filter_Icon.png" width="99" height="66"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
         <image name="MoreTabIcon.png" width="60" height="60"/>
         <image name="NewsFeedTabIconSmall.png" width="35" height="35"/>
