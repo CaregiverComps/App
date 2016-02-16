@@ -80,7 +80,7 @@ class NFObject : PFObject,PFSubclassing {
         let teamName:String=user.getTeamName();
         let access:AccessLevel=user.getCaregiverAccessLevel();
         
-        var query2=PFQuery(className: "AccessLevel");
+        let query2=PFQuery(className: "AccessLevel");
         let medicalBool:Bool=access.getMedicalAccess();
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
