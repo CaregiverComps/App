@@ -14,6 +14,7 @@
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
 		912D6D7C1C71084200FBD51A /* DetailLocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */; };
+		912D6D7E1C739B9400FBD51A /* AddTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */; };
 		91863D391C691179005C6C58 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D381C691179005C6C58 /* MoreViewController.swift */; };
 		91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */; };
 		91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */; };
@@ -84,6 +85,7 @@
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
 		912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResourcesViewController.swift; sourceTree = "<group>"; };
 		912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLocalResourcesViewController.swift; sourceTree = "<group>"; };
+		912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamMemberViewController.swift; sourceTree = "<group>"; };
 		91863D381C691179005C6C58 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTeamViewController.swift; sourceTree = "<group>"; };
 		91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */,
 				91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */,
 				912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */,
+				912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */,
 				912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */,
 				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
 				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
@@ -488,6 +491,7 @@
 				3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */,
 				91863D391C691179005C6C58 /* MoreViewController.swift in Sources */,
 				91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */,
+				912D6D7E1C739B9400FBD51A /* AddTeamMemberViewController.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */,

@@ -20,7 +20,6 @@ class ManageTeamViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
-        //pseudocode
         if let user=AppUser.currentUser() as AppUser? {
             teamList.removeAll()
             team = user.getTeamMembers();
@@ -31,7 +30,9 @@ class ManageTeamViewController: UITableViewController {
 
             for member in team {
                 let unwrappedUser:AppUser=member!
-                teamList.append(unwrappedUser.username!)
+                if (unwrappedUser.username != user.username) {
+                    teamList.append(unwrappedUser.username!)
+                }
             }
         }
         
@@ -47,12 +48,8 @@ class ManageTeamViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         if (teamList.count > 0) {
-            if let user=AppUser.currentUser() {
-                if (user.username! != self.teamList[indexPath.row]) {
                     cell.textLabel?.text = self.teamList[indexPath.row]
                     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                }
-            }
 
         }
         return cell
@@ -96,6 +93,10 @@ class ManageTeamViewController: UITableViewController {
     }
 
   
+    @IBAction func addUserAction(sender: AnyObject) {
+        
+        print("add a user!")
+    }
     
 }
 
