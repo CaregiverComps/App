@@ -8,30 +8,55 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>HTPressableButton.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>UIScrollView-InfiniteScroll.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>17D25E202F7806A8C488DD9254B2C946</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4533C462D117C79319BDE87BD432F5A2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>46B29C49A6622C2D9A2EBA018D8FFCCC</key>
 		<dict>
 			<key>primary</key>
@@ -53,6 +78,11 @@
 			<true/>
 		</dict>
 		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEB7AE49B829349DE72DDDE1F6A0F31A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

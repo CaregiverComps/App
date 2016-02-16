@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
+		316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
 		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
+		316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsEntryViewController.swift; sourceTree = "<group>"; };
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		76EF4CAB564325C4D43B42B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				E2235BF31C5576A8009320A1 /* Third Party  */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
+				316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */,
 				3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
 				3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */,
@@ -498,6 +501,7 @@
 				E25F0FC21C56E24900F99DB5 /* NewsFeedTableViewCell.swift in Sources */,
 				E25AF06A1C69334D003654B3 /* NewsFeedTableViewImageCell.swift in Sources */,
 				91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */,
+				316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */,
 				E265B6A61C6E52F70033AB04 /* TextEntryViewController.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
 				3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */,

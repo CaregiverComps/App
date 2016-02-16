@@ -1,26 +1,26 @@
 //
-//  TextEntryViewController.swift
+//  EssentialsEntryViewController.swift
 //  Caregiving
 //
-//  Created by Stephen Grinich on 2/12/16.
+//  Created by Julia Bindler on 2/16/16.
 //  Copyright © 2016 abearablecode. All rights reserved.
 //
 
 import UIKit
 
-class TextEntryViewController: UIViewController {
+class EssentialsEntryViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var butttonView: UIView!
+    @IBOutlet weak var buttonView: UIView!
     
-    var postAccessLevel = AccessLevel();
+    var postAccessLevel = AccessLevel()
     var postFilterSet = false
     
     let medicalButton = HTPressableButton.init(frame: CGRectMake(20, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
     
     let financialButton = HTPressableButton.init(frame: CGRectMake(110, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
     let legalButton = HTPressableButton.init(frame: CGRectMake(200, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
-
+    
     let personalButton = HTPressableButton.init(frame: CGRectMake(290, 10, 80, 70), buttonStyle: HTPressableButtonStyle.Rounded)
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class TextEntryViewController: UIViewController {
         self.textView.becomeFirstResponder()
         
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
-
+        
         
         
         if let user=AppUser.currentUser() as AppUser? {
@@ -40,44 +40,45 @@ class TextEntryViewController: UIViewController {
         }
         
         
-       
+        
         medicalButton.buttonColor  = UIColor.ht_grapeFruitColor()
         medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
         medicalButton.setTitle("Medical", forState: UIControlState.Normal)
         medicalButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        self.butttonView.addSubview(medicalButton)
+        
+        self.buttonView.addSubview(medicalButton)
         
         
-     
+        
         financialButton.buttonColor  = UIColor.ht_mintColor()
         financialButton.shadowColor = UIColor.ht_mintDarkColor()
         financialButton.setTitle("Financial", forState: UIControlState.Normal)
         financialButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        self.butttonView.addSubview(financialButton)
+        print("target added")
+        
+        self.buttonView.addSubview(financialButton)
         
         legalButton.buttonColor  = UIColor.ht_aquaColor()
         legalButton.shadowColor = UIColor.ht_aquaDarkColor()
         legalButton.setTitle("Legal", forState: UIControlState.Normal)
         legalButton.addTarget(self, action: "legalButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        self.butttonView.addSubview(legalButton)
+        
+        self.buttonView.addSubview(legalButton)
         
         
         personalButton.buttonColor  = UIColor.ht_lemonColor()
         personalButton.shadowColor = UIColor.ht_lemonDarkColor()
         personalButton.setTitle("Personal", forState: UIControlState.Normal)
         personalButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
-
-        self.butttonView.addSubview(personalButton)
+        
+        self.buttonView.addSubview(personalButton)
         
         
         
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -89,7 +90,7 @@ class TextEntryViewController: UIViewController {
     }
     
     func medicalButtonPostTouched(sender: HTPressableButton!){
-        
+        print("touched")
         if(self.postAccessLevel.getLocalMedicalAccess() == false){
             self.postAccessLevel.setMedicalAccess(true)
             self.postAccessLevel.setFinancialAccess(false)
@@ -106,7 +107,7 @@ class TextEntryViewController: UIViewController {
             
             
         }
-        
+            
         else{
             self.postAccessLevel.setMedicalAccess(false)
             sender.buttonColor  = UIColor.ht_grapeFruitColor()
@@ -117,7 +118,7 @@ class TextEntryViewController: UIViewController {
     }
     
     func financialButtonPostTouched(sender: HTPressableButton!){
-        print("touched")
+        
         if(self.postAccessLevel.getLocalFinancialAccess() == false){
             postAccessLevel.setMedicalAccess(false)
             postAccessLevel.setFinancialAccess(true)
@@ -133,7 +134,7 @@ class TextEntryViewController: UIViewController {
             personalButton.buttonColor = UIColor.ht_lemonColor()
             personalButton.shadowColor = UIColor.ht_lemonDarkColor()
         }
-        
+            
         else{
             self.postAccessLevel.setFinancialAccess(false)
             sender.buttonColor = UIColor.ht_mintColor()
@@ -163,7 +164,7 @@ class TextEntryViewController: UIViewController {
             
             
         }
-        
+            
         else{
             self.postAccessLevel.setLegalAccess(false)
             sender.buttonColor = UIColor.ht_aquaColor()
@@ -192,7 +193,7 @@ class TextEntryViewController: UIViewController {
             legalButton.shadowColor = UIColor.ht_aquaDarkColor()
             
         }
-        
+            
         else{
             self.postAccessLevel.setPersonalAccess(false)
             sender.buttonColor = UIColor.ht_lemonColor()
@@ -218,31 +219,31 @@ class TextEntryViewController: UIViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
                 
             }
-            
-        
-        
+                
+                
+                
             else{
                 
-            if let user=AppUser.currentUser() as AppUser? {
-            let object=NFObject();
-            
-            let newAccessLevel = AccessLevel()
-            newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)
-            
-            newAccessLevel.update()
-            
-            
-            object.setInitialValues(textView.text!, username: user.username! , teamName: user.getTeamName(),level: newAccessLevel,imageData: nil)
-            object.update();
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
+                if let user=AppUser.currentUser() as AppUser? {
+                    let object=Essentials();
+                    
+                    let newAccessLevel = AccessLevel()
+                    newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)
+                    
+                    newAccessLevel.update()
+                    
+                    
+                    object.setInitialValues(textView.text!, teamName: user.getTeamName(), level: newAccessLevel, Deletable: true)
+                    object.update();
+                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    
                 }
+                
+            }
             
         }
             
-        }
-        
             
         else{
             
@@ -255,46 +256,55 @@ class TextEntryViewController: UIViewController {
     
     
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 
-extension UITextView {
+extension UITextView: UITextViewDelegate {
     
-    // Placeholder text
-    var placeholder: String? {
+    
+    // Hide the placeholder label if there is no text
+    // in the text viewotherwise, show the label
+    public func textViewDidChange(textView: UITextView) {
         
-        get {
-            // Get the placeholder text from the label
-            var placeholderText: String?
-            
-            if let placeHolderLabel = self.viewWithTag(100) as? UILabel {
-                placeholderText = placeHolderLabel.text
-            }
-            return placeholderText
-        }
+        let placeHolderLabel = self.viewWithTag(100)
         
-        set {
-            // Store the placeholder text in the label
-            let placeHolderLabel = self.viewWithTag(100) as! UILabel?
-            if placeHolderLabel == nil {
-                // Add placeholder label to text view
-                self.addPlaceholderLabel(newValue!)
-            }
-            else {
-                placeHolderLabel?.text = newValue
-                placeHolderLabel?.sizeToFit()
-            }
+        if !self.hasText() {
+            // Get the placeholder label
+            placeHolderLabel?.hidden = false
         }
+        else {
+            placeHolderLabel?.hidden = true
+        }
+    }
+    
+    // Add a placeholder label to the text view
+    func addPlaceholderLabel(placeholderText: String) {
+        
+        // Create the label and set its properties
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = placeholderText
+        placeholderLabel.sizeToFit()
+        placeholderLabel.frame.origin.x = 5.0
+        placeholderLabel.frame.origin.y = 5.0
+        placeholderLabel.font = self.font
+        placeholderLabel.textColor = UIColor.lightGrayColor()
+        placeholderLabel.tag = 100
+        
+        // Hide the label if there is text in the text view
+        placeholderLabel.hidden = (self.text.characters.count > 0)
+        
+        self.addSubview(placeholderLabel)
+        self.delegate = self;
     }
     
 }
