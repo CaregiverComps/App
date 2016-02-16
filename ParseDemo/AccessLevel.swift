@@ -37,13 +37,22 @@ class AccessLevel : PFObject,PFSubclassing{
         super.init();
     }
     
-    func setInitialValues(financial:Bool, legal:Bool, medical:Bool, personal:Bool, admin:Bool) {
-        self.bFinancial=financial;
-        self.bLegal=legal;
-        self.bMedical=medical;
-        self.bPersonal=personal;
-        self.bAdmin=admin;
-        //super.init();
+    func setInitialValues(financial:AnyObject?, legal:AnyObject?, medical:AnyObject?, personal:AnyObject?, admin:AnyObject?) {
+        if let fibool = financial as? Bool {
+            self.bFinancial=fibool;
+        }
+        if let lebool = legal as? Bool {
+            self.bLegal=lebool;
+        }
+        if let mebool = medical as? Bool {
+            self.bMedical=mebool
+        }
+        if let pebool = personal as? Bool {
+            self.bPersonal=pebool
+        }
+        if let adminbool = admin as? Bool {
+            self.bPersonal=adminbool
+        }
     }
     
     func update() {
