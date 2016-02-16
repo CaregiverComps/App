@@ -145,8 +145,8 @@ class AppUser : PFUser {
             print("Current user is not authorized to remove members.");
         }
     }
-    /*
-    /////This needs to be pushed to cloud in version two
+    
+    
     static func addUserToTeam(username:String) {
         let currentUser = AppUser.currentUser()!;
         if (currentUser.getCaregiverAccessLevel().getAdminAccess()) {
@@ -155,20 +155,25 @@ class AppUser : PFUser {
             query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     let userToAdd = objects![0] as! AppUser;
-                    
-                    // In V2, see if we can have some kind of confirmation system
-                    if (userToAdd.getTeamName() == "") {
-                        // Teamcode required to have length of at least one
-                        userToAdd.setValue(currentUser.getTeamName(), forKey: KEY_TEAMNAME);
-                        userToAdd.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
-                        userToAdd.update();
+                    // Use cloud to modify team member's teamname to "" (Since all valid teamnames have length >= 1)
+                    PFCloud.callFunctionInBackground("addUserToTeam", withParameters: ["username":username,"newTeamName":currentUser.getTeamName()]) { results, error in
+                        if error != nil {
+                            // Your error handling here
+                            print("error :(")
+                        } else {
+                            // Deal with your results (votes in your case) here.
+                            print("successfully added")
+                        }
                     }
+                    // Update deleted user's access level to all false
+                    userToAdd.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
+                    userToAdd.getCaregiverAccessLevel().update();
                 }
             }
         } else {
             print("Current user is not authorized to add members.");
         }
-    }*/
+    }
     
     func getTeamMembers() -> [AppUser?] {
         

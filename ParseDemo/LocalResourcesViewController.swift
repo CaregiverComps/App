@@ -50,8 +50,10 @@ class LocalResourcesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        print(resourceList.count)
         if (resourceList.count > 0) {
             cell.textLabel?.text = self.resourceNames[indexPath.row]
+            print(cell.textLabel?.text)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
         return cell

@@ -19,6 +19,10 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func deleteUser(sender: UIButton) {
         AppUser.deleteUserFromTeam(passedValue.username!)
     }
+    
+    //need action to add the user to a team
+    //call AppUser.addUserToTeam(passedValue.username!)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.userNameLabel.text = self.passedValue
