@@ -17,15 +17,24 @@
 import UIKit
 
 class LocalResourcesViewController: UITableViewController {
-    var resourceList = ["place 1","place 2","place 3","place 4"]
-    var resourceName = ""
+    var resourceList:[LocalResources] = []
+    var resourceNames:[String] = []
+    var resourceName=""
     
 //    @IBOutlet var resoucesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if let user=AppUser.currentUser() as AppUser? {
+            resourceList.removeAll()
+            resourceList=LocalResources.getLocalResources()
+
+            
+            for resource in resourceList {
+                resourceNames.append(resource.resourceName)
+            }
+        }
     }
     
     
@@ -42,7 +51,7 @@ class LocalResourcesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         if (resourceList.count > 0) {
-            cell.textLabel?.text = self.resourceList[indexPath.row]
+            cell.textLabel?.text = self.resourceNames[indexPath.row]
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
         return cell

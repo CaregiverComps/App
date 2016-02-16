@@ -43,15 +43,29 @@ class LocalResources : PFObject,PFSubclassing {
         super.init();
     }
     
-    func setInitialValues(starterBody:String, resourceName: String, contactName: String, phoneNumber: String, email: String, latitude:Double, longitude:Double, image:NSData?) {
-        self.body=starterBody;
-        self.resourceName=resourceName;
-        self.contactName = contactName;
-        self.phoneNumber = phoneNumber;
-        self.email = email;
-        self.latitude = latitude;
-        self.longitude = longitude;
-        if let img=image as NSData? {
+    func setInitialValues(starterBody:AnyObject?, resourceName: AnyObject?, contactName: AnyObject?, phoneNumber: AnyObject?, email: AnyObject?, latitude:AnyObject?, longitude:AnyObject?, image:AnyObject?) {
+        if let text=starterBody as? String {
+            self.body=text;
+        }
+        if let name=resourceName as? String {
+            self.resourceName=name
+        }
+        if let cname=contactName as? String {
+            self.contactName=cname
+        }
+        if let phone=phoneNumber as? String {
+            self.phoneNumber=phone
+        }
+        if let em=email as? String {
+            self.email=em
+        }
+        if let lat=latitude as? Double {
+            self.latitude=lat
+        }
+        if let lon=longitude as? Double {
+            self.longitude=lon
+        }
+        if let img=image as? NSData {
             self.imageData=img;
         }
     }
@@ -79,7 +93,35 @@ class LocalResources : PFObject,PFSubclassing {
         self.body=newText;
     }
     static func parseClassName() -> String {
-        return "Local Resources";
+        return "LocalResources";
+    }
+    static func getLocalResources() -> [LocalResources] {
+        var resourceArray:[LocalResources]=[LocalResources]()
+        let query:PFQuery=PFQuery(className: parseClassName())
+        do {
+            let objects:[PFObject]?=try query.findObjects()
+            if let resources:[PFObject]=objects {
+                
+                for resource in resources {
+                    let newResource=LocalResources()
+                    let description=resource.valueForKey(newResource.KEY_RESOURCEDESCRIPTION)
+                    let name=resource.valueForKey(newResource.KEY_RESOURCENAME)
+                    let contactName=resource.valueForKey(newResource.KEY_CONTACTNAME)
+                    let num=resource.valueForKey(newResource.KEY_PHONENUMBER)
+                    let email=resource.valueForKey(newResource.KEY_EMAIL)
+                    let lat=resource.valueForKey(newResource.KEY_LATITUDE)
+                    let lon=resource.valueForKey(newResource.KEY_LONGITUDE)
+                    //let image=resource.valueForKey(newResource.KEY_IMAGE) as? NSData
+                    newResource.setInitialValues(description, resourceName: name, contactName: contactName, phoneNumber: num, email: email, latitude: lat, longitude: lon, image: nil)
+                    resourceArray.append(newResource)
+                }
+            }
+        }
+        catch {
+            print("Error in getResources()")
+        }
+        return resourceArray;
+        
     }
     
     

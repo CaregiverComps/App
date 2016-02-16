@@ -14,7 +14,6 @@ class ManageTeamViewController: UITableViewController {
     var userSelected:AppUser=AppUser()
     var team:[AppUser?]=[AppUser?]()
     var teamList = ["Amy","DLN","Jadrian"]
-//    let teamList = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +35,6 @@ class ManageTeamViewController: UITableViewController {
             }
         }
         
-        
-        
-        // Show the current visitor's username
-//        if let user = PFUser.currentUser() as PFUser? {
-//            self.userNameLabel.text = "@" + user.username!;
-//        }
     }
     
     
