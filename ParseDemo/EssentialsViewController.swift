@@ -65,7 +65,7 @@ class EssentialsViewController: PFQueryTableViewController {
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        var image : UIImage = UIImage(named: "Personal_Button_Icon")!
+        let image : UIImage = UIImage(named: "Personal_Button_Icon")!
         cell!.checkbox.image = image
         cell!.cellText.text = object!["TEXT"] as? String
         

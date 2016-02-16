@@ -78,10 +78,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     query!.whereKey("TEAMNAME", equalTo:teamCode!)
                     let result = try query!.findObjects()
                     if (result.count > 0) {
+                        print("what is result.count", result.count);
+                        print(result[0]);
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamCode!, accessLevel: level);
                     } else {
-                        print("That team doesn't exist!")
+                        // Go back to original screen here
+                        let alert = UIAlertView(title: "Error", message: "That team doesn't exist!", delegate: self, cancelButtonTitle: "OK")
+                        alert.show()
+                        return;
                     }
                     
                 } else if (teamName != "" && teamCode == "") {
@@ -102,10 +107,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                     ess.createCopy(teamName!)
                                 }
                     } else {
-                        print("That team already exists!")
+                        // Go back to original screen here
+                        let alert = UIAlertView(title: "Error", message: "That team already exists!", delegate: self, cancelButtonTitle: "OK")
+                        alert.show()
+                        return;
+
                     }
                 } else {
-                    print("Enter either a teamName or teamCode.");
+                    // Go back to original screen here
+                    let alert = UIAlertView(title: "Error", message: "Enter either a teamName or teamCode.", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    return;
+
                 }
 
                 
@@ -124,7 +137,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 // Stop the spinner
                 spinner.stopAnimating()
                 if ((error) != nil) {
-                    let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Error", message: "Error\(error)", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     
                 } else {

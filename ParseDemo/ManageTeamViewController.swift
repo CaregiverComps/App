@@ -30,7 +30,7 @@ class ManageTeamViewController: UITableViewController {
             }
 
             for member in team {
-                var unwrappedUser:AppUser=member!
+                let unwrappedUser:AppUser=member!
                 teamList.append(unwrappedUser.username!)
             }
         }
@@ -83,7 +83,7 @@ class ManageTeamViewController: UITableViewController {
         if (segue.identifier == "ShowUserSegue") {
             
             // initialize new view controller and cast it as your view controller
-            var viewController = segue.destinationViewController as! UserAccessViewController
+            let viewController = segue.destinationViewController as! UserAccessViewController
             // your new view controller should have property that will store passed value
             viewController.passedValue(self.userSelected)
         }

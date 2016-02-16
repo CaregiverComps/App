@@ -81,7 +81,7 @@ class LocalResourcesViewController: UITableViewController {
         if (segue.identifier == "ShowDetailResourceSegue") {
             
             // initialize new view controller and cast it as your view controller
-            var viewController = segue.destinationViewController as! DetailLocalResourcesViewController
+            let viewController = segue.destinationViewController as! DetailLocalResourcesViewController
             // your new view controller should have property that will store passed value
             viewController.passedValue(self.resourceName)
         }
