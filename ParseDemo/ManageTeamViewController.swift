@@ -96,6 +96,10 @@ class ManageTeamViewController: UITableViewController {
     }
 
   
+    @IBAction func addUserAction(sender: AnyObject) {
+        
+        print("add a user!")
+    }
     
 }
 
