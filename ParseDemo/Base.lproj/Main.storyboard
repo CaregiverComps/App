@@ -899,7 +899,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Manage" id="NID-xU-Sna" customClass="ManageTeamViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="20o-Dw-OCd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -955,13 +955,13 @@
         <scene sceneID="T50-zO-CMM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKa-Nf-uYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Add User to Team" id="nsJ-84-Oif" sceneMemberID="viewController">
+                <viewController title="Add User to Team" id="nsJ-84-Oif" customClass="AddTeamMemberViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E2U-1U-j5Y"/>
                         <viewControllerLayoutGuide type="bottom" id="Oct-6d-XKN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yJi-uN-ezf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaJ-J9-VVx">
@@ -970,10 +970,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Add "/>
                                 <connections>
-                                    <segue destination="NID-xU-Sna" kind="show" id="exl-qf-3LC"/>
+                                    <action selector="addUserAction:" destination="nsJ-84-Oif" eventType="touchUpInside" id="ssG-86-wZj"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f9m-eX-vbV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="f9m-eX-vbV">
                                 <rect key="frame" x="197" y="80" width="207" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -994,9 +994,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Team Member" id="qB0-30-BYg">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="soG-KP-xM7"/>
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="u8K-CC-ezh"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addedTeamMemberTextField" destination="f9m-eX-vbV" id="Xob-yA-QOd"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2860" y="-138"/>
@@ -1010,7 +1013,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1Yy-0l-ZbD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fpx-wi-m4b">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-l2-v30">
@@ -1535,7 +1538,6 @@
         <image name="user" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="exl-qf-3LC"/>
         <segue reference="scj-UG-zzH"/>
     </inferredMetricsTieBreakers>
 </document>
