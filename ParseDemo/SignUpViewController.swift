@@ -12,7 +12,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var teamCodeField: UITextField!
     @IBOutlet weak var teamNameField: UITextField!
     
     override func viewDidLoad() {
@@ -21,7 +20,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.emailField.delegate = self;
         self.usernameField.delegate = self;
         self.passwordField.delegate = self;
-        self.teamCodeField.delegate = self;
         self.teamNameField.delegate = self;
         
         // Do any additional setup after loading the view.
@@ -32,13 +30,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func joinExistingTeam(sender: AnyObject){
+        print("join existing team test")
+        
+    }
 
-    @IBAction func signUpAction(sender: AnyObject) {
+    @IBAction func createTeamAction(sender: AnyObject) {
         
         let username = self.usernameField.text
         let password = self.passwordField.text
         let email = self.emailField.text
-        let teamCode = self.teamCodeField.text
+        let teamCode = "dummy code"
         let teamName = self.teamNameField.text
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
@@ -57,7 +59,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //TODO: We should check that the team code actually corresponds to an existing 
             // team, otherwise throw an error. Also, we need a standard for how long these
             // are going to be.
-        } else if teamCode!.characters.count < 1 && teamName!.characters.count < 1{
+        } else if teamCode.characters.count < 1 && teamName!.characters.count < 1{
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         
@@ -75,13 +77,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let query = PFUser.query()
                 if (teamName == "" && teamCode != "") {
                     print("we are in block 1")
-                    query!.whereKey("TEAMNAME", equalTo:teamCode!)
+                    query!.whereKey("TEAMNAME", equalTo:teamCode)
                     let result = try query!.findObjects()
                     if (result.count > 0) {
                         print("what is result.count", result.count);
                         print(result[0]);
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
-                        newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamCode!, accessLevel: level);
+                        newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamCode, accessLevel: level);
                     } else {
                         // Go back to original screen here
                         let alert = UIAlertView(title: "Error", message: "That team doesn't exist!", delegate: self, cancelButtonTitle: "OK")
@@ -157,7 +159,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
         emailField.resignFirstResponder()
-        teamCodeField.resignFirstResponder()
         teamNameField.resignFirstResponder()
         return true;
     }
