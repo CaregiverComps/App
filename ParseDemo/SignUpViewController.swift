@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     let result = try query!.findObjects()
                     if (result.count > 0) {
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
-                        newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamCode!, accessLevel: level);
+                        newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamCode!, accessLevel: level);
                     } else {
                         print("That team doesn't exist!")
                     }
@@ -91,7 +91,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         // Creates admin here
                         
                         level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
-                        newUser.setInitialValues(username!, password: password!, email: finalEmail, teamname: teamName!, accessLevel: level);
+                        newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
                         
                         // Add hardcoded essentials
                         let query2=PFQuery(className: "Essentials");
@@ -112,10 +112,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             } catch {}
             
             level.update();
- 
+            //newUser.username = username
+            //newUser.password = password
+            //newUser.email = email
+            newUser.update();
+
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                newUser.update();
+                //newUser.update();
 
                 // Stop the spinner
                 spinner.stopAnimating()

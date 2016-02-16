@@ -40,7 +40,7 @@ class AppUser : PFUser {
         super.init()
     }
     
-    func setInitialValues(username:String, password:String,email:String, teamname:String, accessLevel:AccessLevel?) {
+    func setInitialValues(username:String?, password:String?,email:String?, teamname:String, accessLevel:AccessLevel?) {
         self.teamName=teamname;
         if let a = accessLevel {
             self.accessLevel=a;

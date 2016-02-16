@@ -114,7 +114,10 @@ class AccessLevel : PFObject,PFSubclassing{
     func getLocalPersonalAccess() ->Bool {return self.bPersonal;}
     
     func getAdminAccess() ->Bool {
-        return valueForKey(KEY_ADMIN) as! Bool;
+        if let val=valueForKey(KEY_ADMIN) as! Bool? {
+            return val;
+        }
+        return false;
     }
     static func parseClassName() -> String {
         return "AccessLevel";
