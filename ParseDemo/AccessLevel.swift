@@ -48,10 +48,11 @@ class AccessLevel : PFObject,PFSubclassing{
             self.bMedical=mebool
         }
         if let pebool = personal as? Bool {
+
             self.bPersonal=pebool
         }
         if let adminbool = admin as? Bool {
-            self.bPersonal=adminbool
+            self.bAdmin=adminbool
         }
     }
     

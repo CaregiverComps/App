@@ -14,8 +14,8 @@ class Essentials : PFObject,PFSubclassing {
     let KEY_MARKED: String = "MARKED";
     let KEY_DELETABLE: String = "DELETABLE";
     let KEY_LEVEL:String = "ACCESSLEVEL";
-    var LEVEL:AccessLevel = AccessLevel();
     
+    var level:AccessLevel = AccessLevel();
     var text:String = "";
     var name:String = "";
     var marked:Bool = false;
@@ -42,7 +42,7 @@ class Essentials : PFObject,PFSubclassing {
         self.text=starterText;
         self.name=teamName;
         self.marked = false;
-        self.LEVEL=level;
+        self.level=level;
         self.deletable=Deletable
     }
     
@@ -51,9 +51,9 @@ class Essentials : PFObject,PFSubclassing {
         self.setValue(self.text, forKey: KEY_TEXT);
         self.setValue(self.name, forKey: KEY_NAME);
         self.setValue(self.marked, forKey: KEY_MARKED);
-        self.setValue(self.deletable, forKey:  "HARDCODED");
+        self.setValue(self.deletable, forKey:  KEY_DELETABLE);
         print("updated deletable")
-        self.setObject(self.LEVEL,forKey: KEY_LEVEL);
+        self.setObject(self.level,forKey: KEY_LEVEL);
         
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
@@ -92,7 +92,8 @@ class Essentials : PFObject,PFSubclassing {
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
-        
+        print(teamName)
+        print(persBool,categories.getLocalPersonalAccess())
         // Check user's access level and teamname
         if (teamName == "" || !medicalBool || !categories.getLocalMedicalAccess()) {
             query2.whereKey("medical", equalTo: false);
@@ -109,19 +110,20 @@ class Essentials : PFObject,PFSubclassing {
         }
         
         // Get hardcoded essentials
+        //let ess=Essentials()
         let hardcoded=PFQuery(className: parseClassName());
-        hardcoded.whereKey("deletable", equalTo: false);
+        hardcoded.whereKey("DELETABLE", equalTo: false);
         query = PFQuery.orQueryWithSubqueries([query, hardcoded]);
         query.whereKey("TEAMNAME", equalTo: teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
-        
+        print("Getting here")
         return query;
     }
     
     // Helps copy hardcoded essentials into team's essentials list
     func createCopy(teamname:String) -> Essentials{
         let copyEssentials = Essentials();
-        copyEssentials.setInitialValues(self.valueForKey(KEY_TEXT) as! String,teamName: teamname, level: self.LEVEL, Deletable: false)
+        copyEssentials.setInitialValues(self.valueForKey(KEY_TEXT) as! String,teamName: teamname, level: self.objectForKey(KEY_LEVEL) as! AccessLevel, Deletable: false)
         copyEssentials.update();
         return copyEssentials;
     }
