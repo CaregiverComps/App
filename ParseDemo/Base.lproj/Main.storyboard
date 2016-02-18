@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -1415,13 +1417,26 @@
                                                     <rect key="frame" x="8" y="4" width="24" height="26"/>
                                                     <animations/>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7z-0S-xFn">
+                                                    <rect key="frame" x="541" y="4" width="24" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="Cbc-Mw-911"/>
+                                                        <constraint firstAttribute="height" constant="26" id="Ktr-ZC-HvU"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-xu-hoy">
+                                                    <rect key="frame" x="539" y="2" width="26" height="30"/>
+                                                </button>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="0jF-Ns-AXg" secondAttribute="bottom" constant="8" id="2O9-X2-YCj"/>
                                                 <constraint firstAttribute="trailing" secondItem="0jF-Ns-AXg" secondAttribute="trailing" constant="14" id="3yL-AZ-hp0"/>
+                                                <constraint firstAttribute="trailing" secondItem="I7z-0S-xFn" secondAttribute="trailing" constant="8" id="4aP-vO-fUg"/>
                                                 <constraint firstItem="0jF-Ns-AXg" firstAttribute="leading" secondItem="xdF-Dv-cme" secondAttribute="leading" constant="14" id="9h1-eQ-zhr"/>
+                                                <constraint firstAttribute="trailing" secondItem="NH3-xu-hoy" secondAttribute="trailing" constant="8" id="IhO-y7-rT0"/>
+                                                <constraint firstItem="I7z-0S-xFn" firstAttribute="top" secondItem="xdF-Dv-cme" secondAttribute="top" constant="4" id="K67-WC-VdE"/>
                                                 <constraint firstItem="0jF-Ns-AXg" firstAttribute="leading" secondItem="xdF-Dv-cme" secondAttribute="leading" constant="91" id="L4w-fh-Igy"/>
                                                 <constraint firstItem="0jF-Ns-AXg" firstAttribute="leading" secondItem="xdF-Dv-cme" secondAttribute="leading" constant="142" id="Qyd-qh-Pmv"/>
                                                 <constraint firstItem="0jF-Ns-AXg" firstAttribute="leading" secondItem="xdF-Dv-cme" secondAttribute="leading" constant="68" id="a1w-9I-rBI"/>
@@ -1456,6 +1471,8 @@
                                     <outlet property="cardView" destination="xdF-Dv-cme" id="cR1-iN-ZxK"/>
                                     <outlet property="cellText" destination="0jF-Ns-AXg" id="nlY-86-wlM"/>
                                     <outlet property="checkbox" destination="5Nf-Po-D0c" id="tWF-Ht-ywN"/>
+                                    <outlet property="deleteButton" destination="NH3-xu-hoy" id="EEp-41-jZD"/>
+                                    <outlet property="deleteImage" destination="I7z-0S-xFn" id="JI3-ZD-MpH"/>
                                     <outlet property="toggleCheck" destination="7Eq-Pc-7ve" id="3ht-JO-3oc"/>
                                 </connections>
                             </tableViewCell>

@@ -223,7 +223,7 @@ class EssentialsEntryViewController: UIViewController {
             else{
                 
                 if let user=AppUser.currentUser() as AppUser? {
-                    let object=Essentials();
+                    let object=Essentials()
                     
                     let newAccessLevel = AccessLevel()
                     newAccessLevel.setInitialValues(self.postAccessLevel.bFinancial, legal: self.postAccessLevel.bLegal, medical: self.postAccessLevel.bMedical, personal: self.postAccessLevel.bPersonal, admin: self.postAccessLevel.bAdmin)

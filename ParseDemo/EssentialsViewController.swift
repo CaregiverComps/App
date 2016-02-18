@@ -73,19 +73,32 @@ class EssentialsViewController: PFQueryTableViewController {
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
         
         let marked = object!["MARKED"] as! Bool
+        let deletable = object!["DELETABLE"] as! Bool
         print(marked)
         let toggleCheck = cell!.toggleCheck
         toggleCheck.tag = indexPath.row
         
         toggleCheck.addTarget(self, action: "checkToggled:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        let deleteButton = cell!.deleteButton
+        deleteButton.tag = indexPath.row
+        
+        deleteButton.addTarget(self, action: "deleteItem:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        var image : UIImage = UIImage(named: "unchecked")!
+        var checkImage : UIImage = UIImage(named: "unchecked")!
         if marked == true {
-            image = UIImage(named: "checked")!
+            checkImage = UIImage(named: "checked")!
         }
-        cell!.checkbox.image = image
+        cell!.checkbox.image = checkImage
         cell!.cellText.text = object!["TEXT"] as? String
+        
+        var deleteImage : UIImage = UIImage(named: "delete")!
+        if deletable == true {
+            print("this is deletable")
+            print(deleteImage)
+            cell!.deleteImage.image = deleteImage
+        }
         
         return cell
     }
@@ -106,6 +119,12 @@ class EssentialsViewController: PFQueryTableViewController {
         }
         object!.deletable=object?.valueForKey("DELETABLE") as! Bool
         object!.update()
+        self.loadObjects()
+    }
+    
+    func deleteItem(sender: UIButton) {
+        let object = objects![sender.tag] as? Essentials
+        object?.deleteEventually()
         self.loadObjects()
     }
     
