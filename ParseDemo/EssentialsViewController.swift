@@ -105,6 +105,7 @@ class EssentialsViewController: PFQueryTableViewController {
             //object!["MARKED"] = true
             
         }
+        object!.deletable=object?.valueForKey("DELETABLE") as! Bool
         object!.update()
         self.loadObjects()
     }
@@ -222,8 +223,8 @@ class EssentialsViewController: PFQueryTableViewController {
                     
                     
                     //right now object inherits user access level, front end needs to add accesslevel configurations
-                    object.setInitialValues(textView.text!, teamName: user.getTeamName(),level: newAccessLevel, Deletable: false)
-                    object.update();
+                    //object.setInitialValues(textView.text!, teamName: user.getTeamName(),level: newAccessLevel, Deletable: false)
+                    //object.update();
                 }
                 
                 
