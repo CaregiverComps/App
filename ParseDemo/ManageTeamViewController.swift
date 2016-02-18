@@ -11,6 +11,13 @@ import UIKit
 class ManageTeamViewController: UITableViewController {
     @IBOutlet weak var noTeamMemberLabel: UILabel!
 //    @IBOutlet weak var teamMemberCell: UITableViewCell!
+    
+    
+    
+    @IBOutlet weak var addMemberButton: UIBarButtonItem!
+    
+    
+    
     var userSelected:AppUser=AppUser()
     var team:[AppUser?]=[AppUser?]()
     var teamList = ["Amy","DLN","Jadrian"]
@@ -24,14 +31,21 @@ class ManageTeamViewController: UITableViewController {
             teamList.removeAll()
             team = user.getTeamMembers();
             print("here in vc")
-            if (team.count>0) {
-                noTeamMemberLabel.hidden = true
-            }
 
-            for member in team {
-                let unwrappedUser:AppUser=member!
-                if (unwrappedUser.username != user.username) {
-                    teamList.append(unwrappedUser.username!)
+            if (!user.getCaregiverAccessLevel().getAdminAccess()) {
+                noTeamMemberLabel.text="You are not authorized to view this page."
+                addMemberButton.enabled=false
+                addMemberButton.tintColor=UIColor.clearColor()
+            }
+            else {
+                if (team.count>0) {
+                    noTeamMemberLabel.hidden = true
+                }
+                    for member in team {
+                        let unwrappedUser:AppUser=member!
+                        if (unwrappedUser.username != user.username) {
+                            teamList.append(unwrappedUser.username!)
+                    }
                 }
             }
         }
