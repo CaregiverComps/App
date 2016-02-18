@@ -172,10 +172,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         
                         level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
-                        
                         // Add hardcoded essentials
                         let query2=PFQuery(className: "Essentials");
                         query2.whereKey("DELETABLE", equalTo: false);
+                        query2.whereKey("TEAMNAME",equalTo: "");
                         let results2 = try query2.findObjects()
                         for result in results2 {
                             let ess=result as! Essentials
