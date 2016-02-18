@@ -69,12 +69,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             do {
                 let query = PFUser.query()
                 if (teamName != "") {
-                    print("we are in block 1")
                     query!.whereKey("TEAMNAME", equalTo:teamName!)
                     let result = try query!.findObjects()
                     if (result.count > 0) {
-                        print("what is result.count", result.count);
-                        print(result[0]);
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
                     } else {

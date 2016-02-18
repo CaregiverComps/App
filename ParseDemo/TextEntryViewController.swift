@@ -117,7 +117,6 @@ class TextEntryViewController: UIViewController {
     }
     
     func financialButtonPostTouched(sender: HTPressableButton!){
-        print("touched")
         if(self.postAccessLevel.getLocalFinancialAccess() == false){
             postAccessLevel.setMedicalAccess(false)
             postAccessLevel.setFinancialAccess(true)

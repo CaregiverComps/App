@@ -54,7 +54,6 @@ class EssentialsEntryViewController: UIViewController {
         financialButton.shadowColor = UIColor.ht_mintDarkColor()
         financialButton.setTitle("Financial", forState: UIControlState.Normal)
         financialButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
-        print("target added")
         
         self.buttonView.addSubview(financialButton)
         
@@ -90,7 +89,6 @@ class EssentialsEntryViewController: UIViewController {
     }
     
     func medicalButtonPostTouched(sender: HTPressableButton!){
-        print("touched")
         if(self.postAccessLevel.getLocalMedicalAccess() == false){
             self.postAccessLevel.setMedicalAccess(true)
             self.postAccessLevel.setFinancialAccess(false)

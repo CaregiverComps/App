@@ -81,7 +81,7 @@ class AppUser : PFUser {
                 try access.fetchIfNeeded()
             }
                 catch {
-                print("dsal")
+                print("Failed to fetch accessLevel in getCaregiverAccessLevel")
             }
             access.setInitialValues(access.valueForKey("financial"), legal: access.valueForKey("legal"), medical: access.valueForKey("medical"), personal: access.valueForKey("personal"), admin: access.valueForKey("admin"))
         }
@@ -99,13 +99,12 @@ class AppUser : PFUser {
     static func login(username:String, password:String, block:PFUserResultBlock) {
         PFUser.logInWithUsernameInBackground(username, password: password, block: block);
     }
-    //TO-DO: FIX THIS
+
     override static func currentUser() -> AppUser? {
         //use name, password to query database and return the user object associated with it
         if let currentuser = super.currentUser() as PFUser? {
             let accessID=currentuser.objectForKey("ACCESSLEVEL") as! PFObject;
             let id=accessID.objectId;
-            print(id)
             let query=PFQuery(className: "AccessLevel");
             do {
                 let result=try query.getObjectWithId(id!);
@@ -140,16 +139,15 @@ class AppUser : PFUser {
                     PFCloud.callFunctionInBackground("deleteUserFromTeam", withParameters: ["username":username]) { results, error in
                         if error != nil {
                             // Your error handling here
-                            print("error :(")
+                            print("Failed to delete user.")
                         } else {
                             // Deal with your results (votes in your case) here.
-                            print("successfully deleted")
+                            print("Successfully deleted user.")
                         }
                     }
                     // Update deleted user's access level to all false
                     userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                     userToDelete.getCaregiverAccessLevel().update();
-                    print(userToDelete.getCaregiverAccessLevel())
                 }
             }
         } else {

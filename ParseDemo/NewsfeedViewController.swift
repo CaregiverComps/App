@@ -32,21 +32,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     
     override func viewDidLoad() {
-        print("View did load")
-        /*
-        if let user=AppUser.currentUser() {
-            print(user)
-            print(user.username)
-        }
-        else {
-            print("current user is nil")
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-
-            //let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-            //self.presentViewController(viewController, animated: true, completion: nil)
-            print("current user is nil2")
-        }
-*/
         super.viewDidLoad()
         // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so
         // I suppose we don't need pulling to refresh
@@ -167,44 +152,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             cell?.cellText?.text = object!["TEXT"] as? String
             cell?.userName?.text = object!["USERNAME"] as? String
-        /*
-        Risako's Broken Code 2/16
         
-        let id=(object!["ACCESSLEVEL"] as! PFObject).objectId;
-        
-        PFCloud.callFunctionInBackground("getAccessLevels", withParameters: ["objId" : id!]) { result, error in
-            if error != nil {
-                print("Error in getAccessLevel!")
-            } else {
-                print("id", id)
-                print(result)
-                
-                // Why isn't it finding anything with this id in the cloud????????
-                
-                let hmm = result![0];
-                print(hmm)
-/*
-                if level.getMedicalAccess() {
-                    cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
-                }
-                
-                if level.getFinancialAccess() == true{
-                //if (feedType.valueForKey("financial") as! Bool) {
-                    cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
-                }
-                
-                if level.getLegalAccess() == true{
-                //if (feedType.valueForKey("legal") as! Bool) {
-                    cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
-                }
-                
-                if level.getPersonalAccess() == true{
-                //if (feedType.valueForKey("personal") as! Bool) {
-                    cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
-                }*/
-            }
-        }*/
-
         let feedType = object!["ACCESSLEVEL"] as! PFObject;
         let id=feedType.objectId;
         let query=PFQuery(className: "AccessLevel");

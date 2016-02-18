@@ -91,7 +91,6 @@ class EssentialsViewController: PFQueryTableViewController {
     }
     
     func checkToggled(sender: UIButton) {
-        print("button pressed")
         let object = objects![sender.tag] as? Essentials
         object?.text=object?.valueForKey("TEXT") as! String
         object?.name=object?.valueForKey("TEAMNAME") as! String
@@ -113,8 +112,6 @@ class EssentialsViewController: PFQueryTableViewController {
     
     
     func showEntryPopupWithStyle(popupStyle: CNPPopupStyle) {
-        print("eehh")
-        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
         paragraphStyle.alignment = NSTextAlignment.Center
@@ -255,7 +252,7 @@ class EssentialsViewController: PFQueryTableViewController {
     
     @IBAction func onFiltertouch(sender: AnyObject) {
         //query=NFObject.getNewsfeedFor(user, category: "INSERT CATEGORY NAME HERE IN LOWERCASE");
-        print("filter test")
+        //print("filter test")
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
     

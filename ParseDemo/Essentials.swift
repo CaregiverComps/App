@@ -89,8 +89,6 @@ class Essentials : PFObject,PFSubclassing {
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
-        print(teamName)
-        print(persBool,categories.getLocalPersonalAccess())
         // Check user's access level and teamname
         if (teamName == "" || !medicalBool || !categories.getLocalMedicalAccess()) {
             query2.whereKey("medical", equalTo: false);
@@ -113,7 +111,6 @@ class Essentials : PFObject,PFSubclassing {
         query = PFQuery.orQueryWithSubqueries([query, hardcoded]);
         query.whereKey("TEAMNAME", equalTo: teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
-        print("Getting here")
         return query;
     }
     
