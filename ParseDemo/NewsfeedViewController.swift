@@ -92,7 +92,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        print("Query")
         if AppUser.currentUser() == nil {
             let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
             self.presentViewController(viewController, animated: true, completion: nil)
@@ -133,7 +132,6 @@ class NewsFeedViewController: PFQueryTableViewController {
             let nouser=AppUser();
             let noaccess=AccessLevel();
             nouser.setInitialValues("", password: "", email: "", teamname: "", accessLevel: noaccess)
-            print("here")
             query=NFObject.getNewsfeedFor(nouser, categories: displayAccessLevel)
         }
         query.limit = self.limit
@@ -169,41 +167,100 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             cell?.cellText?.text = object!["TEXT"] as? String
             cell?.userName?.text = object!["USERNAME"] as? String
+        /*
+        Risako's Broken Code 2/16
         
-                    let feedType = object!["ACCESSLEVEL"] as! PFObject;
-                    let id=feedType.objectId;
-                    let query=PFQuery(className: "AccessLevel");
+        let id=(object!["ACCESSLEVEL"] as! PFObject).objectId;
         
-        
-        
-                do {
-                    let result=try query.getObjectWithId(id!);
-                    let level:AccessLevel=result as! AccessLevel;
-        
-                    if level.getMedicalAccess() == true{
-                        cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
-                    }
-        
-                    if level.getFinancialAccess() == true{
-                        cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
-                    }
-        
-                    if level.getLegalAccess() == true{
-                        cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
-                    }
-        
-                    if level.getPersonalAccess() == true{
-                        cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
-                    }
-                    
+        PFCloud.callFunctionInBackground("getAccessLevels", withParameters: ["objId" : id!]) { result, error in
+            if error != nil {
+                print("Error in getAccessLevel!")
+            } else {
+                print("id", id)
+                print(result)
+                
+                // Why isn't it finding anything with this id in the cloud????????
+                
+                let hmm = result![0];
+                print(hmm)
+/*
+                if level.getMedicalAccess() {
+                    cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
                 }
-                catch {
-                    print("Error");
+                
+                if level.getFinancialAccess() == true{
+                //if (feedType.valueForKey("financial") as! Bool) {
+                    cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
                 }
+                
+                if level.getLegalAccess() == true{
+                //if (feedType.valueForKey("legal") as! Bool) {
+                    cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
+                }
+                
+                if level.getPersonalAccess() == true{
+                //if (feedType.valueForKey("personal") as! Bool) {
+                    cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
+                }*/
+            }
+        }*/
+
+        let feedType = object!["ACCESSLEVEL"] as! PFObject;
+        let id=feedType.objectId;
+        let query=PFQuery(className: "AccessLevel");
         
-            let date = object?.createdAt
-            //                var date = object!["createdAt"] as? NSDate
+        query.getObjectInBackgroundWithId(id!, block: {
+            (result, error) -> Void in
+            if (error == nil) {
+                if let level=result as? AccessLevel {
+                if level.getMedicalAccess() == true{
+                    cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
+                }
+                
+                if level.getFinancialAccess() == true{
+                    cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
+                }
+                
+                if level.getLegalAccess() == true{
+                    cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
+                }
+                
+                if level.getPersonalAccess() == true{
+                    cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
+                }
+                }
+            }
+        
+        })
+        /*
+        do {
             
+            let result=try query.getObjectWithId(id!);
+            let level:AccessLevel=result as! AccessLevel;
+            
+            if level.getMedicalAccess() == true{
+                cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
+            }
+            
+            if level.getFinancialAccess() == true{
+                cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
+            }
+            
+            if level.getLegalAccess() == true{
+                cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
+            }
+            
+            if level.getPersonalAccess() == true{
+                cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
+            }
+            
+        }
+        catch {
+            print("Error");
+        }*/
+        let date = object?.createdAt
+            //                var date = object!["createdAt"] as? NSDate
+        
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
             let str = dateFormatter.stringFromDate(date!)
