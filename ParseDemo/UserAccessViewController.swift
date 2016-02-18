@@ -14,6 +14,7 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var navTitle: UINavigationItem!
     let categories = ["Personal","Legal","Financial","Medical"]
     var passedValue:AppUser = AppUser();
+    var switchMap:[String:UISwitch] = [:]
     
     @IBOutlet weak var deleteUser: UIButton!
     @IBAction func deleteUser(sender: UIButton) {
@@ -68,13 +69,51 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
             access = userAccessLevel.getMedicalAccess();
         }
 
-
         let enabledSwitch = UISwitch() as UISwitch
         enabledSwitch.on = access
+        enabledSwitch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        switchMap[thisCategory]=enabledSwitch
         cell.accessoryView = enabledSwitch
         return cell
     }
-    
+    func stateChanged(switchState: UISwitch) {
+        for (key, value) in switchMap {
+            if (value == switchState) {
+                
+                let access = passedValue.getCaregiverAccessLevel()
+                
+                if (key == "Personal") {
+                    print("personal changed")
+                    access.setPersonalAccess(switchState.on)
+                }
+                else {
+                    access.setPersonalAccess(access.getPersonalAccess())
+                }
+                if (key == "Legal") {
+                    access.setLegalAccess(switchState.on)
+                }
+                else {
+                    access.setLegalAccess(access.getLegalAccess())
+                }
+                if (key == "Financial") {
+                    access.setFinancialAccess(switchState.on)
+                }
+                else {
+                    access.setFinancialAccess(access.getFinancialAccess())
+
+                }
+                if (key == "Medical") {
+                    access.setMedicalAccess(switchState.on)
+                }
+                else {
+                    access.setMedicalAccess(access.getMedicalAccess())
+                }
+                access.update()
+                break
+            }
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -75,6 +75,16 @@ class AppUser : PFUser {
     
     func getCaregiverAccessLevel() -> AccessLevel {
         //self.accessLevel.update();
+        
+        if let access=self.objectForKey("ACCESSLEVEL") as? AccessLevel {
+            do {
+                try access.fetchIfNeeded()
+            }
+                catch {
+                print("dsal")
+            }
+            access.setInitialValues(access.valueForKey("financial"), legal: access.valueForKey("legal"), medical: access.valueForKey("medical"), personal: access.valueForKey("personal"), admin: access.valueForKey("admin"))
+        }
         return self.accessLevel;
     }
     

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailLocalResourcesViewController: UIViewController {
+class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var detailTitle: UINavigationItem!
-    var passedValue = "";
+    var passedValue:String?
     
     
     override func viewDidLoad() {
@@ -24,6 +24,10 @@ class DetailLocalResourcesViewController: UIViewController {
         self.passedValue = passed
     }
     
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 6
+//        
+//    }
     
     
     
