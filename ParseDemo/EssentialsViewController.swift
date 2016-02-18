@@ -71,13 +71,42 @@ class EssentialsViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
+        print(object!["MARKED"])
+        
+        let marked = object!["MARKED"] as! Bool
+        let toggleCheck = cell!.toggleCheck
+        toggleCheck.tag = indexPath.row
+        
+        toggleCheck.addTarget(self, action: "checkToggled:", forControlEvents: UIControlEvents.TouchUpInside)
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        let image : UIImage = UIImage(named: "Personal_Button_Icon")!
+        var image : UIImage = UIImage(named: "unchecked")!
+        if marked == true {
+            image = UIImage(named: "checked")!
+        }
         cell!.checkbox.image = image
         cell!.cellText.text = object!["TEXT"] as? String
         
         return cell
+    }
+    
+    func checkToggled(sender: UIButton) {
+        print("button pressed")
+        let object = objects![sender.tag] as? Essentials
+        object?.text=object?.valueForKey("TEXT") as! String
+        object?.name=object?.valueForKey("TEAMNAME") as! String
+        if object!.marked == true {
+            object!.marked = false
+            //object!["MARKED"] = false
+            
+        }
+        else {
+            object!.marked = true
+            //object!["MARKED"] = true
+            
+        }
+        object!.update()
+        self.loadObjects()
     }
     
     
@@ -472,4 +501,6 @@ extension EssentialsViewController : CNPPopupControllerDelegate {
     }
     
 }
+
+
 
