@@ -337,11 +337,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/EssentialsViewController.swift"
-            timestampString = "477451158.747824"
+            timestampString = "477508647.271472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "checkToggled(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -353,11 +353,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/EssentialsViewController.swift"
-            timestampString = "477438802.428144"
+            timestampString = "477508647.271472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -369,7 +369,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/EssentialsViewController.swift"
-            timestampString = "477452191.400857"
+            timestampString = "477506592.902537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -385,12 +385,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/EssentialsViewController.swift"
-            timestampString = "477451158.747824"
+            timestampString = "477508647.271472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "checkToggled(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseDemo/Essentials.swift"
+            timestampString = "477507529.729915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "setInitialValues(_:teamName:level:Deletable:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseDemo/Essentials.swift"
+            timestampString = "477507631.161152"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "update()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseDemo/Essentials.swift"
+            timestampString = "477507632.486526"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "update()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
