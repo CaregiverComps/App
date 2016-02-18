@@ -4,6 +4,7 @@
 
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -1000,7 +1001,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpK-Sc-ZYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2982" y="662"/>
+            <point key="canvasLocation" x="2994" y="666"/>
         </scene>
         <!--Caregiver Feed-->
         <scene sceneID="1kO-9T-Dyk">
@@ -1528,6 +1529,6 @@
         <image name="user" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="scj-UG-zzH"/>
+        <segue reference="V94-ng-hds"/>
     </inferredMetricsTieBreakers>
 </document>
