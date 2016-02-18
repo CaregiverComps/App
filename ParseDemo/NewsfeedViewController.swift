@@ -169,7 +169,38 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             cell?.cellText?.text = object!["TEXT"] as? String
             cell?.userName?.text = object!["USERNAME"] as? String
-                
+        
+                    let feedType = object!["ACCESSLEVEL"] as! PFObject;
+                    let id=feedType.objectId;
+                    let query=PFQuery(className: "AccessLevel");
+        
+        
+        
+                do {
+                    let result=try query.getObjectWithId(id!);
+                    let level:AccessLevel=result as! AccessLevel;
+        
+                    if level.getMedicalAccess() == true{
+                        cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
+                    }
+        
+                    if level.getFinancialAccess() == true{
+                        cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
+                    }
+        
+                    if level.getLegalAccess() == true{
+                        cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
+                    }
+        
+                    if level.getPersonalAccess() == true{
+                        cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
+                    }
+                    
+                }
+                catch {
+                    print("Error");
+                }
+        
             let date = object?.createdAt
             //                var date = object!["createdAt"] as? NSDate
             

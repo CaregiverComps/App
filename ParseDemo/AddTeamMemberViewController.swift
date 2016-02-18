@@ -33,7 +33,7 @@ class AddTeamMemberViewController: UIViewController {
         
         // Animate to previous view controller
         navigationController?.popViewControllerAnimated(true)
-        
+        AppUser.addUserToTeam(addedTeamMemberTextField.text!)
         print(addedTeamMemberTextField!.text)
         
         

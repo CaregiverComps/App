@@ -43,15 +43,18 @@ class EssentialsViewController: PFQueryTableViewController {
     }
     
     override func queryForTable() -> PFQuery {
-        let displayAccessLevel=AccessLevel()
+        var displayAccessLevel=AccessLevel()
         let query:PFQuery
         if let user=AppUser.currentUser() as AppUser? {
             
             // Why are these all false?
             let userLevel = user.getCaregiverAccessLevel()
             
-            
-            displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
+            displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(),
+                medical: userLevel.getMedicalAccess(),personal:userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
+            if (isFilteredView) {
+                displayAccessLevel=self.filterAccessLevel
+            }
              query = Essentials.getEssentialsFor(user, categories: displayAccessLevel)
 
         }

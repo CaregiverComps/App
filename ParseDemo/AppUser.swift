@@ -137,8 +137,9 @@ class AppUser : PFUser {
                         }
                     }
                     // Update deleted user's access level to all false
-                    userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false,        personal: false, admin: false);
+                    userToDelete.getCaregiverAccessLevel().setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                     userToDelete.getCaregiverAccessLevel().update();
+                    print(userToDelete.getCaregiverAccessLevel())
                 }
             }
         } else {
