@@ -11,6 +11,7 @@ import UIKit
 class EssentialsTableViewCell: PFTableViewCell {
     @IBOutlet weak var checkbox: UIImageView!
 
+    @IBOutlet weak var toggleCheck: UIButton!
     @IBOutlet weak var cellText: UILabel!
     @IBOutlet weak var cardView: UIView!
     /*
@@ -22,3 +23,4 @@ class EssentialsTableViewCell: PFTableViewCell {
     */
 
 }
+

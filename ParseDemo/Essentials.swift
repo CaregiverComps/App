@@ -52,13 +52,14 @@ class Essentials : PFObject,PFSubclassing {
         self.setValue(self.name, forKey: KEY_NAME);
         self.setValue(self.marked, forKey: KEY_MARKED);
         self.setValue(self.deletable, forKey:  "HARDCODED");
-        print("updated deletable")
+        print(self.marked)
         self.setObject(self.LEVEL,forKey: KEY_LEVEL);
         
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
+                print("saved")
             } else {
                 // There was a problem, check error.description
             }

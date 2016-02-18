@@ -10,6 +10,8 @@
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
 		316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */; };
+		31A224761C73B21D00D16B03 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224751C73B21D00D16B03 /* unchecked.png */; };
+		31A224781C73B22E00D16B03 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224771C73B22E00D16B03 /* checked.png */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
@@ -79,6 +81,8 @@
 		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
 		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
 		316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsEntryViewController.swift; sourceTree = "<group>"; };
+		31A224751C73B21D00D16B03 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		31A224771C73B22E00D16B03 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		76EF4CAB564325C4D43B42B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
@@ -294,7 +298,9 @@
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
+				31A224751C73B21D00D16B03 /* unchecked.png */,
 				E20C73271C627D3D005CB7BC /* Medical_Button_Icon.png */,
+				31A224771C73B22E00D16B03 /* checked.png */,
 				E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */,
 				E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */,
 				E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */,
@@ -403,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
+				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
 				E20C732E1C627F56005CB7BC /* Personal_Button_Icon.png in Resources */,
 				E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */,
@@ -415,6 +422,7 @@
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
+				31A224761C73B21D00D16B03 /* unchecked.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
