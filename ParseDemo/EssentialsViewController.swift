@@ -95,7 +95,6 @@ class EssentialsViewController: PFQueryTableViewController {
         let object = objects![sender.tag] as? Essentials
         object?.text=object?.valueForKey("TEXT") as! String
         object?.name=object?.valueForKey("TEAMNAME") as! String
-        object?.deletable=object?.valueForKey("DELETABLE") as! Bool
         if object!.marked == true {
             object!.marked = false
             //object!["MARKED"] = false
@@ -107,6 +106,7 @@ class EssentialsViewController: PFQueryTableViewController {
             
         }
         object!.update()
+        self.loadObjects()
     }
     
     
