@@ -71,9 +71,9 @@ class EssentialsViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
-        print(object!["MARKED"])
         
         let marked = object!["MARKED"] as! Bool
+        print(marked)
         let toggleCheck = cell!.toggleCheck
         toggleCheck.tag = indexPath.row
         
@@ -95,7 +95,7 @@ class EssentialsViewController: PFQueryTableViewController {
         let object = objects![sender.tag] as? Essentials
         object?.text=object?.valueForKey("TEXT") as! String
         object?.name=object?.valueForKey("TEAMNAME") as! String
-        if object!.marked == true {
+        if object!.valueForKey("MARKED") as! Bool == true {
             object!.marked = false
             //object!["MARKED"] = false
             
