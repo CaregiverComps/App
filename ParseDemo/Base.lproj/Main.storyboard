@@ -720,7 +720,7 @@
                         <sections>
                             <tableViewSection headerTitle="Description" id="lpj-IK-4Kg">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="1lA-pX-t8x" rowHeight="163" style="IBUITableViewCellStyleDefault" id="8DU-Za-Dra">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="1lA-pX-t8x" rowHeight="163" style="IBUITableViewCellStyleDefault" id="8DU-Za-Dra">
                                         <rect key="frame" x="0.0" y="233.5" width="600" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DU-Za-Dra" id="p2I-Ci-Pgg">
@@ -728,10 +728,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1lA-pX-t8x">
-                                                    <rect key="frame" x="-1984" y="0.0" width="2569" height="162.5"/>
+                                                    <rect key="frame" x="-1727" y="0.0" width="2312" height="162.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
-                                                    <string key="text">This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. </string>
+                                                    <string key="text">This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. This is where the description goes. </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
