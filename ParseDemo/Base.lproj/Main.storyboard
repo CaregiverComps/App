@@ -707,11 +707,11 @@
         <scene sceneID="BIr-Zu-33z">
             <objects>
                 <tableViewController id="GxB-rI-VWk" customClass="DetailLocalResourcesViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sw5-H0-nhB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sw5-H0-nhB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" id="ZZA-Jz-0Ln">
                             <rect key="frame" x="0.0" y="64" width="600" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -721,10 +721,10 @@
                             <tableViewSection headerTitle="Description" id="lpj-IK-4Kg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="121" id="8DU-Za-Dra">
-                                        <rect key="frame" x="0.0" y="233.5" width="600" height="121"/>
+                                        <rect key="frame" x="0.0" y="212" width="600" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DU-Za-Dra" id="p2I-Ci-Pgg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="s7O-Iv-iAw">
@@ -751,24 +751,25 @@
                             <tableViewSection headerTitle="Contact Information" id="bvr-5O-YMl">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" textLabel="hst-lo-0sk" imageView="QGq-69-RHX" style="IBUITableViewCellStyleDefault" id="4zv-le-KS4">
-                                        <rect key="frame" x="0.0" y="404.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="361" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4zv-le-KS4" id="zNP-1y-0lx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="507-222-2145" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hst-lo-0sk">
-                                                    <rect key="frame" x="74" y="0.0" width="511" height="43.5"/>
+                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MoreTabIcon.png" id="QGq-69-RHX">
-                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PhoneIconSmall.png" id="QGq-69-RHX">
+                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
@@ -776,22 +777,22 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="websiteCell" textLabel="hsD-ar-eZ0" imageView="PCP-2P-gGb" style="IBUITableViewCellStyleDefault" id="sgK-R5-GJX">
-                                        <rect key="frame" x="0.0" y="448.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="405" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgK-R5-GJX" id="FCz-2w-KIl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="www.actalz.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsD-ar-eZ0">
-                                                    <rect key="frame" x="74" y="0.0" width="511" height="43.5"/>
+                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MoreTabIcon.png" id="PCP-2P-gGb">
-                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="WebLinkIconSmall.png" id="PCP-2P-gGb">
+                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </imageView>
@@ -801,22 +802,22 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" textLabel="eEU-Et-GZM" imageView="hD3-n8-IWM" style="IBUITableViewCellStyleDefault" id="ttV-J2-ivp">
-                                        <rect key="frame" x="0.0" y="492.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="449" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ttV-J2-ivp" id="UPC-Pp-AH7">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="300 N College St. Northfield, MN 55378" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eEU-Et-GZM" userLabel="300 N College St. Northfield, MN 55378">
-                                                    <rect key="frame" x="74" y="0.0" width="511" height="43.5"/>
+                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MoreTabIcon.png" id="hD3-n8-IWM">
-                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="LocationIconSmall.png" id="hD3-n8-IWM">
+                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </imageView>
@@ -834,7 +835,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="detailTitle" id="8eD-qW-adg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uYU-fx-N2m"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uYU-fx-N2m">
+                            <connections>
+                                <action selector="shareResourceAction:" destination="GxB-rI-VWk" id="Ya3-Z4-W2W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressTableViewCell" destination="ttV-J2-ivp" id="tJ9-yz-zEk"/>
@@ -1800,10 +1805,13 @@
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
         <image name="Filter_Icon.png" width="99" height="66"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
+        <image name="LocationIconSmall.png" width="27" height="27"/>
         <image name="MoreTabIcon.png" width="60" height="60"/>
         <image name="NewsFeedTabIconSmall.png" width="35" height="35"/>
+        <image name="PhoneIconSmall.png" width="27" height="27"/>
         <image name="Post_Icon.png" width="66" height="66"/>
         <image name="ThreeHands.png" width="874" height="718"/>
+        <image name="WebLinkIconSmall.png" width="27" height="27"/>
         <image name="bar" width="300" height="20"/>
         <image name="close" width="64" height="64"/>
         <image name="user" width="126" height="126"/>

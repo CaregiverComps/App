@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailLocalResourcesViewController: UITableViewController {
+    
     @IBOutlet weak var detailTitle: UINavigationItem!
     @IBOutlet weak var resourceImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -17,6 +18,7 @@ class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var addressTableViewCell: UITableViewCell!
     
     var passedValue:String?
+    
     var tempDescription = "Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. "
     
     
@@ -31,11 +33,16 @@ class DetailLocalResourcesViewController: UITableViewController {
         
     }
     
+    /**
+        Passing string from last view controller
+     
+     */
     func passedValue(passed: String) {
         self.passedValue = passed
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         // Set cell selected as currentCell
         let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
         
@@ -51,10 +58,12 @@ class DetailLocalResourcesViewController: UITableViewController {
         }
         
         
-        
     }
     
     
+    @IBAction func shareResourceAction(sender: AnyObject) {
+        //Press 'action' button to share (as a contact?)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
