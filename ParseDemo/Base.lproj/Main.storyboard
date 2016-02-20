@@ -712,7 +712,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" id="ZZA-Jz-0Ln">
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" id="ZZA-Jz-0Ln">
                             <rect key="frame" x="0.0" y="64" width="600" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
@@ -727,7 +727,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="120.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s7O-Iv-iAw">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="s7O-Iv-iAw">
                                                     <rect key="frame" x="8" y="8" width="584" height="104.5"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -838,10 +838,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressTableViewCell" destination="ttV-J2-ivp" id="tJ9-yz-zEk"/>
-                        <outlet property="descriptionTableViewCell" destination="8DU-Za-Dra" id="Idq-Bh-fDp"/>
                         <outlet property="descriptionTextView" destination="s7O-Iv-iAw" id="ItU-i2-uvU"/>
                         <outlet property="detailTitle" destination="8eD-qW-adg" id="N3M-tS-g1Y"/>
                         <outlet property="phoneTableViewCell" destination="4zv-le-KS4" id="OTS-ub-dDW"/>
+                        <outlet property="resourceImageView" destination="ZZA-Jz-0Ln" id="mWy-J6-TY4"/>
                         <outlet property="websiteTableViewCell" destination="sgK-R5-GJX" id="rDc-kD-bx4"/>
                     </connections>
                 </tableViewController>

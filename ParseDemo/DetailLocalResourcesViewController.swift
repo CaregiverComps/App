@@ -10,22 +10,23 @@ import UIKit
 
 class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var detailTitle: UINavigationItem!
-    var passedValue:String?
-    
+    @IBOutlet weak var resourceImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
-//    @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var descriptionTableViewCell: UITableViewCell!
     @IBOutlet weak var phoneTableViewCell: UITableViewCell!
     @IBOutlet weak var websiteTableViewCell: UITableViewCell!
     @IBOutlet weak var addressTableViewCell: UITableViewCell!
     
+    var passedValue:String?
     var tempDescription = "Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. "
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the cells with appropriate information
         self.detailTitle.title = self.passedValue
+        self.resourceImageView.image = UIImage(named: "user")
         self.descriptionTextView.text = self.tempDescription
         
     }
