@@ -12,11 +12,15 @@ class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var detailTitle: UINavigationItem!
     var passedValue:String?
     
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTableViewCell: UITableViewCell!
+    var resourceDescription = "This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. This is where the resource description goes. "
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.detailTitle.title = self.passedValue
-        
+//        self.descriptionTextView.text = self.resourceDescription
         
     }
     
