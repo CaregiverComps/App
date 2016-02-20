@@ -40,40 +40,41 @@ class EssentialsEntryViewController: UIViewController {
         }
         
         
-        
-        medicalButton.buttonColor  = UIColor.ht_grapeFruitColor()
-        medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
-        medicalButton.setTitle("Medical", forState: UIControlState.Normal)
-        medicalButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
-        
-        self.buttonView.addSubview(medicalButton)
-        
-        
-        
-        financialButton.buttonColor  = UIColor.ht_mintColor()
-        financialButton.shadowColor = UIColor.ht_mintDarkColor()
-        financialButton.setTitle("Financial", forState: UIControlState.Normal)
-        financialButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
-        
-        self.buttonView.addSubview(financialButton)
-        
-        legalButton.buttonColor  = UIColor.ht_aquaColor()
-        legalButton.shadowColor = UIColor.ht_aquaDarkColor()
-        legalButton.setTitle("Legal", forState: UIControlState.Normal)
-        legalButton.addTarget(self, action: "legalButtonPostTouched:", forControlEvents: .TouchUpInside)
-        
-        self.buttonView.addSubview(legalButton)
-        
-        
-        personalButton.buttonColor  = UIColor.ht_lemonColor()
-        personalButton.shadowColor = UIColor.ht_lemonDarkColor()
-        personalButton.setTitle("Personal", forState: UIControlState.Normal)
-        personalButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
-        
-        self.buttonView.addSubview(personalButton)
-        
-        
-        
+        if let user=AppUser.currentUser() {
+            if (user.getCaregiverAccessLevel().getFinancialAccess()) {
+                financialButton.buttonColor  = UIColor.ht_mintColor()
+                financialButton.shadowColor = UIColor.ht_mintDarkColor()
+                financialButton.setTitle("Financial", forState: UIControlState.Normal)
+                financialButton.addTarget(self, action: "financialButtonPostTouched:", forControlEvents: .TouchUpInside)
+                
+                self.buttonView.addSubview(financialButton)
+            }
+            if (user.getCaregiverAccessLevel().getMedicalAccess()) {
+                medicalButton.buttonColor  = UIColor.ht_grapeFruitColor()
+                medicalButton.shadowColor = UIColor.ht_grapeFruitDarkColor()
+                medicalButton.setTitle("Medical", forState: UIControlState.Normal)
+                medicalButton.addTarget(self, action: "medicalButtonPostTouched:", forControlEvents: .TouchUpInside)
+                
+                
+                self.buttonView.addSubview(medicalButton)
+            }
+            if (user.getCaregiverAccessLevel().getLegalAccess()) {
+                legalButton.buttonColor  = UIColor.ht_aquaColor()
+                legalButton.shadowColor = UIColor.ht_aquaDarkColor()
+                legalButton.setTitle("Legal", forState: UIControlState.Normal)
+                legalButton.addTarget(self, action: "legalButtonPostTouched:", forControlEvents: .TouchUpInside)
+                
+                self.buttonView.addSubview(legalButton)
+            }
+            if (user.getCaregiverAccessLevel().getPersonalAccess()) {
+                personalButton.buttonColor  = UIColor.ht_lemonColor()
+                personalButton.shadowColor = UIColor.ht_lemonDarkColor()
+                personalButton.setTitle("Personal", forState: UIControlState.Normal)
+                personalButton.addTarget(self, action: "personalButtonPostTouched:", forControlEvents: .TouchUpInside)
+                
+                self.buttonView.addSubview(personalButton)
+            }
+        }
         
         // Do any additional setup after loading the view.
     }
