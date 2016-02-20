@@ -118,6 +118,7 @@ class EssentialsViewController: PFQueryTableViewController {
             
         }
         object!.deletable=object?.valueForKey("DELETABLE") as! Bool
+        object?.level=object?.valueForKey("ACCESSLEVEL") as! AccessLevel
         object!.update()
         self.loadObjects()
     }
