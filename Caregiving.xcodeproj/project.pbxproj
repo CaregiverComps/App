@@ -20,9 +20,6 @@
 		912D6D7E1C739B9400FBD51A /* AddTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */; };
 		91863D391C691179005C6C58 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D381C691179005C6C58 /* MoreViewController.swift */; };
 		91863D3D1C69124C005C6C58 /* ManageTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */; };
-		9189A04C1C79332A0094507D /* LocationIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A04B1C79332A0094507D /* LocationIconSmall.png */; };
-		9189A04E1C7933340094507D /* WebLinkIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A04D1C7933340094507D /* WebLinkIconSmall.png */; };
-		9189A0501C79333D0094507D /* PhoneIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A04F1C79333D0094507D /* PhoneIconSmall.png */; };
 		91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */; };
 		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
 		B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */; };
@@ -97,9 +94,6 @@
 		912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamMemberViewController.swift; sourceTree = "<group>"; };
 		91863D381C691179005C6C58 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		91863D3C1C69124C005C6C58 /* ManageTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageTeamViewController.swift; sourceTree = "<group>"; };
-		9189A04B1C79332A0094507D /* LocationIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LocationIconSmall.png; path = ../../Downloads/LocationIconSmall.png; sourceTree = "<group>"; };
-		9189A04D1C7933340094507D /* WebLinkIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WebLinkIconSmall.png; path = ../../Downloads/WebLinkIconSmall.png; sourceTree = "<group>"; };
-		9189A04F1C79333D0094507D /* PhoneIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PhoneIconSmall.png; path = ../../Downloads/PhoneIconSmall.png; sourceTree = "<group>"; };
 		91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessViewController.swift; sourceTree = "<group>"; };
 		B9489BC81C4C269600F455EE /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
@@ -299,9 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
-				9189A04F1C79333D0094507D /* PhoneIconSmall.png */,
-				9189A04D1C7933340094507D /* WebLinkIconSmall.png */,
-				9189A04B1C79332A0094507D /* LocationIconSmall.png */,
 				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
 				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
 				E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */,
@@ -423,11 +414,9 @@
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
 				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
-				9189A04C1C79332A0094507D /* LocationIconSmall.png in Resources */,
 				E20C732E1C627F56005CB7BC /* Personal_Button_Icon.png in Resources */,
 				E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */,
 				E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */,
-				9189A04E1C7933340094507D /* WebLinkIconSmall.png in Resources */,
 				E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */,
 				E20C732A1C627F3C005CB7BC /* Financial_Button_Icon.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
@@ -441,7 +430,6 @@
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
-				9189A0501C79333D0094507D /* PhoneIconSmall.png in Resources */,
 				311126A71C762B9B005280BA /* delete.png in Resources */,
 				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
 				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
