@@ -21,7 +21,8 @@ class MoreViewController: UITableViewController {
         }
     }
     
-    
+    @IBAction func unwindToMoreScreen(segue:UIStoryboardSegue) {
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
