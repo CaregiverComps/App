@@ -33,6 +33,12 @@ class DetailLocalResourcesViewController: UITableViewController {
         self.phoneTableViewCell.textLabel?.text=self.passedValue?.phoneNumber
         self.websiteTableViewCell.textLabel?.text=self.passedValue?.website
         self.addressTableViewCell.textLabel?.text=self.passedValue?.address
+        
+        if(self.passedValue?.phoneNumber == "") {
+            self.phoneTableViewCell.hidden = true
+        }
+        
+        
     }
     
     /**
@@ -41,6 +47,42 @@ class DetailLocalResourcesViewController: UITableViewController {
      */
     func passedValue(passed: LocalResources) {
         self.passedValue = passed;
+    }
+    
+    /**
+     Collapsing contact row if N/A
+     */
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // Set description size
+        if(indexPath.section == 0) {
+            return 146
+        }
+        // Hide phone number cell
+        if(indexPath.section == 1 && indexPath.item == 0) {
+            if(self.passedValue?.phoneNumber == "") {
+                return 0
+            } else {
+                return 44
+            }
+        }
+        // Hide website cell
+        if(indexPath.section == 1 && indexPath.item == 1) {
+            if(self.passedValue?.website == "") {
+                return 0
+            } else {
+                return 44
+            }
+        }
+        // Hide address cell
+        if(indexPath.section == 1 && indexPath.item == 2) {
+            if(self.passedValue?.address == "") {
+                return 0
+            } else {
+                return 44
+            }
+        }
+        
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
