@@ -55,6 +55,7 @@
 		E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */; };
 		E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */; };
 		E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */; };
+		E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
 		F48894B21B9939A3003627DB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B11B9939A3003627DB /* CFNetwork.framework */; };
 		F48894B41B9939AB003627DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B31B9939AB003627DB /* CoreGraphics.framework */; };
@@ -136,6 +137,7 @@
 		E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medical_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Personal_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medical_Button_Icon.pxm; sourceTree = "<group>"; };
+		E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands_gray.png; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48894B11B9939A3003627DB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F48894B31B9939AB003627DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -292,6 +294,7 @@
 		E203BE7E1C4C980B009BC4C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */,
 				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
 				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
 				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
@@ -433,6 +436,7 @@
 				311126A71C762B9B005280BA /* delete.png in Resources */,
 				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
 				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
+				E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */,
 				E203BE901C4C9A7B009BC4C6 /* EssentialsTabIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
