@@ -27,6 +27,9 @@ class LocalResourcesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Change text in Navigation to white
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         if let user=AppUser.currentUser() as AppUser? {
             resourceList.removeAll()
             resourceList=LocalResources.getLocalResources()

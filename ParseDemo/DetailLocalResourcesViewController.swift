@@ -47,14 +47,32 @@ class DetailLocalResourcesViewController: UITableViewController {
         
         if(currentCell == phoneTableViewCell){
             print("selected phone number")
+            
+            // get resource phone number
+            var phoneNumber = phoneTableViewCell.textLabel!.text!
+            
             // action to call number with phone
+            UIApplication.sharedApplication().openURL(NSURL(string: "tel://"+"\(phoneNumber)")!)
+            
             
         } else if (currentCell == websiteTableViewCell){
             print("selected website URL")
+            
+            // get resource phone number
+            var websiteURL = websiteTableViewCell.textLabel!.text!
             // action to go use safari with this url
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://"+"\(websiteURL)")!)
+            
+            
         } else if (currentCell == addressTableViewCell) {
             print("selected address")
+            
+            var latitude = "40.7127837"
+            var longitude = "-74.00594130000002"
             //action to go to maps
+            let targetURL = NSURL(string: "http://maps.apple.com/?ll=\(latitude),\(longitude)")!
+            let isAvailable = UIApplication.sharedApplication().canOpenURL(targetURL)
+            UIApplication.sharedApplication().openURL(targetURL)
         }
         
         
