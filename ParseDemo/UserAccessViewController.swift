@@ -85,7 +85,6 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
                 let access = passedValue.getCaregiverAccessLevel()
                 
                 if (key == "Personal") {
-                    print("personal changed")
                     access.setPersonalAccess(switchState.on)
                 }
                 else {
