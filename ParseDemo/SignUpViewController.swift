@@ -169,6 +169,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         
                         level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
+
                         // Add hardcoded essentials
                         let query2=PFQuery(className: "Essentials");
                         query2.whereKey("DELETABLE", equalTo: false);
@@ -178,19 +179,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             let ess=result as! Essentials
                             ess.createCopy(teamName!)
                         }
-                        /*
-                        for result in results2 {
-                            let ess=result as PFObject;
-                            let id=ess.objectId;
-                            do {
-                                let essAsEssentials=(try query2.getObjectWithId(id!)) as! Essentials;
-                                essAsEssentials.createCopy(teamName!)
-                                
-                            }
-                            catch {
-                                print("Error");
-                            }
-                        }*/
+
                     } else {
                         // Go back to original screen here
                         let alert = UIAlertView(title: "Error", message: "That team already exists!", delegate: self, cancelButtonTitle: "OK")

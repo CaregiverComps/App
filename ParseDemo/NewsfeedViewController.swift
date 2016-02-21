@@ -90,7 +90,10 @@ class NewsFeedViewController: PFQueryTableViewController {
             if let user=AppUser.currentUser() as AppUser? {
                 // Why are these all false?
                 let userLevel = user.getCaregiverAccessLevel()
+                print("\n\n&&&&&&USER LEVEL", userLevel)
+                print(userLevel.getFinancialAccess())
                 displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
+                print("$$$$$$", displayAccessLevel)
             }
             
             else{
@@ -145,7 +148,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             
             // there is no image
         //else{
-            
+
             cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
             
             cell?.selectionStyle = UITableViewCellSelectionStyle.None
@@ -183,32 +186,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             }
         
         })
-        /*
-        do {
-            
-            let result=try query.getObjectWithId(id!);
-            let level:AccessLevel=result as! AccessLevel;
-            
-            if level.getMedicalAccess() == true{
-                cell?.sideColorView.backgroundColor = UIColor.ht_grapeFruitColor()
-            }
-            
-            if level.getFinancialAccess() == true{
-                cell?.sideColorView.backgroundColor = UIColor.ht_mintColor()
-            }
-            
-            if level.getLegalAccess() == true{
-                cell?.sideColorView.backgroundColor = UIColor.ht_aquaColor()
-            }
-            
-            if level.getPersonalAccess() == true{
-                cell?.sideColorView.backgroundColor = UIColor.ht_lemonColor()
-            }
-            
-        }
-        catch {
-            print("Error");
-        }*/
+
         let date = object?.createdAt
             //                var date = object!["createdAt"] as? NSDate
         

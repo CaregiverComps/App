@@ -26,19 +26,17 @@ class ManageTeamViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        
         if let user=AppUser.currentUser() as AppUser? {
             teamList.removeAll()
             team = user.getTeamMembers();
-            print("here in vc")
-
             if (!user.getCaregiverAccessLevel().getAdminAccess()) {
                 noTeamMemberLabel.text="You are not authorized to view this page."
                 addMemberButton.enabled=false
                 addMemberButton.tintColor=UIColor.clearColor()
             }
+                
             else {
-                if (team.count>0) {
+                if (team.count>1) {
                     noTeamMemberLabel.hidden = true
                 }
                     for member in team {
@@ -71,14 +69,11 @@ class ManageTeamViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        print(currentCell.textLabel!.text)
         let name = currentCell.textLabel!.text!
         
         for user in team {
             if (user?.username! == name) {
                 self.userSelected=user!
-                print(self.userSelected.username!)
-                print("*:", self.userSelected.getCaregiverAccessLevel())
             }
         }
         performSegueWithIdentifier("ShowUserSegue", sender: self)
@@ -104,12 +99,6 @@ class ManageTeamViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-  
-    @IBAction func addUserAction(sender: AnyObject) {
-        
-        print("add a user!")
     }
     
 }

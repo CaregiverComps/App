@@ -53,7 +53,6 @@ class Essentials : PFObject,PFSubclassing {
         self.setValue(self.marked, forKey: KEY_MARKED);
 
         self.setValue(self.deletable, forKey:  KEY_DELETABLE);
-        print("updated deletable")
         self.setObject(self.level,forKey: KEY_LEVEL);
 
         
@@ -61,7 +60,6 @@ class Essentials : PFObject,PFSubclassing {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
-                print("saved")
             } else {
                 // There was a problem, check error.description
             }

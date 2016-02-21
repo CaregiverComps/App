@@ -16,7 +16,6 @@ class AccessLevel : PFObject,PFSubclassing{
     let KEY_ADMIN:String="admin";
 
     static let KEY_ARRAY=["medical","legal","financial","personal"];
-    
     var bFinancial:Bool = false;
     var bLegal:Bool = false;
     var bMedical:Bool = false;

@@ -17,7 +17,7 @@ class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var websiteTableViewCell: UITableViewCell!
     @IBOutlet weak var addressTableViewCell: UITableViewCell!
     
-    var passedValue:String?
+    var passedValue:LocalResources?
     
     var tempDescription = "Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. "
     
@@ -27,18 +27,20 @@ class DetailLocalResourcesViewController: UITableViewController {
         super.viewDidLoad()
         
         // Set the cells with appropriate information
-        self.detailTitle.title = self.passedValue
-        self.resourceImageView.image = UIImage(named: "user")
-        self.descriptionTextView.text = self.tempDescription
-        
+        self.detailTitle.title = self.passedValue?.resourceName;
+        self.resourceImageView.image = UIImage(named: (self.passedValue?.imageName)!);//"actonalzheimers.png"
+        self.descriptionTextView.text = self.passedValue?.body;
+        self.phoneTableViewCell.textLabel?.text=self.passedValue?.phoneNumber
+        self.websiteTableViewCell.textLabel?.text=self.passedValue?.website
+        self.addressTableViewCell.textLabel?.text=self.passedValue?.address
     }
     
     /**
         Passing string from last view controller
      
      */
-    func passedValue(passed: String) {
-        self.passedValue = passed
+    func passedValue(passed: LocalResources) {
+        self.passedValue = passed;
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -48,17 +50,37 @@ class DetailLocalResourcesViewController: UITableViewController {
         
         if(currentCell == phoneTableViewCell){
             print("selected phone number")
+            
+            // get resource phone number
+            var phoneNumber = phoneTableViewCell.textLabel!.text!
+            
             // action to call number with phone
+            UIApplication.sharedApplication().openURL(NSURL(string: "tel://"+"\(phoneNumber)")!)
+            
+            
         } else if (currentCell == websiteTableViewCell){
             print("selected website URL")
+            
+            // get resource phone number
+            var websiteURL = websiteTableViewCell.textLabel!.text!
             // action to go use safari with this url
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://"+"\(websiteURL)")!)
+            
+            
         } else if (currentCell == addressTableViewCell) {
             print("selected address")
+            
+            var latitude = "40.7127837"
+            var longitude = "-74.00594130000002"
             //action to go to maps
+            let targetURL = NSURL(string: "http://maps.apple.com/?ll=\(latitude),\(longitude)")!
+            let isAvailable = UIApplication.sharedApplication().canOpenURL(targetURL)
+            UIApplication.sharedApplication().openURL(targetURL)
         }
         
         
     }
+    
     
     
     @IBAction func shareResourceAction(sender: AnyObject) {
