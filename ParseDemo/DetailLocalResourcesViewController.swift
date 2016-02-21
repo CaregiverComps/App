@@ -48,6 +48,7 @@ class DetailLocalResourcesViewController: UITableViewController {
         if(currentCell == phoneTableViewCell){
             print("selected phone number")
             // action to call number with phone
+            
         } else if (currentCell == websiteTableViewCell){
             print("selected website URL")
             // action to go use safari with this url
@@ -58,6 +59,7 @@ class DetailLocalResourcesViewController: UITableViewController {
         
         
     }
+    
     
     
     @IBAction func shareResourceAction(sender: AnyObject) {

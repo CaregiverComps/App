@@ -18,6 +18,8 @@ class UserAccessViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var deleteUser: UIButton!
     @IBAction func deleteUser(sender: UIButton) {
+        // Animate to previous view controller
+        navigationController?.popViewControllerAnimated(true)
         AppUser.deleteUserFromTeam(passedValue.username!)
     }
     

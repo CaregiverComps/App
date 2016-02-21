@@ -26,19 +26,19 @@ class ManageTeamViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        
         if let user=AppUser.currentUser() as AppUser? {
             teamList.removeAll()
             team = user.getTeamMembers();
             print("here in vc")
-
+            print(team.count)
             if (!user.getCaregiverAccessLevel().getAdminAccess()) {
                 noTeamMemberLabel.text="You are not authorized to view this page."
                 addMemberButton.enabled=false
                 addMemberButton.tintColor=UIColor.clearColor()
             }
+                
             else {
-                if (team.count>0) {
+                if (team.count>1) {
                     noTeamMemberLabel.hidden = true
                 }
                     for member in team {
