@@ -758,15 +758,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="507-222-2145" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hst-lo-0sk">
-                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
+                                                    <rect key="frame" x="74" y="0.0" width="511" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PhoneIconSmall.png" id="QGq-69-RHX">
-                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MoreTabIcon.png" highlightedImage="MoreTabIcon.png" id="QGq-69-RHX">
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -784,15 +784,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="www.actalz.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsD-ar-eZ0">
-                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
+                                                    <rect key="frame" x="74" y="0.0" width="511" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="WebLinkIconSmall.png" id="PCP-2P-gGb">
-                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="MoreTabIcon.png" id="PCP-2P-gGb">
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </imageView>
@@ -809,15 +809,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="300 N College St. Northfield, MN 55378" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eEU-Et-GZM" userLabel="300 N College St. Northfield, MN 55378">
-                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
+                                                    <rect key="frame" x="74" y="0.0" width="511" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="LocationIconSmall.png" id="hD3-n8-IWM">
-                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MoreTabIcon.png" id="hD3-n8-IWM">
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </imageView>
@@ -1805,13 +1805,10 @@
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
         <image name="Filter_Icon.png" width="99" height="66"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
-        <image name="LocationIconSmall.png" width="27" height="27"/>
         <image name="MoreTabIcon.png" width="60" height="60"/>
         <image name="NewsFeedTabIconSmall.png" width="35" height="35"/>
-        <image name="PhoneIconSmall.png" width="27" height="27"/>
         <image name="Post_Icon.png" width="66" height="66"/>
         <image name="ThreeHands.png" width="874" height="718"/>
-        <image name="WebLinkIconSmall.png" width="27" height="27"/>
         <image name="bar" width="300" height="20"/>
         <image name="close" width="64" height="64"/>
         <image name="user" width="126" height="126"/>
