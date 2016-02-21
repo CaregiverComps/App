@@ -118,6 +118,7 @@ class Essentials : PFObject,PFSubclassing {
     func createCopy(teamname:String) -> Essentials{
         let copyEssentials = Essentials();
         copyEssentials.setInitialValues(self.valueForKey(KEY_TEXT) as! String,teamName: teamname, level: self.objectForKey(KEY_LEVEL) as! AccessLevel, Deletable: false)
+        print ("\n\n\nccccccccccccccc", copyEssentials)
         copyEssentials.update();
         return copyEssentials;
     }

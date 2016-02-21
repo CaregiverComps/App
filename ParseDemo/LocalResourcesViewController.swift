@@ -19,7 +19,8 @@ import UIKit
 class LocalResourcesViewController: UITableViewController {
     var resourceList:[LocalResources] = []
     var resourceNames:[String] = []
-    var resourceName=""
+    var resource=LocalResources()
+    //var resource2=LocalResources()
     
 //    @IBOutlet var resoucesTableView: UITableView!
     
@@ -59,13 +60,22 @@ class LocalResourcesViewController: UITableViewController {
         return cell
     }
 
-    
+   /*
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
         print(currentCell.textLabel!.text)
-        self.resourceName = currentCell.textLabel!.text!
+        var text=currentCell.textLabel!.text
         
+        for resource in resourceList {
+            if (text == resource.resourceName) {
+                self.resource=resource
+                print("=============")
+                print(resource.resourceName)
+                print(resource.body)
+                print("=============")
+            }
+        }
         
         //        for user in team {
         //            if (user?.username! == name) {
@@ -74,18 +84,31 @@ class LocalResourcesViewController: UITableViewController {
         //                print("*:", self.userSelected.getCaregiverAccessLevel())
         //            }
         //        }
-//        performSegueWithIdentifier("ShowDetailResourceSegue", sender: self)
+        performSegueWithIdentifier("ShowDetailResourceSegue", sender: self)
         
-    }
+    }*/
 //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
         if (segue.identifier == "ShowDetailResourceSegue") {
+            let indexPath=self.tableView.indexPathForSelectedRow!
+            let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+            print(currentCell.textLabel!.text)
+            var text=currentCell.textLabel!.text
             
+            for resource in resourceList {
+                if (text == resource.resourceName) {
+                    self.resource=resource
+                    print("=============")
+                    print(resource.resourceName)
+                    print(resource.body)
+                    print("=============")
+                }
+            }
             // initialize new view controller and cast it as your view controller
             let viewController = segue.destinationViewController as! DetailLocalResourcesViewController
             // your new view controller should have property that will store passed value
-            viewController.passedValue(self.resourceName)
+            viewController.passedValue(self.resource)
         }
         
     }

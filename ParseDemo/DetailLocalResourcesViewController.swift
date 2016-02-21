@@ -17,7 +17,7 @@ class DetailLocalResourcesViewController: UITableViewController {
     @IBOutlet weak var websiteTableViewCell: UITableViewCell!
     @IBOutlet weak var addressTableViewCell: UITableViewCell!
     
-    var passedValue:String?
+    var passedValue:LocalResources?
     
     var tempDescription = "Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. Replace the description. "
     
@@ -27,18 +27,17 @@ class DetailLocalResourcesViewController: UITableViewController {
         super.viewDidLoad()
         
         // Set the cells with appropriate information
-        self.detailTitle.title = self.passedValue
-        self.resourceImageView.image = UIImage(named: "user")
-        self.descriptionTextView.text = self.tempDescription
-        
+        self.detailTitle.title = self.passedValue?.resourceName;
+        self.resourceImageView.image = UIImage(named: "user");
+        self.descriptionTextView.text = self.passedValue?.body;
     }
     
     /**
         Passing string from last view controller
      
      */
-    func passedValue(passed: String) {
-        self.passedValue = passed
+    func passedValue(passed: LocalResources) {
+        self.passedValue = passed;
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

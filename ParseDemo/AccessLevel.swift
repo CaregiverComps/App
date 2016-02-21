@@ -16,7 +16,6 @@ class AccessLevel : PFObject,PFSubclassing{
     let KEY_ADMIN:String="admin";
 
     static let KEY_ARRAY=["medical","legal","financial","personal"];
-    
     var bFinancial:Bool = false;
     var bLegal:Bool = false;
     var bMedical:Bool = false;
@@ -39,6 +38,7 @@ class AccessLevel : PFObject,PFSubclassing{
     
     func setInitialValues(financial:AnyObject?, legal:AnyObject?, medical:AnyObject?, personal:AnyObject?, admin:AnyObject?) {
         if let fibool = financial as? Bool {
+            print("setting fibool")
             self.bFinancial=fibool;
         }
         if let lebool = legal as? Bool {
@@ -54,6 +54,7 @@ class AccessLevel : PFObject,PFSubclassing{
         if let adminbool = admin as? Bool {
             self.bAdmin=adminbool
         }
+        print("++++++++++",self)
     }
     
     func update() {
