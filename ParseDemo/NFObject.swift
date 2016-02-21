@@ -100,38 +100,10 @@ class NFObject : PFObject,PFSubclassing {
         if (teamName == "" || !persBool || !categories.getLocalPersonalAccess()) {
             query2.whereKey("personal", equalTo: false);
         }
-/*
 
-        // Checking filter category
-        if (categories.getLocalMedicalAccess() && medicalBool) {
-            let medicalFilter=PFQuery(className: "AccessLevel");
-            medicalFilter.whereKey("medical", equalTo: true);
-            query2 = PFQuery.orQueryWithSubqueries([query2, medicalFilter]);
-            print("got medical stuff");
-        }
-        if (categories.getLocalLegalAccess() && legalBool) {
-            let legalFilter=PFQuery(className: "AccessLevel");
-            legalFilter.whereKey("legal", equalTo: true);
-            query2 = PFQuery.orQueryWithSubqueries([query2, legalFilter]);
-            print("got legal stuff");
-        }
-        if (categories.getLocalFinancialAccess() && finanBool) {
-            let financialFilter=PFQuery(className: "AccessLevel");
-            financialFilter.whereKey("financial", equalTo: true);
-            query2 = PFQuery.orQueryWithSubqueries([query2, financialFilter]);
-            print("got financial stuff");
-        }
-        if (categories.getLocalPersonalAccess() && persBool) {
-            let personalFilter=PFQuery(className: "AccessLevel");
-            personalFilter.whereKey("personal", equalTo: true);
-            query2 = PFQuery.orQueryWithSubqueries([query2, personalFilter]);
-            print("got personal stuff");
-        }
-*/
 
         //query2.whereKey("admin", equalTo: access.getAdminAccess());
         query.whereKey("TEAMNAME", equalTo: teamName);
-        //print("team name", teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
 
         return query;

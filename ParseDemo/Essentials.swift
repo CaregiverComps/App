@@ -53,7 +53,6 @@ class Essentials : PFObject,PFSubclassing {
         self.setValue(self.marked, forKey: KEY_MARKED);
 
         self.setValue(self.deletable, forKey:  KEY_DELETABLE);
-        print("updated deletable")
         self.setObject(self.level,forKey: KEY_LEVEL);
 
         
@@ -61,7 +60,6 @@ class Essentials : PFObject,PFSubclassing {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 // The object has been saved.
-                print("saved")
             } else {
                 // There was a problem, check error.description
             }
@@ -118,7 +116,6 @@ class Essentials : PFObject,PFSubclassing {
     func createCopy(teamname:String) -> Essentials{
         let copyEssentials = Essentials();
         copyEssentials.setInitialValues(self.valueForKey(KEY_TEXT) as! String,teamName: teamname, level: self.objectForKey(KEY_LEVEL) as! AccessLevel, Deletable: false)
-        print ("\n\n\nccccccccccccccc", copyEssentials)
         copyEssentials.update();
         return copyEssentials;
     }

@@ -28,8 +28,11 @@ class DetailLocalResourcesViewController: UITableViewController {
         
         // Set the cells with appropriate information
         self.detailTitle.title = self.passedValue?.resourceName;
-        self.resourceImageView.image = UIImage(named: "user");
+        self.resourceImageView.image = UIImage(named: (self.passedValue?.imageName)!);//"actonalzheimers.png"
         self.descriptionTextView.text = self.passedValue?.body;
+        self.phoneTableViewCell.textLabel?.text=self.passedValue?.phoneNumber
+        self.websiteTableViewCell.textLabel?.text=self.passedValue?.website
+        self.addressTableViewCell.textLabel?.text=self.passedValue?.address
     }
     
     /**

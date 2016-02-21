@@ -175,24 +175,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         query2.whereKey("DELETABLE", equalTo: false);
                         query2.whereKey("TEAMNAME",equalTo: "");
                         let results2 = try query2.findObjects()
-                        print(results2.count)
                         for result in results2 {
                             let ess=result as! Essentials
                             ess.createCopy(teamName!)
                         }
-                        /*
-                        for result in results2 {
-                            let ess=result as PFObject;
-                            let id=ess.objectId;
-                            do {
-                                let essAsEssentials=(try query2.getObjectWithId(id!)) as! Essentials;
-                                essAsEssentials.createCopy(teamName!)
-                                
-                            }
-                            catch {
-                                print("Error");
-                            }
-                        }*/
+
                     } else {
                         // Go back to original screen here
                         let alert = UIAlertView(title: "Error", message: "That team already exists!", delegate: self, cancelButtonTitle: "OK")

@@ -18,6 +18,7 @@ class LocalResources : PFObject,PFSubclassing {
     let KEY_LONGITUDE:String = "LONGITUDE";
     let KEY_RESOURCENAME:String = "RESOURCENAME";
     let KEY_ADDRESS:String = "ADDRESS";
+    let KEY_IMAGENAME:String = "IMAGENAME"
     
     
     var body:String=""
@@ -29,6 +30,7 @@ class LocalResources : PFObject,PFSubclassing {
     var latitude:Double = 0.0;
     var longitude:Double = 0.0;
     var address:String = "";
+    var imageName:String = "";
     var imageData:NSData=NSData();
     
     
@@ -47,7 +49,7 @@ class LocalResources : PFObject,PFSubclassing {
         super.init();
     }
     
-    func setInitialValues(starterBody:AnyObject?, resourceName: AnyObject?, contactName: AnyObject?, phoneNumber: AnyObject?, email: AnyObject?, website: AnyObject?, latitude:AnyObject?, longitude:AnyObject?, address:AnyObject?, image:AnyObject?) {
+    func setInitialValues(starterBody:AnyObject?, resourceName: AnyObject?, contactName: AnyObject?, phoneNumber: AnyObject?, email: AnyObject?, website: AnyObject?, latitude:AnyObject?, longitude:AnyObject?, address:AnyObject?, imageName:AnyObject?, image:AnyObject?) {
         if let text=starterBody as? String {
             self.body=text;
         }
@@ -75,6 +77,9 @@ class LocalResources : PFObject,PFSubclassing {
         if let addr=address as? String {
             self.address=addr
         }
+        if let imgnm=imageName as? String {
+            self.imageName=imgnm
+        }
         if let img=image as? NSData {
             self.imageData=img;
         }
@@ -91,6 +96,7 @@ class LocalResources : PFObject,PFSubclassing {
         self.setValue(self.latitude, forKey: KEY_LATITUDE);
         self.setValue(self.longitude, forKey: KEY_LONGITUDE);
         self.setValue(self.address, forKey: KEY_ADDRESS);
+        self.setValue(self.imageName, forKey: KEY_IMAGENAME);
         self.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -124,9 +130,10 @@ class LocalResources : PFObject,PFSubclassing {
                     let website=resource.valueForKey(newResource.KEY_WEBSITE)
                     let lat=resource.valueForKey(newResource.KEY_LATITUDE)
                     let lon=resource.valueForKey(newResource.KEY_LONGITUDE)
+                    let imgnm=resource.valueForKey(newResource.KEY_IMAGENAME)
                     let addr=resource.valueForKey(newResource.KEY_ADDRESS)
                     //let image=resource.valueForKey(newResource.KEY_IMAGE) as? NSData
-                    newResource.setInitialValues(description, resourceName: name, contactName: contactName, phoneNumber: num, email: email, website: website, latitude: lat, longitude: lon, address: addr, image: nil)
+                    newResource.setInitialValues(description, resourceName: name, contactName: contactName, phoneNumber: num, email: email, website: website, latitude: lat, longitude: lon, address: addr, imageName: imgnm, image: nil)
                     resourceArray.append(newResource)
                 }
             }

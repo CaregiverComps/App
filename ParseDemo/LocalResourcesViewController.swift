@@ -54,58 +54,23 @@ class LocalResourcesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        print(resourceList.count)
         if (resourceList.count > 0) {
             cell.textLabel?.text = self.resourceNames[indexPath.row]
-            print(cell.textLabel?.text)
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
         return cell
     }
 
-   /*
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        print(currentCell.textLabel!.text)
-        var text=currentCell.textLabel!.text
-        
-        for resource in resourceList {
-            if (text == resource.resourceName) {
-                self.resource=resource
-                print("=============")
-                print(resource.resourceName)
-                print(resource.body)
-                print("=============")
-            }
-        }
-        
-        //        for user in team {
-        //            if (user?.username! == name) {
-        //                self.userSelected=user!
-        //                print(self.userSelected.username!)
-        //                print("*:", self.userSelected.getCaregiverAccessLevel())
-        //            }
-        //        }
-        performSegueWithIdentifier("ShowDetailResourceSegue", sender: self)
-        
-    }*/
-//
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
         if (segue.identifier == "ShowDetailResourceSegue") {
             let indexPath=self.tableView.indexPathForSelectedRow!
             let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-            print(currentCell.textLabel!.text)
             var text=currentCell.textLabel!.text
             
             for resource in resourceList {
                 if (text == resource.resourceName) {
                     self.resource=resource
-                    print("=============")
-                    print(resource.resourceName)
-                    print(resource.body)
-                    print("=============")
                 }
             }
             // initialize new view controller and cast it as your view controller

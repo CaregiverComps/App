@@ -20,7 +20,6 @@ class EssentialsViewController: PFQueryTableViewController {
     
     @IBAction func addEntryTouch(sender: AnyObject) {
         self.showEntryPopupWithStyle(CNPPopupStyle.Centered)
-        print("entry test")
     }
     
     required init(coder aDecoder:NSCoder)
@@ -74,7 +73,6 @@ class EssentialsViewController: PFQueryTableViewController {
         
         let marked = object!["MARKED"] as! Bool
         let deletable = object!["DELETABLE"] as! Bool
-        print(marked)
         let toggleCheck = cell!.toggleCheck
         toggleCheck.tag = indexPath.row
         
@@ -95,8 +93,6 @@ class EssentialsViewController: PFQueryTableViewController {
         
         var deleteImage : UIImage = UIImage(named: "delete")!
         if deletable == true {
-            print("this is deletable")
-            print(deleteImage)
             cell!.deleteImage.image = deleteImage
         }
         
@@ -271,8 +267,6 @@ class EssentialsViewController: PFQueryTableViewController {
     }
     
     @IBAction func onFiltertouch(sender: AnyObject) {
-        //query=NFObject.getNewsfeedFor(user, category: "INSERT CATEGORY NAME HERE IN LOWERCASE");
-        //print("filter test")
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
     

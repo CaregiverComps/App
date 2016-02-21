@@ -44,8 +44,6 @@ class AppUser : PFUser {
         self.teamName=teamname;
         if let a = accessLevel {
             self.accessLevel=a;
-//            print(self.accessLevel.getFinancialAccess())
-//            print(self.accessLevel)
         }
         else {
             self.accessLevel=AccessLevel();
@@ -58,7 +56,6 @@ class AppUser : PFUser {
     }
     
     func update() {
-       //print("UPDATING ACCESS LEVEL ", self.accessLevel);
         self.setObject(self.accessLevel, forKey: KEY_ACCESSLEVEL);
         self.setValue(self.teamName, forKey: KEY_TEAMNAME);
         self.saveInBackgroundWithBlock {
@@ -168,10 +165,10 @@ class AppUser : PFUser {
                     PFCloud.callFunctionInBackground("addUserToTeam", withParameters: ["username":username,"newTeamName":currentUser.getTeamName()]) { results, error in
                         if error != nil {
                             // Your error handling here
-                            print("error :(")
+                            print("Error in add user to team.")
                         } else {
                             // Deal with your results (votes in your case) here.
-                            print("successfully added")
+                            print("Successfully added user to team.")
                         }
                     }
                     // Update deleted user's access level to all false
@@ -200,12 +197,6 @@ class AppUser : PFUser {
                     let appAccess:AccessLevel?=appObject?.objectForKey("ACCESSLEVEL") as? AccessLevel
                     let id=appAccess?.objectId;
                     appObject?.accessLevel=try query2.getObjectWithId(id!) as! AccessLevel;
-                   // print("Result:",appObject?.accessLevel)
-                    //appObject?.setCaregiverAccessLevel(result)
-                    //appObject?.objectForKey("ACCESSLEVEL") as! AccessLevel
-                    
-                    //print(appObject?.username)
-                   // print(appObject?.accessLevel)
                     array.append(appObject)
                 }
             }
