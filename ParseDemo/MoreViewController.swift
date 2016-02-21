@@ -17,8 +17,12 @@ class MoreViewController: UITableViewController {
         
         // Show the current visitor's username
         if let user = PFUser.currentUser() as PFUser? {
-            self.userNameLabel.text = "@" + user.username!;
+            self.userNameLabel.text = user.username!;
         }
+        
+        
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
     }
     
     @IBAction func unwindToMoreScreen(segue:UIStoryboardSegue) {

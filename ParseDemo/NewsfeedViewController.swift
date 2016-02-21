@@ -29,6 +29,9 @@ class NewsFeedViewController: PFQueryTableViewController {
         self.parseClassName = "NFObject"
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.loadObjects()
+    }
     
     
     override func viewDidLoad() {
