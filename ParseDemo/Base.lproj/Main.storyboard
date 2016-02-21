@@ -1566,7 +1566,6 @@
         <!--New Entry-->
         <scene sceneID="4G8-db-1Ry">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ADr-un-SDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="0Wb-QV-ni4" customClass="EssentialsEntryViewController" customModule="ParseDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lPb-ru-wKy"/>
@@ -1615,6 +1614,7 @@
                         <outlet property="textView" destination="gL6-Un-iow" id="MSX-Gg-wSw"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADr-un-SDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2394" y="3218"/>
         </scene>
@@ -1716,7 +1716,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ktc-0e-PSQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sXU-q1-F07" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qE7-DN-LyD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KMP-Nl-SkM">
@@ -1728,6 +1727,7 @@
                         <segue destination="0Wb-QV-ni4" kind="relationship" relationship="rootViewController" id="wLX-tX-LVl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXU-q1-F07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1336" y="3206"/>
         </scene>
