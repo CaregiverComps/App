@@ -22,6 +22,30 @@ class ManageTeamViewController: UITableViewController {
     var team:[AppUser?]=[AppUser?]()
     var teamList = ["Amy","DLN","Jadrian"]
     
+    override func viewDidAppear(animated: Bool) {
+        if let user=AppUser.currentUser() as AppUser? {
+            teamList.removeAll()
+            team = user.getTeamMembers();
+            if (!user.getCaregiverAccessLevel().getAdminAccess()) {
+                noTeamMemberLabel.text="You are not authorized to view this page."
+                addMemberButton.enabled=false
+                addMemberButton.tintColor=UIColor.clearColor()
+            }
+                
+            else {
+                if (team.count>1) {
+                    noTeamMemberLabel.hidden = true
+                }
+                for member in team {
+                    let unwrappedUser:AppUser=member!
+                    if (unwrappedUser.username != user.username) {
+                        teamList.append(unwrappedUser.username!)
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -49,6 +73,7 @@ class ManageTeamViewController: UITableViewController {
         }
         
     }
+    
     
     
     

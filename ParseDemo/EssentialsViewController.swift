@@ -2,8 +2,8 @@
 //  EssentialsViewController.swift
 //  Caregiving
 //
-//  Created by Julia Bindler on 2/11/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Created by Julia Bindler and Stephen Grinich on 2/11/16.
+//  Copyright © 2016 CaregiverNet. All rights reserved.
 //
 
 import UIKit
@@ -28,10 +28,13 @@ class EssentialsViewController: PFQueryTableViewController {
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
         self.parseClassName = "Essentials"
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
     }
@@ -94,6 +97,7 @@ class EssentialsViewController: PFQueryTableViewController {
         let deleteImage : UIImage = UIImage(named: "delete")!
         if deletable == true {
             cell!.deleteImage.image = deleteImage
+            print("IMAGE")
         }
         
         return cell
@@ -121,8 +125,10 @@ class EssentialsViewController: PFQueryTableViewController {
     
     func deleteItem(sender: UIButton) {
         let object = objects![sender.tag] as? Essentials
-        object?.deleteEventually()
-        self.loadObjects()
+        if object!.valueForKey("DELETABLE") as! Bool == true {
+            object?.deleteEventually()
+            self.loadObjects()
+        }
     }
     
     
