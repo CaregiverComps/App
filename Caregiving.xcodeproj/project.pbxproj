@@ -13,19 +13,19 @@
 		316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */; };
 		31A224761C73B21D00D16B03 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224751C73B21D00D16B03 /* unchecked.png */; };
 		31A224781C73B22E00D16B03 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224771C73B22E00D16B03 /* checked.png */; };
-		853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09911C7A55E700CA1B30 /* actonalzheimers.png */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
+		857B8DCB1C7ACD2F004FE466 /* memorycafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DCA1C7ACD2F004FE466 /* memorycafe.png */; };
+		857B8DCD1C7ACD32004FE466 /* threelinks.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DCC1C7ACD32004FE466 /* threelinks.png */; };
+		857B8DCF1C7ACD35004FE466 /* ricecounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DCE1C7ACD35004FE466 /* ricecounty.png */; };
+		857B8DD11C7ACD38004FE466 /* thisisnorthfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DD01C7ACD38004FE466 /* thisisnorthfield.png */; };
+		857B8DD31C7ACD3E004FE466 /* actonalzheimers.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DD21C7ACD3E004FE466 /* actonalzheimers.png */; };
+		857B8DD51C7ACD41004FE466 /* image-coming-soon.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DD41C7ACD41004FE466 /* image-coming-soon.png */; };
+		857B8DD71C7ACD45004FE466 /* northfieldseniorcenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DD61C7ACD45004FE466 /* northfieldseniorcenter.png */; };
+		857B8DD91C7ACD4A004FE466 /* northfieldretirementcommunity.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DD81C7ACD4A004FE466 /* northfieldretirementcommunity.png */; };
+		857B8DDB1C7ACD4D004FE466 /* hvistendahl.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DDA1C7ACD4D004FE466 /* hvistendahl.png */; };
+		857B8DDE1C7ACD5A004FE466 /* carlsoncapitalmanagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DDC1C7ACD5A004FE466 /* carlsoncapitalmanagement.png */; };
+		857B8DDF1C7ACD5A004FE466 /* dakotacounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 857B8DDD1C7ACD5A004FE466 /* dakotacounty.png */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
-		8594367E1C7A96B00065A236 /* carlsoncapitalmanagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594367D1C7A96B00065A236 /* carlsoncapitalmanagement.png */; };
-		859436801C7A96B50065A236 /* dakotacounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594367F1C7A96B50065A236 /* dakotacounty.png */; };
-		859436821C7A96BA0065A236 /* hvistendahl.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436811C7A96BA0065A236 /* hvistendahl.png */; };
-		859436841C7A96BE0065A236 /* northfieldretirementcommunity.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436831C7A96BE0065A236 /* northfieldretirementcommunity.png */; };
-		859436861C7A96C20065A236 /* image-coming-soon.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436851C7A96C20065A236 /* image-coming-soon.png */; };
-		859436881C7A96C60065A236 /* northfieldseniorcenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436871C7A96C60065A236 /* northfieldseniorcenter.png */; };
-		8594368A1C7A96CA0065A236 /* thisisnorthfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436891C7A96CA0065A236 /* thisisnorthfield.png */; };
-		8594368C1C7A96CD0065A236 /* threelinks.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368B1C7A96CD0065A236 /* threelinks.png */; };
-		8594368E1C7A96D20065A236 /* ricecounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368D1C7A96D20065A236 /* ricecounty.png */; };
-		859436901C7A9F4B0065A236 /* memorycafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368F1C7A9F4B0065A236 /* memorycafe.png */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
 		912D6D7C1C71084200FBD51A /* DetailLocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */; };
 		912D6D7E1C739B9400FBD51A /* AddTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */; };
@@ -113,19 +113,19 @@
 		31A224771C73B22E00D16B03 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		76EF4CAB564325C4D43B42B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		853C09911C7A55E700CA1B30 /* actonalzheimers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = actonalzheimers.png; path = "Local Resource Images/actonalzheimers.png"; sourceTree = "<group>"; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
+		857B8DCA1C7ACD2F004FE466 /* memorycafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = memorycafe.png; path = LRImages/memorycafe.png; sourceTree = "<group>"; };
+		857B8DCC1C7ACD32004FE466 /* threelinks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threelinks.png; path = LRImages/threelinks.png; sourceTree = "<group>"; };
+		857B8DCE1C7ACD35004FE466 /* ricecounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ricecounty.png; path = LRImages/ricecounty.png; sourceTree = "<group>"; };
+		857B8DD01C7ACD38004FE466 /* thisisnorthfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thisisnorthfield.png; path = LRImages/thisisnorthfield.png; sourceTree = "<group>"; };
+		857B8DD21C7ACD3E004FE466 /* actonalzheimers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = actonalzheimers.png; path = LRImages/actonalzheimers.png; sourceTree = "<group>"; };
+		857B8DD41C7ACD41004FE466 /* image-coming-soon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-coming-soon.png"; path = "LRImages/image-coming-soon.png"; sourceTree = "<group>"; };
+		857B8DD61C7ACD45004FE466 /* northfieldseniorcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldseniorcenter.png; path = LRImages/northfieldseniorcenter.png; sourceTree = "<group>"; };
+		857B8DD81C7ACD4A004FE466 /* northfieldretirementcommunity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldretirementcommunity.png; path = LRImages/northfieldretirementcommunity.png; sourceTree = "<group>"; };
+		857B8DDA1C7ACD4D004FE466 /* hvistendahl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hvistendahl.png; path = LRImages/hvistendahl.png; sourceTree = "<group>"; };
+		857B8DDC1C7ACD5A004FE466 /* carlsoncapitalmanagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carlsoncapitalmanagement.png; path = LRImages/carlsoncapitalmanagement.png; sourceTree = "<group>"; };
+		857B8DDD1C7ACD5A004FE466 /* dakotacounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dakotacounty.png; path = LRImages/dakotacounty.png; sourceTree = "<group>"; };
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
-		8594367D1C7A96B00065A236 /* carlsoncapitalmanagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carlsoncapitalmanagement.png; path = "Local Resource Images/carlsoncapitalmanagement.png"; sourceTree = "<group>"; };
-		8594367F1C7A96B50065A236 /* dakotacounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dakotacounty.png; path = "Local Resource Images/dakotacounty.png"; sourceTree = "<group>"; };
-		859436811C7A96BA0065A236 /* hvistendahl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hvistendahl.png; path = "Local Resource Images/hvistendahl.png"; sourceTree = "<group>"; };
-		859436831C7A96BE0065A236 /* northfieldretirementcommunity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldretirementcommunity.png; path = "Local Resource Images/northfieldretirementcommunity.png"; sourceTree = "<group>"; };
-		859436851C7A96C20065A236 /* image-coming-soon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-coming-soon.png"; path = "Local Resource Images/image-coming-soon.png"; sourceTree = "<group>"; };
-		859436871C7A96C60065A236 /* northfieldseniorcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldseniorcenter.png; path = "Local Resource Images/northfieldseniorcenter.png"; sourceTree = "<group>"; };
-		859436891C7A96CA0065A236 /* thisisnorthfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thisisnorthfield.png; path = "Local Resource Images/thisisnorthfield.png"; sourceTree = "<group>"; };
-		8594368B1C7A96CD0065A236 /* threelinks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threelinks.png; path = "Local Resource Images/threelinks.png"; sourceTree = "<group>"; };
-		8594368D1C7A96D20065A236 /* ricecounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ricecounty.png; path = "Local Resource Images/ricecounty.png"; sourceTree = "<group>"; };
-		8594368F1C7A9F4B0065A236 /* memorycafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = memorycafe.png; path = "Local Resource Images/memorycafe.png"; sourceTree = "<group>"; };
 		912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResourcesViewController.swift; sourceTree = "<group>"; };
 		912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLocalResourcesViewController.swift; sourceTree = "<group>"; };
 		912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamMemberViewController.swift; sourceTree = "<group>"; };
@@ -354,31 +354,31 @@
 				9141CAE21C7ABE5F00FD66F0 /* sam.png */,
 				9141CAE41C7ABE6800FD66F0 /* stephen.png */,
 				E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */,
-				8594368F1C7A9F4B0065A236 /* memorycafe.png */,
+				857B8DDC1C7ACD5A004FE466 /* carlsoncapitalmanagement.png */,
+				857B8DDD1C7ACD5A004FE466 /* dakotacounty.png */,
+				857B8DD41C7ACD41004FE466 /* image-coming-soon.png */,
+				857B8DD61C7ACD45004FE466 /* northfieldseniorcenter.png */,
+				857B8DDA1C7ACD4D004FE466 /* hvistendahl.png */,
+				857B8DD81C7ACD4A004FE466 /* northfieldretirementcommunity.png */,
 				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
 				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
 				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
+				857B8DD21C7ACD3E004FE466 /* actonalzheimers.png */,
 				E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */,
 				E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */,
+				857B8DD01C7ACD38004FE466 /* thisisnorthfield.png */,
 				9189A0551C7A445E0094507D /* LocationIconSmall.png */,
-				853C09911C7A55E700CA1B30 /* actonalzheimers.png */,
 				9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */,
 				9189A0571C7A44810094507D /* PhoneIconSmall.png */,
+				857B8DCC1C7ACD32004FE466 /* threelinks.png */,
 				9189A05D1C7A9B800094507D /* EmailIconSmall.png */,
 				9189A05B1C7A9B790094507D /* ContactIconSmall.png */,
-				8594368B1C7A96CD0065A236 /* threelinks.png */,
-				8594368D1C7A96D20065A236 /* ricecounty.png */,
-				859436831C7A96BE0065A236 /* northfieldretirementcommunity.png */,
-				859436851C7A96C20065A236 /* image-coming-soon.png */,
-				859436871C7A96C60065A236 /* northfieldseniorcenter.png */,
-				8594367D1C7A96B00065A236 /* carlsoncapitalmanagement.png */,
-				859436891C7A96CA0065A236 /* thisisnorthfield.png */,
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
-				8594367F1C7A96B50065A236 /* dakotacounty.png */,
+				857B8DCE1C7ACD35004FE466 /* ricecounty.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
 				31A224751C73B21D00D16B03 /* unchecked.png */,
-				859436811C7A96BA0065A236 /* hvistendahl.png */,
+				857B8DCA1C7ACD2F004FE466 /* memorycafe.png */,
 				E20C73271C627D3D005CB7BC /* Medical_Button_Icon.png */,
 				31A224771C73B22E00D16B03 /* checked.png */,
 				E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */,
@@ -490,46 +490,46 @@
 			files = (
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
 				9141CADB1C7ABE4100FD66F0 /* camille.png in Resources */,
-				859436901C7A9F4B0065A236 /* memorycafe.png in Resources */,
 				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
-				8594368E1C7A96D20065A236 /* ricecounty.png in Resources */,
-				853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */,
+				857B8DDE1C7ACD5A004FE466 /* carlsoncapitalmanagement.png in Resources */,
 				311126A91C7A9A09005280BA /* delete.png in Resources */,
+				857B8DD31C7ACD3E004FE466 /* actonalzheimers.png in Resources */,
 				9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */,
+				857B8DCD1C7ACD32004FE466 /* threelinks.png in Resources */,
 				9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */,
 				9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */,
-				859436881C7A96C60065A236 /* northfieldseniorcenter.png in Resources */,
 				9141CAE51C7ABE6800FD66F0 /* stephen.png in Resources */,
+				857B8DDB1C7ACD4D004FE466 /* hvistendahl.png in Resources */,
+				857B8DDF1C7ACD5A004FE466 /* dakotacounty.png in Resources */,
+				857B8DD11C7ACD38004FE466 /* thisisnorthfield.png in Resources */,
 				E20C732E1C627F56005CB7BC /* Personal_Button_Icon.png in Resources */,
 				E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */,
-				859436801C7A96B50065A236 /* dakotacounty.png in Resources */,
 				E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */,
 				E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */,
 				E20C732A1C627F3C005CB7BC /* Financial_Button_Icon.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
-				859436821C7A96BA0065A236 /* hvistendahl.png in Resources */,
 				E20C732C1C627F41005CB7BC /* Legal_Button_Icon.png in Resources */,
-				8594367E1C7A96B00065A236 /* carlsoncapitalmanagement.png in Resources */,
 				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
 				9189A05C1C7A9B790094507D /* ContactIconSmall.png in Resources */,
-				8594368A1C7A96CA0065A236 /* thisisnorthfield.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
-				859436841C7A96BE0065A236 /* northfieldretirementcommunity.png in Resources */,
-				859436861C7A96C20065A236 /* image-coming-soon.png in Resources */,
 				E2E9201F1C7AB1D3008BF950 /* Launch Screen.storyboard in Resources */,
+				857B8DD51C7ACD41004FE466 /* image-coming-soon.png in Resources */,
 				31A224761C73B21D00D16B03 /* unchecked.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
+				857B8DCF1C7ACD35004FE466 /* ricecounty.png in Resources */,
+				857B8DD91C7ACD4A004FE466 /* northfieldretirementcommunity.png in Resources */,
 				9141CAE11C7ABE5900FD66F0 /* risako.png in Resources */,
+				857B8DCB1C7ACD2F004FE466 /* memorycafe.png in Resources */,
 				9141CADF1C7ABE5000FD66F0 /* julia.png in Resources */,
+				857B8DD71C7ACD45004FE466 /* northfieldseniorcenter.png in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				9189A05E1C7A9B800094507D /* EmailIconSmall.png in Resources */,
 				9141CAE31C7ABE5F00FD66F0 /* sam.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
-				8594368C1C7A96CD0065A236 /* threelinks.png in Resources */,
 				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
 				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
 				E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */,
