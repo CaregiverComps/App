@@ -34,10 +34,8 @@ class DetailLocalResourcesViewController: UITableViewController {
         self.websiteTableViewCell.textLabel?.text=self.passedValue?.website
         self.addressTableViewCell.textLabel?.text=self.passedValue?.address
         
-        if(self.passedValue?.phoneNumber == "") {
-            self.phoneTableViewCell.hidden = true
-        }
         
+
         
     }
     
@@ -107,23 +105,30 @@ class DetailLocalResourcesViewController: UITableViewController {
             var websiteURL = websiteTableViewCell.textLabel!.text!
             // action to go use safari with this url
             UIApplication.sharedApplication().openURL(NSURL(string: "http://"+"\(websiteURL)")!)
+            // UIApplication.sharedApplication().openURL(NSURL(string: "\(websiteURL)")!)
             
             
         } else if (currentCell == addressTableViewCell) {
             print("selected address")
             
-            var latitude = "40.7127837"
-            var longitude = "-74.00594130000002"
+            var latitude = self.passedValue?.latitude
+            var longitude = self.passedValue?.longitude
+         
             //action to go to maps
-            let targetURL = NSURL(string: "http://maps.apple.com/?ll=\(latitude),\(longitude)")!
+            let targetURL = NSURL(string: "http://maps.apple.com/?q=\(latitude!),\(longitude!)")!
+            print(targetURL)
             let isAvailable = UIApplication.sharedApplication().canOpenURL(targetURL)
             UIApplication.sharedApplication().openURL(targetURL)
         }
-        
-        
+        tableView.deselectRowAtIndexPath(tableView.indexPathForSelectedRow!, animated: true)
+
     }
     
-    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        var deselectedCell = tableView.cellForRowAtIndexPath(indexPath)!
+        deselectedCell.backgroundColor = UIColor.clearColor()
+        
+    }
     
     @IBAction func shareResourceAction(sender: AnyObject) {
         //Press 'action' button to share (as a contact?)
