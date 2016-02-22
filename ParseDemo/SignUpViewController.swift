@@ -107,13 +107,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     // Create NFObject to notify admin
                     let justAdmin = AccessLevel();
-                    justAdmin.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
+                    justAdmin.setInitialValues(false, legal: false, medical: false, personal: true, admin: true);
                     justAdmin.update();
-                    print("created justAdmin");
                     let newUserInTeam = NFObject();
-                    newUserInTeam.setInitialValues(username! + "has joined your team! Please go to your manage team page to set their access level.", username: username!, teamName: teamName!, level: justAdmin, imageData: nil);
+                    newUserInTeam.setInitialValues(username! + " has joined your team! Please go to your manage team page to set their access level.", username: username!, teamName: teamName!, level: justAdmin, imageData: nil);
                     newUserInTeam.update();
-                    print("createdNewUserInTeam");
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
