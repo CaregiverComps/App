@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		311126A71C762B9B005280BA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 311126A61C762B9B005280BA /* delete.png */; };
+		311126A91C7A9A09005280BA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 311126A81C7A9A09005280BA /* delete.png */; };
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
 		316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */; };
@@ -86,7 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		311126A61C762B9B005280BA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		311126A81C7A9A09005280BA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
 		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
 		316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsEntryViewController.swift; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 				853C09911C7A55E700CA1B30 /* actonalzheimers.png */,
 				9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */,
 				9189A0571C7A44810094507D /* PhoneIconSmall.png */,
-				311126A61C762B9B005280BA /* delete.png */,
+				311126A81C7A9A09005280BA /* delete.png */,
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
@@ -436,6 +436,7 @@
 				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
 				853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */,
+				311126A91C7A9A09005280BA /* delete.png in Resources */,
 				9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */,
 				9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */,
 				9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */,
@@ -455,7 +456,6 @@
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
-				311126A71C762B9B005280BA /* delete.png in Resources */,
 				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
 				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
 				E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */,

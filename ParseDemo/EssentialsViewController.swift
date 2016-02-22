@@ -28,10 +28,13 @@ class EssentialsViewController: PFQueryTableViewController {
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
         self.parseClassName = "Essentials"
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
     }
@@ -94,6 +97,7 @@ class EssentialsViewController: PFQueryTableViewController {
         var deleteImage : UIImage = UIImage(named: "delete")!
         if deletable == true {
             cell!.deleteImage.image = deleteImage
+            print("IMAGE")
         }
         
         return cell
@@ -121,8 +125,10 @@ class EssentialsViewController: PFQueryTableViewController {
     
     func deleteItem(sender: UIButton) {
         let object = objects![sender.tag] as? Essentials
-        object?.deleteEventually()
-        self.loadObjects()
+        if object!.valueForKey("DELETABLE") as! Bool == true {
+            object?.deleteEventually()
+            self.loadObjects()
+        }
     }
     
     
