@@ -43,38 +43,16 @@ class ManageTeamViewController: UITableViewController {
                     }
                 }
             }
+            self.tableView.reloadData()
+
+            print(teamList)
         }
     }
     
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        if let user=AppUser.currentUser() as AppUser? {
-            teamList.removeAll()
-            team = user.getTeamMembers();
-            if (!user.getCaregiverAccessLevel().getAdminAccess()) {
-                noTeamMemberLabel.text="You are not authorized to view this page."
-                addMemberButton.enabled=false
-                addMemberButton.tintColor=UIColor.clearColor()
-            }
-                
-            else {
-                if (team.count>1) {
-                    noTeamMemberLabel.hidden = true
-                }
-                    for member in team {
-                        let unwrappedUser:AppUser=member!
-                        if (unwrappedUser.username != user.username) {
-                            teamList.append(unwrappedUser.username!)
-                    }
-                }
-            }
-        }
-        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")        
     }
-    
-    
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
