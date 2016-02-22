@@ -20,9 +20,15 @@ class ManageTeamViewController: UITableViewController {
     
     var userSelected:AppUser=AppUser()
     var team:[AppUser?]=[AppUser?]()
-    var teamList = ["Amy","DLN","Jadrian"]
+    var teamList:[String] = []
     
     override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
+   override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         if let user=AppUser.currentUser() as AppUser? {
             teamList.removeAll()
             team = user.getTeamMembers();
@@ -31,7 +37,7 @@ class ManageTeamViewController: UITableViewController {
                 addMemberButton.enabled=false
                 addMemberButton.tintColor=UIColor.clearColor()
             }
-                
+            
             else {
                 if (team.count>1) {
                     noTeamMemberLabel.hidden = true
@@ -43,38 +49,9 @@ class ManageTeamViewController: UITableViewController {
                     }
                 }
             }
+            self.tableView.reloadData()
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        if let user=AppUser.currentUser() as AppUser? {
-            teamList.removeAll()
-            team = user.getTeamMembers();
-            if (!user.getCaregiverAccessLevel().getAdminAccess()) {
-                noTeamMemberLabel.text="You are not authorized to view this page."
-                addMemberButton.enabled=false
-                addMemberButton.tintColor=UIColor.clearColor()
-            }
-                
-            else {
-                if (team.count>1) {
-                    noTeamMemberLabel.hidden = true
-                }
-                    for member in team {
-                        let unwrappedUser:AppUser=member!
-                        if (unwrappedUser.username != user.username) {
-                            teamList.append(unwrappedUser.username!)
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
