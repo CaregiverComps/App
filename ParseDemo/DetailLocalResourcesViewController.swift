@@ -79,7 +79,7 @@ class DetailLocalResourcesViewController: UITableViewController {
             }
         }
         
-        return 44
+        return 50
     }
     
     
