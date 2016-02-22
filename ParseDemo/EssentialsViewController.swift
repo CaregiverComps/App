@@ -233,7 +233,7 @@ class EssentialsViewController: PFQueryTableViewController {
                     
                     
                     //TEST CODE
-                    let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?;
+//                    let personalImage = UIImage(named: "Personal_Button_Icon.png") as UIImage?;
                     //let data:NSData?=UIImagePNGRepresentation(personalImage!)
                     //let testObject = NFObject();
                     //testObject.setInitialValues("TESTING", username: user.username!, teamName: user.getTeamName(), level: user.getCaregiverAccessLevel().createCopy(), imageData: data)
