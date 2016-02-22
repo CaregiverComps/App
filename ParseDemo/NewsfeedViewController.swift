@@ -311,8 +311,8 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
-            self.loadObjects()
             self.isFilteredView=true
+            self.loadObjects()
         }
         
         let titleLabel = UILabel()
