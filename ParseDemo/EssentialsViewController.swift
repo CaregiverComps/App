@@ -33,8 +33,6 @@ class EssentialsViewController: PFQueryTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
     }
@@ -72,6 +70,10 @@ class EssentialsViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        
+        tableView.estimatedRowHeight = 40
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         let cell:EssentialsTableViewCell? = tableView.dequeueReusableCellWithIdentifier("essentialsCell") as? EssentialsTableViewCell
         
         let marked = object!["MARKED"] as! Bool
@@ -98,6 +100,9 @@ class EssentialsViewController: PFQueryTableViewController {
         if deletable == true {
             cell!.deleteImage.image = deleteImage
             print("IMAGE")
+        }
+        else {
+            cell!.deleteImage.image = nil
         }
         
         return cell
