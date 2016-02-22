@@ -753,8 +753,33 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Contact Information" id="bvr-5O-YMl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" textLabel="hst-lo-0sk" imageView="QGq-69-RHX" style="IBUITableViewCellStyleDefault" id="4zv-le-KS4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="contactNameCell" textLabel="c13-mT-pdB" imageView="4eR-pZ-AP4" style="IBUITableViewCellStyleDefault" id="2v0-Nv-X67" userLabel="Contact Name Table View Cell">
                                         <rect key="frame" x="0.0" y="423" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2v0-Nv-X67" id="h56-M4-1fH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c13-mT-pdB" userLabel="300 N College St. Northfield, MN 55378">
+                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ContactIconSmall.png" id="4eR-pZ-AP4">
+                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" textLabel="hst-lo-0sk" imageView="QGq-69-RHX" style="IBUITableViewCellStyleDefault" id="4zv-le-KS4">
+                                        <rect key="frame" x="0.0" y="467" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4zv-le-KS4" id="zNP-1y-0lx">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -779,8 +804,33 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emailCell" textLabel="siK-aE-lGj" imageView="Fzk-qw-IEf" style="IBUITableViewCellStyleDefault" id="8Sz-z6-C87" userLabel="Email Table View Cell">
+                                        <rect key="frame" x="0.0" y="511" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Sz-z6-C87" id="RrC-Tn-lP2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="siK-aE-lGj" userLabel="300 N College St. Northfield, MN 55378">
+                                                    <rect key="frame" x="57" y="0.0" width="528" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="EmailIconSmall.png" id="Fzk-qw-IEf">
+                                                    <rect key="frame" x="15" y="8" width="27" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="websiteCell" textLabel="hsD-ar-eZ0" imageView="PCP-2P-gGb" style="IBUITableViewCellStyleDefault" id="sgK-R5-GJX">
-                                        <rect key="frame" x="0.0" y="467" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="555" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sgK-R5-GJX" id="FCz-2w-KIl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -805,7 +855,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" textLabel="eEU-Et-GZM" imageView="hD3-n8-IWM" style="IBUITableViewCellStyleDefault" id="ttV-J2-ivp">
-                                        <rect key="frame" x="0.0" y="511" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="599" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ttV-J2-ivp" id="UPC-Pp-AH7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -840,8 +890,10 @@
                     <navigationItem key="navigationItem" title="detailTitle" id="8eD-qW-adg"/>
                     <connections>
                         <outlet property="addressTableViewCell" destination="ttV-J2-ivp" id="tJ9-yz-zEk"/>
+                        <outlet property="contactNameTableViewCell" destination="2v0-Nv-X67" id="s1a-aN-vAC"/>
                         <outlet property="descriptionTextView" destination="s7O-Iv-iAw" id="ItU-i2-uvU"/>
                         <outlet property="detailTitle" destination="8eD-qW-adg" id="N3M-tS-g1Y"/>
+                        <outlet property="emailTableViewCell" destination="8Sz-z6-C87" id="c21-dz-EvY"/>
                         <outlet property="phoneTableViewCell" destination="4zv-le-KS4" id="OTS-ub-dDW"/>
                         <outlet property="resourceImageView" destination="ZZA-Jz-0Ln" id="mWy-J6-TY4"/>
                         <outlet property="websiteTableViewCell" destination="sgK-R5-GJX" id="rDc-kD-bx4"/>
@@ -2062,6 +2114,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ContactIconSmall.png" width="27" height="27"/>
+        <image name="EmailIconSmall.png" width="27" height="27"/>
         <image name="EssentialsTabIcon.png" width="30" height="30"/>
         <image name="LocalResourcesTabIconSmall.png" width="35" height="35"/>
         <image name="LocationIconSmall.png" width="27" height="27"/>

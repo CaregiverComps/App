@@ -35,6 +35,8 @@
 		9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0551C7A445E0094507D /* LocationIconSmall.png */; };
 		9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0571C7A44810094507D /* PhoneIconSmall.png */; };
 		9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */; };
+		9189A05C1C7A9B790094507D /* ContactIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A05B1C7A9B790094507D /* ContactIconSmall.png */; };
+		9189A05E1C7A9B800094507D /* EmailIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A05D1C7A9B800094507D /* EmailIconSmall.png */; };
 		91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */; };
 		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
 		B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */; };
@@ -125,6 +127,8 @@
 		9189A0551C7A445E0094507D /* LocationIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationIconSmall.png; sourceTree = "<group>"; };
 		9189A0571C7A44810094507D /* PhoneIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhoneIconSmall.png; sourceTree = "<group>"; };
 		9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WebLinkIconSmall.png; sourceTree = "<group>"; };
+		9189A05B1C7A9B790094507D /* ContactIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactIconSmall.png; sourceTree = "<group>"; };
+		9189A05D1C7A9B800094507D /* EmailIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailIconSmall.png; sourceTree = "<group>"; };
 		91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessViewController.swift; sourceTree = "<group>"; };
 		B9489BC81C4C269600F455EE /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				853C09911C7A55E700CA1B30 /* actonalzheimers.png */,
 				9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */,
 				9189A0571C7A44810094507D /* PhoneIconSmall.png */,
+				9189A05D1C7A9B800094507D /* EmailIconSmall.png */,
+				9189A05B1C7A9B790094507D /* ContactIconSmall.png */,
 				8594368B1C7A96CD0065A236 /* threelinks.png */,
 				311126A61C762B9B005280BA /* delete.png */,
 				8594368D1C7A96D20065A236 /* ricecounty.png */,
@@ -480,6 +486,7 @@
 				8594367E1C7A96B00065A236 /* carlsoncapitalmanagement.png in Resources */,
 				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
+				9189A05C1C7A9B790094507D /* ContactIconSmall.png in Resources */,
 				8594368A1C7A96CA0065A236 /* thisisnorthfield.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
@@ -488,6 +495,7 @@
 				31A224761C73B21D00D16B03 /* unchecked.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
+				9189A05E1C7A9B800094507D /* EmailIconSmall.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
 				8594368C1C7A96CD0065A236 /* threelinks.png in Resources */,
