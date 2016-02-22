@@ -3,7 +3,7 @@
 //  Caregiving
 //
 //  Created by Stephen Grinich on 1/24/16.
-//  Copyright © 2016 Caregivernet. All rights reserved.
+//  Copyright © 2016 CaregiverNet. All rights reserved.
 //
 
 import UIKit
