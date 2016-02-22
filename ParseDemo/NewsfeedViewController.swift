@@ -178,10 +178,11 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     
     @IBAction func onFiltertouch(sender: AnyObject) {
-        filterAccessLevel.setFinancialAccess(false);
-        filterAccessLevel.setLegalAccess(false);
-        filterAccessLevel.setMedicalAccess(false);
-        filterAccessLevel.setPersonalAccess(false);
+        // Filter currently remembers previous filter setting
+        //filterAccessLevel.setFinancialAccess(false);
+        //filterAccessLevel.setLegalAccess(false);
+        //filterAccessLevel.setMedicalAccess(false);
+        //filterAccessLevel.setPersonalAccess(false);
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
 
