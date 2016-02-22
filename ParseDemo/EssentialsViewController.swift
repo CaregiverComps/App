@@ -2,8 +2,8 @@
 //  EssentialsViewController.swift
 //  Caregiving
 //
-//  Created by Julia Bindler on 2/11/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Created by Julia Bindler and Stephen Grinich on 2/11/16.
+//  Copyright © 2016 CaregiverNet. All rights reserved.
 //
 
 import UIKit
@@ -94,7 +94,7 @@ class EssentialsViewController: PFQueryTableViewController {
         cell!.checkbox.image = checkImage
         cell!.cellText.text = object!["TEXT"] as? String
         
-        var deleteImage : UIImage = UIImage(named: "delete")!
+        let deleteImage : UIImage = UIImage(named: "delete")!
         if deletable == true {
             cell!.deleteImage.image = deleteImage
             print("IMAGE")
