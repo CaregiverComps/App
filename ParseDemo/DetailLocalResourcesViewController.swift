@@ -82,6 +82,10 @@ class DetailLocalResourcesViewController: UITableViewController {
         return 44
     }
     
+    
+    /**
+        Handle row selection
+    */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Set cell selected as currentCell
