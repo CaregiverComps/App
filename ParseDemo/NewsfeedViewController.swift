@@ -18,7 +18,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     var entryFilterSet = false
     var updateAfterPosting = false
     var isFilteredView = false
-    var postAccessLevel = AccessLevel();
     var filterAccessLevel = AccessLevel();
     
     required init(coder aDecoder:NSCoder)
@@ -36,11 +35,9 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
-        
         if let user=AppUser.currentUser() as AppUser? {
             let userLevel = user.getCaregiverAccessLevel()
-            filterAccessLevel = userLevel.createCopy()
+            self.filterAccessLevel = userLevel.createCopy()
             navigationBar.title = user.getTeamName() + " Feed";
         }
         
@@ -61,17 +58,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             tableView.finishInfiniteScroll()
         }
     }
-    
-    func checkForUpdates() {
-        if(updateAfterPosting == true){
-            self.loadObjects()
-            updateAfterPosting = false
-            print("Updating for the post you just did")
-        }
-        else{
-//            print("not checking because you didn't just post")
-        }
-    }
+
     
     override func queryForTable() -> PFQuery {
         if AppUser.currentUser() == nil {
@@ -84,18 +71,14 @@ class NewsFeedViewController: PFQueryTableViewController {
             if let user=AppUser.currentUser() as AppUser? {
                 // Why are these all false?
                 let userLevel = user.getCaregiverAccessLevel()
-                print("\n\n&&&&&&USER LEVEL", userLevel)
-                print(userLevel.getFinancialAccess())
                 displayAccessLevel.setInitialValues(userLevel.getFinancialAccess(), legal: userLevel.getLegalAccess(), medical: userLevel.getMedicalAccess(), personal: userLevel.getPersonalAccess(), admin: userLevel.getAdminAccess())
-                print("$$$$$$", displayAccessLevel)
             }
             
             else{
-                displayAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: true);
+                displayAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
 
             }
         }
-        
         else{
             displayAccessLevel = self.filterAccessLevel
         }
@@ -105,12 +88,11 @@ class NewsFeedViewController: PFQueryTableViewController {
         if let user=AppUser.currentUser() as AppUser? {
             if (isFilteredView) {
                 query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
-//                isFilteredView = !isFilteredView
+                // Do we want filter view to reset every time user goes to another page?
+                //isFilteredView = !isFilteredView
             }
             else {
                 query=NFObject.getNewsfeedFor(user, categories: displayAccessLevel);
-                
-
             }
         }
         else {
@@ -146,10 +128,7 @@ class NewsFeedViewController: PFQueryTableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier("newsCell") as? NewsFeedTableViewCell
             
             cell?.selectionStyle = UITableViewCellSelectionStyle.None
-            
-            //use the KEY_USERNAME field to access the username of the user
-            
-            
+        
             cell?.cellText?.text = object!["TEXT"] as? String
             cell?.userName?.text = object!["USERNAME"] as? String
         
@@ -182,18 +161,15 @@ class NewsFeedViewController: PFQueryTableViewController {
         })
 
         let date = object?.createdAt
-            //                var date = object!["createdAt"] as? NSDate
         
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
-            let str = dateFormatter.stringFromDate(date!)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMMM d 'at' h:mm a" // superset of OP's format
+        let str = dateFormatter.stringFromDate(date!)
                             
-            cell?.timeStamp?.text = str
+        cell?.timeStamp?.text = str
             
-            cell?.textLabel?.numberOfLines = 0
-            return cell;
-        
-
+        cell?.textLabel?.numberOfLines = 0
+        return cell;
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -202,8 +178,10 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     
     @IBAction func onFiltertouch(sender: AnyObject) {
-        //query=NFObject.getNewsfeedFor(user, category: "INSERT CATEGORY NAME HERE IN LOWERCASE");
-        print("filter test")
+        filterAccessLevel.setFinancialAccess(false);
+        filterAccessLevel.setLegalAccess(false);
+        filterAccessLevel.setMedicalAccess(false);
+        filterAccessLevel.setPersonalAccess(false);
         self.showFilterPopupWithStyle(CNPPopupStyle.ActionSheet)
     }
 
@@ -333,15 +311,9 @@ class NewsFeedViewController: PFQueryTableViewController {
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
-            
-
-           self.loadObjects()
-            
-            
-            print("Block for button: \(button.titleLabel?.text)")
-            
-            
-                    }
+            self.loadObjects()
+            self.isFilteredView=true
+        }
         
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0;
@@ -357,8 +329,6 @@ class NewsFeedViewController: PFQueryTableViewController {
  
     
     func medicalButtonFilterTouched(sender: HTPressableButton!){
-        isFilteredView=true
-        
         // Turn on Medical Filter
         if(filterAccessLevel.getLocalMedicalAccess() == false){
             filterAccessLevel.setMedicalAccess(true)
@@ -379,8 +349,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func financialButtonFilterTouched(sender: HTPressableButton!){
-        isFilteredView=true
-        
         // Turn on Financial filter
         if(filterAccessLevel.bFinancial == false){
             filterAccessLevel.setFinancialAccess(true)
@@ -397,8 +365,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func legalButtonFilterTouched(sender: HTPressableButton!){
-        isFilteredView=true
-        
         // Turn on legal filter
         if(filterAccessLevel.bLegal == false){
             filterAccessLevel.setLegalAccess(true)
@@ -415,8 +381,6 @@ class NewsFeedViewController: PFQueryTableViewController {
     }
     
     func personalButtonFilterTouched(sender: HTPressableButton!){
-        isFilteredView=true
-        
         // Turn on personal filter
         if(filterAccessLevel.bPersonal == false){
             filterAccessLevel.setPersonalAccess(true)

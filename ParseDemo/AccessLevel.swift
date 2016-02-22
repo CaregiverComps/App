@@ -47,7 +47,6 @@ class AccessLevel : PFObject,PFSubclassing{
             self.bMedical=mebool
         }
         if let pebool = personal as? Bool {
-
             self.bPersonal=pebool
         }
         if let adminbool = admin as? Bool {
@@ -85,8 +84,9 @@ class AccessLevel : PFObject,PFSubclassing{
     
     func createCopy() -> AccessLevel{
         let copyAccessLevel = AccessLevel();
-        copyAccessLevel.setInitialValues(self.bFinancial, legal: self.bLegal, medical: self.bMedical, personal: self.bPersonal, admin: self.bAdmin);
-        copyAccessLevel.update();
+        copyAccessLevel.setInitialValues(self.getFinancialAccess(), legal: self.getLegalAccess(), medical: self.getMedicalAccess(), personal: self.getPersonalAccess(), admin: self.getAdminAccess());
+        //Since we are primarily using this for the newsfeed filter, there is no reason to push this to the db
+        //copyAccessLevel.update();
         return copyAccessLevel;
     }
     
