@@ -2,8 +2,8 @@
 //  EssentialsViewController.swift
 //  Caregiving
 //
-//  Created by Julia Bindler on 2/11/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Created by Julia Bindler and Stephen Grinich on 2/11/16.
+//  Copyright © 2016 CaregiverNet. All rights reserved.
 //
 
 import UIKit

@@ -102,8 +102,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     alert.show()
                     
                 } else {
-                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
-                    alert.show();
+//                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show();
                     
                     // Create NFObject to notify admin
                     let justAdmin = AccessLevel();
@@ -213,8 +213,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     alert.show()
                     
                 } else {
-                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+//                    let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
+//                    alert.show()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
                         self.presentViewController(viewController, animated: true, completion: nil)
