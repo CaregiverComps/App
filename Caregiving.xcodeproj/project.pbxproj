@@ -74,6 +74,7 @@
 		E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */; };
 		E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */; };
 		E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */; };
+		E2E9201F1C7AB1D3008BF950 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E9201E1C7AB1D3008BF950 /* Launch Screen.storyboard */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
 		F48894B21B9939A3003627DB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B11B9939A3003627DB /* CFNetwork.framework */; };
 		F48894B41B9939AB003627DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B31B9939AB003627DB /* CoreGraphics.framework */; };
@@ -174,6 +175,7 @@
 		E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Personal_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medical_Button_Icon.pxm; sourceTree = "<group>"; };
 		E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands_gray.png; sourceTree = "<group>"; };
+		E2E9201E1C7AB1D3008BF950 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48894B11B9939A3003627DB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F48894B31B9939AB003627DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -251,6 +253,7 @@
 				E2235BF31C5576A8009320A1 /* Third Party  */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
+				E2E9201E1C7AB1D3008BF950 /* Launch Screen.storyboard */,
 				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
 				E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */,
@@ -497,6 +500,7 @@
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
 				859436841C7A96BE0065A236 /* northfieldretirementcommunity.png in Resources */,
 				859436861C7A96C20065A236 /* image-coming-soon.png in Resources */,
+				E2E9201F1C7AB1D3008BF950 /* Launch Screen.storyboard in Resources */,
 				31A224761C73B21D00D16B03 /* unchecked.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,

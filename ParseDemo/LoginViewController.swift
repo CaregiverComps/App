@@ -61,7 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     print("Error in loginAction")
-                    let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Sorry", message: "Please check your login credentials.", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                 }
             })
