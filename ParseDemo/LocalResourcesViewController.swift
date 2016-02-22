@@ -25,8 +25,6 @@ class LocalResourcesViewController: UITableViewController {
         if let user=AppUser.currentUser() as AppUser? {
             resourceList.removeAll()
             resourceList=LocalResources.getLocalResources()
-
-            
             for resource in resourceList {
                 resourceNames.append(resource.resourceName)
             }

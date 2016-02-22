@@ -25,6 +25,7 @@
 		8594368A1C7A96CA0065A236 /* thisisnorthfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 859436891C7A96CA0065A236 /* thisisnorthfield.png */; };
 		8594368C1C7A96CD0065A236 /* threelinks.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368B1C7A96CD0065A236 /* threelinks.png */; };
 		8594368E1C7A96D20065A236 /* ricecounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368D1C7A96D20065A236 /* ricecounty.png */; };
+		859436901C7A9F4B0065A236 /* memorycafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 8594368F1C7A9F4B0065A236 /* memorycafe.png */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
 		912D6D7C1C71084200FBD51A /* DetailLocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */; };
 		912D6D7E1C739B9400FBD51A /* AddTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */; };
@@ -35,6 +36,8 @@
 		9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0551C7A445E0094507D /* LocationIconSmall.png */; };
 		9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0571C7A44810094507D /* PhoneIconSmall.png */; };
 		9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */; };
+		9189A05C1C7A9B790094507D /* ContactIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A05B1C7A9B790094507D /* ContactIconSmall.png */; };
+		9189A05E1C7A9B800094507D /* EmailIconSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9189A05D1C7A9B800094507D /* EmailIconSmall.png */; };
 		91FFBD861C692E220004BBD0 /* UserAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */; };
 		B9489BC91C4C269600F455EE /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BC81C4C269600F455EE /* AppUser.swift */; };
 		B9489BCB1C4C26AA00F455EE /* AccessLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */; };
@@ -115,6 +118,7 @@
 		859436891C7A96CA0065A236 /* thisisnorthfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thisisnorthfield.png; path = "Local Resource Images/thisisnorthfield.png"; sourceTree = "<group>"; };
 		8594368B1C7A96CD0065A236 /* threelinks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threelinks.png; path = "Local Resource Images/threelinks.png"; sourceTree = "<group>"; };
 		8594368D1C7A96D20065A236 /* ricecounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ricecounty.png; path = "Local Resource Images/ricecounty.png"; sourceTree = "<group>"; };
+		8594368F1C7A9F4B0065A236 /* memorycafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = memorycafe.png; path = "Local Resource Images/memorycafe.png"; sourceTree = "<group>"; };
 		912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResourcesViewController.swift; sourceTree = "<group>"; };
 		912D6D7B1C71084200FBD51A /* DetailLocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLocalResourcesViewController.swift; sourceTree = "<group>"; };
 		912D6D7D1C739B9400FBD51A /* AddTeamMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamMemberViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		9189A0551C7A445E0094507D /* LocationIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LocationIconSmall.png; sourceTree = "<group>"; };
 		9189A0571C7A44810094507D /* PhoneIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhoneIconSmall.png; sourceTree = "<group>"; };
 		9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WebLinkIconSmall.png; sourceTree = "<group>"; };
+		9189A05B1C7A9B790094507D /* ContactIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContactIconSmall.png; sourceTree = "<group>"; };
+		9189A05D1C7A9B800094507D /* EmailIconSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailIconSmall.png; sourceTree = "<group>"; };
 		91FFBD851C692E220004BBD0 /* UserAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccessViewController.swift; sourceTree = "<group>"; };
 		B9489BC81C4C269600F455EE /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		B9489BCA1C4C26AA00F455EE /* AccessLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessLevel.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */,
+				8594368F1C7A9F4B0065A236 /* memorycafe.png */,
 				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
 				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
 				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
@@ -336,6 +343,8 @@
 				853C09911C7A55E700CA1B30 /* actonalzheimers.png */,
 				9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */,
 				9189A0571C7A44810094507D /* PhoneIconSmall.png */,
+				9189A05D1C7A9B800094507D /* EmailIconSmall.png */,
+				9189A05B1C7A9B790094507D /* ContactIconSmall.png */,
 				8594368B1C7A96CD0065A236 /* threelinks.png */,
 				311126A61C762B9B005280BA /* delete.png */,
 				8594368D1C7A96D20065A236 /* ricecounty.png */,
@@ -460,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
+				859436901C7A9F4B0065A236 /* memorycafe.png in Resources */,
 				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
 				8594368E1C7A96D20065A236 /* ricecounty.png in Resources */,
@@ -480,6 +490,7 @@
 				8594367E1C7A96B00065A236 /* carlsoncapitalmanagement.png in Resources */,
 				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
+				9189A05C1C7A9B790094507D /* ContactIconSmall.png in Resources */,
 				8594368A1C7A96CA0065A236 /* thisisnorthfield.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
@@ -488,6 +499,7 @@
 				31A224761C73B21D00D16B03 /* unchecked.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				E27A85CD1C5A8C8C00427200 /* Filter_Icon.png in Resources */,
+				9189A05E1C7A9B800094507D /* EmailIconSmall.png in Resources */,
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
 				8594368C1C7A96CD0065A236 /* threelinks.png in Resources */,
