@@ -217,7 +217,7 @@ class EssentialsViewController: PFQueryTableViewController {
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
-            print("Block for button: \(button.titleLabel?.text)")
+            self.loadObjects()
         }
         
         
@@ -255,10 +255,10 @@ class EssentialsViewController: PFQueryTableViewController {
                 self.popupController.dismissPopupControllerAnimated(true)
                 
                 
-                
+                self.loadObjects()
+
                 
             }
-            
         }
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0;
@@ -407,13 +407,7 @@ class EssentialsViewController: PFQueryTableViewController {
         
         doneButton.selectionHandler = { (CNPPopupButton button) -> Void in
             self.popupController.dismissPopupControllerAnimated(true)
-            
-            
             self.loadObjects()
-            
-            
-            print("Block for button: \(button.titleLabel?.text)")
-            
             
         }
         
