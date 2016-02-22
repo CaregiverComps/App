@@ -85,6 +85,7 @@ class NFObject : PFObject,PFSubclassing {
         let legalBool:Bool=access.getLegalAccess();
         let persBool:Bool=access.getPersonalAccess();
         let finanBool:Bool=access.getFinancialAccess();
+        let adminBool:Bool=access.getAdminAccess();
         
         // Check user's access level and teamname
         if (teamName == "" || !medicalBool || !categories.getLocalMedicalAccess()) {
@@ -100,9 +101,10 @@ class NFObject : PFObject,PFSubclassing {
         if (teamName == "" || !persBool || !categories.getLocalPersonalAccess()) {
             query2.whereKey("personal", equalTo: false);
         }
-
-
-        //query2.whereKey("admin", equalTo: access.getAdminAccess());
+        if (adminBool == false) {
+            query2.whereKey("admin", equalTo: false);
+        }
+        
         query.whereKey("TEAMNAME", equalTo: teamName);
         query.whereKey("ACCESSLEVEL", matchesQuery: query2);
 

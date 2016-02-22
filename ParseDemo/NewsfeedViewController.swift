@@ -36,13 +36,7 @@ class NewsFeedViewController: PFQueryTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // we use this to check for new posts posted by other people. this is so they can show up without needing to pull to refresh. so
-        // I suppose we don't need pulling to refresh
-        // Fires every 5 seconds.
-        var timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkForUpdates", userInfo: nil, repeats: true)
-        
         self.postAccessLevel.setInitialValues(false, legal: false, medical: false, personal: false, admin: false)
-        
         
         if let user=AppUser.currentUser() as AppUser? {
             let userLevel = user.getCaregiverAccessLevel()
