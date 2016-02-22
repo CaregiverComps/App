@@ -70,6 +70,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     if (result.count > 0) {
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
+                        
                     } else {
                         // Go back to original screen here
                         let alert = UIAlertView(title: "Error", message: "That team doesn't exist!", delegate: self, cancelButtonTitle: "OK")
@@ -102,7 +103,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
+                    alert.show();
+                    
+                    // Create NFObject to notify admin
+                    let justAdmin = AccessLevel();
+                    justAdmin.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
+                    justAdmin.update();
+                    print("created justAdmin");
+                    let newUserInTeam = NFObject();
+                    newUserInTeam.setInitialValues(username! + "has joined your team! Please go to your manage team page to set their access level.", username: username!, teamName: teamName!, level: justAdmin, imageData: nil);
+                    newUserInTeam.update();
+                    print("createdNewUserInTeam");
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
                         self.presentViewController(viewController, animated: true, completion: nil)
@@ -154,7 +166,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 if (teamName != "") {
                     query!.whereKey("TEAMNAME", equalTo:teamName!)
                     let result = try query!.findObjects()
-                    // Make sure 
+                    // Make sure teamName doesn't return valid team
                     if (result.count == 0) {
                         // Creates admin here
                         level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
@@ -189,14 +201,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             } catch {}
             
             level.update();
-            //newUser.username = username
-            //newUser.password = password
-            //newUser.email = email
             newUser.update();
 
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                //newUser.update();
 
                 // Stop the spinner
                 spinner.stopAnimating()
@@ -224,15 +232,4 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         teamNameField.resignFirstResponder()
         return true;
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
