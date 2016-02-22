@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		311126A71C762B9B005280BA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 311126A61C762B9B005280BA /* delete.png */; };
+		311126A91C7A9A09005280BA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 311126A81C7A9A09005280BA /* delete.png */; };
 		3122C6711C6CF1F8008FE477 /* EssentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */; };
 		3122C6731C6CF567008FE477 /* EssentialsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */; };
 		316E038B1C73934E003D9E77 /* EssentialsEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */; };
@@ -99,7 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		311126A61C762B9B005280BA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		311126A81C7A9A09005280BA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		3122C6701C6CF1F8008FE477 /* EssentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsViewController.swift; sourceTree = "<group>"; };
 		3122C6721C6CF567008FE477 /* EssentialsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsTableViewCell.swift; sourceTree = "<group>"; };
 		316E038A1C73934E003D9E77 /* EssentialsEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentialsEntryViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +477,7 @@
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
 				8594368E1C7A96D20065A236 /* ricecounty.png in Resources */,
 				853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */,
+				311126A91C7A9A09005280BA /* delete.png in Resources */,
 				9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */,
 				9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */,
 				9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */,
