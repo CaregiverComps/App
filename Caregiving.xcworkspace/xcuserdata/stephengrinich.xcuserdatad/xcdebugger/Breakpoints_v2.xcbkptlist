@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseDemo/NewsfeedViewController.swift"
-            timestampString = "477373232.527032"
+            timestampString = "477775835.779521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "showFilterPopupWithStyle(_:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "onFiltertouch(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

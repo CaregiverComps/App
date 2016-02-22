@@ -14,15 +14,6 @@
 		31A224761C73B21D00D16B03 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224751C73B21D00D16B03 /* unchecked.png */; };
 		31A224781C73B22E00D16B03 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A224771C73B22E00D16B03 /* checked.png */; };
 		853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09911C7A55E700CA1B30 /* actonalzheimers.png */; };
-		853C09941C7A560F00CA1B30 /* carlsoncapitalmanagement.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09931C7A560F00CA1B30 /* carlsoncapitalmanagement.png */; };
-		853C09961C7A580500CA1B30 /* threelinks.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09951C7A580500CA1B30 /* threelinks.png */; };
-		853C09981C7A580900CA1B30 /* ricecounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09971C7A580900CA1B30 /* ricecounty.png */; };
-		853C099A1C7A580C00CA1B30 /* thisisnorthfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09991C7A580C00CA1B30 /* thisisnorthfield.png */; };
-		853C099C1C7A581100CA1B30 /* northfieldseniorcenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C099B1C7A581100CA1B30 /* northfieldseniorcenter.png */; };
-		853C099E1C7A581700CA1B30 /* northfieldretirementcommunity.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C099D1C7A581700CA1B30 /* northfieldretirementcommunity.png */; };
-		853C09A01C7A581B00CA1B30 /* hvistendahl.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C099F1C7A581B00CA1B30 /* hvistendahl.png */; };
-		853C09A21C7A582100CA1B30 /* dakotacounty.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09A11C7A582100CA1B30 /* dakotacounty.png */; };
-		853C09A41C7A59C600CA1B30 /* image-coming-soon.png in Resources */ = {isa = PBXBuildFile; fileRef = 853C09A31C7A59C600CA1B30 /* image-coming-soon.png */; };
 		854438371C691F690018E60B /* LocalResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854438361C691F690018E60B /* LocalResources.swift */; };
 		858AC7A31C610EEB00579261 /* Essentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858AC7A21C610EEB00579261 /* Essentials.swift */; };
 		912D6D7A1C71083400FBD51A /* LocalResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */; };
@@ -70,6 +61,7 @@
 		E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */; };
 		E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */; };
 		E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */; };
+		E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */; };
 		F48894B01B99399B003627DB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894AF1B99399B003627DB /* AudioToolbox.framework */; };
 		F48894B21B9939A3003627DB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B11B9939A3003627DB /* CFNetwork.framework */; };
 		F48894B41B9939AB003627DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48894B31B9939AB003627DB /* CoreGraphics.framework */; };
@@ -103,15 +95,6 @@
 		7304E1711D41A83FBCFDCC1D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		76EF4CAB564325C4D43B42B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		853C09911C7A55E700CA1B30 /* actonalzheimers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = actonalzheimers.png; path = "Local Resource Images/actonalzheimers.png"; sourceTree = "<group>"; };
-		853C09931C7A560F00CA1B30 /* carlsoncapitalmanagement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carlsoncapitalmanagement.png; path = "Local Resource Images/carlsoncapitalmanagement.png"; sourceTree = "<group>"; };
-		853C09951C7A580500CA1B30 /* threelinks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threelinks.png; path = "Local Resource Images/threelinks.png"; sourceTree = "<group>"; };
-		853C09971C7A580900CA1B30 /* ricecounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ricecounty.png; path = "Local Resource Images/ricecounty.png"; sourceTree = "<group>"; };
-		853C09991C7A580C00CA1B30 /* thisisnorthfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thisisnorthfield.png; path = "Local Resource Images/thisisnorthfield.png"; sourceTree = "<group>"; };
-		853C099B1C7A581100CA1B30 /* northfieldseniorcenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldseniorcenter.png; path = "Local Resource Images/northfieldseniorcenter.png"; sourceTree = "<group>"; };
-		853C099D1C7A581700CA1B30 /* northfieldretirementcommunity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = northfieldretirementcommunity.png; path = "Local Resource Images/northfieldretirementcommunity.png"; sourceTree = "<group>"; };
-		853C099F1C7A581B00CA1B30 /* hvistendahl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hvistendahl.png; path = "Local Resource Images/hvistendahl.png"; sourceTree = "<group>"; };
-		853C09A11C7A582100CA1B30 /* dakotacounty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dakotacounty.png; path = "Local Resource Images/dakotacounty.png"; sourceTree = "<group>"; };
-		853C09A31C7A59C600CA1B30 /* image-coming-soon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-coming-soon.png"; path = "Local Resource Images/image-coming-soon.png"; sourceTree = "<group>"; };
 		854438361C691F690018E60B /* LocalResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResources.swift; sourceTree = "<group>"; };
 		858AC7A21C610EEB00579261 /* Essentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Essentials.swift; sourceTree = "<group>"; };
 		912D6D791C71083400FBD51A /* LocalResourcesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalResourcesViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +149,7 @@
 		E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medical_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Personal_Button_Icon_Weak.png; sourceTree = "<group>"; };
 		E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Medical_Button_Icon.pxm; sourceTree = "<group>"; };
+		E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ThreeHands_gray.png; sourceTree = "<group>"; };
 		F48894AF1B99399B003627DB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F48894B11B9939A3003627DB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F48894B31B9939AB003627DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -324,14 +308,13 @@
 		E203BE7E1C4C980B009BC4C6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD4F961C7A5462009F103F /* ThreeHands_gray.png */,
 				E2B929891C699ADD00157DBD /* Financial_Button_Icon_Weak.png */,
 				E2B9298A1C699ADD00157DBD /* Legal_Button_Icon_Weak.png */,
 				E2B9298B1C699ADD00157DBD /* Medical_Button_Icon_Weak.png */,
-				853C09931C7A560F00CA1B30 /* carlsoncapitalmanagement.png */,
 				E2B9298C1C699ADD00157DBD /* Personal_Button_Icon_Weak.png */,
 				E2D668E21C67FF7D00CE0327 /* Medical_Button_Icon.pxm */,
 				9189A0551C7A445E0094507D /* LocationIconSmall.png */,
-				853C09A31C7A59C600CA1B30 /* image-coming-soon.png */,
 				853C09911C7A55E700CA1B30 /* actonalzheimers.png */,
 				9189A0591C7A44BE0094507D /* WebLinkIconSmall.png */,
 				9189A0571C7A44810094507D /* PhoneIconSmall.png */,
@@ -339,16 +322,9 @@
 				E20C732D1C627F56005CB7BC /* Personal_Button_Icon.png */,
 				E20C732B1C627F41005CB7BC /* Legal_Button_Icon.png */,
 				E20C73291C627F3C005CB7BC /* Financial_Button_Icon.png */,
-				853C099D1C7A581700CA1B30 /* northfieldretirementcommunity.png */,
-				853C099F1C7A581B00CA1B30 /* hvistendahl.png */,
-				853C09A11C7A582100CA1B30 /* dakotacounty.png */,
 				31A224751C73B21D00D16B03 /* unchecked.png */,
-				853C099B1C7A581100CA1B30 /* northfieldseniorcenter.png */,
-				853C09951C7A580500CA1B30 /* threelinks.png */,
-				853C09991C7A580C00CA1B30 /* thisisnorthfield.png */,
 				E20C73271C627D3D005CB7BC /* Medical_Button_Icon.png */,
 				31A224771C73B22E00D16B03 /* checked.png */,
-				853C09971C7A580900CA1B30 /* ricecounty.png */,
 				E27A85CC1C5A8C8C00427200 /* Filter_Icon.png */,
 				E203BE871C4C987C009BC4C6 /* MoreTabIcon.png */,
 				E203BE8F1C4C9A7B009BC4C6 /* EssentialsTabIcon.png */,
@@ -456,29 +432,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				853C09A01C7A581B00CA1B30 /* hvistendahl.png in Resources */,
-				853C09941C7A560F00CA1B30 /* carlsoncapitalmanagement.png in Resources */,
 				E203BE921C4C9AFD009BC4C6 /* LocalResourcesTabIconSmall.png in Resources */,
 				31A224781C73B22E00D16B03 /* checked.png in Resources */,
 				E203BE961C4C9B9E009BC4C6 /* NewsFeedTabIconSmall.png in Resources */,
-				853C099A1C7A580C00CA1B30 /* thisisnorthfield.png in Resources */,
 				853C09921C7A55E700CA1B30 /* actonalzheimers.png in Resources */,
 				9189A0581C7A44810094507D /* PhoneIconSmall.png in Resources */,
-				853C099E1C7A581700CA1B30 /* northfieldretirementcommunity.png in Resources */,
 				9189A0561C7A445E0094507D /* LocationIconSmall.png in Resources */,
 				9189A05A1C7A44BE0094507D /* WebLinkIconSmall.png in Resources */,
 				E20C732E1C627F56005CB7BC /* Personal_Button_Icon.png in Resources */,
 				E2B9298D1C699ADD00157DBD /* Financial_Button_Icon_Weak.png in Resources */,
-				853C09A41C7A59C600CA1B30 /* image-coming-soon.png in Resources */,
 				E203BE881C4C987C009BC4C6 /* MoreTabIcon.png in Resources */,
-				853C09A21C7A582100CA1B30 /* dakotacounty.png in Resources */,
 				E203BE861C4C981B009BC4C6 /* NewsFeedTabIcon.png in Resources */,
-				853C099C1C7A581100CA1B30 /* northfieldseniorcenter.png in Resources */,
 				E20C732A1C627F3C005CB7BC /* Financial_Button_Icon.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
 				E20C732C1C627F41005CB7BC /* Legal_Button_Icon.png in Resources */,
 				E203BE9A1C4C9D3E009BC4C6 /* ThreeHands.png in Resources */,
-				853C09981C7A580900CA1B30 /* ricecounty.png in Resources */,
 				E20C73281C627D3D005CB7BC /* Medical_Button_Icon.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				E2B9298E1C699ADD00157DBD /* Legal_Button_Icon_Weak.png in Resources */,
@@ -488,9 +456,9 @@
 				E203BE841C4C981B009BC4C6 /* LocalResourcesTabIcon.png in Resources */,
 				E27A85CB1C5A889F00427200 /* Post_Icon.png in Resources */,
 				311126A71C762B9B005280BA /* delete.png in Resources */,
-				853C09961C7A580500CA1B30 /* threelinks.png in Resources */,
 				E2B9298F1C699ADD00157DBD /* Medical_Button_Icon_Weak.png in Resources */,
 				E2B929901C699ADD00157DBD /* Personal_Button_Icon_Weak.png in Resources */,
+				E2DD4F971C7A5462009F103F /* ThreeHands_gray.png in Resources */,
 				E203BE901C4C9A7B009BC4C6 /* EssentialsTabIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,14 +2,6 @@
 //  LocalResourcesViewController.swift
 //  Caregiving
 //
-//  Created by Camille on 2/14/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
-//
-
-//
-//  LocalResourcesViewController.swift
-//  Caregiving
-//
 //  Created by Camille on 2/12/16.
 //  Copyright © 2016 abearablecode. All rights reserved.
 //
@@ -26,6 +18,9 @@ class LocalResourcesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Change text in Navigation to white
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         if let user=AppUser.currentUser() as AppUser? {
             resourceList.removeAll()
@@ -73,7 +68,7 @@ class LocalResourcesViewController: UITableViewController {
             // initialize new view controller and cast it as your view controller
             let viewController = segue.destinationViewController as! DetailLocalResourcesViewController
             // your new view controller should have property that will store passed value
-            viewController.passedValue(self.resource)
+            viewController.passedValue = self.resource
         }
         
     }
