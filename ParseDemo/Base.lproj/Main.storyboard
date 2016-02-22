@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obJ-QC-wwx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -815,13 +815,7 @@
                             <outlet property="delegate" destination="GxB-rI-VWk" id="TAf-Pl-G8P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="detailTitle" id="8eD-qW-adg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uYU-fx-N2m">
-                            <connections>
-                                <action selector="shareResourceAction:" destination="GxB-rI-VWk" id="Ya3-Z4-W2W"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="detailTitle" id="8eD-qW-adg"/>
                     <connections>
                         <outlet property="addressTableViewCell" destination="ttV-J2-ivp" id="tJ9-yz-zEk"/>
                         <outlet property="contactNameTableViewCell" destination="ccM-cX-xQ7" id="UGH-yv-Fz1"/>

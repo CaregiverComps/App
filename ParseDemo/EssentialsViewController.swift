@@ -56,6 +56,7 @@ class EssentialsViewController: PFQueryTableViewController {
                 displayAccessLevel=self.filterAccessLevel
             }
              query = Essentials.getEssentialsFor(user, categories: displayAccessLevel)
+             query.orderByDescending("createdAt")
 
         }
             
