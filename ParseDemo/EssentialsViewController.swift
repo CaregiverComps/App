@@ -91,7 +91,7 @@ class EssentialsViewController: PFQueryTableViewController {
         cell!.checkbox.image = checkImage
         cell!.cellText.text = object!["TEXT"] as? String
         
-        var deleteImage : UIImage = UIImage(named: "delete")!
+        let deleteImage : UIImage = UIImage(named: "delete")!
         if deletable == true {
             cell!.deleteImage.image = deleteImage
         }
