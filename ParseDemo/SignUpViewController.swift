@@ -21,8 +21,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.usernameField.delegate = self;
         self.passwordField.delegate = self;
         self.teamNameField.delegate = self;
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,9 +47,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else if email!.characters.count < 8 {
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
             alert.show()
-            //TODO: We should check that the team code actually corresponds to an existing
-            // team, otherwise throw an error. Also, we need a standard for how long these
-            // are going to be.
+
         } else if teamName!.characters.count < 1{
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
             alert.show()
@@ -65,12 +61,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let level = AccessLevel();
             let newUser = AppUser();
             
-            // Set admin level here
             do {
                 let query = PFUser.query()
                 if (teamName != "") {
                     query!.whereKey("TEAMNAME", equalTo:teamName!)
                     let result = try query!.findObjects()
+                    // Check if given team name is still used (has team members)
                     if (result.count > 0) {
                         level.setInitialValues(false, legal: false, medical: false, personal: false, admin: false);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
@@ -93,14 +89,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             } catch {}
             
             level.update();
-            //newUser.username = username
-            //newUser.password = password
-            //newUser.email = email
             newUser.update();
             
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                //newUser.update();
                 
                 // Stop the spinner
                 spinner.stopAnimating()
@@ -142,9 +134,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else if email!.characters.count < 8 {
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
             alert.show()
-            //TODO: We should check that the team code actually corresponds to an existing 
-            // team, otherwise throw an error. Also, we need a standard for how long these
-            // are going to be.
+
         } else if teamName!.characters.count < 1{
             let alert = UIAlertView(title: "Invalid", message: "Please enter a valid existing team code or a name for your new team", delegate: self, cancelButtonTitle: "OK")
             alert.show()
@@ -164,9 +154,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 if (teamName != "") {
                     query!.whereKey("TEAMNAME", equalTo:teamName!)
                     let result = try query!.findObjects()
+                    // Make sure 
                     if (result.count == 0) {
                         // Creates admin here
-                        
                         level.setInitialValues(true, legal: true, medical: true, personal: true, admin: true);
                         newUser.setInitialValues(username, password: password, email: finalEmail, teamname: teamName!, accessLevel: level);
 
