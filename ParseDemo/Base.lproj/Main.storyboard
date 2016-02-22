@@ -711,7 +711,6 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c13-mT-pdB" userLabel="300 N College St. Northfield, MN 55378">
                                                     <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -719,12 +718,9 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ContactIconSmall.png" id="4eR-pZ-AP4">
                                                     <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </imageView>
                                             </subviews>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" textLabel="hst-lo-0sk" imageView="QGq-69-RHX" style="IBUITableViewCellStyleDefault" id="4zv-le-KS4">
                                         <rect key="frame" x="0.0" y="467" width="600" height="44"/>
@@ -758,7 +754,6 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="siK-aE-lGj" userLabel="300 N College St. Northfield, MN 55378">
                                                     <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -766,12 +761,9 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="EmailIconSmall.png" id="Fzk-qw-IEf">
                                                     <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <animations/>
                                                 </imageView>
                                             </subviews>
-                                            <animations/>
                                         </tableViewCellContentView>
-                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="websiteCell" textLabel="hsD-ar-eZ0" imageView="PCP-2P-gGb" style="IBUITableViewCellStyleDefault" id="sgK-R5-GJX">
                                         <rect key="frame" x="0.0" y="555" width="600" height="44"/>
@@ -1433,7 +1425,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sUF-PC-5NY">
-                                            <rect key="frame" x="14" y="7" width="573" height="112"/>
+                                            <rect key="frame" x="14" y="7" width="573" height="117"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Text here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSo-Ij-wF5">
                                                     <rect key="frame" x="8" y="39" width="556" height="58"/>
