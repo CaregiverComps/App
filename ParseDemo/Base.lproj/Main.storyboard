@@ -763,6 +763,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fp7-Em-vFe" userLabel="300 N College St. Northfield, MN 55378">
                                                     <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -770,9 +771,12 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ContactIconSmall.png" id="BwQ-Iq-vNN">
                                                     <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
                                                 </imageView>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="phoneCell" textLabel="hst-lo-0sk" imageView="QGq-69-RHX" style="IBUITableViewCellStyleDefault" id="4zv-le-KS4">
                                         <rect key="frame" x="0.0" y="467" width="600" height="44"/>
@@ -810,6 +814,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2O-RV-kIg" userLabel="300 N College St. Northfield, MN 55378">
                                                     <rect key="frame" x="57" y="0.0" width="528" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -817,9 +822,12 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="EmailIconSmall.png" id="1WB-uo-KKa">
                                                     <rect key="frame" x="15" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
                                                 </imageView>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="websiteCell" textLabel="hsD-ar-eZ0" imageView="PCP-2P-gGb" style="IBUITableViewCellStyleDefault" id="sgK-R5-GJX">
                                         <rect key="frame" x="0.0" y="555" width="600" height="44"/>
@@ -1275,7 +1283,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="K3d-r1-wpb">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="camille.png" id="K3d-r1-wpb">
                                                     <rect key="frame" x="15" y="0.0" width="70" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -1300,7 +1308,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="Ywx-tC-28h">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="julia.png" id="Ywx-tC-28h">
                                                     <rect key="frame" x="15" y="0.0" width="70" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -1325,7 +1333,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="Go0-Ur-zds">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="jonathan.png" id="Go0-Ur-zds">
                                                     <rect key="frame" x="15" y="0.0" width="70" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -1350,7 +1358,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="8gu-JN-ugB">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="stephen.png" id="8gu-JN-ugB">
                                                     <rect key="frame" x="15" y="0.0" width="70" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -1375,7 +1383,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="2DG-ol-Zsm">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="sam.png" id="2DG-ol-Zsm">
                                                     <rect key="frame" x="15" y="0.0" width="71" height="70.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -1400,7 +1408,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="user" id="Xxb-DU-z2B">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="risako.png" id="Xxb-DU-z2B">
                                                     <rect key="frame" x="15" y="0.0" width="70" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
@@ -2125,7 +2133,13 @@
         <image name="ThreeHands_gray.png" width="874" height="718"/>
         <image name="WebLinkIconSmall.png" width="27" height="27"/>
         <image name="bar" width="300" height="20"/>
+        <image name="camille.png" width="108" height="108"/>
         <image name="close" width="64" height="64"/>
+        <image name="jonathan.png" width="108" height="108"/>
+        <image name="julia.png" width="108" height="108"/>
+        <image name="risako.png" width="108" height="108"/>
+        <image name="sam.png" width="108" height="108"/>
+        <image name="stephen.png" width="108" height="108"/>
         <image name="user" width="126" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
