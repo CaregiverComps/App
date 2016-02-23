@@ -3,7 +3,7 @@
 //  Caregiving
 //
 //  Created by care2 on 2/8/16.
-//  Copyright © 2016 abearablecode. All rights reserved.
+//  Copyright © 2016 CaregiverNet. All rights reserved.
 //
 
 import Foundation

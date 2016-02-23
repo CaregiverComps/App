@@ -3,7 +3,7 @@
 //  ParseDemo
 //
 //  Created by Jonathan Brodie on 1/11/16.
-//  Copyright (c) 2016 abearablecode. All rights reserved.
+//  Copyright (c) 2016 CaregiverNet. All rights reserved.
 // http://stackoverflow.com/questions/24036393/fatal-error-use-of-unimplemented-initializer-initcoder-for-class
 //
 

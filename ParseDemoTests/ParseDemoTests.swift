@@ -3,7 +3,7 @@
 //  ParseDemoTests
 //
 //  Created by Rumiya Murtazina on 7/28/15.
-//  Copyright (c) 2015 abearablecode. All rights reserved.
+//  Copyright (c) 2015 CaregiverNet. All rights reserved.
 //
 
 import UIKit
