@@ -3,7 +3,7 @@
 //  ParseDemo
 //
 //  Created by Jonathan Brodie on 1/15/16.
-//  Copyright (c) 2016 abearablecode. All rights reserved.
+//  Copyright (c) 2016 CaregiverNet. All rights reserved.
 //
 
 import Foundation
