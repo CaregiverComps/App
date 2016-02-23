@@ -29,6 +29,11 @@ class EssentialsViewController: PFQueryTableViewController {
         self.paginationEnabled = false
         self.parseClassName = "Essentials"
         
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.loadObjects()
     }
 
     override func viewDidLoad() {
